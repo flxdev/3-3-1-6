@@ -1,9 +1,23 @@
 // Normally mainpage styles
 
-
-body
-	background-color: #ddd
-	+box
-
+html
+	height: 100%
 body
 	font-family: 'Book'
+	height: 100%
+.logo
+	+rem(width, 120px)
+	+rem(height, 160px)
+	background-image: url(../img/icons/logo.jpg)
+	background-size: cover
+	display: block
+	position: fixed
+	+rem(left, 80px)
+.breadcrumbs
+	position: fixed
+	+rem(left, 240px)
+	.breadcrumbs-item
+		font-family: Book
+		+rem(font-size, 18px)
+		color: $black
+		position: relative
