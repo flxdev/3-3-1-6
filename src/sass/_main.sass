@@ -1,10 +1,27 @@
 // Normally mainpage styles
-
+a 
+	text-decoration: none
+	outline: none
 html
 	height: 100%
+	font-size: 16px
 body
 	font-family: 'Book'
 	height: 100%
+.out
+	width: 100%
+	height: 100%
+.lang
+	+rem(width, 80px)
+	+rem(height, 80px)
+	position: fixed
+	top: 0
+	left: 0
+	+rem(font-size, 10px)
+	text-transform: uppercase
+	+rem(letter-spacing, 2px)
+	text-align: center
+	+rem(line-height, 80px)
 .logo
 	+rem(width, 120px)
 	+rem(height, 160px)
@@ -16,8 +33,183 @@ body
 .breadcrumbs
 	position: fixed
 	+rem(left, 240px)
+	+rem(top, 30px)
+	li
+		display: inline-block
+		vertical-align: middle
+		&:not(:last-of-type)
+			&::after
+				content: '/'
+				font-family: "Book"
+				position: absolute
+				top: 0
+				right: -19px
+		+rem(margin-right, 25px)
+		position: relative
+			
 	.breadcrumbs-item
+		&.home
+			div 
+				+rem(width, 12px)
+				+rem(height, 20px)
+				display: block
+				position: relative
 		font-family: Book
 		+rem(font-size, 18px)
 		color: $black
 		position: relative
+.gallery-pagination
+	position: fixed
+	left: 50%
+	top: 0
+	transform: translate(-50%)
+	.pagination-item
+		float: left
+		+rem(width, 80px)
+		+rem(height, 80px)
+		position: relative
+		background-color: #eee
+		div
+			+rem(width, 30px)
+			+rem(height, 20px)
+			display: block
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+		&.pagination-item_left
+			div
+				background-image: url(../img/icons/pagin-four.png)
+				background-size: cover
+		&.pagination-item_right
+			div
+				background-image: url(../img/icons/pagin-two.png)
+				background-size: cover
+.navbar
+	+rem(width, 80px)
+	height: 100%
+	position: fixed
+	z-index: 5
+	right: 0
+	top: 0
+	.navbar__wrap
+		position: relative
+		background-color: $black
+		+rem(width, 80px)
+		height: 100%
+		cursor: pointer
+		transition: background-color 0.3s ease-in-out 0s
+		z-index: 4
+		&.open
+			background-color: transparent
+			transition: background-color 0.3s ease-in-out 0.35s
+		.hamburger
+			+rem(width, 30px)
+			+rem(height, 20px)
+			position: absolute
+			+rem(left, 25px)
+			+rem(top, 30px)
+			.hamburger-inner 
+				width: 100%
+				height: 100%
+				+rem(padding, 15px 10px)
+				cursor: pointer
+				position: relative
+				text-align: center
+				div 
+					display: block
+					position: relative
+					+rem(width, 30px)
+					+rem(height, 22px)
+				span 
+					height: 2px
+					width: 100%
+					display: block
+					background-color: $white
+					position: absolute
+					opacity: 1
+					left: 0
+					transform: rotate(0deg)
+					transition: 0.2s ease-in-out
+					&:nth-child(1) 
+						top: 0
+					&:nth-child(2)
+						+rem(top, 9px)
+					&:nth-child(3)
+						+rem(top, 18px)
+				&.open 
+					span 
+						&:nth-child(1) 
+							transform: rotate(135deg)
+							+rem(top, 9px)
+						&:nth-child(2)
+							opacity: 0
+							left: -60px
+							+rem(left, -60px)
+						&:nth-child(3)
+							transform: rotate(-135deg)
+							+rem(top, 9px)
+		.navbar_text
+			position: absolute
+			top: 50%
+			width: 10px
+			height: 10px
+			z-index: 5
+			left: 50%
+			transform: translate(-50%,-50%)
+			.navbar_text-inner
+				transform: rotate(-90deg)
+				span
+					font-family: "Book"
+					+rem(font-size, 10px)
+					color: $white
+					text-transform: uppercase
+					+rem(letter-spacing, 2.1px)
+	.developers
+		position: absolute
+		+rem(bottom, -80px)
+		left: 0
+		right: 0
+		+rem(width, 1px)
+		+rem(height, 80px)
+		transform: rotate(-90deg)
+		transform-origin: top
+		z-index: 5
+		a 
+			display: block
+			+rem(width, 150px)
+			+rem(height, 80px)
+			text-align: center
+			+rem(line-height, 80px)
+			text-transform: uppercase
+			color: $white
+			+rem(letter-spacing, 2.5px)
+			+rem(font-size, 10px)
+			span
+				transition: color 0.3s ease-in-out
+			&:hover
+				span
+					color: $hover
+.navbar__content
+	position: fixed
+	width: 100%
+	background-color: rgba(255,255,255,.6)
+	top: 0
+	right: 0
+	bottom: 0
+	display: none;
+	.navbar__content-slice
+		width: 65%
+		background-color: $black
+		background-image: url(../img/menu-bg.jpg)
+		background-size: cover
+		background-position: 100% 100%
+		position: absolute
+		height: 100%
+		right: 0
+		transform: translate(100%, 0)
+		transition: transform 0.3s ease-in-out 0s
+	&.open
+		.navbar__content-slice
+			transform: translate(0, 0)
+			transition: transform 0.3s ease-in-out 0.15s

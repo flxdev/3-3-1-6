@@ -1,6 +1,16 @@
 header.header
+	a.lang(href="") RU
 	a.logo(href="/")
-	.breadcrumbs
-		a.home.breadcrumbs-item
-		a.breadcrumbs-item
-			span Recent projects
+	ul.breadcrumbs
+		li
+			a.home.breadcrumbs-item(href="#")
+				div
+					<svg viewBox="0 0 20 22.1" xmlns="http://www.w3.org/2000/svg"><path d="m10.04767,0.04746l-9.996,9l0,13l7.996,0l0,-6l4.004,0l0,6l8,0l0,-13l-10.004,-9zm8.008,20l-4.008,0l0,-6l-7.996,0l0,6l-4.004,0l0,-10.172l8,-7l8.008,7l0,10.172z"/></svg>
+		li
+			a.breadcrumbs-item(href="#")
+				span Recent projects
+	.gallery-pagination
+		a(href="#" class="pagination-item pagination-item_left")
+			div
+		a(href="#" class="pagination-item pagination-item_right")
+			div
