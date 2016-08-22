@@ -1,5 +1,11 @@
-$(document).ready(function() {
+window.onload = function(){
+	var body = document.querySelector('.out');
 
+	body.classList.add('load-page')
+
+}
+
+$(document).ready(function() {
 	// menu
 	function menuTrigger() {
 		var trigger = $(".navbar__wrap"),

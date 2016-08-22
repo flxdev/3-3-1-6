@@ -6,3 +6,34 @@ block title
 block content
 	include includes/_header
 	include includes/_menu
+	.wrapper
+		.content.content-mainpage
+			.content-left.content-side
+				.intro
+					.intro-text Architecture. Interior. Design.
+			.content-right.content-side
+				include includes/_pagination
+				.projects
+					a.projects-item.ajax-trigger(href="#")
+						.projects-image
+							img(src="img/image-1.jpg")
+						.projects-info
+							.projects-name
+								span Café de Paris
+									i
+							.projects-hash
+								- var arrHash = ['#Architecture', '#Interior', '#Decoration']
+								each hash in arrHash
+									span(class="hash-item") #{hash}
+					a.projects-item.ajax-trigger(href="#")
+						.projects-image
+							img(src="img/image-1.jpg")
+						.projects-info
+							.projects-name
+								span Café de Paris
+									i
+							.projects-hash
+								- var arrHash = ['#Architecture', '#Interior', '#Decoration']
+								each hash in arrHash
+									span(class="hash-item") #{hash}
+	include includes/_footer

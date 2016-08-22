@@ -22,6 +22,7 @@ body
 	+rem(letter-spacing, 2px)
 	text-align: center
 	+rem(line-height, 80px)
+	z-index: 5
 .logo
 	+rem(width, 120px)
 	+rem(height, 160px)
@@ -30,10 +31,12 @@ body
 	display: block
 	position: fixed
 	+rem(left, 80px)
+	z-index: 5
 .breadcrumbs
 	position: fixed
 	+rem(left, 240px)
 	+rem(top, 30px)
+	z-index: 5
 	li
 		display: inline-block
 		vertical-align: middle
@@ -62,13 +65,13 @@ body
 	position: fixed
 	left: 50%
 	top: 0
+	z-index: 5
 	transform: translate(-50%)
 	.pagination-item
 		float: left
 		+rem(width, 80px)
 		+rem(height, 80px)
 		position: relative
-		background-color: #eee
 		div
 			+rem(width, 30px)
 			+rem(height, 20px)
@@ -213,3 +216,220 @@ body
 		.navbar__content-slice
 			transform: translate(0, 0)
 			transition: transform 0.3s ease-in-out 0.15s
+.footer
+	position: fixed
+	bottom: 0
+	+rem(left, 80px)
+	+rem(bottom, 30px)
+	.copyright
+		.copyright-item
+			display: inline-block
+			vertical-align: top
+			position: relative
+			&:not(:last-of-type)
+				+rem(margin-right, 30px)
+				&::after
+					content: '.'
+					position: absolute
+					bottom: 0
+					+rem(right, -18px)
+			span, a 
+				+rem(font-size, 10px)
+				text-transform: uppercase
+				color: $black
+				+rem(letter-spacing, 2px)
+.wrapper
+	width: 100%
+	height: 100%
+	position: relative
+	z-index: 4
+	.content
+		width: 100%
+		height: 100%
+		&.content-mainpage
+			.content-side
+				&.content-left
+				 	&::after
+				 		+rem(left, 80px)
+				 		right: auto
+				&.content-right
+					&::after, &::before
+						display: none
+		.content-side
+			height: 100%
+			position: relative
+			&.content-left
+				width: 50%
+				float: left
+				&::after
+					content: ''
+					width: 1px
+					height: 100%
+					+rem(right, 80px)
+					background-color: $line
+					position: absolute
+				&::before
+					content: ''
+					width: 1px
+					height: 100%
+					left: 50%
+					position: absolute
+					background-color: $line
+			&.content-right
+				width: 50%
+				float: right
+				&::after
+					content: ''
+					width: 1px
+					height: 100%
+					+rem(left, 80px)
+					background-color: $line
+					position: absolute
+				&::before
+					content: ''
+					width: 1px
+					height: 100%
+					left: 50%
+					position: absolute
+					background-color: $line
+.intro
+	position: absolute
+	+rem(left, 80px)
+	+rem(bottom, 160px)
+	+rem(right, 80px)
+	+rem(height, 250px)
+	overflow: hidden
+	.intro-text
+		font-family: 'Heavy'
+		+rem(font-size, 72px)
+		padding-right: 15%
+		position: absolute
+		bottom: 0
+.pagination
+	position: fixed
+	left: 0
+	top: 0
+	bottom: 0
+	+rem(width, 80px)
+	z-index: 4
+	.pagination-inner
+		.pagination-item
+			position: relative
+			width: 100%
+			height: 50vh
+			a
+				width: 100%
+				height: 100%
+				display: block
+				position: relative
+				span
+					+rem(width, 8px)
+					+rem(height, 14px)
+					display: block
+					background-size: cover
+					position: absolute
+					left: 50%
+					transform: translate(-50%)
+			&.pagination-item__left
+				a
+					span
+						background-image: url(../img/icons/arrow-top.png)
+						+rem(bottom, 100px)
+			&.pagination-item__right
+				a
+					span
+						background-image: url(../img/icons/arrow-bottom.png)
+						+rem(top, 115px)
+		.pagination-counter
+			position: absolute
+			top: 50%
+			+rem(height, 150px)
+			width: 100%
+			transform: translate(0, -50%)
+			.pagination-counter__inner
+				text-align: center
+				position: absolute
+				transform: rotate(-90deg)
+				transform-origin: bottom
+				+rem(width, 150px)
+				+rem(height, 80px)
+				+rem(line-height, 80px)
+				+rem(left, 5px)
+				+rem(letter-spacing, 2px)
+				.pagination-current
+					display: inline-block
+					vertical-align: top
+					+rem(font-size, 10px)
+					font-family: 'Bold'
+				.pagination-spacer
+					display: inline-block
+					vertical-align: top
+					+rem(font-size, 10px)
+					+rem(margin, 0 15px)
+				.pagination-all
+					display: inline-block
+					vertical-align: top
+					+rem(font-size, 10px)
+.content-mainpage
+	.content-right
+		.pagination
+			position: absolute
+			border-left: 1px solid $line
+			+rem(left, -80px)
+.projects
+	.projects-item
+		height: 50vh
+		overflow: hidden
+		position: relative
+		display: block
+		.projects-image
+			position: relative
+			height: 50vh
+			transition: height 0.3s ease-in-out
+			overflow: hidden
+			img
+				max-width: 100%
+		.projects-info
+			position: absolute
+			+rem(bottom, 40px)
+			+rem(left, 40px)
+			transition: transform 0.2s ease-in-out
+			.projects-name
+				position: absolute
+				bottom: 0
+				transition: bottom 0.2s ease-in-out
+				span 
+					font-family: 'Medium'
+					+rem(font-size, 24px)
+					color: $white
+					i
+						display: inline-block
+						vertical-align: middle
+						+rem(width, 14px)
+						+rem(height, 8px)
+						background-image: url(../img/icons/arrow-right-white.png)
+						background-size: cover
+						+rem(margin-left, 5px)
+						opacity: 0
+						transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out
+			.projects-hash
+				opacity: 0
+				transition: opacity 0.2s ease-in-out
+				.hash-item
+					+rem(font-size, 18px)
+					color: $white
+					+rem(letter-spacing, 2px)
+					display: inline-block
+					vertical-align: top
+					&:not(:last-of-type)
+						+rem(margin-right, 20px)
+		&:hover
+			.projects-info
+				.projects-name
+					bottom: 100%
+					span
+						i
+							opacity: 1
+							transform: translate(10px, 0)
+				.projects-hash
+					opacity: 1
