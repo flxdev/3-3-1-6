@@ -82,12 +82,12 @@ body
 			transform: translate(-50%, -50%)
 		&.pagination-item_left
 			div
-				background-image: url(../img/icons/pagin-four.png)
-				background-size: cover
+				path 
+					stroke: $black
 		&.pagination-item_right
 			div
-				background-image: url(../img/icons/pagin-two.png)
-				background-size: cover
+				path 
+					stroke: $white
 .navbar
 	+rem(width, 80px)
 	height: 100%
@@ -101,11 +101,13 @@ body
 		+rem(width, 80px)
 		height: 100%
 		cursor: pointer
-		transition: background-color 0.3s ease-in-out 0s
+		transition: background-color 0.3s ease-in-out 0s, border-color 0.3s ease-in-out 0s
 		z-index: 4
+		border-left: 1px solid transparent
 		&.open
 			background-color: transparent
-			transition: background-color 0.3s ease-in-out 0.35s
+			transition: background-color 0.3s ease-in-out 0.35s, border-color 0.3s ease-in-out 0.35s
+			border-color: $lineOpacity
 		.hamburger
 			+rem(width, 30px)
 			+rem(height, 20px)
@@ -212,10 +214,92 @@ body
 		right: 0
 		transform: translate(100%, 0)
 		transition: transform 0.3s ease-in-out 0s
+		&::before
+			content: ''
+			width: 1px
+			height: 100%
+			background-color: $lineOpacity
+			position: absolute
+			left: 30.33%
+		&::after
+			content: ''
+			width: 1px
+			height: 100%
+			background-color: $lineOpacity
+			position: absolute
+			left: 60.66%
 	&.open
 		.navbar__content-slice
 			transform: translate(0, 0)
 			transition: transform 0.3s ease-in-out 0.15s
+	.navbar__content-container
+		position: absolute
+		left: 43%
+		top: 50%
+		transform: translate(-50%, -50%)
+		.navigation
+			+rem(margin-bottom, 50px)
+			.navi
+				font-size: 0
+				max-width: 85%
+				.navi-item
+					display: inline-block
+					width: 50%
+					vertical-align: top
+					a 
+						font-family: 'Medium'
+						+rem(font-size, 24px)
+						color: $lGrey
+						transition: color 0.3s ease-in-out
+						display: inline-block
+						+rem(padding, 15px 0)
+						+rem(letter-spacing, 1px)
+						width: 100%
+						&:hover 
+							color: $white
+						&.active
+							position: relative
+							width: auto
+							color: $white
+							&::after
+								content: ''
+								height: 1px
+								+rem(left, -6px)
+								+rem(right, -6px)
+								top: 55%
+								position: absolute
+								background-color: $white
+		.media
+			max-width: 85%
+			.social
+				display: inline-block
+				vertical-align: middle
+				width: 50%
+				font-size: 0
+				.social-item
+					+rem(width, 28px)
+					+rem(height, 28px)
+					border-radius: 100%
+					background-color: $black
+					display: inline-block
+					&:not(:last-of-type)
+						+rem(margin-right, 28px)
+					transition: background-color 0.3s ease-in-out
+					div
+						display: block
+						width: 100%
+						height: 100%
+						overflow: hidden
+						path
+							fill: $white
+							transition: fill 0.3s ease-in-out
+					&:hover
+						background-color: $white
+						div
+							path
+								fill: $black
+			.btn
+				vertical-align: middle
 .footer
 	position: fixed
 	bottom: 0
@@ -238,6 +322,23 @@ body
 				text-transform: uppercase
 				color: $black
 				+rem(letter-spacing, 2px)
+.btn
+	display: inline-block
+	text-align: center
+	+rem(padding, 16px 46px 22px)
+	&.btn-black
+		background-color: $black
+		transition: background-color 0.3s ease
+		span
+			color: $white
+			+rem(font-size, 10px)
+			text-transform: uppercase
+			+rem(letter-spacing, 2.5px)
+			transition: color 0.3s ease
+		&:hover
+			background-color: $white
+			span
+				color: $black
 .wrapper
 	width: 100%
 	height: 100%
@@ -246,6 +347,7 @@ body
 	.content
 		width: 100%
 		height: 100%
+		overflow: hidden
 		&.content-mainpage
 			.content-side
 				&.content-left
@@ -333,12 +435,10 @@ body
 			&.pagination-item__left
 				a
 					span
-						background-image: url(../img/icons/arrow-top.png)
 						+rem(bottom, 100px)
 			&.pagination-item__right
 				a
 					span
-						background-image: url(../img/icons/arrow-bottom.png)
 						+rem(top, 115px)
 		.pagination-counter
 			position: absolute
@@ -382,13 +482,20 @@ body
 		overflow: hidden
 		position: relative
 		display: block
+		.project-info-contaner
+			overflow: hidden
+			transition: height 0.3s ease-in-out
 		.projects-image
 			position: relative
 			height: 50vh
-			transition: height 0.3s ease-in-out
-			overflow: hidden
 			img
-				max-width: 100%
+				max-width: 120%
+				-webkit-filter: grayscale(100%)
+				transition: filter 0.3s ease
+				// max-height: 100%
+				// width: 100%
+				// height: 100%
+				// background-size: cover
 		.projects-info
 			position: absolute
 			+rem(bottom, 40px)
@@ -424,6 +531,9 @@ body
 					&:not(:last-of-type)
 						+rem(margin-right, 20px)
 		&:hover
+			.projects-image
+				img
+					filter: grayscale(0)
 			.projects-info
 				.projects-name
 					bottom: 100%
@@ -433,3 +543,28 @@ body
 							transform: translate(10px, 0)
 				.projects-hash
 					opacity: 1
+	&.gallery-carousel
+		.slick-slide
+			& > div
+				font-size: 0
+.animated
+	animation-fill-mode: both;
+	animation-duration: 0.6s;
+
+@-webkit-keyframes fadeInRight 
+	0% 
+		height: 0
+	100% 
+		height: 100%
+
+@keyframes fadeInRight 
+	0% 
+		height: 0
+	100% 
+		height: 100%
+
+.fadeInRight
+	-webkit-animation-name: fadeInRight;
+	-webkit-animation-timing-function: cubic-bezier(1,.33,.74,.61)
+	animation-name: fadeInRight
+	animation-timing-function: cubic-bezier(1,.33,.74,.61)

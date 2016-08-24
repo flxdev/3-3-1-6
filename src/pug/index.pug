@@ -8,32 +8,68 @@ block content
 	include includes/_menu
 	.wrapper
 		.content.content-mainpage
+			.gallery-pagination
+				a(href="#" class="pagination-item pagination-item_left")
+					div
+						<svg viewBox="0 0 31 21" xmlns="http://www.w3.org/2000/svg"><path id="svg_1" d="m0.5,0.5l13.4875,0l0,8.43764l-13.4875,0l0,-8.43764z" stroke-miterlimit="10" fill="none" clip-rule="evenodd" fill-rule="evenodd"/>  <path id="svg_3" d="m17.05921,0.5l13.44079,0l0,8.43626l-13.44079,0l0,-8.43626z" stroke-miterlimit="10" fill="none" clip-rule="evenodd" fill-rule="evenodd"/><path id="svg_4" d="m17.05467,12.06511l13.44533,0l0,8.43489l-13.44533,0l0,-8.43489z" stroke-miterlimit="10" fill="none" clip-rule="evenodd" fill-rule="evenodd"/><path id="svg_5" d="m0.5,12.0125l13.4875,0l0,8.4875l-13.4875,0l0,-8.4875z" stroke-miterlimit="10" fill="none" clip-rule="evenodd" fill-rule="evenodd"/></svg>
+				a(href="#" class="pagination-item pagination-item_right")
+					div
+						<svg viewBox="0 0 31 21" xmlns="http://www.w3.org/2000/svg"><path id="svg_1" d="m0.5,0.5l13.39759,0l0,20l-13.39759,0l0,-20z" stroke-miterlimit="10" fill="none" clip-rule="evenodd" fill-rule="evenodd"/><path id="svg_2" d="m17.16265,0.5l13.33735,0l0,20l-13.33735,0l0,-20z" stroke-miterlimit="10" fill="none" clip-rule="evenodd" fill-rule="evenodd"/></svg>
 			.content-left.content-side
 				.intro
 					.intro-text Architecture. Interior. Design.
 			.content-right.content-side
-				include includes/_pagination
-				.projects
-					a.projects-item.ajax-trigger(href="#")
-						.projects-image
-							img(src="img/image-1.jpg")
-						.projects-info
-							.projects-name
-								span Café de Paris
-									i
-							.projects-hash
-								- var arrHash = ['#Architecture', '#Interior', '#Decoration']
-								each hash in arrHash
-									span(class="hash-item") #{hash}
-					a.projects-item.ajax-trigger(href="#")
-						.projects-image
-							img(src="img/image-1.jpg")
-						.projects-info
-							.projects-name
-								span Café de Paris
-									i
-							.projects-hash
-								- var arrHash = ['#Architecture', '#Interior', '#Decoration']
-								each hash in arrHash
-									span(class="hash-item") #{hash}
+				.projects-gallery
+					include includes/_pagination
+					.projects.gallery-carousel
+						a.projects-item.ajax-trigger(href="#")
+							.project-info-contaner(data-animation="fadeInRight", data-delay="0.5s")
+								.projects-image
+									img(src="img/image-1.jpg")
+								.projects-info
+										.projects-name
+											span Café de Paris
+												i
+										.projects-hash
+											- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+											each hash in arrHash
+												span(class="hash-item") #{hash}
+						a.projects-item.ajax-trigger(href="#")
+							.project-info-contaner(data-animation="fadeInRight", data-delay="0.6s")
+								.projects-image
+									img(src="img/image-1.jpg")
+								.projects-info
+										.projects-name
+											span Café de Paris
+												i
+										.projects-hash
+											- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+											each hash in arrHash
+												span(class="hash-item") #{hash}
+						a.projects-item.ajax-trigger(href="#")
+							.project-info-contaner(data-animation="fadeInRight", data-delay="0.5s")
+								.projects-image
+									img(src="img/image-1.jpg")
+								.projects-info
+										.projects-name
+											span Café de Paris
+												i
+										.projects-hash
+											- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+											each hash in arrHash
+												span(class="hash-item") #{hash}
+						a.projects-item.ajax-trigger(href="#")
+							.project-info-contaner(data-animation="fadeInRight", data-delay="0.6s")
+								.projects-image
+									img(src="img/image-1.jpg")
+								.projects-info
+										.projects-name
+											span Café de Paris
+												i
+										.projects-hash
+											- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+											each hash in arrHash
+												span(class="hash-item") #{hash}
+				script(type='text/javascript').
+					$(galleryImage)
 	include includes/_footer
