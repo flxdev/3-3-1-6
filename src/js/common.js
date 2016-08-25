@@ -55,12 +55,14 @@ function galleryImage(){
 
 		next.on("click", function(event){
 			event.preventDefault();
-			carousel.slick("slickNext")
+			carousel.slick("slickNext");
+			return false;
 		});
 
 		prev.on("click", function(event){
 			event.preventDefault();
-			carousel.slick("slickPrev")
+			carousel.slick("slickPrev");
+			return false;
 		});
 
 		function doAnimations(elements) {

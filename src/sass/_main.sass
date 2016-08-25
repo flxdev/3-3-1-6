@@ -5,6 +5,8 @@ a
 html
 	height: 100%
 	font-size: 16px
+	+r(1280)
+		font-size: 14px
 body
 	font-family: 'Book'
 	height: 100%
@@ -23,6 +25,7 @@ body
 	text-align: center
 	+rem(line-height, 80px)
 	z-index: 5
+	color: $black
 .logo
 	+rem(width, 120px)
 	+rem(height, 160px)
@@ -84,10 +87,20 @@ body
 			div
 				path 
 					stroke: $black
+			&.active
+				div
+					path
+						stroke: $white
+						fill: $white
 		&.pagination-item_right
 			div
 				path 
 					stroke: $white
+			&.active
+				div
+					path
+						stroke: $white
+						fill: $white
 .navbar
 	+rem(width, 80px)
 	height: 100%
@@ -237,11 +250,15 @@ body
 		left: 43%
 		top: 50%
 		transform: translate(-50%, -50%)
+		+r(1280)
+			width: 70%
 		.navigation
 			+rem(margin-bottom, 50px)
 			.navi
 				font-size: 0
 				max-width: 85%
+				+r(1599)
+					max-width: 100%
 				.navi-item
 					display: inline-block
 					width: 50%
@@ -271,6 +288,8 @@ body
 								background-color: $white
 		.media
 			max-width: 85%
+			+r(1599)
+				max-width: 100%
 			.social
 				display: inline-block
 				vertical-align: middle
@@ -344,6 +363,7 @@ body
 	height: 100%
 	position: relative
 	z-index: 4
+	+rem(padding, 0 80px)
 	.content
 		width: 100%
 		height: 100%
@@ -352,7 +372,7 @@ body
 			.content-side
 				&.content-left
 				 	&::after
-				 		+rem(left, 80px)
+				 		+rem(left, 0)
 				 		right: auto
 				&.content-right
 					&::after, &::before
@@ -396,7 +416,7 @@ body
 					background-color: $line
 .intro
 	position: absolute
-	+rem(left, 80px)
+	+rem(left, 0)
 	+rem(bottom, 160px)
 	+rem(right, 80px)
 	+rem(height, 250px)
@@ -407,12 +427,20 @@ body
 		padding-right: 15%
 		position: absolute
 		bottom: 0
+		+r(1599)
+			+rem(font-size, 60px)
+		+r(1366) 
+			+rem(font-size, 50px)
+		+r(1280) 
+			+rem(font-size, 55px)
 .pagination
 	position: fixed
 	left: 0
 	top: 0
 	bottom: 0
 	+rem(width, 80px)
+	border-right: 1px solid $line
+	background-color: $white
 	z-index: 4
 	.pagination-inner
 		.pagination-item
@@ -475,6 +503,7 @@ body
 		.pagination
 			position: absolute
 			border-left: 1px solid $line
+			border-right: 0
 			+rem(left, -80px)
 .projects
 	.projects-item
@@ -492,6 +521,8 @@ body
 				max-width: 120%
 				-webkit-filter: grayscale(100%)
 				transition: filter 0.3s ease
+				+r(1280)
+					max-width: 140%
 				// max-height: 100%
 				// width: 100%
 				// height: 100%
@@ -568,3 +599,62 @@ body
 	-webkit-animation-timing-function: cubic-bezier(1,.33,.74,.61)
 	animation-name: fadeInRight
 	animation-timing-function: cubic-bezier(1,.33,.74,.61)
+.cap
+	position: fixed
+	top: 0
+	right: 0
+	left: 0
+	bottom: 0
+	background-color: $black
+	z-index: 150
+	display: none
+	+r(992)
+		display: block
+	.cap-content
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%,-50%)
+		a
+			color: $white
+			padding-top: 100px
+			position: relative
+			letter-spacing: 0.9px
+			&::before
+				content: ""
+				width: 106px
+				height: 83px
+				background-size: cover
+				background-image: url(../img/svg/imac.svg)
+				position: absolute
+				top: 0
+				left: 50%
+				margin-left: -70px
+.content-portfolio-four
+	.breadcrumbs
+		+rem(left, 120px)
+		li
+			&:not(:last-of-type)
+				&::after 
+					color: $white
+		.breadcrumbs-item
+			color: $white
+			path
+				fill: $white
+
+.content-portfolio-two
+	.projects-gallery
+		.projects
+			.projects-item
+				height: 100vh
+				.project-info-contaner
+					height: 100%
+				.projects-image
+					height: 100vh
+					img
+						filter: none
+						position: absolute
+						top: 0
+						right: 0
+						max-height: 100%
+						max-width: none;
