@@ -1,0 +1,16 @@
+.popup-wrap(data-modal-popup="hash")
+	.popup
+		nav.hash-navigation
+			- var current = "#All projects"
+			mixin hashNav(link, name)
+				a.hash-navigation__item(href=link class={active: name === current})
+					span #{name}
+			+hashNav("#", "#All projects")
+			+hashNav("#", "#Architecture")
+			+hashNav("#", "#Interior")
+			+hashNav("#", "#Decoration")
+			+hashNav("#", "#Design")
+	.close
+		span Close
+			i
+				<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path stroke="null" id="svg_1" d="m0.11552,0.52717l0.51293,-0.51293l9.36098,9.36098l-0.51293,0.51293l-9.36098,-9.36098" clip-rule="evenodd" fill-rule="evenodd"/><path  stroke="null" id="svg_2" d="m9.39406,-0.05968l0.50841,0.52357l-9.27854,9.42426l-0.50841,-0.52357l9.27854,-9.42426" clip-rule="evenodd" fill-rule="evenodd"/></svg>

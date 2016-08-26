@@ -208,6 +208,11 @@ body
 			&:hover
 				span
 					color: $hover
+
+.modal-open
+	.navbar
+		z-index: 2
+
 .navbar__content
 	position: fixed
 	width: 100%
@@ -319,6 +324,7 @@ body
 								fill: $black
 			.btn
 				vertical-align: middle
+
 .footer
 	position: fixed
 	bottom: 0
@@ -368,6 +374,7 @@ body
 		width: 100%
 		height: 100%
 		overflow: hidden
+		position: relative
 		&.content-mainpage
 			.content-side
 				&.content-left
@@ -641,7 +648,10 @@ body
 			color: $white
 			path
 				fill: $white
-
+	.hash
+		.hash-trigger
+			span
+				color: $white
 .content-portfolio-two
 	.projects-gallery
 		.projects
@@ -658,3 +668,155 @@ body
 						right: 0
 						max-height: 100%
 						max-width: none;
+.projects-gallery
+	height: 100%
+	position: relative
+
+.projects-triggers
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+	+rem(max-width, 560px)
+	width: 100%
+	+r(1460)
+		+rem(max-width, 450px)
+	+r(1170)
+		left: 55%
+	.projects-triggers__item
+		display: inline-block
+		width: 50%
+		+rem(padding, 25px 0)
+		span
+			+rem(font-size, 18px)
+			+rem(letter-spacing, 0.5px)
+			color: $Grey
+			position: relative
+			+rem(padding, 0 5px)
+			&::before
+				content: ""
+				height: 1px
+				background-color: $black
+				width: 0
+				transition: width 0.3s ease-in-out
+				position: absolute
+				top: 59%
+				left: 0
+		&.active
+			span
+				color: $black
+				&::before
+					width: 100%
+.projects-fader
+	.projects-item
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		transform: translate(100%, 0)
+		&.active
+			z-index: 3
+			&.is-visible
+				z-index: 2
+		&.is-visible
+			transform: translate(0, 0)
+			transition: transform 0.5s cubic-bezier(.83,.28,.6,.59)
+			will-change: transform
+			&.fadeOut
+				transform: scale(0.9)
+				opacity: 0.5
+				transition: transform 0.5s cubic-bezier(.83,.28,.6,.59), opacity 0.5s cubic-bezier(.83,.28,.6,.59)
+				will-change: transform
+.hash
+	position: absolute
+	left: 25%
+	+rem(top, 30px)
+	z-index: 5
+	+r(1170)
+		left: 28%
+	.hash-trigger
+		font-family: "Light"
+		+rem(font-size, 10px)
+		text-transform: uppercase
+		+rem(letter-spacing, 2px)
+		+rem(padding, 8px 5px)
+		cursor: pointer
+.popup-wrap
+	position: fixed
+	top: 0
+	right: 0
+	left: 0
+	bottom: 0
+	background-color: rgba(0,0,0,.8)
+	z-index: 15
+	text-align: center
+	font-size: 0
+	display: none
+	&::before
+		content: ""
+		display: inline-block
+		height: 100%
+		width: 0
+		vertical-align: middle
+	&.open
+		.popup
+			opacity: 1
+	.popup
+		width: 100%
+		display: inline-block
+		vertical-align: middle
+		opacity: 0
+		transition: opacity 0.3s ease
+	.close
+		position: absolute
+		top: 20%
+		right: 15%
+		cursor: pointer
+		span
+			font-family: "Light"
+			font-size: 10px
+			letter-spacing: 3px
+			color: $white
+			text-transform: uppercase
+			padding: 5px
+			i
+				width: 8px
+				height: 8px
+				display: inline-block
+				margin-left: 5px
+				path
+					fill: #fff
+	.hash-navigation
+		+rem(max-width, 1250px)
+		margin: 0 auto
+		.hash-navigation__item
+			display: inline-block
+			+rem(padding, 10px 20px)
+			span
+				font-family: "Heavy"
+				+rem(font-size, 72px)
+				+r(1170)
+					+rem(font-size, 65px)
+				color: $Grey
+				+rem(padding, 0 15px)
+				transition: color 0.3s ease
+			&:hover
+				span 
+					color: $white
+			&.active
+				span
+					position: relative
+					&::after
+						content: ""
+						position: absolute
+						top: 58%
+						height: 1px
+						background-color: $Grey
+						left: 0
+						right: 0
+						transition: background-color 0.3s ease
+				&:hover
+					span
+						&::after
+							background-color: $white
