@@ -64,6 +64,7 @@ body
 		+rem(font-size, 18px)
 		color: $black
 		position: relative
+		+rem(letter-spacing, 2.5px)
 .gallery-pagination
 	position: fixed
 	left: 50%
@@ -368,12 +369,12 @@ body
 	width: 100%
 	height: 100%
 	position: relative
+	overflow: hidden
 	z-index: 4
 	+rem(padding, 0 80px)
 .content
 	width: 100%
 	height: 100%
-	overflow: hidden
 	position: relative
 	&.content-mainpage
 		.content-side
@@ -1000,3 +1001,196 @@ body
 			+rem(margin, -11px 0 0 -11px)
 			path
 				fill: $black
+
+.content-news
+	.breadcrumbs
+		+rem(left, 120px)
+		li
+			&:not(:last-of-type)
+				&::after
+					color: $white
+		.breadcrumbs-item
+			color: $white
+			path
+				fill: $white
+	.gallery-pagination 
+		.pagination-item
+			&.pagination-item_left 
+				div 
+					path
+						stroke: $white
+			&.pagination-item_right
+				div 
+					path
+						stroke: $black
+	.pagination
+		position: absolute
+		+rem(left, -80px)
+.gallery-news
+	font-size: 0
+	position: relative
+	a
+		&.gallery-news__item
+			width: 25%
+			height: 50vh
+			display: inline-block
+			overflow: hidden
+			background-color: #212121
+			position: relative
+			.t-contaner
+				height: 100%
+				width: 100%
+				display: block
+				transform: translate(0, 0)
+				transition: transform 0.3s ease
+				position: relative
+				z-index: 1
+				.image-cover
+					overflow: hidden
+					height: 100%
+					div
+						max-width: 100%
+						display: block
+						height: 100%
+						background-size: cover
+						background-position: center
+				.gallery-news__name
+					position: absolute
+					+rem(right, 20px)
+					+rem(left, 33px)
+					+rem(bottom, 40px)
+					data
+						font-family: "Light"
+						font-size: 10px
+						text-transform: uppercase
+						color: $white
+						+rem(letter-spacing, 2px)
+						display: block
+						+rem(padding, 0 7px)
+						+rem(margin-bottom, 12px)
+					span
+						font-family: "Medium"
+						+rem(font-size, 24px)
+						color: $white
+						position: relative
+						+rem(padding, 0 7px)
+						&::after
+							content: ""
+							+rem(right, 0)
+							+rem(left, 0)
+							top: 60%
+							height: 1px
+							background-color: $white
+							position: absolute
+							width: 0
+							transition: width 0.3s ease
+		&:hover
+			.t-contaner
+				transform: translate(0, -3.75rem)
+				.gallery-news__name
+					span
+						&::after
+							width: 100%
+	div
+		&.gallery-news__item
+			width: 25%
+			height: 50vh
+			display: block
+			float: right
+			.gallery-inner
+				margin-left: -100%
+				height: 100%
+				position: relative
+				&::after
+					content: ''
+					width: 1px
+					height: 100%
+					+rem(left, 80px)
+					background-color: $line
+					position: absolute
+				&::before
+					content: ''
+					width: 1px
+					height: 100%
+					left: 50%
+					position: absolute
+					background-color: $line
+				.gallery-inner__content
+					position: absolute
+					+rem(left, 80px)
+					+rem(bottom, 80px)
+					.gallery-title
+						font-family: "Heavy"
+						+rem(font-size, 72px)
+						color: $black
+					.gallery-hash
+						font-family: "Medium"
+						+rem(font-size, 24px)
+						color: $black
+						+rem(letter-spacing, 2px)
+	.counter
+		position: absolute
+		bottom: 0
+		+rem(left, 40px)
+		right: 0
+		+rem(height, 60px)
+		display: table
+		z-index: 0
+		.counter-item
+			display: inline-block
+			vertical-align: middlet
+			+rem(line-height, 60px)
+			&:not(:last-of-type)
+				+rem(margin-right, 30px)
+			span
+				font-family: "Bold"
+				color: $white
+				font-size: 10px
+				text-transform: uppercase
+				display: inline-block
+				vertical-align: middle
+				+rem(padding, 0 0 0 10px)
+				+rem(letter-spacing, 2.5px)
+			&.item-like
+				.icon
+					+rem(width, 17px)
+					+rem(height, 14px)
+					display: inline-block
+					vertical-align: middle
+					line-height: normal
+					div
+						width: 100%
+						height: 100%
+						display: block
+						path
+							fill: $white
+			&.item-comment
+				.icon
+					+rem(width, 15px)
+					+rem(height, 14px)
+					display: inline-block
+					vertical-align: middle
+					line-height: normal
+					position: relative
+					top: 2px
+					div
+						width: 100%
+						height: 100%
+						display: block
+						path
+							fill: $white
+			&.item-see
+				.icon
+					+rem(width, 19px)
+					+rem(height, 14px)
+					display: inline-block
+					vertical-align: middle
+					line-height: normal
+					position: relative
+					top: 2px
+					div
+						width: 100%
+						height: 100%
+						display: block
+						path
+							fill: $white
