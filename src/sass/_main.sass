@@ -370,57 +370,57 @@ body
 	position: relative
 	z-index: 4
 	+rem(padding, 0 80px)
-	.content
-		width: 100%
-		height: 100%
-		overflow: hidden
-		position: relative
-		&.content-mainpage
-			.content-side
-				&.content-left
-				 	&::after
-				 		+rem(left, 0)
-				 		right: auto
-				&.content-right
-					&::after, &::before
-						display: none
+.content
+	width: 100%
+	height: 100%
+	overflow: hidden
+	position: relative
+	&.content-mainpage
 		.content-side
-			height: 100%
-			position: relative
 			&.content-left
-				width: 50%
-				float: left
-				&::after
-					content: ''
-					width: 1px
-					height: 100%
-					+rem(right, 80px)
-					background-color: $line
-					position: absolute
-				&::before
-					content: ''
-					width: 1px
-					height: 100%
-					left: 50%
-					position: absolute
-					background-color: $line
+			 	&::after
+			 		+rem(left, 0)
+			 		right: auto
 			&.content-right
-				width: 50%
-				float: right
-				&::after
-					content: ''
-					width: 1px
-					height: 100%
-					+rem(left, 80px)
-					background-color: $line
-					position: absolute
-				&::before
-					content: ''
-					width: 1px
-					height: 100%
-					left: 50%
-					position: absolute
-					background-color: $line
+				&::after, &::before
+					display: none
+	.content-side
+		height: 100%
+		position: relative
+		&.content-left
+			width: 50%
+			float: left
+			&::after
+				content: ''
+				width: 1px
+				height: 100%
+				+rem(right, 80px)
+				background-color: $line
+				position: absolute
+			&::before
+				content: ''
+				width: 1px
+				height: 100%
+				left: 50%
+				position: absolute
+				background-color: $line
+		&.content-right
+			width: 50%
+			float: right
+			&::after
+				content: ''
+				width: 1px
+				height: 100%
+				+rem(left, 80px)
+				background-color: $line
+				position: absolute
+			&::before
+				content: ''
+				width: 1px
+				height: 100%
+				left: 50%
+				position: absolute
+				background-color: $line
 .intro
 	position: absolute
 	+rem(left, 0)
@@ -513,6 +513,49 @@ body
 			border-right: 0
 			+rem(left, -80px)
 .projects
+	position: relative
+	height: 100%
+	z-index: 2
+	.projects-inner
+		position: absolute
+		top: 50%
+		left: 53%
+		transform: translate(-50%, -50%)
+		+rem(max-width, 400px)
+		width: 100%
+		+r(1280)
+			+rem(max-width, 350px)
+		.projects-title
+			font-family: "Heavy"
+			+rem(font-size, 72px)
+			color: $black
+			+rem(margin-bottom, 15px)
+			+r(1599)
+				+rem(font-size, 64px)
+			+r(1280)
+				+rem(font-size, 48px)
+		.projects-subtitle
+			font-family: "Medium"
+			+rem(font-size, 24px)
+			max-width: 90%
+			+rem(letter-spacing, 1.8px)
+			+rem(margin-bottom, 25px)
+			+r(1599)
+				+rem(font-size, 19px)
+			+r(1280)
+				+rem(font-size, 16px)
+		.projects-descr
+			padding-left: 22%
+			+r(1280)
+				padding-left: 10%
+			p
+				+rem(font-size, 18px)
+				+rem(letter-spacing, 0.9px)
+				line-height: 1.6
+				+r(1599)
+					+rem(font-size, 16px)
+				+r(1280)
+					+rem(font-size, 14px)
 	.projects-item
 		height: 50vh
 		overflow: hidden
@@ -561,13 +604,7 @@ body
 				opacity: 0
 				transition: opacity 0.2s ease-in-out
 				.hash-item
-					+rem(font-size, 18px)
 					color: $white
-					+rem(letter-spacing, 2px)
-					display: inline-block
-					vertical-align: top
-					&:not(:last-of-type)
-						+rem(margin-right, 20px)
 		&:hover
 			.projects-image
 				img
@@ -585,6 +622,15 @@ body
 		.slick-slide
 			& > div
 				font-size: 0
+.projects-hash
+	.hash-item
+		+rem(font-size, 18px)
+		color: $black
+		+rem(letter-spacing, 2px)
+		display: inline-block
+		vertical-align: top
+		&:not(:last-of-type)
+			+rem(margin-right, 20px)
 .animated
 	animation-fill-mode: both;
 	animation-duration: 0.6s;
@@ -820,3 +866,137 @@ body
 					span
 						&::after
 							background-color: $white
+.content-portfolio-inner
+	.gallery-pagination 
+		.pagination-item
+			&.pagination-item_left 
+				div 
+					path
+						stroke: $white
+	.content-side
+		&.content-left
+			width: 40%
+		&.content-right
+			width: 60%
+			background-color: $pGrey
+			&::after, &::before
+				z-index: -1
+	.projects-hash
+		position: absolute
+		+rem(bottom, 40px)
+		left: 24%
+		+r(1280)
+			left: 12%
+		.hash-item
+			font-size: 10px
+			text-transform: uppercase
+.scroller-gallery
+	+rem(padding, 75px 0 0 75px)
+	+r(1280)
+		+rem(padding, 75px 0 0 25px)
+	
+	.scroller-container
+		// height: 100%
+		position: relative
+		height: 100%
+		+rem(margin-right, 5px)
+		+rem(padding, 0 20px 0 0)
+	.grid
+		+clr
+		font-size: 0
+		li
+			+rem(padding, 5px)
+			width: 33.33%
+			display: inline-block
+			vertical-align: top
+			+r(1365)
+				width: 50%
+			a
+				display: block
+				transition: opacity 0.3s ease
+				cursor: pointer
+				&:hover
+					opacity: 0.5
+				img
+					max-width: 100%
+					display: block
+
+.lg-backdrop
+	background-color: rgba(0,0,0,.9)
+.lg-toolbar
+	.lg-close
+		position: relative
+		width: auto
+		right: 5px
+		font-size: 10px
+		text-transform: uppercase
+		letter-spacing: 2.5px
+		color: $white
+		font-family: "Light"
+		padding-right: 25px
+		margin-top: 25px
+		i 
+			width: 7px
+			height: 7px
+			display: inline-block
+			margin-left: 5px
+			path
+				fill: $white
+		&::after
+			display: none;
+.lg-actions
+	.lg-prev
+		height: 100%
+		width: 50%
+		top: 0
+		left: 0
+		i
+			width: 14px
+			height: 8px
+			display: block
+			position: absolute
+			top: 50%
+			left: 15%
+			opacity: 0
+			transition: opacity 0.3s ease
+			path
+				fill: $white
+		&:hover
+			i
+				opacity: 1
+	.lg-next
+		height: 100%
+		right: 0
+		top: 0
+		width: 50%
+		i
+			width: 14px
+			height: 8px
+			display: block
+			position: absolute
+			top: 50%
+			right: 15%
+			opacity: 0
+			transition: opacity 0.3s ease
+			path
+				fill: $white
+		&:hover
+			i
+				opacity: 1
+.content
+	.back
+		+rem(width, 80px)
+		+rem(height, 100px)
+		position: fixed
+		bottom: 0
+		left: 0
+		z-index: 15
+		div
+			+rem(width, 22px)
+			+rem(height, 22px)
+			position: absolute
+			top: 50%
+			left: 50%
+			+rem(margin, -11px 0 0 -11px)
+			path
+				fill: $black
