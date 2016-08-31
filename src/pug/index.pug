@@ -30,7 +30,7 @@ block content
 			.content-right.content-side
 				.projects-gallery
 					include includes/_pagination
-					.projects.gallery-carousel
+					.projects.gallery-carousel.rotator
 						a.projects-item.ajax-trigger(href="#")
 							.project-info-contaner(data-animation="fadeInRight", data-delay="0.5s")
 								.projects-image
@@ -80,5 +80,5 @@ block content
 											each hash in arrHash
 												span(class="hash-item") #{hash}
 				script(type='text/javascript').
-					$(galleryImage)
+					$(galleryImage($(".projects-gallery")))
 			include includes/_footer
