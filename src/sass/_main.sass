@@ -1291,8 +1291,12 @@ body
 			.service-text
 				position: absolute
 				top: 30%
-				left: 10%
+				+rem(left, 70px)
 				+rem(width, 480px)
+				+r(1366)
+					+rem(left, 50px)
+				+r(1280)
+					+rem(width, 370px)
 				.title
 					font-family: "Heavy"
 					+rem(font-size, 72px)
