@@ -221,7 +221,7 @@ body
 	top: 0
 	right: 0
 	bottom: 0
-	display: none;
+	display: none
 	.navbar__content-slice
 		width: 65%
 		background-color: $black
@@ -557,6 +557,12 @@ body
 					+rem(font-size, 16px)
 				+r(1280)
 					+rem(font-size, 14px)
+			.btn.btn-black
+				+rem(margin-top, 70px)
+				&:hover
+					background-color: $black
+					span 
+						color: $white
 	.projects-item
 		height: 50vh
 		overflow: hidden
@@ -869,7 +875,7 @@ body
 					span
 						&::after
 							background-color: $white
-.content-portfolio-inner, .content-project
+.content-portfolio-inner, .content-project, .content-project-inner
 	.gallery-pagination 
 		.pagination-item
 			&.pagination-item_left 
@@ -974,7 +980,9 @@ body
 					img
 						max-width: 100%
 						display: block
-						
+		&.grid-line-two
+			li
+				width: 50%
 				
 
 .lg-backdrop
