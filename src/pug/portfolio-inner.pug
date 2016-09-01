@@ -46,7 +46,8 @@ block content
 								mixin gridItem(link)
 									li(data-src=link)
 										a
-											img(src=link)
+											.image__cover
+												img(src=link)
 								+gridItem("img/grid/grid-1.jpg")
 								+gridItem("img/grid/grid-2.jpg")
 								+gridItem("img/grid/grid-3.jpg")

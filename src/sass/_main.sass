@@ -64,7 +64,7 @@ body
 		+rem(font-size, 18px)
 		color: $black
 		position: relative
-		+rem(letter-spacing, 2.5px)
+		+rem(letter-spacing, 1px)
 .gallery-pagination
 	position: fixed
 	left: 50%
@@ -702,6 +702,7 @@ body
 .content-portfolio-two
 	.projects-gallery
 		.projects
+			height: auto
 			.projects-item
 				height: 100vh
 				.project-info-contaner
@@ -868,7 +869,7 @@ body
 					span
 						&::after
 							background-color: $white
-.content-portfolio-inner
+.content-portfolio-inner, .content-project
 	.gallery-pagination 
 		.pagination-item
 			&.pagination-item_left 
@@ -896,7 +897,56 @@ body
 	+rem(padding, 75px 0 0 75px)
 	+r(1280)
 		+rem(padding, 75px 0 0 25px)
-	
+	&.scroller-gallery__project
+		+rem(padding, 75px 0 0 10px)
+		.scroller-container
+			+rem(padding, 0 5px 0 0)
+			+rem(margin-right, 5px)
+			.grid
+				li
+					+rem(padding, 10px)
+					.projects-hash
+						bottom: auto
+						+rem(top, 25px)
+						+rem(left, 40px)
+						.hash-item
+							+rem(font-size, 10px)
+							text-transform: uppercase
+							color: $white
+							+rem(letter-spacing, 2.5px)
+					.descr
+						position: absolute
+						+rem(bottom, 20px)
+						+rem(left, 40px)
+						+rem(right, 40px)
+						.name
+							font-family: "Medium"
+							+rem(font-size, 24px)
+							color: $white
+							+rem(margin-bottom, 10px)
+						.prop
+							+clr
+							width: 100%
+							.prop-sq
+								width: 50%
+								float: left
+								font-family: "Light"
+								+rem(font-size, 18px)
+								color: $white
+								+rem(letter-spacing, 2.5px)
+								sup
+									+rem(font-size, 12px)
+									vertical-align: top
+							.prop-price
+								width: 50%
+								float: right
+								font-family: "Light"
+								+rem(font-size, 18px)
+								color: $white
+								+rem(letter-spacing, 2.5px)
+								text-align: right
+
+
 	.scroller-container
 		// height: 100%
 		position: relative
@@ -915,13 +965,17 @@ body
 				width: 50%
 			a
 				display: block
-				transition: opacity 0.3s ease
 				cursor: pointer
 				&:hover
-					opacity: 0.5
-				img
-					max-width: 100%
-					display: block
+					.image__cover
+						opacity: 0.5
+				.image__cover
+					transition: opacity 0.3s ease
+					img
+						max-width: 100%
+						display: block
+						
+				
 
 .lg-backdrop
 	background-color: rgba(0,0,0,.9)
@@ -1257,14 +1311,14 @@ body
 		position: absolute
 		top: 0
 		overflow: hidden
-		&:first-child
+		&:first-of-type
 			left: 0
 			.service-container__inner
 				.image__cover
 					img
 						left: 0%
 						transform: translate(0%, -50%)
-		&:last-child
+		&:last-of-type
 			right: 0
 			.service-container__inner
 				.image__cover
@@ -1337,3 +1391,35 @@ body
 		&.scale
 			.service-container
 				.img_wrapper
+.project-sorting
+	.sort
+		background-color: transparent
+		display: inline-block
+		width: 100%
+		text-align: left
+		+rem(padding, 15px 0)
+		span
+			font-family: "Book"
+			+rem(font-size, 18px)
+			color: $Grey
+			+rem(letter-spacing, 0.5px)
+			transition: color 0.3s ease
+			position: relative
+			+rem(padding, 0 5px)
+			&::after
+				content: ""
+				height: 1px
+				background-color: $black
+				top: 60%
+				width: 0
+				position: absolute
+				left: 0
+				transition: width 0.3s ease
+		&:hover
+			span
+				color: $black
+		&.active
+			span
+				color: $black
+				&::after
+					width: 100%		
