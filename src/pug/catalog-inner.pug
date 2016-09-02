@@ -35,7 +35,7 @@ block content
 						.projects-descr
 							p Area: 105m2
 							p Cost: 25 000$
-							a.btn.btn-black(href="#")
+							a.btn.btn-black(href="#" data-order="order")
 								span order project
 					.projects-hash
 						- var arrHash = ["#Houses"]
@@ -80,5 +80,5 @@ block content
 						$(scrollbar)
 						$(iso)
 						$(lightG)
-		include includes/_modal-hash
 		include includes/_pagination
+	include includes/_modal

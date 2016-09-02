@@ -367,6 +367,176 @@ function sideLeaving(){
 	});
 };
 
+//function form
+
+var transitionsEvents = {
+	'WebkitTransition': 'webkitTransitionEnd',
+	'MozTransition': 'transitionend',
+	'OTransition': 'oTransitionEnd',
+	'msTransition': 'MSTransitionEnd',
+	'transition': 'transitionend'
+},
+transitionsEvent = transitionsEvents[Modernizr.prefixed("transition")],
+support = { transitions : Modernizr.csstransitons };
+
+function stepForm(el, options) {
+	this.el = el
+	this.options = $.extend(this.options, options);
+	this._init();
+};
+
+stepForm.prototype._init = function () {
+	this.current = 0
+
+	this.quest = [].slice.call($("ol.form-area > li"));
+	this.questCount = this.quest.length
+
+	$(this.quest[0]).addClass("current");
+
+	this.btnNext = $(this.el).find(".next");
+
+	this.progress = $(this.el).find(".progress");
+
+	this.questStatus = $(this.el).find(".pagin");
+	this.currentNum = $(this.el).find(".pagin-current");
+	$(this.currentNum).text("0" + (this.current + 1));
+
+	this.totalNum = $(this.el).find(".pagin-total");
+	$(this.totalNum).text("0" + this.questCount);
+
+	this.error = $(this.el).find(".error-message");
+ 
+	this._initEvents();
+
+};
+
+stepForm.prototype._initEvents = function(){
+	var self = this;
+
+	firstEL = $(this.quest[this.current]).find("input");
+
+	focusStartFn = function(){
+		firstEL.unbind("focus", focusStartFn);
+		$(self.btnNext).addClass("show");
+	};
+
+	firstEL.on("focus", focusStartFn);
+
+	this.btnNext.on("click", function(ev){
+		ev.preventDefault();
+		self._nextStep();
+	});
+
+	firstEL.on("keydown", function(ev){
+		var codeKey = ev.keyCode;
+
+		if(codeKey === 13) {
+			ev.preventDefault();
+			self._nextStep();
+		}
+	});
+
+	$(this.el).on("keydown", function(ev){
+		var codeKey = ev.keyCode;
+
+		if(codeKey === 9) {
+			ev.preventDefault();
+		}
+	});
+};
+
+stepForm.prototype._nextStep = function(){
+
+	if(!this._validate()) {
+		return false;
+	}
+
+	if(this.current === this.questCount - 1) {
+		this.isFilled = true;
+	}
+
+	this._clearError();
+
+	var currentQuest = this.quest[this.current];
+
+	++this.current;
+
+	this._progress();
+
+	if(!this.Filled){
+
+		this._updateNumbers();
+
+		$(this.el).find(".form-container__inner").addClass("show-next");
+
+		var nextQuest = this.quest[this.current];
+
+		$(currentQuest).removeClass("current");
+		$(nextQuest).addClass("current");
+	};
+
+
+	var self = this,
+		onTransitionsEventFn = function(ev){
+			$(this).unbind(transitionsEvent, onTransitionsEventFn);
+		
+			if(self._isFilled) {
+				// self._submit()
+			} else {
+				$(self.el).find(".form-container__inner").removeClass("show-next");
+
+				$(self.currentNum).text($(self.nextQuestNum).text());
+
+				$(self.questStatus).find(self.nextQuestNum).remove();
+				$(nextQuest).find("input").focus();
+			}
+		};
+	if(support.transition) {
+		$(this.progress).on(transitionsEvent, onTransitionsEventFn);
+	} else {
+		onTransitionsEventFn();
+	}
+};
+
+stepForm.prototype._progress = function(){
+	$(this.progress).css("width", this.current * (100 / this.questCount) + "%")
+};
+
+stepForm.prototype._updateNumbers = function(){
+	this.nextQuestNum = document.createElement("span");
+	$(this.nextQuestNum).addClass("pagin-next");
+	$(this.nextQuestNum).text("0" + (this.current + 1));
+
+	$(this.questStatus).append(this.nextQuestNum);
+};
+
+stepForm.prototype._validate = function(){
+	var input = $(this.quest[ this.current ]).find("input").val();
+	if(input === "") {
+		this._showError("EMPTYSTR");
+		return false;
+	}
+
+	return true;
+};
+
+stepForm.prototype._showError = function(err){
+	var message = "";
+	switch(err) {
+		case "EMPTYSTR" :
+			message = "Please fill the field before continuing";
+			break;
+	};
+	$(this.error).text(message);
+	$(this.error).addClass("show");
+};
+
+stepForm.prototype._clearError = function(){
+	$(this.error).removeClass("show");
+}
+
+window.stepForm = stepForm;
+
 $(document).ready(function() {
 	// menu
 	function menuTrigger() {
@@ -375,37 +545,38 @@ $(document).ready(function() {
 			burger = trigger.find(".hamburger-inner"),
 			navbarText = trigger.find(".navbar_text-inner"),
 			textClose = navbarText.data("close"),
-			textOpen = navbarText.data("open");
+			textOpen = navbarText.data("open"),
+			overlay = $(".overlay"),
+			t = new TimelineLite();
 
 		trigger.on("click", function(){
 			if(!$(this).hasClass("open")) {
 				$(this).addClass("open");
-				menuContent.fadeIn({
-					duration: 150,
-					complete: function(){
-						$(this).addClass("open");
-						burger.addClass("open");
-						navbarText.find("span").text(textClose);
-					}
-				});
+				showOverlay();
+				t
+					.to(menuContent, 0.5, {x: "0%", className: '+=open'})
+
+				burger.addClass("open");
+				navbarText.find("span").text(textClose);
 			} else {
 				$(this).removeClass("open");
-				menuContent.removeClass("open").delay(300).fadeOut(150);
 				burger.removeClass("open");
 				navbarText.find("span").text(textOpen);
+				hideOverlay();
+				t
+					.to(menuContent, 0.5, {x: "+=100%", className: '-=open'})
 			}
 		});
 
-		menuContent.on("click", function(){
+		overlay.on("click", function(){
 			trigger.removeClass("open");
-			menuContent.removeClass("open").delay(300).fadeOut(150);
 			burger.removeClass("open");
 			navbarText.find("span").text(textOpen);
+			t
+				.to(menuContent, 0.5, {x: "+=100%", className: '-=open'})
+			hideOverlay();
 		});
-
-		menuContent.find(".navbar__content-slice").on("click", function(e){
-			e.stopPropagation();
-		});
+		
 	} menuTrigger();
 
 	$("[data-modal]").on("click", function(){
@@ -449,7 +620,54 @@ $(document).ready(function() {
 		});
 	};
 
+	//order form
+	
+	$("[data-order]").on("click", function(event){
+		var data = $(this).data("order");
+		orderForm(data);
+		event.preventDefault();
+	});
+
+
+	function orderForm(modal){
+		var overlay = $(".overlay"),
+			mCont = $("[data-modal-order=" + modal + "]"),
+			close = mCont.find(".close-modal"),
+			t = new TimelineLite();
+
+			showOverlay();
+			t
+				.to(mCont, 0.5, {x: "0%"})
+		
+		overlay.add(close).on("click", function(){
+			hideOverlay();
+			var t = new TimelineLite();
+			t
+				.to(mCont, 0.5, {x: "+=100%"})
+		});
+
+	};
+
+
+	function showOverlay(){
+		var o = $(".overlay"),
+		t = new TimelineLite();
+
+		t
+			.to(o, 0.5, {autoAlpha: 1});
+	};
+
+	function hideOverlay(){
+		var o = $(".overlay"),
+		t = new TimelineLite();
+		
+		t
+			.to(o, 0.5, {autoAlpha: 0});
+	}	
+
 	// scroll3316();
+
+
 });
 
 

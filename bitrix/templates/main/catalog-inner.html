@@ -15,6 +15,7 @@
     <div class="out">
       <header class="header"><a class="lang" href="">RU</a></header>
       <div class="navbar">
+        <div class="navbar-overlay"></div>
         <div class="navbar__wrap">
           <div class="hamburger">
             <div class="hamburger-inner"><span></span><span></span><span></span></div>
@@ -66,7 +67,7 @@
                 <div class="projects-subtitle">The project house in the style of&nbsp;minimalism  </div>
                 <div class="projects-descr">
                   <p>Area: 105m2</p>
-                  <p>Cost: 25 000$</p><a class="btn btn-black" href="#"><span>order project</span></a>
+                  <p>Cost: 25 000$</p><a class="btn btn-black" href="#" data-order="order"><span>order project</span></a>
                 </div>
               </div>
               <div class="projects-hash"><a class="hash-item" href="#">#Houses</a>
@@ -134,13 +135,6 @@
             </div>
           </div>
         </div>
-        <div class="popup-wrap" data-modal-popup="hash">
-          <div class="popup">
-            <nav class="hash-navigation"><a class="hash-navigation__item active" href="#"><span>#All projects</span></a><a class="hash-navigation__item" href="#"><span>#Architecture</span></a><a class="hash-navigation__item" href="#"><span>#Interior</span></a><a class="hash-navigation__item" href="#"><span>#Decoration</span></a><a class="hash-navigation__item" href="#"><span>#Design</span></a>
-            </nav>
-          </div>
-          <div class="close"><span>Close<i><svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path stroke="null" id="svg_1" d="m0.11552,0.52717l0.51293,-0.51293l9.36098,9.36098l-0.51293,0.51293l-9.36098,-9.36098" clip-rule="evenodd" fill-rule="evenodd"/><path  stroke="null" id="svg_2" d="m9.39406,-0.05968l0.50841,0.52357l-9.27854,9.42426l-0.50841,-0.52357l9.27854,-9.42426" clip-rule="evenodd" fill-rule="evenodd"/></svg></i></span></div>
-        </div>
         <div class="pagination">
           <div class="pagination-inner">
             <div class="pagination-item pagination-item__left"><a class="ajax-trigger" href="#" id="prev"><span><svg viewBox="0 0 8.1 14.9" xmlns="http://www.w3.org/2000/svg"><path id="svg_1" d="m3.4,0.9l1,0l0,14l-1,0l0,-14" clip-rule="evenodd" fill-rule="evenodd"/><path id="svg_2" d="m0.7,4.7l-0.7,-0.6l3.9,-4.1l0.7,0.7l-3.9,4" clip-rule="evenodd" fill-rule="evenodd"/><path id="svg_3" d="m3.2,0.7l0.7,-0.7l4.2,4l-0.7,0.7l-4.2,-4" clip-rule="evenodd" fill-rule="evenodd"/></svg></span></a></div>
@@ -155,6 +149,45 @@
           </div>
         </div>
       </div>
+      <div class="modal__wrapper" data-modal-order="order">
+        <div class="modal-container">
+          <div class="close-modal">
+            <div><span></span><span></span></div>
+          </div>
+          <div class="form-container" id="formSteps">
+            <div class="form-container__inner">
+              <ol class="form-area">
+                                <li>
+                                  <div class="numbers"><span>#01</span></div><span>
+                                    <label for="q-1">First name</label></span>
+                                  <div class="input">
+                                    <input id="q-1" name="q-1" type="text">
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="numbers"><span>#02</span></div><span>
+                                    <label for="q-2">Phone</label></span>
+                                  <div class="input">
+                                    <input id="q-2" name="q-2" type="text">
+                                  </div>
+                                </li>
+              </ol>
+              <div class="controls">
+                <button class="next"></button>
+                <div class="progress"></div>
+                <div class="pagin"><span class="pagin-current"></span><span class="separator">/</span><span class="pagin-total"></span></div>
+                <div class="error-message"></div>
+              </div>
+            </div>
+            <script type="text/javascript">
+              var form = document.getElementById("formSteps");
+              
+              new stepForm(form)
+            </script>
+          </div>
+        </div>
+      </div>
+      <div class="overlay"></div>
     </div>
     <!--END out-->
   </body>

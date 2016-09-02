@@ -106,7 +106,7 @@ body
 	+rem(width, 80px)
 	height: 100%
 	position: fixed
-	z-index: 5
+	z-index: 6
 	right: 0
 	top: 0
 	.navbar__wrap
@@ -120,7 +120,6 @@ body
 		border-left: 1px solid transparent
 		&.open
 			background-color: transparent
-			transition: background-color 0.3s ease-in-out 0.35s, border-color 0.3s ease-in-out 0.35s
 			border-color: $lineOpacity
 		.hamburger
 			+rem(width, 30px)
@@ -209,7 +208,6 @@ body
 			&:hover
 				span
 					color: $hover
-
 .modal-open
 	.navbar
 		z-index: 2
@@ -221,9 +219,10 @@ body
 	top: 0
 	right: 0
 	bottom: 0
-	display: none
+	width: 65%
+	transform: translate(100%, 0)
 	.navbar__content-slice
-		width: 65%
+		width: 100%
 		background-color: $black
 		background-image: url(../img/menu-bg.jpg)
 		background-size: cover
@@ -231,8 +230,8 @@ body
 		position: absolute
 		height: 100%
 		right: 0
-		transform: translate(100%, 0)
-		transition: transform 0.3s ease-in-out 0s
+		// transform: translate(100%, 0)
+		// transition: transform 0.3s ease-in-out 0s
 		&::before
 			content: ''
 			width: 1px
@@ -247,10 +246,10 @@ body
 			background-color: $lineOpacity
 			position: absolute
 			left: 60.66%
-	&.open
-		.navbar__content-slice
-			transform: translate(0, 0)
-			transition: transform 0.3s ease-in-out 0.15s
+	// &.open
+	// 	.navbar__content-slice
+	// 		transform: translate(0, 0)
+	// 		transition: transform 0.3s ease-in-out 0.15s
 	.navbar__content-container
 		position: absolute
 		left: 43%
@@ -867,7 +866,7 @@ body
 						position: absolute
 						top: 58%
 						height: 1px
-						background-color: $Grey
+						background-color: $white
 						left: 0
 						right: 0
 						transition: background-color 0.3s ease
@@ -1431,3 +1430,247 @@ body
 				color: $black
 				&::after
 					width: 100%		
+.order-container
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	z-index: 8
+	.order-overlay
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		background-color: rgba(255,255,255,.6)
+	.order-slice
+		width: 65%
+		background-color: $pGrey
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+.modal__wrapper
+	position: fixed
+	top: 0
+	right: 0
+	bottom: 0
+	z-index: 8
+	transform: translate(100%, 0)
+	width: 59.5%
+	background-color: $pGrey
+	.modal-container
+		+rem(padding, 80px)
+		position: relative
+		width: 100%
+		height: 100%
+		.close-modal
+			+rem(width, 80px)
+			+rem(height, 80px)
+			top: 0
+			right: 0
+			position: absolute
+			cursor: pointer
+			div
+				+rem(width, 30px)
+				+rem(height, 30px)
+				position: absolute
+				top: 50%
+				left: 50%
+				+rem(margin, -15px 0 0 -15px)
+				span
+					width: 100%
+					position: absolute
+					height: 2px
+					background-color: $white
+					&:nth-child(1)
+						+rem(top, 9px)
+						transform: rotate(135deg);
+					&:nth-child(2)
+						+rem(top, 9px)
+						transform: rotate(-135deg);
+.overlay
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	background-color: rgba(255,255,255,.6)
+	z-index: 4
+	opacity: 0
+	visibility: hidden
+.form-container
+	position: absolute
+	top: 50%
+	+rem(max-width, 560px)
+	width: 100%
+	left: 50%
+	transform: translate(-50%, -50%)
+	.form-container__inner
+		&.show-next
+			.form-area
+				li.current
+					.numbers
+						span
+							animation: moveUpFromDown 0.4s both
+					span
+						label
+							animation: moveUpFromDown 0.4s both
+			.pagin
+				.pagin-current
+					transform: translateY(-100%)
+					transition: trsnasform 0.4s
+				.pagin-next
+					animation: moveUpFromDown 0.4s both
+	.form-area
+		transition: height 0.4s ease
+		position: relative
+		li
+			position: relative
+			visibility: hidden
+			height: 0
+			transition: height 0.3s ease, visibility 0.3s ease
+			// z-index: 100
+			&.current
+				height: auto
+				visibility: visible
+				transition: none
+				.numbers
+					span
+						transform: translateY(0)
+						transition: none
+				span
+					label
+						transform: translateY(0)
+						transition: none
+				.input
+					input
+						opacity: 1
+			.numbers
+				position: absolute
+				+rem(top, -32px)
+				+rem(left, -90px)
+				opacity: 0.2
+				z-index: -1
+				user-select: none
+				pointer-events: none
+				overflow: hidden
+				span
+					display: block
+					transform: translateY(-100%)
+					transition: transform 0.3s
+					font-family: "Bold"
+					+rem(font-size, 72px)
+					color: $white
+			span
+				display: block
+				overflow: hidden
+				+rem(margin-bottom, 50px)
+				label
+					display: block
+					transform: translateY(-100%)
+					font-family: "Medium"
+					color: $white
+					+rem(font-size, 24px)
+					transition: transform 0.3s
+			.input
+				display: block
+				width: 100%
+				border-width: 2px 2px 0 2px 
+				border-style: solid
+				border-color: #545454
+				+rem(height, 75px)
+				input
+					display: block
+					width: 100%
+					border: none
+					opacity: 0
+					transition: opacity 0.3s
+					+rem(height, 75px)
+					+rem(padding, 8px 75px 8px 8px)
+					font-family: "Book"
+					color: $white
+					background-color: transparent
+					+rem(font-size, 35px)				
+					+rem(letter-spacing, 2.5px)
+	.controls
+		position: relative
+		z-index: 1
+	.next
+		position: absolute
+		right: 0
+		bottom: 0
+		+rem(width, 75px)
+		+rem(height, 75px)
+		display: block
+		padding: 0
+		border: none
+		background: none
+		text-align: center
+		z-index: 100
+		cursor: pointer
+		transform: translateX(-20%)
+		transition: transform 0.3s ease, opacity 0.3s ease
+		opacity: 0
+		&::after
+			content: ""
+			+rem(width, 22px)
+			+rem(height, 17px)
+			background-image: url(../img/svg/arrow-right.svg)
+			background-size: cover
+			background-repeat: no-repeat
+			position: absolute
+			top: 50%
+			left: 50%
+			+rem(margin, -8px 0 0 -11px)
+		&.show
+			transform: none
+			opacity: 1
+			pointer-events: auto
+	.progress
+		background-color: $white
+		height: 7px
+		width: 0%
+		margin-top: -2px
+		transition: width 0.3s ease
+		&::after
+			content: ""
+			width: 100%
+			position: absolute
+			top: auto
+			background-color: #545454
+			height: inherit
+			z-index: -1
+	.pagin
+		position: absolute
+		right: 0
+		overflow: hidden
+		+rem(width, 82px)
+		text-align: right
+		span 
+			color: $white
+			+rem(font-size, 10px)
+			+rem(letter-spacing, 2.5px)
+			&.pagin-current
+				font-family: "Bold"
+			&.separator
+				+rem(padding, 0 20px)
+		.pagin-next
+			position: absolute
+			left: 0
+			font-family: "Bold"
+			top: 5px
+	.error-message
+		position: absolute
+		visibility: hidden
+		opacity: 0
+		transition: opacity 0.4s		
+		&.show
+			visibility: visible
+			opacity: 1
+@keyframes moveUpFromDown 
+	from 
+		transform: translateY(100%)
+	to 
+		transform: translateY(0)

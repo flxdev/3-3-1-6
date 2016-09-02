@@ -3,4 +3,5 @@
 //=include lib/perfect-scrollbar.min.js
 //=include lib/isotope.min.js
 //=include lib/lightgallery.min.js
+//=include lib/modernizr.js
 //=include common.js

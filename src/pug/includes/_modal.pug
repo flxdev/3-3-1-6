@@ -1,0 +1,32 @@
+.modal__wrapper(data-modal-order="order")
+	.modal-container
+		.close-modal
+			div
+				span
+				span
+		.form-container#formSteps
+			.form-container__inner
+				ol.form-area
+					mixin f-li(id, name, number)
+						li
+							.numbers
+								span #{number}
+							span
+								label(for=id) #{name}
+							.input
+								input(id=id name=id type="text")
+					+f-li("q-1", "First name", "#01")
+					+f-li("q-2", "Phone", "#02")
+				.controls
+					button.next
+					.progress
+					.pagin
+						span.pagin-current
+						span.separator /
+						span.pagin-total
+					.error-message
+			script(type='text/javascript').
+				var form = document.getElementById("formSteps");
+
+				new stepForm(form)
+.overlay
