@@ -543,7 +543,6 @@ stepForm.prototype._submit = function(){
 };
 
 stepForm.prototype._validate = function(){
-	console.log(this.current)
 	var input = $(this.quest[ this.current ]).find("input").val();
 	if(input === "") {
 		this._showError("EMPTYSTR");
@@ -581,6 +580,54 @@ stepForm.prototype._close = function(){
 }
 
 window.stepForm = stepForm;
+
+
+function initMap() {
+	$(window).bind(initialize());
+};
+
+function initialize(){
+	var mapOptions = {
+		zoom: 17,
+		disableDefaultUI: true,
+		scrollwheel: false,
+		panControl: false,
+		zoomControl: true,
+		zoomControlOptions: {
+			style: google.maps.ZoomControlStyle.SMALL,
+			position: google.maps.ControlPosition.RIGHT_CENTER
+		},
+		scaleControl: true,
+		center: new google.maps.LatLng(53.913332, 27.567922),
+	};
+	map = new google.maps.Map(document.getElementById('map'),mapOptions);
+
+	// var mapType = new google.maps.StyledMapType(stylez, { name:"Grayscale" });
+	// map.mapTypes.set('tehgrayz', mapType);
+	// map.setMapTypeId('tehgrayz');
+	var image = '../img/icons/baloon.png';
+	var myLatLng = new google.maps.LatLng(53.913332, 27.567922);
+	var beachMarker = new google.maps.Marker({
+		position: myLatLng,
+		map: map,
+		icon: image,
+		title:""
+	});
+
+	google.maps.event.addDomListener(window, "resize", function() {
+		var center = map.getCenter();
+		google.maps.event.trigger(map, "resize");
+		map.setCenter(center); 
+	});
+
+};
+
+function gMaps(){
+	var sct_tag = document.createElement("script");
+	sct_tag.setAttribute("type", "text/javascript");
+	sct_tag.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=AIzaSyCcDrkEbKdrAWUT7ZorYyn-NwTj9YD6DN4&callback=initMap");
+	document.querySelector(".maps-container").appendChild(sct_tag);
+};
 
 $(document).ready(function() {
 	// menu
