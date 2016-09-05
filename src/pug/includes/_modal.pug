@@ -4,7 +4,7 @@
 			div
 				span
 				span
-		.form-container#formSteps
+		form.form-container#formSteps
 			.form-container__inner
 				ol.form-area
 					mixin f-li(id, name, number)
@@ -17,6 +17,8 @@
 								input(id=id name=id type="text")
 					+f-li("q-1", "First name", "#01")
 					+f-li("q-2", "Phone", "#02")
+					+f-li("q-2", "Mail", "#03")
+				button.submit(type="submit")
 				.controls
 					button.next
 					.progress
@@ -25,8 +27,18 @@
 						span.separator /
 						span.pagin-total
 					.error-message
-			script(type='text/javascript').
-				var form = document.getElementById("formSteps");
+			.final-message
+				.message-inner
+					.message-title Thank you
+					span Form successfully completed! In a short time we will contact you.
+					.message-close Close me
+		script(type='text/javascript').
+			var form = document.getElementById("formSteps");
 
-				new stepForm(form)
+			new stepForm(form, {
+				onSubmit: function(form) {
+					$(".form-container__inner").addClass("hide");
+					$(".final-message").addClass("show");
+				}
+			})
 .overlay

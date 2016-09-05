@@ -428,16 +428,32 @@ var transitionsEvents = {
 transitionsEvent = transitionsEvents[Modernizr.prefixed("transition")],
 support = { transitions : Modernizr.csstransitons };
 
+function extend( a, b ) {
+	for( var key in b ) { 
+		if( b.hasOwnProperty( key ) ) {
+			a[key] = b[key];
+		}
+	}
+	return a;
+}
+
 function stepForm(el, options) {
 	this.el = el
-	this.options = $.extend(this.options, options);
+	this.options = extend( {}, this.options );
+  	extend( this.options, options );
 	this._init();
 };
+
+stepForm.prototype.options = {
+	onSubmit : function() {
+		return false;
+	}
+}
 
 stepForm.prototype._init = function () {
 	this.current = 0
 
-	this.quest = [].slice.call($("ol.form-area > li"));
+	this.quest = [].slice.call($(this.el).find("ol.form-area > li"));
 	this.questCount = this.quest.length
 
 	$(this.quest[0]).addClass("current");
@@ -454,6 +470,9 @@ stepForm.prototype._init = function () {
 	$(this.totalNum).text("0" + this.questCount);
 
 	this.error = $(this.el).find(".error-message");
+
+	this.crossClose = $(this.el).parents(".modal__wrapper").find(".close-modal");
+	this.close = $(this.el).find(".message-close");
  
 	this._initEvents();
 
@@ -465,7 +484,7 @@ stepForm.prototype._initEvents = function(){
 	firstEL = $(this.quest[this.current]).find("input");
 
 	focusStartFn = function(){
-		firstEL.unbind("focus", focusStartFn);
+		// firstEL.unbind("focus", focusStartFn);
 		$(self.btnNext).addClass("show");
 	};
 
@@ -474,6 +493,13 @@ stepForm.prototype._initEvents = function(){
 	this.btnNext.on("click", function(ev){
 		ev.preventDefault();
 		self._nextStep();
+	});
+
+	this.crossClose.add(this.close).on("click", function(ev){
+		ev.preventDefault()
+		setTimeout(function(){
+			self._close();
+		}, 300);
 	});
 
 	firstEL.on("keydown", function(ev){
@@ -512,7 +538,7 @@ stepForm.prototype._nextStep = function(){
 
 	this._progress();
 
-	if(!this.Filled){
+	if(!this.isFilled){
 
 		this._updateNumbers();
 
@@ -527,10 +553,12 @@ stepForm.prototype._nextStep = function(){
 
 	var self = this,
 		onTransitionsEventFn = function(ev){
-			$(this).unbind(transitionsEvent, onTransitionsEventFn);
+			if( support.transitions ) {
+				$(this).unbind(transitionsEvent, onTransitionsEventFn);
+			}
 		
-			if(self._isFilled) {
-				// self._submit()
+			if(self.isFilled) {
+				self._submit()
 			} else {
 				$(self.el).find(".form-container__inner").removeClass("show-next");
 
@@ -559,7 +587,12 @@ stepForm.prototype._updateNumbers = function(){
 	$(this.questStatus).append(this.nextQuestNum);
 };
 
+stepForm.prototype._submit = function(){
+	this.options.onSubmit(this.el);
+};
+
 stepForm.prototype._validate = function(){
+	console.log(this.current)
 	var input = $(this.quest[ this.current ]).find("input").val();
 	if(input === "") {
 		this._showError("EMPTYSTR");
@@ -582,6 +615,18 @@ stepForm.prototype._showError = function(err){
 
 stepForm.prototype._clearError = function(){
 	$(this.error).removeClass("show");
+}
+
+stepForm.prototype._close = function(){
+	this.current = 0
+	$(this.el).trigger("reset");
+	$(".form-container__inner").removeClass("hide");
+	$(".final-message").removeClass("show");
+	$(this.quest[0]).addClass("current").siblings().removeClass("current");
+	$(this.progress).css("width", "0");
+	$(this.currentNum).text("0" + (this.current + 1));
+	this.isFilled = false;
+	$(this.btnNext).removeClass("show");
 }
 
 window.stepForm = stepForm;
@@ -682,13 +727,15 @@ $(document).ready(function() {
 		var overlay = $(".overlay"),
 			mCont = $("[data-modal-order=" + modal + "]"),
 			close = mCont.find(".close-modal"),
+			msgClose = mCont.find(".message-close");
+
 			t = new TimelineLite();
 
 			showOverlay();
 			t
 				.to(mCont, 0.5, {x: "0%"})
 		
-		overlay.add(close).on("click", function(){
+		overlay.add(close).add(msgClose).on("click", function(){
 			hideOverlay();
 			var t = new TimelineLite();
 			t

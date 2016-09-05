@@ -1464,7 +1464,15 @@ body
 		+rem(padding, 80px)
 		position: relative
 		width: 100%
+		font-size: 0
 		height: 100%
+		text-align: center
+		&::before
+			content: ""
+			height: 100%
+			width: 0
+			display: inline-block
+			vertical-align: middle
 		.close-modal
 			+rem(width, 80px)
 			+rem(height, 80px)
@@ -1501,12 +1509,20 @@ body
 	opacity: 0
 	visibility: hidden
 .form-container
-	position: absolute
-	top: 50%
-	+rem(max-width, 560px)
+	position: relative
+	display: inline-block
+	vertical-align: middle
+	text-align: left
 	width: 100%
-	left: 50%
-	transform: translate(-50%, -50%)
+	+rem(max-width, 670px)
+	+r(1280)
+		+rem(max-width, 400px)
+	// position: absolute
+	// top: 50%
+	// +rem(max-width, 560px)
+	// width: 100%
+	// left: 50%
+	// transform: translate(-50%, -50%)
 	.form-container__inner
 		&.show-next
 			.form-area
@@ -1523,6 +1539,10 @@ body
 					transition: trsnasform 0.4s
 				.pagin-next
 					animation: moveUpFromDown 0.4s both
+		&.hide
+			visibility: hidden
+			opacity: 0
+			transition: opacity 0.3s, visibility 0s 0.3s
 	.form-area
 		transition: height 0.4s ease
 		position: relative
@@ -1551,6 +1571,8 @@ body
 				position: absolute
 				+rem(top, -32px)
 				+rem(left, -90px)
+				// position: relative
+				// +rem(margin, 0 0 -55px -90px)
 				opacity: 0.2
 				z-index: -1
 				user-select: none
@@ -1563,6 +1585,7 @@ body
 					font-family: "Bold"
 					+rem(font-size, 72px)
 					color: $white
+					margin-bottom: 0
 			span
 				display: block
 				overflow: hidden
@@ -1597,10 +1620,12 @@ body
 	.controls
 		position: relative
 		z-index: 1
+	.submit
+		display: none
 	.next
 		position: absolute
 		right: 0
-		bottom: 0
+		bottom: 4px
 		+rem(width, 75px)
 		+rem(height, 75px)
 		display: block
@@ -1648,6 +1673,7 @@ body
 		overflow: hidden
 		+rem(width, 82px)
 		text-align: right
+		+rem(margin-top, 10px)
 		span 
 			color: $white
 			+rem(font-size, 10px)
@@ -1665,10 +1691,49 @@ body
 		position: absolute
 		visibility: hidden
 		opacity: 0
-		transition: opacity 0.4s		
+		transition: opacity 0.4s
+		+rem(font-size, 14px)
+		color: $white
+		+rem(letter-spacing, 0.9px)
+		+rem(margin-top, 10px)
 		&.show
 			visibility: visible
 			opacity: 1
+	.final-message
+		position: absolute
+		visibility: hidden
+		opacity: 0
+		transition: opacity 0.4s ease
+		top: -50%
+		left: -10%
+		width: 100%
+		text-align: left
+		&.show
+			visibility: visible
+			opacity: 1
+			transition-delay: 0.5s
+		.message-inner
+			+rem(max-width, 450px)
+			.message-title
+				font-family: "Bold"
+				+rem(font-size, 72px)
+				color: $white
+				opacity: 0.02
+				+rem(margin, 0 0 -60px -93px)
+				text-transform: uppercase
+			span
+				font-family: "Medium"
+				+rem(font-size, 24px)
+				color: $white
+				+rem(letter-spacing, 0.9px)
+				line-height: 1.7
+			.message-close
+				font-size: 10px
+				color: $white
+				text-transform: uppercase
+				letter-spacing: 1.9px
+				+rem(margin-top, 90px)
+				cursor: pointer
 @keyframes moveUpFromDown 
 	from 
 		transform: translateY(100%)
