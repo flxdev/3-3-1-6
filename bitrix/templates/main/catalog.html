@@ -299,16 +299,10 @@
                 });
                 $(scrollbar)
                 $(iso)
+                
               </script>
             </div>
           </div>
-        </div>
-        <div class="popup-wrap" data-modal-popup="hash">
-          <div class="popup">
-            <nav class="hash-navigation"><a class="hash-navigation__item active" href="#"><span>#All projects</span></a><a class="hash-navigation__item" href="#"><span>#Architecture</span></a><a class="hash-navigation__item" href="#"><span>#Interior</span></a><a class="hash-navigation__item" href="#"><span>#Decoration</span></a><a class="hash-navigation__item" href="#"><span>#Design</span></a>
-            </nav>
-          </div>
-          <div class="close"><span>Close<i><svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path stroke="null" id="svg_1" d="m0.11552,0.52717l0.51293,-0.51293l9.36098,9.36098l-0.51293,0.51293l-9.36098,-9.36098" clip-rule="evenodd" fill-rule="evenodd"/><path  stroke="null" id="svg_2" d="m9.39406,-0.05968l0.50841,0.52357l-9.27854,9.42426l-0.50841,-0.52357l9.27854,-9.42426" clip-rule="evenodd" fill-rule="evenodd"/></svg></i></span></div>
         </div>
         <div class="pagination">
           <div class="pagination-inner">
@@ -331,6 +325,71 @@
           </div>
         </footer>
       </div>
+      <div class="popup-wrap" data-modal-popup="hash-modal">
+        <div class="popup">
+          <nav class="hash-navigation"><a class="hash-navigation__item active" href="#"><span>#All projects</span></a><a class="hash-navigation__item" href="#"><span>#Architecture</span></a><a class="hash-navigation__item" href="#"><span>#Interior</span></a><a class="hash-navigation__item" href="#"><span>#Decoration</span></a><a class="hash-navigation__item" href="#"><span>#Design</span></a>
+          </nav>
+        </div>
+        <div class="close"><span>Close<i><svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path stroke="null" id="svg_1" d="m0.11552,0.52717l0.51293,-0.51293l9.36098,9.36098l-0.51293,0.51293l-9.36098,-9.36098" clip-rule="evenodd" fill-rule="evenodd"/><path  stroke="null" id="svg_2" d="m9.39406,-0.05968l0.50841,0.52357l-9.27854,9.42426l-0.50841,-0.52357l9.27854,-9.42426" clip-rule="evenodd" fill-rule="evenodd"/></svg></i></span></div>
+      </div>
+      <div class="modal__wrapper" data-modal-order="order">
+        <div class="modal-container">
+          <div class="close-modal">
+            <div><span></span><span></span></div>
+          </div>
+          <form class="form-container" id="formSteps">
+            <div class="form-container__inner">
+              <ol class="form-area">
+                                <li>
+                                  <div class="numbers"><span>#01</span></div><span>
+                                    <label for="q-1">First name</label></span>
+                                  <div class="input">
+                                    <input id="q-1" name="q-1" type="text">
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="numbers"><span>#02</span></div><span>
+                                    <label for="q-2">Phone</label></span>
+                                  <div class="input">
+                                    <input id="q-2" name="q-2" type="text">
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="numbers"><span>#03</span></div><span>
+                                    <label for="q-2">Mail</label></span>
+                                  <div class="input">
+                                    <input id="q-2" name="q-2" type="text">
+                                  </div>
+                                </li>
+              </ol>
+              <button class="submit" type="submit"></button>
+              <div class="controls">
+                <button class="next"></button>
+                <div class="progress"></div>
+                <div class="pagin"><span class="pagin-current"></span><span class="separator">/</span><span class="pagin-total"></span></div>
+                <div class="error-message"></div>
+              </div>
+            </div>
+            <div class="final-message">
+              <div class="message-inner">
+                <div class="message-title">Thank you</div><span>Form successfully completed! In a short time we will contact you.</span>
+                <div class="message-close">Close me</div>
+              </div>
+            </div>
+          </form>
+          <script type="text/javascript">
+            var form = document.getElementById("formSteps");
+            
+            new stepForm(form, {
+            	onSubmit: function(form) {
+            		$(".form-container__inner").addClass("hide");
+            		$(".final-message").addClass("show");
+            	}
+            })
+          </script>
+        </div>
+      </div>
+      <div class="overlay"></div>
     </div>
     <!--END out-->
   </body>
