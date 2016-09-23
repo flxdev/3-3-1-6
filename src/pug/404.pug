@@ -7,7 +7,7 @@ block content
 	include includes/_header
 	include includes/_menu
 	.wrapper
-		.content.content-mainpage
+		.content.content-404
 			a.logo(href="/")
 			ul.breadcrumbs
 				li
@@ -16,7 +16,7 @@ block content
 							<svg viewBox="0 0 20 22.1" xmlns="http://www.w3.org/2000/svg"><path d="m10.04767,0.04746l-9.996,9l0,13l7.996,0l0,-6l4.004,0l0,6l8,0l0,-13l-10.004,-9zm8.008,20l-4.008,0l0,-6l-7.996,0l0,6l-4.004,0l0,-10.172l8,-7l8.008,7l0,10.172z"/></svg>
 				li
 					a.breadcrumbs-item(href="#")
-						span Recent projects
+						span 404
 			.gallery-pagination
 				a(href="#" class="pagination-item pagination-item_left")
 					div
@@ -24,63 +24,13 @@ block content
 				a(href="#" class="pagination-item pagination-item_right")
 					div
 						<svg viewBox="0 0 31 21" xmlns="http://www.w3.org/2000/svg"><path id="svg_1" d="m0.5,0.5l13.39759,0l0,20l-13.39759,0l0,-20z" stroke-miterlimit="10" fill="none" clip-rule="evenodd" fill-rule="evenodd"/><path id="svg_2" d="m17.16265,0.5l13.33735,0l0,20l-13.33735,0l0,-20z" stroke-miterlimit="10" fill="none" clip-rule="evenodd" fill-rule="evenodd"/></svg>
-			.content-left.content-side
-				.intro
-					.intro-text Architecture. Interior. Design.
-			.content-right.content-side
-				.projects-gallery
-					include includes/_pagination
-					.projects.gallery-carousel.rotator
-						a.projects-item.ajax-trigger(href="#")
-							.project-info-contaner(data-animation="fadeInRight", data-delay="0.5s")
-								.projects-image
-									img(src="img/image-1.jpg")
-								.projects-info
-										.projects-name
-											span Café de Paris
-												i
-										.projects-hash
-											- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-											each hash in arrHash
-												span(class="hash-item") #{hash}
-						a.projects-item.ajax-trigger(href="#")
-							.project-info-contaner(data-animation="fadeInRight", data-delay="0.6s")
-								.projects-image
-									img(src="img/image-1.jpg")
-								.projects-info
-										.projects-name
-											span Café de Paris
-												i
-										.projects-hash
-											- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-											each hash in arrHash
-												span(class="hash-item") #{hash}
-						a.projects-item.ajax-trigger(href="#")
-							.project-info-contaner(data-animation="fadeInRight", data-delay="0.5s")
-								.projects-image
-									img(src="img/image-1.jpg")
-								.projects-info
-										.projects-name
-											span Café de Paris
-												i
-										.projects-hash
-											- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-											each hash in arrHash
-												span(class="hash-item") #{hash}
-						a.projects-item.ajax-trigger(href="#")
-							.project-info-contaner(data-animation="fadeInRight", data-delay="0.6s")
-								.projects-image
-									img(src="img/image-1.jpg")
-								.projects-info
-										.projects-name
-											span Café de Paris
-												i
-										.projects-hash
-											- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-											each hash in arrHash
-												span(class="hash-item") #{hash}
+			.not-found-container
+				.glitch-container(data-image="img/glitch-image.jpg")
+					.glitch-image
 				script(type='text/javascript').
-					$(galleryImage($(".projects-gallery")))
-					$(greyImage($(".projects-image")))
-			include includes/_footer
+					$(updateGlitchImage())
+				.text-container
+					p
+						span 404 Error.
+						|  We are very sorry, but the page is not found.
 	include includes/_modal

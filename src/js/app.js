@@ -5,4 +5,7 @@
 //=include lib/lightgallery.min.js
 //=include lib/modernizr.js
 //=include lib/jquery.BlackAndWhite.min.js
+//=include lib/gl.js
+//=include lib/shaders.js
+//=include lib/glitch.js
 //=include common.js

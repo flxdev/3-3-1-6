@@ -2,8 +2,9 @@ window.onload = function(){
 	var body = document.querySelector(".out");
 
 	// body.classList.add("load-page")
-
 }
+
+
 //main gallery image
 function galleryImage(gallery){
 	var carousel_container = $(gallery),
@@ -582,6 +583,14 @@ function greyImage(image) {
 		}
 	})
 }
+var glitch = new Glitch();
+function updateGlitchImage() {
+	var glitchWrapper = $(".glitch-container"),
+		image = $(".glitch-container").data("image");
+	glitch.setImagePath(image);
+	glitchWrapper.find(".glitch-image").append(glitch.domElement);
+
+};
 
 $(document).ready(function() {
 	// menu
