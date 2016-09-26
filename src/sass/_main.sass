@@ -18,7 +18,7 @@ body
 	+rem(height, 80px)
 	position: fixed
 	top: 0
-	left: 0
+	left: 0 
 	+rem(font-size, 10px)
 	text-transform: uppercase
 	+rem(letter-spacing, 2px)
@@ -26,6 +26,8 @@ body
 	+rem(line-height, 80px)
 	z-index: 5
 	color: $black
+	transition: transform 0.5s cubic-bezier(.62,.03,.92,.5) 0.3s
+	transform: translate3d(0,-80px,0)
 .logo
 	+rem(width, 120px)
 	+rem(height, 160px)
@@ -35,11 +37,15 @@ body
 	position: fixed
 	+rem(left, 80px)
 	z-index: 5
+	transition: transform 0.5s cubic-bezier(.62,.03,.92,.5) 0.3s
+	transform: translate3d(0,-160px,0)
 .breadcrumbs
 	position: fixed
 	+rem(left, 240px)
 	+rem(top, 30px)
 	z-index: 5
+	transition: transform 0.5s cubic-bezier(.62,.03,.92,.5) 0.3s
+	transform: translate3d(0,-60px,0)
 	li
 		display: inline-block
 		vertical-align: middle
@@ -85,6 +91,8 @@ body
 			left: 50%
 			transform: translate(-50%, -50%)
 		&.pagination-item_left
+			transition: opacity 0.5s cubic-bezier(.62,.03,.92,.5) 1.5s
+			opacity: 0
 			div
 				path 
 					stroke: $black
@@ -94,6 +102,8 @@ body
 						stroke: $white
 						fill: $white
 		&.pagination-item_right
+			transition: opacity 0.5s cubic-bezier(.62,.03,.92,.5) 1.6s
+			opacity: 0
 			div
 				path 
 					stroke: $white
@@ -109,6 +119,8 @@ body
 	z-index: 6
 	right: 0
 	top: 0
+	transition: transform 0.5s cubic-bezier(.62,.03,.92,.5) 0.6s
+	transform: translate3d(100%, 0, 0)
 	.navbar__wrap
 		position: relative
 		background-color: $black
@@ -343,6 +355,8 @@ body
 	bottom: 0
 	+rem(left, 80px)
 	+rem(bottom, 30px)
+	opacity: 0
+	transition: opacity 0.5s cubic-bezier(.62,.03,.92,.5) 0.4s
 	.copyright
 		.copyright-item
 			display: inline-block
@@ -396,7 +410,7 @@ body
 			 		right: auto
 			&.content-right
 				&::after, &::before
-					display: none
+					// display: none
 	.content-side
 		height: 100%
 		position: relative
@@ -406,47 +420,56 @@ body
 			&::after
 				content: ''
 				width: 1px
-				height: 100%
+				height: 0
 				+rem(right, 80px)
 				background-color: $line
 				position: absolute
+				transition: height 0.5s cubic-bezier(.62,.03,.92,.5)
 			&::before
 				content: ''
 				width: 1px
-				height: 100%
+				height: 0
 				left: 50%
 				position: absolute
 				background-color: $line
+				transition: height 0.5s cubic-bezier(.62,.03,.92,.5)
 		&.content-right
 			width: 50%
 			float: right
 			&::after
 				content: ''
 				width: 1px
-				height: 100%
+				height: 0
 				+rem(left, 80px)
 				background-color: $line
 				position: absolute
+				top: 0
+				transition: height 0.5s cubic-bezier(.62,.03,.92,.5)
 			&::before
 				content: ''
 				width: 1px
-				height: 100%
+				height: 0
 				left: 50%
 				position: absolute
 				background-color: $line
+				top: 0
+				transition: height 0.5s cubic-bezier(.62,.03,.92,.5)
 .intro
 	position: absolute
 	+rem(left, 0)
 	+rem(bottom, 160px)
 	+rem(right, 80px)
-	+rem(height, 250px)
+	height: 0
 	overflow: hidden
+	transition: height 0.5s cubic-bezier(.62,.03,.92,.5) 0.3s, opacity 0.5s cubic-bezier(.62,.03,.92,.5) 0.3s
+	opacity: 0
 	.intro-text
 		font-family: 'Heavy'
 		+rem(font-size, 72px)
 		padding-right: 15%
 		position: absolute
 		bottom: 0
+		// transform: translate3d(0,100%,0)
 		+r(1599)
 			+rem(font-size, 60px)
 		+r(1366) 
@@ -459,9 +482,17 @@ body
 	top: 0
 	bottom: 0
 	+rem(width, 80px)
-	border-right: 1px solid $line
 	background-color: $white
 	z-index: 4
+	&::after 
+		content: ""
+		width: 1px
+		background-color: $line
+		right: 0
+		top: 0
+		height: 0
+		position: absolute
+		transition: height 0.5s cubic-bezier(.62,.03,.92,.5)
 	.pagination-inner
 		.pagination-item
 			position: relative
@@ -484,16 +515,24 @@ body
 				a
 					span
 						+rem(bottom, 100px)
+						transition: transform 0.5s cubic-bezier(.62,.03,.92,.5) 1.9s, opacity 0.5s cubic-bezier(.62,.03,.92,.5) 1.9s
+						transform: translate3d(-50%, -50px, 0)
+						opacity: 0
 			&.pagination-item__right
 				a
 					span
 						+rem(top, 115px)
+						transition: transform 0.5s cubic-bezier(.62,.03,.92,.5) 1.9s, opacity 0.5s cubic-bezier(.62,.03,.92,.5) 1.9s
+						transform: translate3d(-50%, 50px, 0)
+						opacity: 0
 		.pagination-counter
 			position: absolute
 			top: 50%
 			+rem(height, 150px)
 			width: 100%
 			transform: translate(0, -50%)
+			transition: opacity 0.5s cubic-bezier(.62,.03,.92,.5) 1.9s
+			opacity: 0
 			.pagination-counter__inner
 				text-align: center
 				position: absolute
@@ -522,9 +561,11 @@ body
 	.content-right
 		.pagination
 			position: absolute
-			border-left: 1px solid $line
 			border-right: 0
 			+rem(left, -80px)
+			&::after 
+				left: 0
+				right: auto
 .projects
 	position: relative
 	height: 100%
@@ -584,7 +625,8 @@ body
 		display: block
 		.project-info-contaner
 			overflow: hidden
-			transition: height 0.3s ease-in-out
+			transition: height 0.5s cubic-bezier(.62,.03,.92,.5)
+			height: 0
 		.BWFilter 
 			z-index: 1
 		.projects-image
@@ -637,6 +679,12 @@ body
 		.slick-slide
 			& > div
 				font-size: 0
+				&:first-of-type
+					.project-info-contaner
+						transition-delay: 0.9s
+				&:last-of-type
+					.project-info-contaner
+						transition-delay: 1.1s
 .projects-hash
 	.hash-item
 		+rem(font-size, 18px)
@@ -1387,6 +1435,7 @@ body
 				top: 30%
 				+rem(left, 70px)
 				+rem(width, 480px)
+				pointer-events: none
 				+r(1366)
 					+rem(left, 50px)
 				+r(1280)
@@ -1833,3 +1882,43 @@ body
 			span
 				font-family: "Heavy"
 				font-weight: normal
+
+
+.load-page
+	.logo
+		transform: none
+	.breadcrumbs
+		transform: none
+	.lang
+		transform: none
+	.gallery-pagination
+		.pagination-item
+			opacity: 1
+	.footer
+		opacity: 1
+	.content
+		.content-side
+			&::after
+				height: 100%
+			&::before
+				height: 100%
+	.pagination
+		&::after
+			height: 100%
+		.pagination-inner
+			.pagination-item
+				a
+					span
+						transform: translate3d(-50%, 0, 0)
+						opacity: 1
+			.pagination-counter
+				opacity: 1
+	.navbar
+		transform: none
+	.intro
+		+rem(height, 250px)
+		opacity: 1
+	.projects
+		.projects-item
+			.project-info-contaner
+				height: 100%

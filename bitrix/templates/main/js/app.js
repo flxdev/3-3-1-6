@@ -1267,7 +1267,7 @@ Glitch.prototype.onImageLoaded = function() {
 window.onload = function(){
 	var body = document.querySelector(".out");
 
-	// body.classList.add("load-page")
+	body.classList.add("load-page")
 }
 
 
@@ -1306,8 +1306,8 @@ function galleryImage(gallery){
 
 		slideCounter($(this));
 
-		var $firstAnimatingElements = $('div.slick-slide:first-child').find('[data-animation]');
-		doAnimations($firstAnimatingElements);
+		// var $firstAnimatingElements = $('div.slick-slide:first-child').find('[data-animation]');
+		// doAnimations($firstAnimatingElements);
 	});
 
 	carousel.on("beforeChange", function(e, slick, currentSlide, nextSlide){
@@ -1857,6 +1857,10 @@ function updateGlitchImage() {
 	glitchWrapper.find(".glitch-image").append(glitch.domElement);
 
 };
+
+function loadedImg() {
+	requestAnimationFrame(loadedImg);
+} loadedImg();
 
 $(document).ready(function() {
 	// menu
