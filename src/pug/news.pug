@@ -26,7 +26,7 @@ block content
 			.projects-gallery
 				.gallery-news.rotator#gallery-news
 					div.gallery-news__item
-							.gallery-info__container(data-animation="fadeInRight", data-delay="0.5s")
+							.gallery-info__container.anim-container(data-animation-in="fadeIn", data-delay="0.25s", data-animation-out="fadeOut")
 								.gallery-inner
 									.gallery-inner__content
 										.gallery-title Newsfeed
@@ -34,7 +34,7 @@ block content
 					div.gallery-news__item
 					mixin gFacebook(link, image, data, name, like, comment, see)
 						a.gallery-news__item(href=link)
-							.gallery-info__container(data-animation="fadeInRight", data-delay="0.5s")
+							.gallery-info__container.anim-container(data-animation-in="fadeIn", data-delay="0.25s", data-animation-out="fadeOut")
 								.t-contaner
 									.image-cover
 										div(style=image)

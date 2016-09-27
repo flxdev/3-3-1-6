@@ -1,7 +1,9 @@
 window.onload = function(){
 	var body = document.querySelector(".out");
-
-	body.classList.add("load-page")
+	setTimeout(function(){
+		body.classList.add("load-page")
+	},200)
+		
 }
 
 
@@ -18,7 +20,8 @@ function galleryImage(gallery){
 		rows: 2,
 		slidesPerRow: 1,
 		arrows: false,
-		fade: true
+		fade: true,
+		speed: !0
 	};
 
 	var newsFacebook = {
@@ -26,6 +29,7 @@ function galleryImage(gallery){
 		rows: 2,
 		slidesPerRow: 4,
 		fade: true,
+		speed: !0,
 		responsive: [
 			{
 				breakpoint: 1366,
@@ -37,17 +41,18 @@ function galleryImage(gallery){
 	};
 
 	carousel.on("init", function(slick){
-
 		slideCounter($(this));
-
-		// var $firstAnimatingElements = $('div.slick-slide:first-child').find('[data-animation]');
-		// doAnimations($firstAnimatingElements);
+		if($(this).is(".gallery-news")){
+			getAnimDelay($(".gallery-news"));
+		}
 	});
 
 	carousel.on("beforeChange", function(e, slick, currentSlide, nextSlide){
 
-		var $animatingElements = $('div.slick-slide[data-slick-index="' + nextSlide + '"]').find('[data-animation]');
-		doAnimations($animatingElements);
+		var $animatingElementsIn = $('div.slick-slide[data-slick-index="' + nextSlide + '"]').find('[data-animation-in]'),
+			$animatingElementsOut = $('div.slick-slide[data-slick-index="' + currentSlide + '"]').find('[data-animation-out]'),
+			$elem = $(".anim-container");
+		doAnimations($elem, $animatingElementsIn, $animatingElementsOut);
 	});
 
 	if(carousel_container.find(".gallery-carousel").length){
@@ -71,7 +76,6 @@ function galleryImage(gallery){
 	});
 
 	carousel.on("breakpoint", function(event, slick, breakpoint){
-		console.log(event, slick, breakpoint);
 		slideCounter($(this))
 	});
 
@@ -91,7 +95,6 @@ function galleryImage(gallery){
 	function slideCounter(slider){
 		time = setTimeout(function(){
 			var l = $(slider).find(".slick-slide").length;
-			console.log(l)
 			if(l === 1) {
 				$(slider).parents(".projects-gallery").find(".pagination-inner").hide();
 			} else {
@@ -107,21 +110,52 @@ function galleryImage(gallery){
 		}, 10);
 	};		
 
-	function doAnimations(elements) {
+	function doAnimations(elements, elementsIn, elementsOut) {
 	var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 		elements.each(function() {
 			var $this = $(this);
 			var $animationDelay = $this.data('delay');
-			var $animationType = 'animated ' + $this.data('animation');
+			console.log($animationDelay)
+			var animIn = $(elementsIn).data("animation-in"),
+				animOut = $(elementsOut).data("animation-out");
+			var $animationTypeIn = "animated " + animIn,
+				$animationTypeOut = "animated " + animOut
+
 			$this.css({
 				'animation-delay': $animationDelay,
 				'-webkit-animation-delay': $animationDelay
 			});
-			$this.addClass($animationType).one(animationEndEvents, function() {
-				$this.removeClass($animationType);
+			$(elementsIn).addClass($animationTypeIn).one(animationEndEvents, function() {
+				$(this).removeClass($animationTypeIn);
 			});
+			$(elementsOut).addClass($animationTypeOut).one(animationEndEvents, function() {
+				$(this).removeClass($animationTypeOut);
+			});
+			// var $animationType = 'animated ' + $this.data('animation');
+			// $this.css({
+			// 	'animation-delay': $animationDelay,
+			// 	'-webkit-animation-delay': $animationDelay
+			// });
+			// $this.addClass($animationType).one(animationEndEvents, function() {
+			// 	$this.removeClass($animationType);
+			// });
 		});
-	}	
+	};
+
+	function getAnimDelay(rotator) {
+		var _this = rotator,
+			slide = _this.find(".slick-slide");
+
+		slide.each(function(){
+			var _ = $(this),
+				animContainer = _.find(".anim-container"),
+				animLength = animContainer.length,
+				i = 0;
+			for(i; i <= animLength; i++) {
+				animContainer.eq(i).attr("data-delay", (i+1)/10 + "s")
+			};
+		});
+	}
 };
 
 var timeout,
@@ -241,6 +275,10 @@ function scrollbar(){
 function heightScrollContainer() {
 	$("#scroll-container").height($(window).height() - 80);
 };
+
+window.onresize = function(){
+	heightScrollContainer()
+}
 
 function iso() {
 	var container = document.getElementById("scroll-container");
@@ -524,6 +562,37 @@ function initMap() {
 	$(window).bind(initialize());
 };
 
+function ZoomControl(controlDiv, map) {
+	controlDiv.style.padding = "20px 20px";
+
+	var controlWrapper = document.createElement('div');
+		controlWrapper.style.cursor = 'pointer';
+		controlWrapper.style.textAlign = 'center';
+		controlWrapper.style.width = '25px'; 
+		controlWrapper.style.height = '50px';
+		controlDiv.appendChild(controlWrapper);
+
+	var zoomInButton = document.createElement('div');
+		zoomInButton.classList.add("zoomIn");
+		zoomInButton.style.width = '25px'; 
+		zoomInButton.style.height = '25px';
+		controlWrapper.appendChild(zoomInButton);
+
+	var zoomOutButton = document.createElement('div');
+		zoomOutButton.classList.add("zoomOut");
+		zoomOutButton.style.width = '25px'; 
+		zoomOutButton.style.height = '25px';
+		controlWrapper.appendChild(zoomOutButton);
+
+	google.maps.event.addDomListener(zoomInButton, 'click', function() {
+		map.setZoom(map.getZoom() + 1);
+	});
+
+	google.maps.event.addDomListener(zoomOutButton, 'click', function() {
+		map.setZoom(map.getZoom() - 1);
+	});
+}
+
 function initialize(){
 	var stylez = [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}];
 	var mapOptions = {
@@ -531,7 +600,7 @@ function initialize(){
 		disableDefaultUI: true,
 		scrollwheel: false,
 		panControl: false,
-		zoomControl: true,
+		zoomControl: false,
 		zoomControlOptions: {
 			style: google.maps.ZoomControlStyle.SMALL,
 			position: google.maps.ControlPosition.RIGHT_CENTER
@@ -559,30 +628,41 @@ function initialize(){
 		map.setCenter(center); 
 	});
 
+	var zoomControlDiv = document.createElement('div');
+  	var zoomControl = new ZoomControl(zoomControlDiv, map);
+
+  	zoomControlDiv.index = 1;
+	map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(zoomControlDiv);
+
 };
 
 function gMaps(){
 	var sct_tag = document.createElement("script");
-	sct_tag.setAttribute("type", "text/javascript");
-	sct_tag.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=AIzaSyCcDrkEbKdrAWUT7ZorYyn-NwTj9YD6DN4&callback=initMap");
-	document.querySelector(".maps-container").appendChild(sct_tag);
+	if(typeof(google) != 'object') {
+		sct_tag.setAttribute("type", "text/javascript");
+		sct_tag.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=AIzaSyCcDrkEbKdrAWUT7ZorYyn-NwTj9YD6DN4&callback=initMap");
+		document.querySelector(".maps-container").appendChild(sct_tag);
+	} else {
+		$(initialize);
+	}
 };
 
 function greyImage(image) {
-	$(image).BlackAndWhite({
-		hoverEffect : true,
-		webworkerPath : false,
-		intensity:1,
-		crossOrigin: false,
-		speed: {
-			fadeIn: 500,
-			fadeOut: 500
-		},
-		onImageReady: function(img) {
+	// $(image).BlackAndWhite({
+	// 	hoverEffect : true,
+	// 	webworkerPath : false,
+	// 	intensity:1,
+	// 	crossOrigin: false,
+	// 	speed: {
+	// 		fadeIn: 500,
+	// 		fadeOut: 500
+	// 	},
+	// 	onImageReady: function(img) {
 
-		}
-	})
+	// 	}
+	// })
 }
+
 var glitch = new Glitch();
 function updateGlitchImage() {
 	var glitchWrapper = $(".glitch-container"),
@@ -595,6 +675,10 @@ function updateGlitchImage() {
 function loadedImg() {
 	requestAnimationFrame(loadedImg);
 } loadedImg();
+
+$(window).on("load", function(){
+	$(".out").addClass("load-page")
+});
 
 $(document).ready(function() {
 	// menu
@@ -613,26 +697,45 @@ $(document).ready(function() {
 				$(this).addClass("open");
 				showOverlay();
 				t
-					.to(menuContent, 0.5, {x: "0%", className: '+=open'})
+					.to(menuContent, 0.5, {
+						x: "0%", 
+						className: '+=open', 
+						onComplete: function(){
+							menuContent.addClass("anim");
+							trigger.addClass("anim")
+						}
+					})
 
 				burger.addClass("open");
 				navbarText.find("span").text(textClose);
 			} else {
-				$(this).removeClass("open");
+				$(this).removeClass("open anim");
 				burger.removeClass("open");
 				navbarText.find("span").text(textOpen);
 				hideOverlay();
 				t
-					.to(menuContent, 0.5, {x: "+=100%", className: '-=open'})
+					.to(menuContent, 0.5, {
+						x: "+=100%", 
+						className: '-=open', 
+						onComplete: function(){
+							menuContent.removeClass("anim")
+						}
+					})
 			}
 		});
 
 		overlay.on("click", function(){
-			trigger.removeClass("open");
+			trigger.removeClass("open anim");
 			burger.removeClass("open");
 			navbarText.find("span").text(textOpen);
 			t
-				.to(menuContent, 0.5, {x: "+=100%", className: '-=open'})
+				.to(menuContent, 0.5, {
+					x: "+=100%", 
+					className: '-=open', 
+					onComplete: function(){
+						menuContent.removeClass("anim")
+					}
+				})
 			hideOverlay();
 		});
 		

@@ -26,7 +26,7 @@ body
 	+rem(line-height, 80px)
 	z-index: 5
 	color: $black
-	transition: transform 0.5s cubic-bezier(.62,.03,.92,.5) 0.3s
+	transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 0.3s
 	transform: translate3d(0,-80px,0)
 .logo
 	+rem(width, 120px)
@@ -37,14 +37,14 @@ body
 	position: fixed
 	+rem(left, 80px)
 	z-index: 5
-	transition: transform 0.5s cubic-bezier(.62,.03,.92,.5) 0.3s
+	transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 0.3s
 	transform: translate3d(0,-160px,0)
 .breadcrumbs
 	position: fixed
 	+rem(left, 240px)
 	+rem(top, 30px)
 	z-index: 5
-	transition: transform 0.5s cubic-bezier(.62,.03,.92,.5) 0.3s
+	transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 0.3s
 	transform: translate3d(0,-60px,0)
 	li
 		display: inline-block
@@ -58,7 +58,14 @@ body
 				right: -19px
 		+rem(margin-right, 25px)
 		position: relative
-			
+	a
+		transition: opacity 0.3s ease
+		div
+			transition: opacity 0.3s ease
+		&:hover 
+			opacity: 0.8
+			div
+				opacity: 0.8
 	.breadcrumbs-item
 		&.home
 			div 
@@ -91,27 +98,55 @@ body
 			left: 50%
 			transform: translate(-50%, -50%)
 		&.pagination-item_left
-			transition: opacity 0.5s cubic-bezier(.62,.03,.92,.5) 1.5s
+			transition: opacity 0.5s cubic-bezier(.83,.28,.6,.59) 1.5s
 			opacity: 0
 			div
 				path 
 					stroke: $black
+			&:hover
+				div
+					path
+						animation: animFillBlack 0.3s both
 			&.active
 				div
 					path
 						stroke: $white
 						fill: $white
+				&:hover
+					div
+						path
+							animation: none
 		&.pagination-item_right
-			transition: opacity 0.5s cubic-bezier(.62,.03,.92,.5) 1.6s
+			transition: opacity 0.5s cubic-bezier(.83,.28,.6,.59) 1.6s
 			opacity: 0
 			div
 				path 
 					stroke: $white
+			&:hover
+				div
+					path
+						animation: animFillWhite 0.3s both
 			&.active
 				div
 					path
 						stroke: $white
 						fill: $white
+				&:hover
+					div
+						path
+							animation: none
+@keyframes animFillWhite
+	0%
+		fill: transparent
+	100% 
+		fill: $white
+
+@keyframes animFillBlack
+	0%
+		fill: transparent
+	100% 
+		fill: $black
+
 .navbar
 	+rem(width, 80px)
 	height: 100%
@@ -119,7 +154,7 @@ body
 	z-index: 6
 	right: 0
 	top: 0
-	transition: transform 0.5s cubic-bezier(.62,.03,.92,.5) 0.6s
+	transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 0.6s
 	transform: translate3d(100%, 0, 0)
 	.navbar__wrap
 		position: relative
@@ -130,9 +165,20 @@ body
 		transition: background-color 0.3s ease-in-out 0s, border-color 0.3s ease-in-out 0s
 		z-index: 4
 		border-left: 1px solid transparent
+		&::after
+			content: ""
+			left: 0
+			top: 0
+			height: 0
+			position: absolute
+			background-color: $lineOpacity
+			width: 1px
+			transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
+		&.anim
+			&::after
+				height: 100%
 		&.open
 			background-color: transparent
-			border-color: $lineOpacity
 		.hamburger
 			+rem(width, 30px)
 			+rem(height, 20px)
@@ -250,17 +296,25 @@ body
 		&::before
 			content: ''
 			width: 1px
-			height: 100%
+			height: 0
+			transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
 			background-color: $lineOpacity
 			position: absolute
 			left: 30.33%
 		&::after
 			content: ''
 			width: 1px
-			height: 100%
+			height: 0
+			transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
 			background-color: $lineOpacity
 			position: absolute
 			left: 60.66%
+	&.anim
+		.navbar__content-slice
+			&::after
+				height: 100%
+			&::before
+				height: 100%
 	// &.open
 	// 	.navbar__content-slice
 	// 		transform: translate(0, 0)
@@ -356,7 +410,7 @@ body
 	+rem(left, 80px)
 	+rem(bottom, 30px)
 	opacity: 0
-	transition: opacity 0.5s cubic-bezier(.62,.03,.92,.5) 0.4s
+	transition: opacity 0.5s cubic-bezier(.83,.28,.6,.59) 0.4s
 	.copyright
 		.copyright-item
 			display: inline-block
@@ -424,7 +478,7 @@ body
 				+rem(right, 80px)
 				background-color: $line
 				position: absolute
-				transition: height 0.5s cubic-bezier(.62,.03,.92,.5)
+				transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
 			&::before
 				content: ''
 				width: 1px
@@ -432,7 +486,7 @@ body
 				left: 50%
 				position: absolute
 				background-color: $line
-				transition: height 0.5s cubic-bezier(.62,.03,.92,.5)
+				transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
 		&.content-right
 			width: 50%
 			float: right
@@ -444,7 +498,7 @@ body
 				background-color: $line
 				position: absolute
 				top: 0
-				transition: height 0.5s cubic-bezier(.62,.03,.92,.5)
+				transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
 			&::before
 				content: ''
 				width: 1px
@@ -453,7 +507,7 @@ body
 				position: absolute
 				background-color: $line
 				top: 0
-				transition: height 0.5s cubic-bezier(.62,.03,.92,.5)
+				transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
 .intro
 	position: absolute
 	+rem(left, 0)
@@ -461,7 +515,7 @@ body
 	+rem(right, 80px)
 	height: 0
 	overflow: hidden
-	transition: height 0.5s cubic-bezier(.62,.03,.92,.5) 0.3s, opacity 0.5s cubic-bezier(.62,.03,.92,.5) 0.3s
+	transition: height 0.5s cubic-bezier(.83,.28,.6,.59) 0.3s, opacity 0.5s cubic-bezier(.83,.28,.6,.59) 0.3s
 	opacity: 0
 	.intro-text
 		font-family: 'Heavy'
@@ -492,7 +546,7 @@ body
 		top: 0
 		height: 0
 		position: absolute
-		transition: height 0.5s cubic-bezier(.62,.03,.92,.5)
+		transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
 	.pagination-inner
 		.pagination-item
 			position: relative
@@ -515,14 +569,14 @@ body
 				a
 					span
 						+rem(bottom, 100px)
-						transition: transform 0.5s cubic-bezier(.62,.03,.92,.5) 1.9s, opacity 0.5s cubic-bezier(.62,.03,.92,.5) 1.9s
+						transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 1.9s, opacity 0.5s cubic-bezier(.83,.28,.6,.59) 1.9s
 						transform: translate3d(-50%, -50px, 0)
 						opacity: 0
 			&.pagination-item__right
 				a
 					span
 						+rem(top, 115px)
-						transition: transform 0.5s cubic-bezier(.62,.03,.92,.5) 1.9s, opacity 0.5s cubic-bezier(.62,.03,.92,.5) 1.9s
+						transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 1.9s, opacity 0.5s cubic-bezier(.83,.28,.6,.59) 1.9s
 						transform: translate3d(-50%, 50px, 0)
 						opacity: 0
 		.pagination-counter
@@ -531,7 +585,7 @@ body
 			+rem(height, 150px)
 			width: 100%
 			transform: translate(0, -50%)
-			transition: opacity 0.5s cubic-bezier(.62,.03,.92,.5) 1.9s
+			transition: opacity 0.5s cubic-bezier(.83,.28,.6,.59) 1.9s
 			opacity: 0
 			.pagination-counter__inner
 				text-align: center
@@ -570,6 +624,8 @@ body
 	position: relative
 	height: 100%
 	z-index: 2
+	.slick-slide
+		opacity: 1!important
 	.projects-inner
 		position: absolute
 		top: 50%
@@ -625,15 +681,30 @@ body
 		display: block
 		.project-info-contaner
 			overflow: hidden
-			transition: height 0.5s cubic-bezier(.62,.03,.92,.5)
+			transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
 			height: 0
+			position: relative
+			&:hover
+				.projects-image
+					transform: scale(1.1)
+					img
+						filter: grayscale(0)
 		.BWFilter 
 			z-index: 1
 		.projects-image
 			position: relative
 			height: 50vh
+			transition: transform 0.35s ease
+			transform: scale(1)
+			
 			img
-				max-width: 120%
+				max-width: 130%
+				position: absolute
+				top: 50%
+				left: 50%
+				transform: translate(-50%,-50%)
+				filter: grayscale(100%)
+				transition: filter 0.3s ease
 				+r(1280)
 					max-width: 160%
 		.projects-info
@@ -698,7 +769,7 @@ body
 	animation-fill-mode: both;
 	animation-duration: 0.6s;
 
-@-webkit-keyframes fadeInRight 
+@-webkit-keyframes fadeIn 
 	0% 
 		height: 0
 	100% 
@@ -710,11 +781,35 @@ body
 	100% 
 		height: 100%
 
-.fadeInRight
-	-webkit-animation-name: fadeInRight;
-	-webkit-animation-timing-function: cubic-bezier(1,.33,.74,.61)
-	animation-name: fadeInRight
-	animation-timing-function: cubic-bezier(1,.33,.74,.61)
+.fadeIn
+	-webkit-animation-name: fadeIn
+	-webkit-animation-timing-function: cubic-bezier(.83,.28,.6,.59)
+	animation-name: fadeIn
+	animation-timing-function: cubic-bezier(.83,.28,.6,.59)
+
+@-webkit-keyframes fadeOut 
+	0% 
+		transform: scale(1)
+		opacity: 1
+	100% 
+		transform: scale(0.7)
+		opacity: 0.7
+
+@keyframes fadeOut 
+	0% 
+		transform: scale(1)
+		opacity: 1
+	100% 
+		transform: scale(0.7)
+		opacity: 0.7
+
+.fadeOut
+	-webkit-animation-name: fadeOut;
+	-webkit-animation-timing-function: cubic-bezier(.83,.28,.6,.59)
+	animation-name: fadeOut
+	animation-timing-function: cubic-bezier(.83,.28,.6,.59)
+
+
 .cap
 	position: fixed
 	top: 0
@@ -778,7 +873,9 @@ body
 						top: 0
 						right: 0
 						max-height: 100%
-						max-width: none;
+						max-width: none
+						transform: none
+						left: auto
 .projects-gallery
 	height: 100%
 	position: relative
@@ -919,6 +1016,7 @@ body
 			&.active
 				span
 					position: relative
+					color: $white
 					&::after
 						content: ""
 						position: absolute
@@ -939,6 +1037,10 @@ body
 				div 
 					path
 						stroke: $white
+				&:hover
+					div
+						path
+							animation: animFillWhite 0.35s both
 	.content-side
 		&.content-left
 			width: 40%
@@ -1168,6 +1270,8 @@ body
 	font-size: 0
 	position: relative
 	z-index: 2
+	.slick-slide
+		opacity: 1!important
 	a
 		&.gallery-news__item
 			width: 25%
@@ -1244,6 +1348,7 @@ body
 				height: 100%
 				overflow: hidden
 				margin-left: -100%
+				background-color: $white
 			.gallery-inner
 				// margin-left: -100%
 				height: 50vh
@@ -1384,6 +1489,10 @@ body
 				div 
 					path
 						stroke: $white
+				&:hover
+					div
+					path
+						animation: animFillWhite 0.35s ease both
 .services-container
 	height: 100%
 	background-color: #000000
@@ -1882,8 +1991,26 @@ body
 			span
 				font-family: "Heavy"
 				font-weight: normal
-
-
+.maps-container
+	.gm-style-cc, a
+		display: none!important
+	.zoomIn
+		background-color: $black
+		border-bottom: 1px solid $white
+		position: relative
+		&::after
+			content: "+"
+			color: $white
+			font-family: "Book"
+			line-height: 25px
+	.zoomOut
+		background-color: $black
+		position: relative
+		&::after
+			content: "-"
+			color: $white
+			font-family: "Book"
+			line-height: 25px
 .load-page
 	.logo
 		transform: none

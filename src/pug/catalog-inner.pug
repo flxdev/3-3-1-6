@@ -18,7 +18,7 @@ block content
 					a.breadcrumbs-item(href="#")
 						span Catalog
 				li
-					a.breadcrumbs-item(href="#")
+					.breadcrumbs-item
 						span  House#1
 			.gallery-pagination
 				a(href="#" class="pagination-item pagination-item_left")
@@ -73,10 +73,8 @@ block content
 								+gridItem("img/grid/grid-16.jpg")
 								+gridItem("img/grid/grid-16.jpg")
 
-					script(type='text/javascript').
-						$(window).on("load resize", function(){
-							$(heightScrollContainer)
-						});
+					script(type='text/javascript').						
+						$(heightScrollContainer)
 						$(scrollbar)
 						$(iso)
 						$(lightG)
