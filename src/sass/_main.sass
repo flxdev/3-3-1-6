@@ -13,6 +13,8 @@ body
 .out
 	width: 100%
 	height: 100%
+	position: relative
+	overflow: hidden
 .lang
 	+rem(width, 80px)
 	+rem(height, 80px)
@@ -150,12 +152,10 @@ body
 .navbar
 	+rem(width, 80px)
 	height: 100%
-	position: fixed
+	position: absolute
 	z-index: 6
 	right: 0
 	top: 0
-	transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 0.6s
-	transform: translate3d(100%, 0, 0)
 	.navbar__wrap
 		position: relative
 		background-color: $black
@@ -165,6 +165,8 @@ body
 		transition: background-color 0.3s ease-in-out 0s, border-color 0.3s ease-in-out 0s
 		z-index: 4
 		border-left: 1px solid transparent
+		transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 0.6s
+		transform: translate(100%, 0)
 		&::after
 			content: ""
 			left: 0
@@ -275,7 +277,6 @@ body
 
 .navbar__content
 	position: fixed
-	width: 100%
 	background-color: rgba(255,255,255,.6)
 	top: 0
 	right: 0
@@ -684,11 +685,10 @@ body
 			transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
 			height: 0
 			position: relative
-			&:hover
-				.projects-image
-					transform: scale(1.1)
-					img
-						filter: grayscale(0)
+			will-change: height
+			.project-info__inner
+				height: 50vh
+				position: relative
 		.BWFilter 
 			z-index: 1
 		.projects-image
@@ -737,6 +737,10 @@ body
 				.hash-item
 					color: $white
 		&:hover
+			.projects-image
+				transform: scale(1.1)
+				img
+					filter: grayscale(0)
 			.projects-info
 				.projects-name
 					bottom: 100%
@@ -2109,7 +2113,7 @@ body
 						opacity: 1
 			.pagination-counter
 				opacity: 1
-	.navbar
+	.navbar__wrap
 		transform: none
 	.intro
 		+rem(height, 250px)
@@ -2117,4 +2121,150 @@ body
 	.projects
 		.projects-item
 			.project-info-contaner
-				height: 100%
+				height: 50vh
+.siteLoader
+	position: fixed
+	top: 0
+	left: 0
+	bottom: 0
+	right: 0
+	z-index: 500
+	.frame
+		position: absolute
+		left: 0
+		width: 100%
+		z-index: 4
+		background-color: $black
+		&.frame-top
+			top: 0
+			height: 51%
+		&.frame-bottom
+			bottom: 0
+			height: 51%
+	.loader-container
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		text-align: center
+		z-index: 5
+		.letters-container
+			position: relative
+			&::before
+				content: ""
+				width: 100%
+				height: 0
+				bottom: 0
+				left: 0
+				background-color: $black
+				transition: height 0.3s cubic-bezier(.83,.28,.6,.59)
+				position: absolute
+				z-index: 5
+			&::after
+				content: ""
+				width: 100%
+				height: 0
+				top: 0
+				left: 0
+				background-color: $black
+				transition: height 0.3s cubic-bezier(.83,.28,.6,.59)
+				position: absolute
+				z-index: 5
+			&.hide
+				&::after, &::before
+					height: 50%
+		.loader-numbers
+			+rem(margin-bottom, 10px)			
+			perspective: 600px
+			span
+				opacity: 0
+				font-family: "Heavy"
+				color: $white
+				+rem(font-size, 180px)
+				position: relative
+				display: inline-block
+				user-select: none
+				pointer-events: none
+				&:nth-child(3)
+					+rem(top, -8px)
+					font-family: "Light"
+		.loader-text
+			font-family: "Light"
+			color: $white
+			+rem(font-size, 65px)
+			text-transform: uppercase
+			+rem(letter-spacing, 20px)
+			user-select: none
+			pointer-events: none
+			opacity: 0
+	.timeline
+		height: 4px
+		background-color: $white
+		position: absolute
+		top: 50%
+		transform: translate(0, -50%) scale(0, 1)
+		z-index: 6
+		width: 100%
+.pageLoader
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	z-index: 19
+	display: none
+	&.is-loader
+		.lines-container
+			.lines
+				.line
+					&::before
+						animation: loading-scale 2s cubic-bezier(0.645, 0.045, 0.355, 1) 0s infinite normal none
+	.lines-container
+		position: absolute
+		width: 70px
+		height: 52px
+		margin: -26px 0 0 -35px
+		left: 50%
+		top: 50%
+		.lines
+			position: relative
+			width: 70px
+			height: 52px
+			.line
+				overflow: hidden
+				width: 100%
+				height: 5px
+				transform-origin: 0 100%
+				position: absolute
+				&:nth-child(1)
+					top: 0
+					&:before
+						animation-delay: 0.3s
+				&:nth-child(2)
+					top: 38px
+				&:nth-child(3)
+					bottom: 0
+					&:before
+						animation-delay: 0.15s
+				&::before
+					content: ""
+					background-color: $black
+					left: 0
+					display: block
+					position: absolute
+					width: 100%
+					height: 100%
+
+@keyframes loading-scale
+	0%
+		left: -74px
+	39%
+		left: 0
+	41%
+		left: 0
+	80%
+		left: 74px
+	80.0001%
+		left: -74px
+	100%
+		left: -74px

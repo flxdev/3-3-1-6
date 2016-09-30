@@ -29,55 +29,59 @@ block content
 					.projects
 						a.projects-item.ajax-trigger(href="#")
 							.project-info-contaner(data-animation="fadeInRight", data-delay="0.5s")
-								.projects-image
-									img(src="img/image-1.jpg")
-								.projects-info
-										.projects-name
-											span Café de Paris
-												i
-										.projects-hash
-											- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-											each hash in arrHash
-												span(class="hash-item") #{hash}
+								.project-info__inner
+									.projects-image
+										img(src="img/image-1a.jpg")
+									.projects-info
+											.projects-name
+												span Café de Paris 1
+													i
+											.projects-hash
+												- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+												each hash in arrHash
+													span(class="hash-item") #{hash}
 						a.projects-item.ajax-trigger(href="#")
 							.project-info-contaner(data-animation="fadeInRight", data-delay="0.6s")
-								.projects-image
-									img(src="img/image-2.jpg")
-								.projects-info
-										.projects-name
-											span Café de Paris
-												i
-										.projects-hash
-											- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-											each hash in arrHash
-												span(class="hash-item") #{hash}
+								.project-info__inner
+									.projects-image
+										img(src="img/image-2.jpg")
+									.projects-info
+											.projects-name
+												span Café de Paris 2
+													i
+											.projects-hash
+												- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+												each hash in arrHash
+													span(class="hash-item") #{hash}
 			.content-right.content-side
 				.projects-gallery
 					.projects
 						a.projects-item.ajax-trigger(href="#")
 							.project-info-contaner(data-animation="fadeInRight", data-delay="0.5s")
-								.projects-image
-									img(src="img/image-3.jpg")
-								.projects-info
-										.projects-name
-											span Café de Paris
-												i
-										.projects-hash
-											- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-											each hash in arrHash
-												span(class="hash-item") #{hash}
+								.project-info__inner
+									.projects-image
+										img(src="img/image-3.jpg")
+									.projects-info
+											.projects-name
+												span Café de Paris 3
+													i
+											.projects-hash
+												- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+												each hash in arrHash
+													span(class="hash-item") #{hash}
 						a.projects-item.ajax-trigger(href="#")
 							.project-info-contaner(data-animation="fadeInRight", data-delay="0.6s")
-								.projects-image
-									img(src="img/image-4.jpg")
-								.projects-info
-										.projects-name
-											span Café de Paris
-												i
-										.projects-hash
-											- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-											each hash in arrHash
-												span(class="hash-item") #{hash}
+								.project-info__inner
+									.projects-image
+										img(src="img/image-4.jpg")
+									.projects-info
+											.projects-name
+												span Café de Paris 4
+													i
+											.projects-hash
+												- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+												each hash in arrHash
+													span(class="hash-item") #{hash}
 					script(type='text/javascript').
 						$(greyImage($(".projects-image")))
 		include includes/_pagination
