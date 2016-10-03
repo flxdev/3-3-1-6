@@ -28,7 +28,7 @@ body
 	+rem(line-height, 80px)
 	z-index: 5
 	color: $black
-	transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 0.3s
+	transition: transform 0.5s $cub 0.3s
 	transform: translate3d(0,-80px,0)
 .logo
 	+rem(width, 120px)
@@ -39,15 +39,15 @@ body
 	position: fixed
 	+rem(left, 80px)
 	z-index: 5
-	transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 0.3s
+	transition: transform 0.5s $cub 0.3s
 	transform: translate3d(0,-160px,0)
 .breadcrumbs
 	position: fixed
 	+rem(left, 240px)
 	+rem(top, 30px)
 	z-index: 5
-	transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 0.3s
-	transform: translate3d(0,-60px,0)
+	transition: transform 0.5s $cub 0.3s
+	transform: translate(0,-60px)
 	li
 		display: inline-block
 		vertical-align: middle
@@ -100,7 +100,7 @@ body
 			left: 50%
 			transform: translate(-50%, -50%)
 		&.pagination-item_left
-			transition: opacity 0.5s cubic-bezier(.83,.28,.6,.59) 1.5s
+			transition: opacity 0.5s $cub 1.5s
 			opacity: 0
 			div
 				path 
@@ -119,7 +119,7 @@ body
 						path
 							animation: none
 		&.pagination-item_right
-			transition: opacity 0.5s cubic-bezier(.83,.28,.6,.59) 1.6s
+			transition: opacity 0.5s $cub 1.6s
 			opacity: 0
 			div
 				path 
@@ -165,7 +165,7 @@ body
 		transition: background-color 0.3s ease-in-out 0s, border-color 0.3s ease-in-out 0s
 		z-index: 4
 		border-left: 1px solid transparent
-		transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 0.6s
+		transition: transform 0.5s $cub 0.6s
 		transform: translate(100%, 0)
 		&::after
 			content: ""
@@ -175,7 +175,7 @@ body
 			position: absolute
 			background-color: $lineOpacity
 			width: 1px
-			transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
+			transition: height 0.5s $cub
 		&.anim
 			&::after
 				height: 100%
@@ -298,7 +298,7 @@ body
 			content: ''
 			width: 1px
 			height: 0
-			transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
+			transition: height 0.5s $cub
 			background-color: $lineOpacity
 			position: absolute
 			left: 30.33%
@@ -306,7 +306,7 @@ body
 			content: ''
 			width: 1px
 			height: 0
-			transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
+			transition: height 0.5s $cub
 			background-color: $lineOpacity
 			position: absolute
 			left: 60.66%
@@ -411,7 +411,7 @@ body
 	+rem(left, 80px)
 	+rem(bottom, 30px)
 	opacity: 0
-	transition: opacity 0.5s cubic-bezier(.83,.28,.6,.59) 0.4s
+	transition: opacity 0.5s $cub 0.4s
 	.copyright
 		.copyright-item
 			display: inline-block
@@ -474,20 +474,22 @@ body
 			float: left
 			&::after
 				content: ''
+				top: 0
 				width: 1px
 				height: 0
 				+rem(right, 80px)
 				background-color: $line
 				position: absolute
-				transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
+				transition: height 0.5s $cub
 			&::before
 				content: ''
+				top: 0
 				width: 1px
 				height: 0
 				left: 50%
 				position: absolute
 				background-color: $line
-				transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
+				transition: height 0.5s $cub
 		&.content-right
 			width: 50%
 			float: right
@@ -499,7 +501,7 @@ body
 				background-color: $line
 				position: absolute
 				top: 0
-				transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
+				transition: height 0.5s $cub
 			&::before
 				content: ''
 				width: 1px
@@ -508,7 +510,7 @@ body
 				position: absolute
 				background-color: $line
 				top: 0
-				transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
+				transition: height 0.5s $cub
 .intro
 	position: absolute
 	+rem(left, 0)
@@ -516,7 +518,7 @@ body
 	+rem(right, 80px)
 	height: 0
 	overflow: hidden
-	transition: height 0.5s cubic-bezier(.83,.28,.6,.59) 0.3s, opacity 0.5s cubic-bezier(.83,.28,.6,.59) 0.3s
+	transition: height 0.5s $cub 0.3s, opacity 0.5s $cub 0.3s
 	opacity: 0
 	.intro-text
 		font-family: 'Heavy'
@@ -547,7 +549,7 @@ body
 		top: 0
 		height: 0
 		position: absolute
-		transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
+		transition: height 0.5s $cub
 	.pagination-inner
 		.pagination-item
 			position: relative
@@ -570,14 +572,14 @@ body
 				a
 					span
 						+rem(bottom, 100px)
-						transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 1.9s, opacity 0.5s cubic-bezier(.83,.28,.6,.59) 1.9s
+						transition: transform 0.5s $cub 1.9s, opacity 0.5s $cub 1.9s
 						transform: translate3d(-50%, -50px, 0)
 						opacity: 0
 			&.pagination-item__right
 				a
 					span
 						+rem(top, 115px)
-						transition: transform 0.5s cubic-bezier(.83,.28,.6,.59) 1.9s, opacity 0.5s cubic-bezier(.83,.28,.6,.59) 1.9s
+						transition: transform 0.5s $cub 1.9s, opacity 0.5s $cub 1.9s
 						transform: translate3d(-50%, 50px, 0)
 						opacity: 0
 		.pagination-counter
@@ -586,7 +588,7 @@ body
 			+rem(height, 150px)
 			width: 100%
 			transform: translate(0, -50%)
-			transition: opacity 0.5s cubic-bezier(.83,.28,.6,.59) 1.9s
+			transition: opacity 0.5s $cub 1.9s
 			opacity: 0
 			.pagination-counter__inner
 				text-align: center
@@ -641,6 +643,9 @@ body
 			+rem(font-size, 72px)
 			color: $black
 			+rem(margin-bottom, 15px)
+			opacity: 0
+			transform: translate(80px, 0)
+			transition: opacity 0.5s $cub 0.7s, transform 0.5s $cub 0.7s
 			+r(1599)
 				+rem(font-size, 64px)
 			+r(1280)
@@ -651,6 +656,9 @@ body
 			max-width: 90%
 			+rem(letter-spacing, 1.8px)
 			+rem(margin-bottom, 25px)
+			opacity: 0
+			transform: translate(80px, 0)
+			transition: opacity 0.5s $cub 0.8s, transform 0.5s $cub 0.8s
 			+r(1599)
 				+rem(font-size, 19px)
 			+r(1280)
@@ -682,7 +690,7 @@ body
 		display: block
 		.project-info-contaner
 			overflow: hidden
-			transition: height 0.5s cubic-bezier(.83,.28,.6,.59)
+			transition: height 0.5s $cub
 			height: 0
 			position: relative
 			will-change: height
@@ -761,6 +769,8 @@ body
 					.project-info-contaner
 						transition-delay: 1.1s
 .projects-hash
+	opacity: 0
+	transition: opacity 0.5s $cub 0.4s
 	.hash-item
 		+rem(font-size, 18px)
 		color: $black
@@ -787,9 +797,9 @@ body
 
 .fadeIn
 	-webkit-animation-name: fadeIn
-	-webkit-animation-timing-function: cubic-bezier(.83,.28,.6,.59)
+	-webkit-animation-timing-function: $cub
 	animation-name: fadeIn
-	animation-timing-function: cubic-bezier(.83,.28,.6,.59)
+	animation-timing-function: $cub
 
 @-webkit-keyframes fadeLeftToRight 
 	0% 
@@ -805,9 +815,9 @@ body
 
 .fadeLeftToRight
 	-webkit-animation-name: fadeLeftToRight
-	-webkit-animation-timing-function: cubic-bezier(.83,.28,.6,.59)
+	-webkit-animation-timing-function: $cub
 	animation-name: fadeLeftToRight
-	animation-timing-function: cubic-bezier(.83,.28,.6,.59)
+	animation-timing-function: $cub
 
 @-webkit-keyframes fadeOut 
 	0% 
@@ -830,9 +840,9 @@ body
 
 .fadeOut
 	-webkit-animation-name: fadeOut;
-	-webkit-animation-timing-function: cubic-bezier(.83,.28,.6,.59)
+	-webkit-animation-timing-function: $cub
 	animation-name: fadeOut
-	animation-timing-function: cubic-bezier(.83,.28,.6,.59)
+	animation-timing-function: $cub
 
 
 .cap
@@ -889,7 +899,10 @@ body
 			.projects-item
 				height: 100vh
 				.project-info-contaner
-					height: 100%
+					height: 0
+					transition-delay: 1.1s
+					.project-info__inner
+						height: 100vh
 				.projects-image
 					height: 100vh
 					img
@@ -921,6 +934,22 @@ body
 		display: inline-block
 		width: 50%
 		+rem(padding, 25px 0)
+		opacity: 0
+		transition: opacity 0.5s $cub 0.9s
+		&:nth-child(2)
+			transition-delay: 1s
+		&:nth-child(3)
+			transition-delay: 1.1s
+		&:nth-child(4)
+			transition-delay: 1.2s
+		&:nth-child(5)
+			transition-delay: 1.3s
+		&:nth-child(6)
+			transition-delay: 1.4s
+		&:nth-child(7)
+			transition-delay: 1.5s
+		&:nth-child(8)
+			transition-delay: 1.6s
 		span
 			+rem(font-size, 18px)
 			+rem(letter-spacing, 0.5px)
@@ -955,18 +984,20 @@ body
 				z-index: 2
 		&.is-visible
 			transform: translate(0, 0)
-			transition: transform 0.5s cubic-bezier(.83,.28,.6,.59)
+			transition: transform 0.5s $cub
 			will-change: transform
 			&.fadeOut
 				transform: scale(0.9)
 				opacity: 0.5
-				transition: transform 0.5s cubic-bezier(.83,.28,.6,.59), opacity 0.5s cubic-bezier(.83,.28,.6,.59)
+				transition: transform 0.5s $cub, opacity 0.5s $cub
 				will-change: transform
 .hash
 	position: absolute
 	left: 25%
 	+rem(top, 30px)
 	z-index: 5
+	transition: transform 0.5s $cub 0.3s
+	transform: translate(0,-60px)
 	+r(1170)
 		left: 28%
 	.hash-trigger
@@ -1071,7 +1102,8 @@ body
 			width: 40%
 		&.content-right
 			width: 60%
-			background-color: $pGrey
+			background-color: transparent
+			transition: background-color 0.5s $cub 0.9s
 			&::after, &::before
 				z-index: -1
 	.projects-hash
@@ -1083,6 +1115,11 @@ body
 		.hash-item
 			font-size: 10px
 			text-transform: uppercase
+.content-portfolio-inner
+	.content-side
+		&.content-left
+			&::after
+				display: none
 .content-404
 	background-image: url(../img/404.jpg)
 	background-size: cover
@@ -1113,10 +1150,16 @@ body
 			.grid
 				li
 					+rem(padding, 10px)
+					&.load
+						a
+							position: relative
+							opacity: 0
+							transform: translate(0, 20px)
+							transition: transform 0.5s $cub 1.3s, opacity 0.5s $cub 1.3s
 					.projects-hash
 						bottom: auto
-						+rem(top, 25px)
-						+rem(left, 40px)
+						+rem(top, 15px)
+						+rem(left, 30px)
 						.hash-item
 							+rem(font-size, 10px)
 							text-transform: uppercase
@@ -1124,9 +1167,9 @@ body
 							+rem(letter-spacing, 2.5px)
 					.descr
 						position: absolute
-						+rem(bottom, 20px)
-						+rem(left, 40px)
-						+rem(right, 40px)
+						+rem(bottom, 10px)
+						+rem(left, 30px)
+						+rem(right, 30px)
 						.name
 							font-family: "Medium"
 							+rem(font-size, 24px)
@@ -1161,30 +1204,37 @@ body
 		height: 100%
 		+rem(margin-right, 5px)
 		+rem(padding, 0 20px 0 0)
-	.grid
-		+clr
-		font-size: 0
-		li
-			+rem(padding, 5px)
-			width: 33.33%
-			display: inline-block
-			vertical-align: top
-			+r(1365)
-				width: 50%
-			a
-				display: block
-				cursor: pointer
-				&:hover
-					.image__cover
-						opacity: 0.5
-				.image__cover
-					transition: opacity 0.3s ease
-					img
-						max-width: 100%
-						display: block
-		&.grid-line-two
+		.grid
+			+clr
+			font-size: 0
 			li
-				width: 50%
+				+rem(padding, 5px)
+				width: 33.33%
+				display: inline-block
+				vertical-align: top
+				&.load
+					a
+						position: relative
+						opacity: 0
+						transform: translate(0, 20px)
+						transition: transform 0.5s $cub 1.3s, opacity 0.5s $cub 1.3s
+				+r(1365)
+					width: 50%
+				a
+					display: block
+					cursor: pointer
+
+					&:hover
+						.image__cover
+							opacity: 0.5
+					.image__cover
+						transition: opacity 0.3s ease
+						img
+							max-width: 100%
+							display: block
+			&.grid-line-two
+				li
+					width: 50%
 				
 
 .lg-backdrop
@@ -1274,6 +1324,9 @@ body
 			top: 50%
 			left: 50%
 			+rem(margin, -11px 0 0 -11px)
+			opacity: 0
+			transform: translate(20px, 0)
+			transition: 0.5s $cub 0.5s
 			path
 				fill: $black
 
@@ -1307,6 +1360,12 @@ body
 	z-index: 2
 	.slick-slide
 		opacity: 1!important
+		.gallery-info__container
+			opacity: 0
+			transition: 0.3s $cub
+		&.slick-active
+			.gallery-info__container
+				opacity: 1
 	a
 		&.gallery-news__item
 			width: 25%
@@ -1314,6 +1373,8 @@ body
 			display: inline-block
 			overflow: hidden
 			position: relative
+			opacity: 0
+			transition: 0.5s $cub 0.9s
 			.gallery-info__container
 				height: 100%
 				overflow: hidden
@@ -1394,6 +1455,8 @@ body
 			height: 50vh
 			display: block
 			float: right
+			opacity: 0
+			transition: 0.5s $cub 0.7s
 			.gallery-info__container
 				height: 100%
 				overflow: hidden
@@ -1403,21 +1466,23 @@ body
 				&::after
 					content: ''
 					width: 1px
-					height: 100%
+					height: 0%
 					left:calc(69% - 5rem)
 					background-color: $line
 					position: absolute
 					top: 0
 					z-index: 1
+					transition: height 0.5s $cub
 				&::before
 					content: ''
 					width: 1px
-					height: 100%
+					height: 0%
 					left: 9%
 					position: absolute
 					background-color: $line
 					top: 0
 					z-index: 1
+					transition: height 0.5s $cub
 			.gallery-inner
 				// margin-left: -100%
 				height: 50vh
@@ -1507,40 +1572,44 @@ body
 		&::after
 			content: ''
 			width: 1px
-			height: 100%
+			height: 0
 			left:calc(50% - 5rem)
 			background-color: $line
 			position: absolute
 			top: 0
 			z-index: -1
+			transition: height 0.5s $cub 
 		&::before
 			content: ''
 			width: 1px
-			height: 100%
+			height: 0
 			left: 20%
 			position: absolute
 			background-color: $line
 			top: 0
 			z-index: -1
+			transition: height 0.5s $cub 
 	.gallery-news
 		&::after
 			content: ''
 			width: 1px
-			height: 100%
+			height: 0%
 			right:calc(50% - 5rem)
 			background-color: $line
 			position: absolute
 			top: 0
 			z-index: -1
+			transition: height 0.5s $cub 
 		&::before
 			content: ''
 			width: 1px
-			height: 100%
+			height: 0%
 			right: 20%
 			position: absolute
 			background-color: $line
 			top: 0
 			z-index: -1
+			transition: height 0.5s $cub 
 
 .content-services
 	.breadcrumbs
@@ -1581,7 +1650,9 @@ body
 						z-index: 1
 					img
 						left: 0%
-						transform: translate(0%, -50%)
+						transform: translate(0%, -50%) scale(1)
+						filter: grayscale(1)
+						transition: filter 0.3s ease, transform 0.8s ease-out
 		&:last-of-type
 			right: 0
 			.service-container__inner
@@ -1591,7 +1662,9 @@ body
 					img
 						right: 0
 						left: auto!important
-						transform: translate(0%, -50%)
+						transform: translate(0%, -50%) scale(1)
+						filter: grayscale(1)
+						transition: filter 0.3s ease, transform 0.8s ease-out
 		.service-container__inner
 			height: 100vh
 			.image__cover
@@ -1609,12 +1682,17 @@ body
 					top: 50%
 					object-fit: cover
 					height: 100vh
+			&:hover
+				.image__cover
+					img
+						filter: grayscale(0)
+						transform: translate(0%, -50%) scale(1.1)
 			.service-text
 				position: absolute
 				top: 30%
 				+rem(left, 70px)
 				+rem(width, 480px)
-				pointer-events: none
+				// pointer-events: none
 				+r(1366)
 					+rem(left, 50px)
 				+r(1280)
@@ -1650,11 +1728,18 @@ body
 						+rem(font-size, 18px)
 						+rem(letter-spacing, 0.9px)
 						line-height: 1.6
+						+rem(margin-bottom, 15px)
 						color: $white
 						+r(1599)
 							+rem(font-size, 16px)
 						+r(1280)
 							+rem(font-size, 14px)
+					.btn
+						background-color: transparent
+						padding-left: 0
+						padding-right: 0
+						span
+							color: $white
 
 		&.scale
 			.service-container
@@ -1666,6 +1751,24 @@ body
 		width: 100%
 		text-align: left
 		+rem(padding, 15px 0)
+		opacity: 0
+		transition: opacity 0.5s $cub 0.8s
+		&:nth-child(2)
+			transition-delay: 0.9s
+		&:nth-child(3)
+			transition-delay: 1s
+		&:nth-child(4)
+			transition-delay: 1.1s
+		&:nth-child(5)
+			transition-delay: 1.2s
+		&:nth-child(6)
+			transition-delay: 1.3s
+		&:nth-child(7)
+			transition-delay: 1.4s
+		&:nth-child(8)
+			transition-delay: 1.5s
+		&:nth-child(9)
+			transition-delay: 1.6s
 		span
 			font-family: "Book"
 			+rem(font-size, 18px)
@@ -2016,6 +2119,16 @@ body
 	width: 100%
 	height: 100%
 	position: relative
+.maps
+	width: 55vw
+.maps-container
+	position: absolute
+	top: 0
+	height: 100%
+	right: 0
+	width: 0
+	opacity: 0
+	transition: width 0.5s $cub 1.1s, opacity 0.5s $cub 1.1s
 .projects-inner
 	.social
 		+rem(margin, 30px 0)
@@ -2084,10 +2197,21 @@ body
 			color: $white
 			font-family: "Book"
 			line-height: 25px
+.ps-container
+	& > .ps-scrollbar-y-rail
+		opacity: 0
+		transition: opacity 0.5s $cub 1.4s
+.content-project-inner, .content-contacts, .content-portfolio-inner
+	.projects-descr
+		opacity: 0
+		transform: translate(80px, 0)
+		transition: transform 0.5s $cub 0.9s, opacity 0.5s $cub 0.9s
 .load-page
 	.logo
 		transform: none
 	.breadcrumbs
+		transform: none
+	.hash
 		transform: none
 	.lang
 		transform: none
@@ -2095,6 +2219,8 @@ body
 		.pagination-item
 			opacity: 1
 	.footer
+		opacity: 1
+	.projects-hash
 		opacity: 1
 	.content
 		.content-side
@@ -2122,6 +2248,76 @@ body
 		.projects-item
 			.project-info-contaner
 				height: 50vh
+	.project-sorting
+		.sort
+			opacity: 1
+	.projects
+		.projects-inner
+			.projects-title, .projects-subtitle
+				opacity: 1
+				transform: none
+	.content-project, .content-project-inner, .content-portfolio-inner
+		.content-side
+			&.content-right
+				background-color: $pGrey
+	.content-project-inner, .content-contacts, .content-portfolio-inner
+		.projects-descr
+			opacity: 1
+			transform: none
+	.scroller-gallery
+		.scroller-container 
+			.grid 
+				li
+					&.load
+						a
+							opacity: 1
+							transform: none
+	.ps-container
+		& > .ps-scrollbar-y-rail
+			opacity: 1
+	.gallery-news 
+		.gallery-news__item
+			opacity: 1
+	.content-news
+		.projects-gallery
+			&::after
+				height: 100%
+			&::before
+				height: 100%
+		.gallery-news
+			&::after
+				height: 100%
+			&::before
+				height: 100%
+			div
+				&.gallery-news__item 
+					.gallery-info__container
+						&::after
+							height: 100%
+						&::before
+							height: 100%
+	.maps-container
+		width: 100%
+		opacity: 1
+	.projects-triggers
+		.projects-triggers__item
+			opacity: 1
+	.content-portfolio-two
+		.projects-gallery
+			.projects
+				.projects-item
+					.project-info-contaner
+						height: 100%
+	.content
+		.back
+			div
+				opacity: 1
+				transform: none
+
+
+
+
+
 .siteLoader
 	position: fixed
 	top: 0
@@ -2157,7 +2353,7 @@ body
 				bottom: 0
 				left: 0
 				background-color: $black
-				transition: height 0.3s cubic-bezier(.83,.28,.6,.59)
+				transition: height 0.3s $cub
 				position: absolute
 				z-index: 5
 			&::after
@@ -2167,7 +2363,7 @@ body
 				top: 0
 				left: 0
 				background-color: $black
-				transition: height 0.3s cubic-bezier(.83,.28,.6,.59)
+				transition: height 0.3s $cub
 				position: absolute
 				z-index: 5
 			&.hide
@@ -2214,6 +2410,7 @@ body
 	z-index: 19
 	display: none
 	&.is-loader
+		display: block
 		.lines-container
 			.lines
 				.line
@@ -2222,14 +2419,14 @@ body
 	.lines-container
 		position: absolute
 		width: 70px
-		height: 52px
-		margin: -26px 0 0 -35px
+		height: 40px
+		margin: -20px 0 0 -35px
 		left: 50%
 		top: 50%
 		.lines
 			position: relative
 			width: 70px
-			height: 52px
+			height: 40px
 			.line
 				overflow: hidden
 				width: 100%
@@ -2241,7 +2438,7 @@ body
 					&:before
 						animation-delay: 0.3s
 				&:nth-child(2)
-					top: 38px
+					top: 18px
 				&:nth-child(3)
 					bottom: 0
 					&:before

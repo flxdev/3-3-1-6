@@ -7,7 +7,7 @@ block content
 	include includes/_header
 	include includes/_menu
 	.wrapper
-		.content.content-project-inner
+		.content.content-project-inner(data-page="catalog-inner")
 			a.logo(href="/")
 			ul.breadcrumbs
 				li
@@ -47,7 +47,7 @@ block content
 						.scroller-container#scroll-container
 							ul.grid.grid-line-two#l-gallery
 								mixin gridItem(link, hash, name, area, price)
-									li(data-src=link)
+									li(class="load" data-src=link)
 										a
 											.image__cover
 												img(src=link)
