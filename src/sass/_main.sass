@@ -105,6 +105,7 @@ body
 			div
 				path 
 					stroke: $black
+	
 			&:hover
 				div
 					path
@@ -124,10 +125,18 @@ body
 			div
 				path 
 					stroke: $white
+				.hover					
+					fill: $white
+					transform: matrix3d(1,0,0.00,0,0.00,0,1.00,0,0,-1,0,0,0,0,0,1);
+					transform-origin: 100% 100% 0px; 
+					transition: all 0.2s ease 0s;
+					-webkit-transform-origin: 100% 100% 0px; 
+					-webkit-transition: all 0.2s ease 0s;
 			&:hover
 				div
-					path
-						animation: animFillWhite 0.3s both
+					.hover
+						transform: none;
+						fill: $white
 			&.active
 				div
 					path
@@ -135,8 +144,9 @@ body
 						fill: $white
 				&:hover
 					div
-						path
-							animation: none
+						.hover
+							transform: none;
+							fill: $white
 @keyframes animFillWhite
 	0%
 		fill: transparent
@@ -1632,9 +1642,66 @@ body
 					div
 					path
 						animation: animFillWhite 0.35s ease both
+.content-services
+	&::after
+		content: ""
+		width: 1px
+		height: 0
+		transition: height 0.5s $cub
+		background-color: $line
+		top: 0
+		left: calc(50% - 5rem)
+		position: absolute
+		z-index: -1
+	&::before
+		content: ""
+		width: 1px
+		height: 0
+		transition: height 0.5s $cub
+		background-color: $line
+		top: 0
+		position: absolute
+		left: 20%
+.services-line
+	position: absolute
+	height: 100%
+	width: 100%
+	top: 0
+	left: 0
+	z-index: -1
+	&::after
+		content: ""
+		width: 1px
+		height: 0
+		transition: height 0.5s $cub
+		background-color: $line
+		top: 0
+		left: 20%
+		position: absolute
+	&::before
+		content: ""
+		width: 1px
+		height: 0
+		transition: height 0.5s $cub
+		background-color: $line
+		top: 0
+		position: absolute
+		right: 20%
 .services-container
 	height: 100%
-	background-color: #000000
+	position: relative
+	background-color: transparent
+	transition: background-color 0.5s $cub 1.5s
+	&::after
+		content: ""
+		width: 1px
+		height: 0
+		transition: height 0.5s $cub
+		background-color: $line
+		top: 0
+		left: calc(50% + 5rem)
+		position: absolute
+		z-index: -1
 	.services-sides
 		height: 100%
 		width: 50%
@@ -1642,7 +1709,10 @@ body
 		position: absolute
 		top: 0
 		overflow: hidden
+		height: 0
+		transition: height 0.3s $cub 0.3s
 		&:first-of-type
+			transition-delay: 1.2s
 			left: 0
 			.service-container__inner
 				.image__cover
@@ -1650,10 +1720,11 @@ body
 						z-index: 1
 					img
 						left: 0%
-						transform: translate(0%, -50%) scale(1)
+						transform: translate(0%, -50%)
 						filter: grayscale(1)
-						transition: filter 0.3s ease, transform 0.8s ease-out
+						transition: filter 0.3s ease
 		&:last-of-type
+			transition-delay: 1.3s
 			right: 0
 			.service-container__inner
 				.image__cover
@@ -1662,17 +1733,21 @@ body
 					img
 						right: 0
 						left: auto!important
-						transform: translate(0%, -50%) scale(1)
+						transform: translate(0%, -50%)
 						filter: grayscale(1)
-						transition: filter 0.3s ease, transform 0.8s ease-out
+						transition: filter 0.3s ease
 		.service-container__inner
 			height: 100vh
+			position: relative
+			background-color: $black
+			// opacity: 0
 			.image__cover
 				width: 100%
 				height: 100%
 				position: relative
 				overflow: hidden
 				opacity: 0.4
+				transition: transform 0.8s ease
 				.img_wrapper
 					height: 100%
 					width: 100%
@@ -1684,9 +1759,10 @@ body
 					height: 100vh
 			&:hover
 				.image__cover
+					transform: scale(1.1)
 					img
 						filter: grayscale(0)
-						transform: translate(0%, -50%) scale(1.1)
+						transform: translate(0%, -50%)
 			.service-text
 				position: absolute
 				top: 30%
@@ -2313,8 +2389,23 @@ body
 			div
 				opacity: 1
 				transform: none
-
-
+	.services-container
+		background-color: $black
+		.services-sides
+			height: 100%
+	.content-services
+		&::after
+			height: 100%
+		&::before
+			height: 100%
+	.services-line
+		&::after
+			height: 100%
+		&::before
+			height: 100%
+	.services-container
+		&::after
+			height: 100%
 
 
 
@@ -2465,3 +2556,13 @@ body
 		left: -74px
 	100%
 		left: -74px
+
+
+.gallery-pagination
+	.pagination-item_right
+		#svg_2
+			overflow: hidden
+			position: relative
+			&::after
+				content: ""
+				position: absolute
