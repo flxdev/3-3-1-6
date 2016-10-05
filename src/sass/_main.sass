@@ -103,18 +103,30 @@ body
 			transition: opacity 0.5s $cub 1.5s
 			opacity: 0
 			div
-				path 
+				rect 
 					stroke: $black
-	
+				.hover
+					fill: $black
+					transform: matrix3d(1,0,0.00,0,0.00,0,1.00,0,0,-1,0,0,0,0,0,1);
+					transform-origin: 100% 100% 0px; 
+					transition: all 0.2s ease 0s;
+					-webkit-transform-origin: 100% 100% 0px; 
+					-webkit-transition: all 0.2s ease 0s;
 			&:hover
 				div
 					path
-						animation: animFillBlack 0.3s both
+						// animation: animFillBlack 0.3s both
+					.hover
+						transform: none;
+						fill: $black
 			&.active
 				div
 					path
 						stroke: $white
 						fill: $white
+					.hover
+						transform: none;
+						fill: $black
 				&:hover
 					div
 						path
@@ -125,7 +137,7 @@ body
 			div
 				path 
 					stroke: $white
-				.hover					
+				.hover
 					fill: $white
 					transform: matrix3d(1,0,0.00,0,0.00,0,1.00,0,0,-1,0,0,0,0,0,1);
 					transform-origin: 100% 100% 0px; 
@@ -1096,17 +1108,46 @@ body
 					span
 						&::after
 							background-color: $white
+.content-portfolio-four
+	.gallery-pagination 
+		.pagination-item
+			&.pagination-item_left 
+				div 
+					rect
+						stroke: $white
+					.hover
+						fill: $white
+						transform: matrix3d(1,0,0.00,0,0.00,0,1.00,0,0,-1,0,0,0,0,0,1);
+						transform-origin: 100% 100% 0px; 
+						transition: all 0.2s ease 0s;
+						-webkit-transform-origin: 100% 100% 0px; 
+						-webkit-transition: all 0.2s ease 0s;
+				&:hover
+					div
+						.hover
+							transform: none
+				&.active
+					div
+						.hover
+							transform: none
 .content-portfolio-inner, .content-project, .content-project-inner, .content-contacts
 	.gallery-pagination 
 		.pagination-item
 			&.pagination-item_left 
 				div 
-					path
+					rect
 						stroke: $white
+					.hover
+						fill: $white
+						transform: matrix3d(1,0,0.00,0,0.00,0,1.00,0,0,-1,0,0,0,0,0,1);
+						transform-origin: 100% 100% 0px; 
+						transition: all 0.2s ease 0s;
+						-webkit-transform-origin: 100% 100% 0px; 
+						-webkit-transition: all 0.2s ease 0s;
 				&:hover
 					div
-						path
-							animation: animFillWhite 0.35s both
+						.hover
+							transform: none
 	.content-side
 		&.content-left
 			width: 40%
@@ -1355,12 +1396,24 @@ body
 		.pagination-item
 			&.pagination-item_left 
 				div 
-					path
+					rect
 						stroke: $white
-			&.pagination-item_right
+					.hover
+						fill: $white
+				&:hover
+					div
+						.hover
+							transform: none
+			&.pagination-item_right 
 				div 
 					path
 						stroke: $black
+					.hover
+						fill: $black
+				&:hover
+					div
+						.hover
+							transform: none
 	.pagination
 		position: absolute
 		+rem(left, -80px)
@@ -1636,12 +1689,24 @@ body
 		.pagination-item
 			&.pagination-item_left 
 				div 
-					path
+					rect
 						stroke: $white
+					.hover
+						fill: $white
 				&:hover
 					div
+						.hover
+							transform: none
+			&.pagination-item_right 
+				div 
 					path
-						animation: animFillWhite 0.35s ease both
+						stroke: $white
+					.hover
+						fill: $white
+				&:hover
+					div
+						.hover
+							transform: none
 .content-services
 	&::after
 		content: ""
