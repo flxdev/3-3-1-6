@@ -45,7 +45,7 @@ body
 	position: fixed
 	+rem(left, 240px)
 	+rem(top, 30px)
-	z-index: 5
+	z-index: 10
 	transition: transform 0.5s $cub 0.3s
 	transform: translate(0,-60px)
 	li
@@ -84,7 +84,7 @@ body
 	position: fixed
 	left: 50%
 	top: 0
-	z-index: 5
+	z-index: 10
 	transform: translate(-50%)
 	.pagination-item
 		float: left
@@ -488,6 +488,10 @@ body
 			&.content-right
 				&::after, &::before
 					// display: none
+	p
+		+rem(font-size, 18px)
+		line-height: 1.4
+		letter-spacing: 0.4px
 	.content-side
 		height: 100%
 		position: relative
@@ -1875,6 +1879,7 @@ body
 							+rem(font-size, 16px)
 						+r(1280)
 							+rem(font-size, 14px)
+
 					.btn
 						background-color: transparent
 						padding-left: 0
@@ -2359,6 +2364,37 @@ body
 		transition: height 0.5s $cub
 	.breadcrumbs
 		+rem(left, 120px)
+		li
+			&:not(:last-of-type)
+				&::after 
+					color: $white
+		.breadcrumbs-item
+			color: $white
+			div
+				path
+					fill: $white
+	.gallery-pagination
+		.pagination-item
+			&.pagination-item_left 
+				div 
+					rect
+						stroke: $white
+					.hover
+						fill: $white
+				&:hover
+					div
+						.hover
+							transform: none
+			&.pagination-item_right 
+				div 
+					path
+						stroke: $white
+					.hover
+						fill: $white
+				&:hover
+					div
+						.hover
+							transform: none
 .section-list
 	position: relative
 	width: 100%
@@ -2385,9 +2421,10 @@ body
 		position: absolute
 		+rem(left, -80px)
 	.section-list__inner
-		position: relative
+		position: absolute
 		width: 100%
 		height: 100%
+		overflow: hidden
 		&::after
 			content: ""
 			width: 1px
@@ -2410,8 +2447,294 @@ body
 			position: absolute
 			width: 100%
 			height: 100%
+			overflow: hidden
+			opacity: 0
+			visibility: hidden
+			z-index: 1
+			&.is-active
+				opacity: 1
+				visibility: visible
+			&.is-animating
+				z-index: 5
+				opacity: 1
+				visibility: visible
+			&.bottom
+				.section__wrapper
+					.section__container
+						top: auto
+						bottom: 0
+			&.top
+				.section__wrapper
+					.section__container
+						top: 0
+						bottom: auto
+			.section__wrapper
+				position: absolute
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				overflow: hidden
+				.section__container
+					width: 100%
+					height: 100vh
+					position: absolute
+					top: 0
+					left: 0
+					z-index: 9
+					background-size: cover
+				.section__image
+					position: absolute
+					top: 0
+					left: 0
+					width: 100%
+					height: 100%
+					.img
+						position: absolute
+						width: 100%
+						height: 100%
+						background-size: cover
+						background-position: 50%
+				.section__head
+					position: absolute
+					top: 50%
+					left: 50%
+					transform: translate(-50%,-50%)
+					width: 100%
+					max-width: 60%
+					margin-top: 6%
+					.head__title
+						font-family: "Heavy"
+						+rem(font-size, 72px)
+						color: $white
+						text-align: center
+						+rem(margin-bottom, 80px)
+						+r(1279)
+							+rem(font-size, 45px)
+					.anchors__sections
+						text-align: center
+						.anchors__item
+							display: inline-block
+							vertical-align: middle
+							+rem(margin, 0 35px)
+							span
+								font-family: "Medium"
+								+rem(font-size, 24px)
+								color: $lGrey
+								+rem(padding, 5px 20px)
+								position: relative
+								&::after
+									content: ""
+									width: 0
+									transition: width 0.3s ease
+									position: absolute
+									top: 57%
+									left: 0
+									height: 1px
+									background-color: $white
+							&:hover
+								span
+									&::after
+										width: 100%
+					.virtual__tour
+						text-align: center
+						margin-top: 20%
+				.content-side
+					&::after, &::before
+						display: none
+				.container__images
+					.images__action
+						.img__item
+							position: absolute
+							top: 0
+							left: 0
+							height: 100%
+							width: 100%
+							z-index: 2
+							opacity: 0
+							transition-property: opacity , visibility
+							transition-timing-function: $cub
+							cursor: pointer
+							overflow: hidden
+							&.active
+								z-index: 3
+								opacity: 1
+							&.in
+								transition-duration: 0.3s
+							&.out
+								transition-delay: 0.3s 
+							.img
+								position: relative
+								width: 100%
+								height: 100%
+								background-size: cover
+								background-position: 50%
+				.container__text
+					background-color: $white
+					position: relative
+					width: 100%
+					height: 100%
+					&::before
+						content: ""
+						position: absolute
+						top: 0
+						height: 100%
+						width: 1px
+						background-color: $line
+						left: calc(69% - 5rem)
+					&::after
+						content: ""
+						position: absolute
+						top: 0
+						height: 100%
+						width: 1px
+						background-color: $line
+						+rem(left, 80px)
+					.container__text-inner
+						position: absolute
+						top: 50%
+						transform: translate(0, -50%)
+						+rem(left, 80px)
+						.head
+							font-family: "Heavy"
+							+rem(font-size, 72px)
+							color: $black
+							max-width: 50%
+							width: 100%
+							line-height: 1.2
+							+rem(margin-bottom, 30px)
+							+r(1599)
+								+rem(font-size, 64px)
+							+r(1280)
+								+rem(font-size, 48px)
+						.descr
+							+rem(margin-left, 80px)
+							max-width: 50%
+							+r(1600)
+								max-width: 75%
+							+r(1280)
+								max-width: 75%
+							p 
+								line-height: 1.6
+								letter-spacing: 0.5px
+								+r(1599)
+									+rem(font-size, 16px)
+								+r(1280)
+									+rem(font-size, 14px)
+// .breadcrumbs
+// 	&[data-color="bureau"]
+// 		.breadcrumbs-item
+// 			color: $black
+// 			div
+// 				path
+// 					fill: $black
+// 		li:not(:last-of-type):after
+// 			color: $black
+.gallery-pagination
+	&[data-color="bureau"]
+		.pagination-item
+			&.pagination-item_right
+				div 
+					path
+						stroke: $black
+					.hover
+						fill: $black
+
+.container__full
+	width: 100%
+	height: 100%
+	background-color: $white
+	position: relative
+	&::before
+		content: ""
+		width: 1px
+		height: 100%
+		background-color: $line
+		position: absolute
+		right: 20%
+		top: 0
+	&::after
+		content: ""
+		width: 1px
+		height: 100%
+		background-color: $line
+		position: absolute
+		left: 20%
+		top: 0
+	.line
+		&::after
+			content: ""
+			width: 1px
+			height: 100%
+			background-color: $line
+			position: absolute
+			left: 50%
 			top: 0
-			left: 0
+	.container__full-inner
+		width: 100%
+		height: 100%
+		&::before
+			content: ""
+			width: 1px
+			height: 100%
+			background-color: $line
+			position: absolute
+			left: calc(50% - 5rem)
+			top: 0
+		&::after
+			content: ""
+			width: 1px
+			height: 100%
+			background-color: $line
+			position: absolute
+			left: calc(50% + 5rem)
+			top: 0
+	.content-left
+		background-image: url(../img/clients-bg.png)
+		background-size: contain
+		background-repeat: no-repeat
+		background-position: 100% 100%
+		.projects-inner
+			left: 36%
+	.clients
+		width: 100%
+		height: 100%
+		+rem(margin-left, -80px)
+		.clients-list
+			position: absolute
+			top: 55%
+			transform: translate(0, -50%)
+			columns: 3
+			width: 100%
+			z-index: 4
+			.clients__item
+				display: block
+				width: 100%
+				span
+					margin: 12% 0
+					display: inline-block
+					color: $Grey
+					+rem(font-size, 18px)
+					position: relative
+					+rem(padding, 0 3px)
+					&::after
+						content: ""
+						height: 1px
+						width: 0
+						left: 0
+						top: 58%
+						position: absolute
+						background-color: $Grey
+						transition: width 0.3s ease
+					+r(1599)
+						+rem(font-size, 16px)
+					+r(1280)
+						+rem(font-size, 14px)
+				&:hover
+					span
+						&::after
+							width: 100%
+
 
 .load-page
 	.logo

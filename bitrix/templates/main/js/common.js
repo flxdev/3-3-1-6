@@ -829,7 +829,7 @@ slides.prototype._init = function () {
 
 	this.slideCount = this.slideAll.length;
 
-	$(this.slideAll[0]).addClass("current");
+	$(this.slideAll[0]).addClass("is-active");
 
 	this.pagination = $(this.el).parents(".wrapper").find(".pagination");
 	this.btnNext = $(this.el).parents(".wrapper").find(".pagination-item__right");
@@ -842,6 +842,8 @@ slides.prototype._init = function () {
 	} else {
 		$(this.countAll).text(this.slideCount)
 	}
+
+	this.tl = new TimelineLite();
 
 	this._Events();
 }
@@ -863,8 +865,9 @@ slides.prototype._Events = function() {
 slides.prototype._Next = function() {
 	var self = this;
 
-	this.active = $(this.el).find(".current");
+	this.active = $(this.el).find(".is-active");
 	this.NextSlide = $(this.active).next();
+	this.activeAttr = $(this.NextSlide).data("section");
 
 	if(!$(this.NextSlide).length) {
 		return false;
@@ -878,26 +881,39 @@ slides.prototype._Next = function() {
 
 	++this.current
 
-	$(this.active).addClass("out");
-	$(this.NextSlide).addClass("current in").siblings().removeClass("current");
+	$(this.active).addClass("is-animating top");
+	$(this.NextSlide).addClass("is-active").siblings().removeClass("is-active");
+
+	$(this.active).parents(".content").find(".breadcrumbs").attr("data-color", " ");
+	$(this.active).parents(".content").find(".breadcrumbs").attr("data-color", this.activeAttr)
+
+	$(this.active).parents(".content").find(".gallery-pagination").attr("data-color", " ");
+	$(this.active).parents(".content").find(".gallery-pagination").attr("data-color", this.activeAttr)
+
+	self.tl
+		.set($(this.active).find(".section__wrapper"), {
+			top: 0,
+			height: "100%",
+			ease: Power0.easeNone
+		})
+		.to($(this.active).find(".section__wrapper"), 1.2, {
+			height: "0%",
+			clearProps: "all",
+			onComplete: function() {
+				$(self.el).find(".is-active").siblings().removeClass("is-animating top");
+				self._end();
+			}
+		})
 
 	this._update();
-
-	this.slideAll.forEach(function(item){
-		setTimeout(function(){
-			$(item).removeClass("in out");
-		},500)
-	});
-	setTimeout(function(){
-		self._end();
-	},500)
 };
 
 slides.prototype._Prev = function() {
 	var self = this;
 
-	this.active = $(this.el).find(".current");
+	this.active = $(this.el).find(".is-active");
 	this.PrevSlide = $(this.active).prev();
+	this.activeAttr = $(this.PrevSlide).data("section");
 
 	if(!$(this.PrevSlide).length) {
 		return false;
@@ -911,30 +927,74 @@ slides.prototype._Prev = function() {
 
 	--this.current
 
-	$(this.active).addClass("out");
-	$(this.PrevSlide).addClass("current in").siblings().removeClass("current");
+	$(this.active).addClass("is-animating bottom");
+	$(this.PrevSlide).addClass("is-active").siblings().removeClass("is-active");
 
-	this.slideAll.forEach(function(item){
-		setTimeout(function(){
-			$(item).removeClass("in out");
-		},500)
-	});
-	setTimeout(function(){
-		self._end();
-	},500)
+	$(this.active).parents(".content").find(".breadcrumbs").attr("data-color", " ");
+	$(this.active).parents(".content").find(".breadcrumbs").attr("data-color", this.activeAttr)
+
+	$(this.active).parents(".content").find(".gallery-pagination").attr("data-color", " ");
+	$(this.active).parents(".content").find(".gallery-pagination").attr("data-color", this.activeAttr)
+
+	self.tl
+		.set($(this.active).find(".section__wrapper"), {
+			bottom: 0,
+			top: "auto",
+			height: "100%",
+			ease: Power0.easeNone
+		})
+		.to($(this.active).find(".section__wrapper"), 1.2, {
+			height: "0%",
+			clearProps: "all",
+			onComplete: function() {
+				$(self.el).find(".is-active").siblings().removeClass("is-animating bottom");
+				self._end();
+			}
+		})
 };
 
 slides.prototype._end = function() {
 	this.isAnimating = false;
-	console.log(this.current)
+	// console.log(this.current)
 };
 
 slides.prototype._update = function() {
-	
+
 };
 
 window.slides = slides
 
+
+function triggerImage() {
+	var container = $(".images__action"),
+		trigger = container.find(".img__item"),
+		isAnimate = false;
+
+	trigger.first().addClass("active");
+
+	trigger.on("click", function(){
+		var _ = $(this),
+			next = _.next(),
+			first = _.parent().find(".img__item").first();
+		if(isAnimate) {
+			return false;
+		}
+
+		isAnimate = true;
+
+ 		_.addClass("out");
+ 		if(next.length) {
+ 			next.addClass("active in").siblings().removeClass("active");
+ 		} else {
+ 			first.addClass("active in").siblings().removeClass("active");
+ 		}
+ 		setTimeout(function() {
+ 			isAnimate = false;
+ 			trigger.removeClass("in out");
+ 		}, 500);
+
+	});
+}
 
 $(document).ready(function() {
 	loadedImg()
@@ -1087,6 +1147,7 @@ $(document).ready(function() {
 	}	
 
 	// scroll3316();
+	
 });
 
 
