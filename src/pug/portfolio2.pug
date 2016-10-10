@@ -30,7 +30,7 @@ block content
 					.projects.projects-triggers
 						- var current = "Club Jelsomino"
 						mixin triggers(link, name)
-							a.projects-triggers__item.ajax-trigger(href="#" data-trigger=link class={active: name === current})
+							a.projects-triggers__item(href="#" data-trigger=link class={active: name === current})
 								span #{name}
 								
 						+triggers("1", "Club Jelsomino")
