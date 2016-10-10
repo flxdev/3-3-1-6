@@ -11,17 +11,17 @@ block content
 			a.logo(href="/")
 			ul.breadcrumbs
 				li
-					a.home.breadcrumbs-item(href="#")
+					a.home.breadcrumbs-item.ajax-trigger(href="#")
 						div
 							<svg viewBox="0 0 20 22.1" xmlns="http://www.w3.org/2000/svg"><path d="m10.04767,0.04746l-9.996,9l0,13l7.996,0l0,-6l4.004,0l0,6l8,0l0,-13l-10.004,-9zm8.008,20l-4.008,0l0,-6l-7.996,0l0,6l-4.004,0l0,-10.172l8,-7l8.008,7l0,10.172z"/></svg>
 				li
 					.breadcrumbs-item
 						span Recent projects
 			.gallery-pagination
-				a(href="#" class="pagination-item pagination-item_left")
+				a(href="#" class="pagination-item pagination-item_left ajax-trigger")
 					div
 						<svg viewBox="0 0 33 23" xmlns="http://www.w3.org/2000/svg"><g><rect height="9" width="14" stroke-miterlimit="10" fill="none" y="12.99216" x="0.51307"/><rect height="9" width="14" stroke-miterlimit="10" fill="none" y="12.99216" x="18.31307"/></g><g><rect class="hover" height="9" width="14" stroke-miterlimit="10" y="12.99216" x="0.51307"/><rect class="hover" height="9" width="14" stroke-miterlimit="10" y="12.99216" x="18.31307"/></g><g><rect height="9" width="14" stroke-miterlimit="10" fill="none" y="0.39216" x="0.51307"/><rect height="9" width="14" stroke-miterlimit="10" fill="none" y="0.39216" x="18.31307"/></g><g><rect class="hover" height="9" width="14" stroke-miterlimit="10" y="0.39216" x="0.51307"/><rect class="hover" height="9" width="14" stroke-miterlimit="10" y="0.39216" x="18.31307"/></g></svg>
-				a(href="#" class="pagination-item pagination-item_right")
+				a(href="#" class="pagination-item pagination-item_right ajax-trigger")
 					div
 						<svg viewBox="0 0 34 22" xmlns="http://www.w3.org/2000/svg"><g id="double"><path d="m0.53333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10" fill="none"/><path d="m19.03333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10" fill="none"/></g><g id="main"><path class="hover" d="m0.53333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10"/><path class="hover" d="m19.03333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10"/></g></svg>
 			.content-left.content-side
@@ -33,58 +33,117 @@ block content
 					.projects.gallery-carousel.rotator
 						a.projects-item.ajax-trigger(href="#")
 							.project-info-contaner.anim-container(data-animation-in="fadeIn", data-delay="0.15s", data-animation-out="fadeOut")
-								.project-info__inner
-									.projects-image
-										img(src="img/image-1a.jpg")
-									.projects-info
-											.projects-name
-												span Café de Paris 1
-													i
-											.projects-hash
-												- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-												each hash in arrHash
-													span(class="hash-item") #{hash}
+								.cover
+									.project-info__inner
+										.projects-image
+											img(src="img/main/1_2.jpg")
+										.projects-info
+												.projects-name
+													span Café de Paris 1
+														i
+												.projects-hash
+													- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+													each hash in arrHash
+														span(class="hash-item") #{hash}
 						a.projects-item.ajax-trigger(href="#")
 							.project-info-contaner.anim-container(data-animation-in="fadeIn", data-delay="0.15s", data-animation-out="fadeOut")
-								.project-info__inner
-									.projects-image
-										img(src="img/image-2.jpg")
-									.projects-info
-											.projects-name
-												span Café de Paris 2
-													i
-											.projects-hash
-												- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-												each hash in arrHash
-													span(class="hash-item") #{hash}
+								.cover
+									.project-info__inner
+										.projects-image
+											img(src="img/main/6_2.jpg")
+										.projects-info
+												.projects-name
+													span Café de Paris 2
+														i
+												.projects-hash
+													- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+													each hash in arrHash
+														span(class="hash-item") #{hash}
 						a.projects-item.ajax-trigger(href="#")
 							.project-info-contaner.anim-container(data-animation-in="fadeIn", data-delay="0.15s", data-animation-out="fadeOut")
-								.project-info__inner
-									.projects-image
-										img(src="img/image-3.jpg")
-									.projects-info
-											.projects-name
-												span Café de Paris 3
-													i
-											.projects-hash
-												- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-												each hash in arrHash
-													span(class="hash-item") #{hash}
+								.cover
+									.project-info__inner
+										.projects-image
+											img(src="img/main/10_2.jpg")
+										.projects-info
+												.projects-name
+													span Café de Paris 3
+														i
+												.projects-hash
+													- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+													each hash in arrHash
+														span(class="hash-item") #{hash}
 						a.projects-item.ajax-trigger(href="#")
 							.project-info-contaner.anim-container(data-animation-in="fadeIn", data-delay="0.15s", data-animation-out="fadeOut")
-								.project-info__inner
-									.projects-image
-										img(src="img/image-4.jpg")
-									.projects-info
-											.projects-name
-												span Café de Paris 4
-													i
-											.projects-hash
-												- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-												each hash in arrHash
-													span(class="hash-item") #{hash}
+								.cover
+									.project-info__inner
+										.projects-image
+											img(src="img/main/15_2.jpg")
+										.projects-info
+												.projects-name
+													span Café de Paris 4
+														i
+												.projects-hash
+													- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+													each hash in arrHash
+														span(class="hash-item") #{hash}
+						a.projects-item.ajax-trigger(href="#")
+							.project-info-contaner.anim-container(data-animation-in="fadeIn", data-delay="0.15s", data-animation-out="fadeOut")
+								.cover
+									.project-info__inner
+										.projects-image
+											img(src="img/main/19_2.jpg")
+										.projects-info
+												.projects-name
+													span Café de Paris 5
+														i
+												.projects-hash
+													- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+													each hash in arrHash
+														span(class="hash-item") #{hash}
+						a.projects-item.ajax-trigger(href="#")
+							.project-info-contaner.anim-container(data-animation-in="fadeIn", data-delay="0.15s", data-animation-out="fadeOut")
+								.cover
+									.project-info__inner
+										.projects-image
+											img(src="img/main/23_2.jpg")
+										.projects-info
+												.projects-name
+													span Café de Paris 6
+														i
+												.projects-hash
+													- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+													each hash in arrHash
+														span(class="hash-item") #{hash}
+						a.projects-item.ajax-trigger(href="#")
+							.project-info-contaner.anim-container(data-animation-in="fadeIn", data-delay="0.15s", data-animation-out="fadeOut")
+								.cover
+									.project-info__inner
+										.projects-image
+											img(src="img/main/28_2.jpg")
+										.projects-info
+												.projects-name
+													span Café de Paris 7
+														i
+												.projects-hash
+													- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+													each hash in arrHash
+														span(class="hash-item") #{hash}
+						a.projects-item.ajax-trigger(href="#")
+							.project-info-contaner.anim-container(data-animation-in="fadeIn", data-delay="0.15s", data-animation-out="fadeOut")
+								.cover
+									.project-info__inner
+										.projects-image
+											img(src="img/main/30_2.jpg")
+										.projects-info
+												.projects-name
+													span Café de Paris 8
+														i
+												.projects-hash
+													- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+													each hash in arrHash
+														span(class="hash-item") #{hash}
 				script(type='text/javascript').
 					$(galleryImage($(".projects-gallery")))
-					$(greyImage($(".projects-image")))
 			include includes/_footer
 	include includes/_modal

@@ -7,7 +7,6 @@
     <meta content="IE=9" http-equiv="X-UA-Compatible">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" media="all" href="css/screen.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
     <script src="js/app.js"></script>
   </head>
   <body>
@@ -41,7 +40,11 @@
             <div class="hamburger-inner"><span></span><span></span><span></span></div>
           </div>
           <div class="navbar_text">
-            <div class="navbar_text-inner" data-close="close" data-open="menu"><span>menu</span></div>
+            <div class="navbar_text-inner">
+              <div class="navbar_overlay">
+                <div class="navbar_overlay-scroller"><span>menu</span><span>close</span></div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="developers"><a href="www.flxmd.by" target="_blank" rel="nofollow">by <span>#flxmd</span></a></div>
@@ -50,13 +53,13 @@
             <div class="navbar__content-container">
               <div class="navigation">
                 <ul class="navi">
-                                    <li class="navi-item"><a class="active" href="#">Recent projects</a></li>
-                                    <li class="navi-item"><a href="#">Catalog</a></li>
-                                    <li class="navi-item"><a href="#">Bureau</a></li>
-                                    <li class="navi-item"><a href="#">Newsfeed</a></li>
-                                    <li class="navi-item"><a href="#">Portfolio</a></li>
-                                    <li class="navi-item"><a href="#">Contact us</a></li>
-                                    <li class="navi-item"><a href="#">Services</a></li>
+                                    <li class="navi-item active"><a class="ajax-trigger" href="#"><span>Recent projects</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Catalog</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Bureau</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Newsfeed</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Portfolio</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Contact us</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Services</span></a></li>
                 </ul>
               </div>
               <div class="media">

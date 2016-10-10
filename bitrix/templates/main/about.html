@@ -7,7 +7,6 @@
     <meta content="IE=9" http-equiv="X-UA-Compatible">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" media="all" href="css/screen.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
     <script src="js/app.js"></script>
   </head>
   <body>
@@ -41,7 +40,11 @@
             <div class="hamburger-inner"><span></span><span></span><span></span></div>
           </div>
           <div class="navbar_text">
-            <div class="navbar_text-inner" data-close="close" data-open="menu"><span>menu</span></div>
+            <div class="navbar_text-inner">
+              <div class="navbar_overlay">
+                <div class="navbar_overlay-scroller"><span>menu</span><span>close</span></div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="developers"><a href="www.flxmd.by" target="_blank" rel="nofollow">by <span>#flxmd</span></a></div>
@@ -50,13 +53,13 @@
             <div class="navbar__content-container">
               <div class="navigation">
                 <ul class="navi">
-                                    <li class="navi-item"><a class="active" href="#">Recent projects</a></li>
-                                    <li class="navi-item"><a href="#">Catalog</a></li>
-                                    <li class="navi-item"><a href="#">Bureau</a></li>
-                                    <li class="navi-item"><a href="#">Newsfeed</a></li>
-                                    <li class="navi-item"><a href="#">Portfolio</a></li>
-                                    <li class="navi-item"><a href="#">Contact us</a></li>
-                                    <li class="navi-item"><a href="#">Services</a></li>
+                                    <li class="navi-item active"><a class="ajax-trigger" href="#"><span>Recent projects</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Catalog</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Bureau</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Newsfeed</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Portfolio</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Contact us</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Services</span></a></li>
                 </ul>
               </div>
               <div class="media">
@@ -83,7 +86,7 @@
               <div><svg viewBox="0 0 34 22" xmlns="http://www.w3.org/2000/svg"><g id="double"><path d="m0.53333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10" fill="none"/><path d="m19.03333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10" fill="none"/></g><g id="main"><path class="hover" d="m0.53333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10"/><path class="hover" d="m19.03333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10"/></g></svg></div></a></div>
           <div class="section-list">
             <div class="section-list__inner">
-              <section class="section-item" data-item="1" id="main" data-section="main">
+              <section class="section-item main" data-item="1" id="main" data-section="main">
                 <div class="section__wrapper">
                   <div class="section__container">
                     <div class="section__image">
@@ -98,7 +101,7 @@
                   </div>
                 </div>
               </section>
-              <section class="section-item" data-item="2" id="bureau" data-section="bureau">
+              <section class="section-item bureau" data-item="2" id="bureau" data-section="bureau">
                 <div class="section__wrapper">
                   <div class="section__container">
                     <div class="content-left content-side">
@@ -121,8 +124,8 @@
                     </div>
                     <div class="content-right content-side">
                       <div class="container__text">
-                        <div class="container__text-inner">
-                          <div class="head">About Bureau</div>
+                        <div class="text-container">
+                          <div class="title">About Bureau</div>
                           <div class="descr">
                             <p>Architectural bureau 33|16 was founded in 2009 by architects Oleg Kapustin and Evgenii Daineko. The Bureau operates on the international market in the field of architecture, interior design, landscape design and project management of projects. To date, the company employs 25 staff, geography projects involves Belarus, Russia and Europe.</p>
                           </div>
@@ -132,7 +135,7 @@
                   </div>
                 </div>
               </section>
-              <section class="section-item" data-item="3" id="leadership" data-section="leadership">
+              <section class="section-item leadership" data-item="3" id="leadership" data-section="leadership">
                 <div class="section__wrapper">
                   <div class="section__container" style="background-image: url(img/image-3.jpg)">
                     <div class="content-left content-side"></div>
@@ -140,18 +143,18 @@
                   </div>
                 </div>
               </section>
-              <section class="section-item" data-item="4" id="clients" data-section="clients">
+              <section class="section-item clients" data-item="4" id="clients" data-section="clients">
                 <div class="section__wrapper">
                   <div class="section__container">
                     <div class="container__full">
                       <div class="line"></div>
                       <div class="container__full-inner">
                         <div class="content-left content-side">
-                          <div class="projects">
-                            <div class="projects-inner">
-                              <div class="projects-title">Our clients</div>
-                              <div class="projects-subtitle">OUR WORK introduces us to the amazing people.  </div>
-                              <div class="projects-descr">
+                          <div class="container__text">
+                            <div class="text-container">
+                              <div class="title">Our clients</div>
+                              <div class="subtitle">OUR WORK introduces us to the amazing people.  </div>
+                              <div class="descr">
                                 <p>Our clients are bold and successful people, businessmen and stars of show business, stores and restaurants. All of our clients have in common - they are bold and modern, they like to stay ahead of trends and work with the best .</p>
                               </div>
                             </div>
@@ -175,7 +178,7 @@
               <div class="pagination-item pagination-item__left"><a class="ajax-trigger" href="#" id="prev"><span><svg viewBox="0 0 8.1 14.9" xmlns="http://www.w3.org/2000/svg"><path id="svg_1" d="m3.4,0.9l1,0l0,14l-1,0l0,-14" clip-rule="evenodd" fill-rule="evenodd"/><path id="svg_2" d="m0.7,4.7l-0.7,-0.6l3.9,-4.1l0.7,0.7l-3.9,4" clip-rule="evenodd" fill-rule="evenodd"/><path id="svg_3" d="m3.2,0.7l0.7,-0.7l4.2,4l-0.7,0.7l-4.2,-4" clip-rule="evenodd" fill-rule="evenodd"/></svg></span></a></div>
               <div class="pagination-counter">
                 <div class="pagination-counter__inner">
-                  <div class="pagination-current">01</div>
+                  <div class="pagination-current"> <span class="current">01</span></div>
                   <div class="pagination-spacer">/</div>
                   <div class="pagination-all">04</div>
                 </div>

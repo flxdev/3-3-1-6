@@ -3,7 +3,7 @@
 		nav.hash-navigation
 			- var current = "#All projects"
 			mixin hashNav(link, name)
-				a.hash-navigation__item(href=link class={active: name === current})
+				a.hash-navigation__item.ajax-trigger(href=link class={active: name === current})
 					span #{name}
 			+hashNav("#", "#All projects")
 			+hashNav("#", "#Architecture")

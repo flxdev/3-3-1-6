@@ -7,7 +7,6 @@
     <meta content="IE=9" http-equiv="X-UA-Compatible">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" media="all" href="css/screen.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
     <script src="js/app.js"></script>
   </head>
   <body>
@@ -41,7 +40,11 @@
             <div class="hamburger-inner"><span></span><span></span><span></span></div>
           </div>
           <div class="navbar_text">
-            <div class="navbar_text-inner" data-close="close" data-open="menu"><span>menu</span></div>
+            <div class="navbar_text-inner">
+              <div class="navbar_overlay">
+                <div class="navbar_overlay-scroller"><span>menu</span><span>close</span></div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="developers"><a href="www.flxmd.by" target="_blank" rel="nofollow">by <span>#flxmd</span></a></div>
@@ -50,13 +53,13 @@
             <div class="navbar__content-container">
               <div class="navigation">
                 <ul class="navi">
-                                    <li class="navi-item"><a class="active" href="#">Recent projects</a></li>
-                                    <li class="navi-item"><a href="#">Catalog</a></li>
-                                    <li class="navi-item"><a href="#">Bureau</a></li>
-                                    <li class="navi-item"><a href="#">Newsfeed</a></li>
-                                    <li class="navi-item"><a href="#">Portfolio</a></li>
-                                    <li class="navi-item"><a href="#">Contact us</a></li>
-                                    <li class="navi-item"><a href="#">Services</a></li>
+                                    <li class="navi-item active"><a class="ajax-trigger" href="#"><span>Recent projects</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Catalog</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Bureau</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Newsfeed</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Portfolio</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Contact us</span></a></li>
+                                    <li class="navi-item"><a class="ajax-trigger" href="#"><span>Services</span></a></li>
                 </ul>
               </div>
               <div class="media">
@@ -72,37 +75,41 @@
       <div class="wrapper">
         <div class="content content-services" data-page="services">
           <ul class="breadcrumbs">
-            <li><a class="home breadcrumbs-item" href="#">
+            <li><a class="home breadcrumbs-item ajax-trigger" href="#">
                 <div><svg viewBox="0 0 20 22.1" xmlns="http://www.w3.org/2000/svg"><path d="m10.04767,0.04746l-9.996,9l0,13l7.996,0l0,-6l4.004,0l0,6l8,0l0,-13l-10.004,-9zm8.008,20l-4.008,0l0,-6l-7.996,0l0,6l-4.004,0l0,-10.172l8,-7l8.008,7l0,10.172z"/></svg></div></a></li>
             <li>
               <div class="breadcrumbs-item"><span>Services</span></div>
             </li>
           </ul>
-          <div class="gallery-pagination"><a class="pagination-item pagination-item_left" href="#">
-              <div><svg viewBox="0 0 33 23" xmlns="http://www.w3.org/2000/svg"><g><rect height="9" width="14" stroke-miterlimit="10" fill="none" y="12.99216" x="0.51307"/><rect height="9" width="14" stroke-miterlimit="10" fill="none" y="12.99216" x="18.31307"/></g><g><rect class="hover" height="9" width="14" stroke-miterlimit="10" y="12.99216" x="0.51307"/><rect class="hover" height="9" width="14" stroke-miterlimit="10" y="12.99216" x="18.31307"/></g><g><rect height="9" width="14" stroke-miterlimit="10" fill="none" y="0.39216" x="0.51307"/><rect height="9" width="14" stroke-miterlimit="10" fill="none" y="0.39216" x="18.31307"/></g><g><rect class="hover" height="9" width="14" stroke-miterlimit="10" y="0.39216" x="0.51307"/><rect class="hover" height="9" width="14" stroke-miterlimit="10" y="0.39216" x="18.31307"/></g></svg></div></a><a class="pagination-item pagination-item_right" href="#">
+          <div class="gallery-pagination"><a class="pagination-item pagination-item_left ajax-trigger" href="#">
+              <div><svg viewBox="0 0 33 23" xmlns="http://www.w3.org/2000/svg"><g><rect height="9" width="14" stroke-miterlimit="10" fill="none" y="12.99216" x="0.51307"/><rect height="9" width="14" stroke-miterlimit="10" fill="none" y="12.99216" x="18.31307"/></g><g><rect class="hover" height="9" width="14" stroke-miterlimit="10" y="12.99216" x="0.51307"/><rect class="hover" height="9" width="14" stroke-miterlimit="10" y="12.99216" x="18.31307"/></g><g><rect height="9" width="14" stroke-miterlimit="10" fill="none" y="0.39216" x="0.51307"/><rect height="9" width="14" stroke-miterlimit="10" fill="none" y="0.39216" x="18.31307"/></g><g><rect class="hover" height="9" width="14" stroke-miterlimit="10" y="0.39216" x="0.51307"/><rect class="hover" height="9" width="14" stroke-miterlimit="10" y="0.39216" x="18.31307"/></g></svg></div></a><a class="pagination-item pagination-item_right ajax-trigger" href="#">
               <div><svg viewBox="0 0 34 22" xmlns="http://www.w3.org/2000/svg"><g id="double"><path d="m0.53333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10" fill="none"/><path d="m19.03333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10" fill="none"/></g><g id="main"><path class="hover" d="m0.53333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10"/><path class="hover" d="m19.03333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10"/></g></svg></div></a></div>
           <div class="services-line"></div>
           <div class="services-container">
             <div class="services-sides side-left">
-              <div class="service-container__inner">
-                <div class="image__cover"><img class="greyscale" src="img/services-left-1.jpg"></div>
-                <div class="service-text">
-                  <div class="title">Architectural design<span>#01</span></div>
-                  <div class="subtitle">Cottages, houses.</div>
-                  <div class="descr">
-                    <p>We design buildings so that every square meter justified himself. We create a vibrant, living ar&shy;chitecture. Places in which want to come back.</p><a class="btn btn-black" href="#" data-order="order"><span>order project +</span></a>
+              <div class="cover">
+                <div class="service-container__inner">
+                  <div class="image__cover"><img class="greyscale" src="img/services-left-1.jpg"></div>
+                  <div class="text-container">
+                    <div class="title">Architectural design<span>#01</span></div>
+                    <div class="subtitle">Cottages, houses.</div>
+                    <div class="descr">
+                      <p>We design buildings so that every square meter justified himself. We create a vibrant, living ar&shy;chitecture. Places in which want to come back.</p><a class="btn btn-black ajax-trigger" href="#"><span>order project +</span></a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="services-sides side-right">
-              <div class="service-container__inner">
-                <div class="image__cover"><img class="greyscale" src="img/services-right-1.jpg"></div>
-                <div class="service-text">
-                  <div class="title">Interior design<span>#02</span></div>
-                  <div class="subtitle">Private and public premises.</div>
-                  <div class="descr">
-                    <p>We create interior designs using simple shapes and volumes, correct proportions and original items. We help you to find a harmonious and unique style. We are living design, making it comfortable to live.</p><a class="btn btn-black" href="#" data-order="order"><span>order project +</span></a>
+              <div class="cover">
+                <div class="service-container__inner">
+                  <div class="image__cover"><img class="greyscale" src="img/services-right-1.jpg"></div>
+                  <div class="text-container">
+                    <div class="title">Interior design<span>#02</span></div>
+                    <div class="subtitle">Private and public premises.</div>
+                    <div class="descr">
+                      <p>We create interior designs using simple shapes and volumes, correct proportions and original items. We help you to find a harmonious and unique style. We are living design, making it comfortable to live.</p><a class="btn btn-black ajax-trigger" href="#"><span>order project +</span></a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -110,7 +117,6 @@
           </div>
           <script type="text/javascript">
             window.onload = function(){
-            	$(greyImage($(".image__cover")))
             	$(sideLeaving)
             };
           </script>
@@ -118,7 +124,7 @@
       </div>
       <div class="popup-wrap" data-modal-popup="hash-modal">
         <div class="popup">
-          <nav class="hash-navigation"><a class="hash-navigation__item active" href="#"><span>#All projects</span></a><a class="hash-navigation__item" href="#"><span>#Architecture</span></a><a class="hash-navigation__item" href="#"><span>#Interior</span></a><a class="hash-navigation__item" href="#"><span>#Decoration</span></a><a class="hash-navigation__item" href="#"><span>#Design</span></a>
+          <nav class="hash-navigation"><a class="hash-navigation__item ajax-trigger active" href="#"><span>#All projects</span></a><a class="hash-navigation__item ajax-trigger" href="#"><span>#Architecture</span></a><a class="hash-navigation__item ajax-trigger" href="#"><span>#Interior</span></a><a class="hash-navigation__item ajax-trigger" href="#"><span>#Decoration</span></a><a class="hash-navigation__item ajax-trigger" href="#"><span>#Design</span></a>
           </nav>
         </div>
         <div class="close"><span>Close<i><svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path stroke="null" id="svg_1" d="m0.11552,0.52717l0.51293,-0.51293l9.36098,9.36098l-0.51293,0.51293l-9.36098,-9.36098" clip-rule="evenodd" fill-rule="evenodd"/><path  stroke="null" id="svg_2" d="m9.39406,-0.05968l0.50841,0.52357l-9.27854,9.42426l-0.50841,-0.52357l9.27854,-9.42426" clip-rule="evenodd" fill-rule="evenodd"/></svg></i></span></div>

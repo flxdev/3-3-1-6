@@ -7,8 +7,11 @@
 				span
 				span
 		.navbar_text
-			.navbar_text-inner(data-close="close", data-open="menu")
-				span menu
+			.navbar_text-inner
+				.navbar_overlay
+					.navbar_overlay-scroller
+						span menu
+						span close
 	.developers
 		a(href="www.flxmd.by", target="_blank", rel="nofollow") by 
 			span #flxmd
@@ -19,8 +22,9 @@
 					ul.navi
 						- var current = "Recent projects"
 						mixin navi(title)
-							li.navi-item
-								a(href="#" class={active: title === current}) #{title}
+							li.navi-item(class={active: title === current})
+								a(href="#" class="ajax-trigger")
+									span #{title}
 						+navi("Recent projects")
 						+navi("Catalog")
 						+navi("Bureau")

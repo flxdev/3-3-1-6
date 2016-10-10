@@ -25,7 +25,7 @@ block content
 						<svg viewBox="0 0 34 22" xmlns="http://www.w3.org/2000/svg"><g id="double"><path d="m0.53333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10" fill="none"/><path d="m19.03333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10" fill="none"/></g><g id="main"><path class="hover" d="m0.53333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10"/><path class="hover" d="m19.03333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10"/></g></svg>
 			.section-list
 				.section-list__inner
-					section(class="section-item" data-item="1" id="main" data-section="main")
+					section(class="section-item main" data-item="1" id="main" data-section="main")
 						.section__wrapper
 							.section__container
 								.section__image
@@ -43,7 +43,7 @@ block content
 									.virtual__tour
 										a.btn.btn-black(href="#" target="_blank" rel="noffolow")
 											span Virtual tour +
-					section(class="section-item" data-item="2" id="bureau" data-section="bureau")
+					section(class="section-item bureau" data-item="2" id="bureau" data-section="bureau")
 						.section__wrapper
 							.section__container
 								.content-left.content-side
@@ -55,29 +55,29 @@ block content
 													.img(style="background-image: url("+ item + ")")
 								.content-right.content-side
 									.container__text
-										.container__text-inner
-											.head About Bureau
+										.text-container
+											.title About Bureau
 											.descr
 												p Architectural bureau 33|16 was founded in 2009 by architects Oleg Kapustin and Evgenii Daineko. The Bureau operates on the international market in the field of architecture, interior design, landscape design and project management of projects. To date, the company employs 25 staff, geography projects involves Belarus, Russia and Europe.
-					section(class="section-item" data-item="3" id="leadership" data-section="leadership")
+					section(class="section-item leadership" data-item="3" id="leadership" data-section="leadership")
 						.section__wrapper
 							.section__container(style="background-image: url(img/image-3.jpg)")
 								.content-left.content-side
 									
 								.content-right.content-side
 
-					section(class="section-item" data-item="4" id="clients" data-section="clients")
+					section(class="section-item clients" data-item="4" id="clients" data-section="clients")
 						.section__wrapper
 							.section__container
 								.container__full
 									.line
 									.container__full-inner
 										.content-left.content-side
-											.projects
-												.projects-inner
-													.projects-title Our clients
-													.projects-subtitle OUR WORK introduces us to the amazing people.  
-													.projects-descr
+											.container__text
+												.text-container
+													.title Our clients
+													.subtitle OUR WORK introduces us to the amazing people.  
+													.descr
 														p Our clients are bold and successful people, businessmen and stars of show business, stores and restaurants. All of our clients have in common - they are bold and modern, they like to stay ahead of trends and work with the best .
 										.content-right.content-side
 											.clients
