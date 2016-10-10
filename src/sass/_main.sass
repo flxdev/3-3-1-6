@@ -2379,7 +2379,8 @@ body
 		left: 50%
 		transform: translate(-50%, -50%)
 		text-align: center
-		+rem(width, 880px)
+		+rem(max-width, 880px)
+		width: 100%
 		p 
 			font-family: "Light"
 			+rem(font-size, 60px)
@@ -2540,6 +2541,11 @@ body
 				.container__text
 					&::after, &::before
 						display: none
+			&.bureau
+				.section__wrapper
+					.container__text
+						background-image: none
+
 			.section__wrapper
 				position: absolute
 				top: 0
