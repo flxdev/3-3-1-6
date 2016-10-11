@@ -41,6 +41,17 @@ body
 	z-index: 5
 	transition: transform 1.2s $cub 0.3s
 	transform: translate(0,-160px)
+	will-change: transform
+.load-page
+	.logo
+		&:hover
+			transition-duration: 0.6s
+			transition-delay: 0s
+			transform: translate(0, -40px)
+	.content-mainpage
+		.logo
+			&:hover
+				transform: none
 .breadcrumbs
 	position: fixed
 	+rem(left, 240px)
@@ -188,6 +199,18 @@ body
 		border-left: 1px solid transparent
 		transition: transform 1.2s $cub 1.2s, background-color 0.3s $cub 0s, border-color 0.3s $cub 0s
 		transform: translate(100%, 0)
+		&::before
+			content: ""
+			width: 0
+			position: absolute
+			top: 0
+			bottom: 0
+			right: 100%
+			background-color: $black
+			transition: width 0.3s $cub, background-color 0.3s $cub
+		&:hover
+			&::before
+				width: 5px
 		&::after
 			content: ""
 			left: 0
@@ -198,6 +221,9 @@ body
 			width: 1px
 			transition: height 0.3s ease 0s
 		&.anim
+			&::before
+				background-color: transparent
+				transition-delay: 0.3s
 			&::after
 				height: 100%
 				transition-delay: 0.6s
@@ -1485,10 +1511,12 @@ body
 	position: relative
 	z-index: 2
 	.slick-slide
-		opacity: 1!important
+		&.opacity
+			opacity: 1!important
 		.gallery-info__container
-			opacity: 0
-			transition: 1.3s $cub
+			.cover
+				opacity: 0
+				transition: 1.3s $cub
 		&.slick-active
 			.gallery-info__container
 				opacity: 1
@@ -1499,14 +1527,13 @@ body
 			display: inline-block
 			overflow: hidden
 			position: relative
-			opacity: 0
-			transition: 1.2s $cub 0.9s
 			.gallery-info__container
 				height: 100%
 				overflow: hidden
 				position: absolute
-				background-color: #212121
 				width: 100%
+				.cover
+					background-color: #212121
 			.t-contaner
 				height: 50vh
 				width: 100%
@@ -1585,8 +1612,6 @@ body
 			height: 50vh
 			display: block
 			float: right
-			opacity: 0
-			transition: 1.2s $cub 0.7s
 			.gallery-info__container
 				height: 100%
 				overflow: hidden
@@ -1855,7 +1880,7 @@ body
 						left: 0%
 						transform: translate(0%, -50%)
 						filter: grayscale(1)
-						transition: filter 0.3s ease
+						transition: filter 0.3s ease, transform 0.8s ease
 		&:last-of-type
 			.cover
 				transition-delay: 1.3s
@@ -1867,7 +1892,7 @@ body
 						left: auto!important
 						transform: translate(0%, -50%)
 						filter: grayscale(1)
-						transition: filter 0.3s ease
+						transition: filter 0.3s ease, transform 0.8s ease
 		.service-container__inner
 			height: 100vh
 			position: relative
@@ -1879,7 +1904,6 @@ body
 				position: relative
 				overflow: hidden
 				opacity: 0.4
-				transition: transform 0.8s ease
 				.img_wrapper
 					height: 100%
 					width: 100%
@@ -1891,7 +1915,6 @@ body
 					height: 100vh
 			&:hover
 				.image__cover
-					transform: scale(1.1)
 					img
 						filter: grayscale(0)
 						transform: translate(0%, -50%)
@@ -2902,7 +2925,8 @@ body
 			opacity: 1
 	.gallery-news 
 		.gallery-news__item
-			opacity: 1
+			.cover
+				opacity: 1
 	.content-news
 		.projects-gallery
 			&::after
@@ -2915,8 +2939,10 @@ body
 			&::before
 				height: 100%
 			div
-				&.gallery-news__item 
+				&.gallery-news__item
 					.gallery-info__container
+						.cover
+							opacity: 1
 						&::after
 							height: 100%
 						&::before
