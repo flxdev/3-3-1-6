@@ -61,11 +61,39 @@ block content
 												p Architectural bureau 33|16 was founded in 2009 by architects Oleg Kapustin and Evgenii Daineko. The Bureau operates on the international market in the field of architecture, interior design, landscape design and project management of projects. To date, the company employs 25 staff, geography projects involves Belarus, Russia and Europe.
 					section(class="section-item leadership" data-item="3" id="leadership" data-section="leadership")
 						.section__wrapper
-							.section__container(style="background-image: url(img/image-3.jpg)")
-								.content-left.content-side
-									
-								.content-right.content-side
-
+							.section__container
+								.container-people
+									.people-wrapper
+										.people-item
+											.content-left.content-side
+												.people-image__wrapper
+													.cover
+														.people-bg(style="background-image: url(img/ceo-1.jpg)")
+											.content-right.content-side
+												.people-text__wrapper
+													.container__text
+														.text-container
+															.title Oleg Kapustin
+															.subtitle Founder and Director  
+															.descr
+																p A talented architect, a great leader and a wonderful person with a capital letter. He graduated from the Minsk Art School named after Glebov. Since 2009 Chief Founders architectural bureau 33 | 16.
+										.people-item
+											.content-left.content-side
+												.people-image__wrapper
+													.cover
+														.people-bg(style="background-image: url(img/ceo-2.jpg)")
+											.content-right.content-side
+												.people-text__wrapper
+													.container__text
+														.text-container
+															.title Victor Kuleshov
+															.subtitle Ceo
+															.descr
+																p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+									.people-pagination
+										- for (var i = 0; i < 2; i++)
+											.pagin__item
+												span
 					section(class="section-item clients" data-item="4" id="clients" data-section="clients")
 						.section__wrapper
 							.section__container

@@ -1514,12 +1514,13 @@ body
 		&.opacity
 			opacity: 1!important
 		.gallery-info__container
-			.cover
-				opacity: 0
-				transition: 1.3s $cub
+			
 		&.slick-active
 			.gallery-info__container
-				opacity: 1
+				// opacity: 1
+				.cover
+					opacity: 0
+					transition: 1.3s $cub 0.9s
 	a
 		&.gallery-news__item
 			width: 25%
@@ -1593,19 +1594,22 @@ body
 							background-color: $white
 							position: absolute
 							width: 0
-							transition: width 0.3s ease
-		&:hover
-			.t-contaner
-				transform: translate(0, -3.75rem)
-				.image-cover
-					div
-						filter: none
-				// 	&::after
-				// 		opacity: 0
-				.gallery-news__name
-					span
-						&::after
-							width: 100%
+	.slick-active
+		a
+			&.gallery-news__item
+				&:hover
+					.t-contaner
+						transform: translate(0, -3.75rem)
+						.image-cover
+							div
+								filter: none
+						// 	&::after
+						// 		opacity: 0
+						.gallery-news__name
+							span
+								&::after
+									transition: width 0.3s ease
+									width: 100%
 	div
 		&.gallery-news__item
 			width: 25%
@@ -1616,28 +1620,28 @@ body
 				height: 100%
 				overflow: hidden
 				margin-left: -100%
-				background-color: $white
+				// background-color: $white
 				position: relative
-				&::after
-					content: ''
-					width: 1px
-					height: 0%
-					left:calc(69% - 5rem)
-					background-color: $line
-					position: absolute
-					top: 0
-					z-index: 1
-					transition: height 1.2s $cub
-				&::before
-					content: ''
-					width: 1px
-					height: 0%
-					left: 9%
-					position: absolute
-					background-color: $line
-					top: 0
-					z-index: 1
-					transition: height 1.2s $cub
+				// &::after
+				// 	content: ''
+				// 	width: 1px
+				// 	height: 0%
+				// 	left:calc(69% - 5rem)
+				// 	background-color: $line
+				// 	position: absolute
+				// 	top: 0
+				// 	z-index: 1
+				// 	transition: height 1.2s $cub
+				// &::before
+				// 	content: ''
+				// 	width: 1px
+				// 	height: 0%
+				// 	left: 9%
+				// 	position: absolute
+				// 	background-color: $line
+				// 	top: 0
+				// 	z-index: 1
+				// 	transition: height 1.2s $cub
 			.gallery-inner
 				// margin-left: -100%
 				height: 50vh
@@ -2703,14 +2707,10 @@ body
 								background-size: cover
 								background-position: 50%
 				.container__text
-					background-color: $white
-					background-image: url(../img/clients-bg.png)
-					background-repeat: no-repeat
-					background-size: contain
-					background-position: 100% 100%
 					position: relative
 					width: 100%
 					height: 100%
+					background-color: #FFF
 					&::before
 						content: ""
 						position: absolute
@@ -2809,12 +2809,13 @@ body
 			top: 0
 			z-index: 1
 	.content-left
+		.projects-inner
+			left: 36%
+	.container__text
 		background-image: url(../img/clients-bg.png)
 		background-size: contain
 		background-repeat: no-repeat
 		background-position: 100% 100%
-		.projects-inner
-			left: 36%
 	.clients
 		width: 100%
 		height: 100%
@@ -2853,6 +2854,69 @@ body
 					span
 						&::after
 							width: 100%
+.container-people
+	position: relative
+	width: 100%
+	height: 100%
+	.people-wrapper
+		width: 100%
+		height: 100%
+		.people-item
+			position: absolute
+			width: 100%
+			height: 100%
+			z-index: 1
+			.people-image__wrapper
+				width: 100%
+				height: 100%
+				.cover
+					width: 100%
+					height: 100%
+					overflow: hidden
+					position: absolute
+					right: 0
+					.people-bg
+						background-size: cover
+						width: 50vw
+						height: 100%
+						position: absolute
+						right: 0
+			.people-text__wrapper
+				position: relative
+				width: 100%
+				height: 100%
+			&.active
+				z-index: 2
+				
+	.people-pagination
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(0, -100%)
+		z-index: 5
+		.pagin__item
+			+rem(width, 80px)
+			+rem(height, 52px)
+			display: block
+			position: relative
+			cursor: pointer
+			&:hover
+				span
+					transform: scale(1.1)
+			&.active
+				span
+					background-color: $black
+			span
+				width: 8px
+				height: 8px
+				background-color: $mGrey
+				display: block
+				border-radius: 100%
+				position: absolute
+				top: 50%
+				left: 50%
+				margin: -4px 0 0 -4px
+				transition: transform 0.3s ease
 .dom
 	.navbar__wrap
 		transform: none
@@ -2923,10 +2987,11 @@ body
 	.ps-container
 		& > .ps-scrollbar-y-rail
 			opacity: 1
-	.gallery-news 
-		.gallery-news__item
-			.cover
-				opacity: 1
+	.gallery-news
+		.slick-active 
+			.gallery-news__item
+				.cover
+					opacity: 1
 	.content-news
 		.projects-gallery
 			&::after
@@ -2943,10 +3008,10 @@ body
 					.gallery-info__container
 						.cover
 							opacity: 1
-						&::after
-							height: 100%
-						&::before
-							height: 100%
+						// &::after
+						// 	height: 100%
+						// &::before
+						// 	height: 100%
 	.maps-container
 		width: 100%
 		opacity: 1

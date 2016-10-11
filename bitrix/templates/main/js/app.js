@@ -1277,108 +1277,108 @@ window.onload = function(){
 	// },200)
 }
 
-function loadedImg() {
-	var $loaderSite = $(".siteLoader"),
-	$lettersContainer = $(".letters-container"),
-	$point1 = $(".point_1"),
-	$point2 = $(".point_2"),
-	$point3 = $(".point_3"),
-	$point4 = $(".point_4"),
-	$point5 = $(".point_5"),
-	$text = $(".loader-text"),
-	$timeline = $(".timeline"),
-	$loaderContainer = $(".loader-container"),
-	TimeLine = new TimelineLite();
-	function frameAnim(){
-		var tl = new TimelineLite()
-		tl
-			.to($(".frame-top"), 0.5, {
-				y: "-100%"
-			},0)
-			.to($(".frame-bottom"), 0.5, {
-				y: "100%",
-				onComplete: function(){
-					$loaderSite.fadeOut(100);
-					setTimeout(function(){
-						$(".out").addClass("load-page dom");
-					},100);
-				}
-			},0)
-	}
-	TimeLine
-		.set($point1, {
-			z: "400px",
-			autoAlpha: 0
-		})
-		.set($point2, {
-			z: "400px",
-			autoAlpha: 0
-		})
-		.set($point3, {
-			z: "400px",
-			autoAlpha: 0
-		})
-		.set($point4, {
-			z: "400px",
-			autoAlpha: 0
-		})
-		.set($point5, {
-			z: "400px",
-			autoAlpha: 0
-		})
-		.set($text, {
-			autoAlpha: 0
-		})
+// function loadedImg() {
+// 	var $loaderSite = $(".siteLoader"),
+// 	$lettersContainer = $(".letters-container"),
+// 	$point1 = $(".point_1"),
+// 	$point2 = $(".point_2"),
+// 	$point3 = $(".point_3"),
+// 	$point4 = $(".point_4"),
+// 	$point5 = $(".point_5"),
+// 	$text = $(".loader-text"),
+// 	$timeline = $(".timeline"),
+// 	$loaderContainer = $(".loader-container"),
+// 	TimeLine = new TimelineLite();
+// 	function frameAnim(){
+// 		var tl = new TimelineLite()
+// 		tl
+// 			.to($(".frame-top"), 0.5, {
+// 				y: "-100%"
+// 			},0)
+// 			.to($(".frame-bottom"), 0.5, {
+// 				y: "100%",
+// 				onComplete: function(){
+// 					$loaderSite.fadeOut(100);
+// 					setTimeout(function(){
+// 						$(".out").addClass("load-page dom");
+// 					},100);
+// 				}
+// 			},0)
+// 	}
+// 	TimeLine
+// 		.set($point1, {
+// 			z: "400px",
+// 			autoAlpha: 0
+// 		})
+// 		.set($point2, {
+// 			z: "400px",
+// 			autoAlpha: 0
+// 		})
+// 		.set($point3, {
+// 			z: "400px",
+// 			autoAlpha: 0
+// 		})
+// 		.set($point4, {
+// 			z: "400px",
+// 			autoAlpha: 0
+// 		})
+// 		.set($point5, {
+// 			z: "400px",
+// 			autoAlpha: 0
+// 		})
+// 		.set($text, {
+// 			autoAlpha: 0
+// 		})
 
-		.to($point1, 1.2, {
-			z: "-=400px",
-			autoAlpha: 1,
-			ease: Power2.easeOut
-		},0)
-		.to($point2, 1.2, {
-			z: "-=400px",
-			delay: 0.6,
+// 		.to($point1, 1.2, {
+// 			z: "-=400px",
+// 			autoAlpha: 1,
+// 			ease: Power2.easeOut
+// 		},0)
+// 		.to($point2, 1.2, {
+// 			z: "-=400px",
+// 			delay: 0.6,
 
-			autoAlpha: 1,
-			ease: Power2.easeOut
-		},0)
-		.to($point3, 1.2, {
-			z: "-=400px",
-			autoAlpha: 1,
-			delay: 1.2,
-			ease: Power2.easeOut
-		},0)
-		.to($point4, 1.2, {
-			z: "-=400px",
-			autoAlpha: 1,
-			delay: 0.9,
-			ease: Power2.easeOut
-		},0)
-		.to($point5, 1.2, {
-			z: "-=400px",
-			autoAlpha: 1,
-			delay: 0.3,
-			ease: Power2.easeOut
-		},0)
-		.to($text, 1.2, {
-			autoAlpha: 1,
-			delay: 1.8,
-			ease: Sine.easeIn 
-		},0)
-		.to($lettersContainer, 0.3, {
-			delay: 1,
-			scaleX: 1,
-			scaleY: 0
-		})
-		.to($timeline, 1.2, {
-			scaleX: 1,
-			scaleY: 1,
-			onComplete: function() {
-				frameAnim()
-				$timeline.fadeOut(100)
-			}
-		})
-}
+// 			autoAlpha: 1,
+// 			ease: Power2.easeOut
+// 		},0)
+// 		.to($point3, 1.2, {
+// 			z: "-=400px",
+// 			autoAlpha: 1,
+// 			delay: 1.2,
+// 			ease: Power2.easeOut
+// 		},0)
+// 		.to($point4, 1.2, {
+// 			z: "-=400px",
+// 			autoAlpha: 1,
+// 			delay: 0.9,
+// 			ease: Power2.easeOut
+// 		},0)
+// 		.to($point5, 1.2, {
+// 			z: "-=400px",
+// 			autoAlpha: 1,
+// 			delay: 0.3,
+// 			ease: Power2.easeOut
+// 		},0)
+// 		.to($text, 1.2, {
+// 			autoAlpha: 1,
+// 			delay: 1.8,
+// 			ease: Sine.easeIn 
+// 		},0)
+// 		.to($lettersContainer, 0.3, {
+// 			delay: 1,
+// 			scaleX: 1,
+// 			scaleY: 0
+// 		})
+// 		.to($timeline, 1.2, {
+// 			scaleX: 1,
+// 			scaleY: 1,
+// 			onComplete: function() {
+// 				frameAnim()
+// 				$timeline.fadeOut(100)
+// 			}
+// 		})
+// }
 
 //main gallery image
 function galleryImage(gallery){
@@ -1454,7 +1454,7 @@ function galleryImage(gallery){
 
 	carousel.on("breakpoint", function(event, slick, breakpoint){
 		slideCounter($(this))
-		current.parent().addClass("animate left");
+		// $(this).slick("setPosition")
 	});
 
 	next.on("click", function(event){
@@ -1512,6 +1512,14 @@ function galleryImage(gallery){
 				l = l;
 			}
 			all.text(l)
+			if(!$(".slick-active").length) {
+				var index = $(slider).find(".slick-slide").last().data("slick-index")
+				$(slider).slick("slickGoTo", index)
+				current.parent().addClass("animate left");
+				setTimeout(function(){
+					destroyNumber(index + 1);
+				}, 500);
+			}
 		}, 10);
 	};		
 
@@ -2267,6 +2275,14 @@ slides.prototype._init = function () {
 	this.countAll = $(this.el).parents(".wrapper").find(".pagination-all");
 	this.countCurrent = $(this.el).parents(".wrapper").find(".pagination-current");
 
+	this.pInner = $(this.el).find(".container-people");
+	this.pInnerItem = this.pInner.find(".people-item");
+	this.pInnerItem.first().addClass("active");
+
+	this.paginInner = $(this.el).find(".people-pagination");
+	this.paginItem = this.paginInner.find(".pagin__item");
+	this.paginItem.first().addClass("active");
+
 	if(this.slideCount < 10) {
 		$(this.countAll).text("0" + this.slideCount)
 	} else {
@@ -2292,6 +2308,12 @@ slides.prototype._Events = function() {
 		self._Prev();
 		return false;
 	});	
+
+	this.paginItem.on("click", function(event) {
+		event.preventDefault();
+		if($(this).hasClass("active")) return false;
+		self._paginNav($(this));
+	});
 
 };
 slides.prototype._Next = function() {
@@ -2421,7 +2443,34 @@ slides.prototype._numberDestroy = function() {
 	$(self.countCurrent).find(".current").text($(self.nextNum).text());
 
 	$(self.countCurrent).find(".count-next").remove();
-}
+};
+
+slides.prototype._paginNav = function(pItem) {
+
+	var self = this;
+
+	this.pIndex = pItem.index();
+
+	this.paginItem.eq(this.pIndex).addClass("active").siblings().removeClass("active");
+	this.pInnerItem.eq(this.pIndex).addClass("active").siblings().removeClass("active");
+
+	this.pInnerActive = this.pInner.find(".active");
+
+
+	self.tl
+		.set(this.pInnerActive.find(".cover"), {
+			width: "0"
+		})
+		.set(this.pInnerActive.find(".container__text"), {
+			autoAlpha: 0
+		})
+		.to(this.pInnerActive.find(".cover"), 0.7, {
+			width: "100%"
+		})
+		.to(this.pInnerActive.find(".container__text"), 0.7, {
+			autoAlpha: 1
+		},"-=0.7")
+};
 
 window.slides = slides
 
@@ -2458,11 +2507,11 @@ function triggerImage() {
 }
 
 $(document).ready(function() {
-	loadedImg()
+	// loadedImg()
 	// menu
-	// setTimeout(function(){
-	// 	$(".out").addClass("load-page dom");
-	// },200)
+	setTimeout(function(){
+		$(".out").addClass("load-page dom");
+	},200)
 	function menuTrigger() {
 		var trigger = $(".navbar__wrap"),
 			menuContent = trigger.parent().find(".navbar__content"),
@@ -2473,9 +2522,15 @@ $(document).ready(function() {
 			overlay = $(".overlay"),
 			navigation = menuContent.find(".navigation"),
 			navItem = navigation.find(".navi-item"),
-			t = new TimelineLite();
+			t = new TimelineLite(),
+			isAnimate = false;
 
 		trigger.on("click", function(){
+
+			if(isAnimate) {
+				return false;
+			}
+			isAnimate = true;
 			if(!$(this).hasClass("open")) {
 				$(this).addClass("open");
 				t
@@ -2486,6 +2541,9 @@ $(document).ready(function() {
 							menuContent.addClass("anim");
 							trigger.addClass("anim");
 							$(".wrapper").addClass("return");
+							setTimeout(function() {
+								isAnimate = false;
+							}, 1000)
 						}
 					})
 
@@ -2503,6 +2561,9 @@ $(document).ready(function() {
 						onComplete: function(){
 							menuContent.removeClass("anim");
 							$(".wrapper").removeClass("return");
+							setTimeout(function() {
+								isAnimate = false;
+							}, 300)
 						}
 					})
 			}
