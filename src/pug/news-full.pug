@@ -25,21 +25,23 @@ block content
 						<svg viewBox="0 0 34 22" xmlns="http://www.w3.org/2000/svg"><g id="double"><path d="m0.53333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10" fill="none"/><path d="m19.03333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10" fill="none"/></g><g id="main"><path class="hover" d="m0.53333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10"/><path class="hover" d="m19.03333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10"/></g></svg>
 			.projects-gallery
 				.gallery-news.rotator#gallery-news
-					div.gallery-news__item
-							.gallery-info__container.anim-container.anim-title(data-animation-in="fadeIn", data-delay="0.2s", data-animation-out="fadeOut")
-								.cover
-									.gallery-inner
-										.gallery-inner__content
-											.gallery-title Newsfeed
-											.gallery-hash #Facebook
-					div.gallery-news__item
-					mixin gFacebook(link, image, data, name, like, comment, see, animation, delay)
+					mixin gFacebook(link, image, data, name, like, comment, see, animation)
 						a.gallery-news__item(href=link)
-							.gallery-info__container.anim-container(data-animation-in=animation, data-delay=delay, data-animation-out="fadeOut")
+							.gallery-info__container.anim-container(data-animation-in=animation, data-delay="0.25s", data-animation-out="fadeOut")
 								.cover
 									.t-contaner
 										.image-cover
-											div(style=image)
+											//- div(style=image)
+											.svg_container
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 720 900">
+													<filter id="south" color-interpolation-filters="sRGB">
+														<feColorMatrix type="matrix" values="0.68520 0.28600 0.02880 0.00000 0.07000 0.66464 0.27742 0.02794 0 0.0700 0.67150 0.28028 0.02822 0 0.07000 0 0 0 1 0"></feColorMatrix>
+													</filter>
+													<g id="pure">
+														<image xlink:href=#{image} x="0" y="0" height="100%" width="100%"></image>
+														<image class="grey" xlink:href=#{image} x="0" y="0" height="100%" width="100%" filter="url(#south)"></image>
+													</g>
+												</svg>
 										.gallery-news__name
 											data #{data}
 											span #{name}
@@ -59,21 +61,15 @@ block content
 												div
 													<svg viewBox="0 0 3300 1871" xmlns="http://www.w3.org/2000/svg"><path d="m1653.6988,0.39877c-638.1,0 -1245.1,503.3 -1624.7,882.8c-28.8,29.2 -28.8,76.1 0,105.2c379.7,379.5 986.6,882.8 1624.7,882.8s1245.1,-503.3 1624.7,-882.8c28.8,-29.2 28.8,-76.1 0,-105.2c-379.7,-379.5 -986.6,-882.8 -1624.7,-882.8zm0,149.7c531.4,0 1091,426.1 1462.1,785.8c-371.1,359.6 -930.8,785.8 -1462.1,785.8s-1091,-426.1 -1462.1,-785.8c371.1,-359.7 930.7,-785.8 1462.1,-785.8zm0,224.5c-309.2,0 -561.5,252.2 -561.5,561.3s252.3,561.3 561.5,561.3s561.5,-252.2 561.5,-561.3s-252.3,-561.3 -561.5,-561.3zm0,149.7c228.3,0 411.7,183.4 411.7,411.6c0,228.2 -183.5,411.6 -411.7,411.6c-228.3,0 -411.7,-183.4 -411.7,-411.6c-0.1,-228.2 183.4,-411.6 411.7,-411.6z"/></svg>
 											span #{see}
-					+gFacebook("#", "background-image: url(img/news/news-1.jpg);", "12 March", "New object of art", 320, 20, 13259, "fadeIn", "0s")
-					+gFacebook("#", "background-image: url(img/news/news-15.jpg);", "12 March", "Fragment", 320, 20, 13259, "fadeIn", "0.1s")
-					+gFacebook("#", "background-image: url(img/news/news-3.jpg);", "12 March", "New object of art", 320, 20, 13259, "fadeIn", "0.3s")
-					+gFacebook("#", "background-image: url(img/news/news-16.jpg);", "12 March", "New object of art", 320, 20, 13259, "fadeIn", "0.4s")
-					+gFacebook("#", "background-image: url(img/news/news-5.jpg);", "12 March", "Fragment", 320, 20, 13259, "fadeIn", "0.5s")
-					+gFacebook("#", "background-image: url(img/news/news-6.jpg);", "12 March", "Our new office", 320, 20, 13259, "fadeIn", "0.6s")
-					+gFacebook("#", "background-image: url(img/news/news-7.jpg);", "12 March", "New object of art", 320, 20, 13259, "fadeIn", "0s")
-					+gFacebook("#", "background-image: url(img/news/news-8.jpg);", "12 March", "Fragment", 320, 20, 13259, "fadeIn", "0.1s")
-					+gFacebook("#", "background-image: url(img/news/news-9.jpg);", "12 March", "New object of art", 320, 20, 13259, "fadeIn", "0.2s")
-					+gFacebook("#", "background-image: url(img/news/news-10.jpg);", "12 March", "New object of art", 320, 20, 13259, "fadeIn", "0.3s")
-					+gFacebook("#", "background-image: url(img/news/news-11.jpg);", "12 March", "Fragment", 320, 20, 13259, "fadeIn", "0.4s")
-					+gFacebook("#", "background-image: url(img/news/news-12.jpg);", "12 March", "Our new office", 320, 20, 13259, "fadeIn", "0.5s")
-					+gFacebook("#", "background-image: url(img/news/news-13.jpg);", "12 March", "Fragment", 320, 20, 13259, "fadeIn", "0.6s")
-					+gFacebook("#", "background-image: url(img/news/news-14.jpg);", "12 March", "New object of art", 320, 20, 13259, "fadeIn", "0.7s")
+					+gFacebook("#", "img/news/news-7.jpg", "12 March", "New object of art", 320, 20, 13259, "fadeIn")
+					+gFacebook("#", "img/news/news-8.jpg", "12 March", "Fragment", 320, 20, 13259, "fadeIn")
+					+gFacebook("#", "img/news/news-9.jpg", "12 March", "New object of art", 320, 20, 13259, "fadeIn")
+					+gFacebook("#", "img/news/news-10.jpg", "12 March", "New object of art", 320, 20, 13259, "fadeIn")
+					+gFacebook("#", "img/news/news-11.jpg", "12 March", "Fragment", 320, 20, 13259, "fadeIn")
+					+gFacebook("#", "img/news/news-12.jpg", "12 March", "Our new office", 320, 20, 13259, "fadeIn")
+					+gFacebook("#", "img/news/news-13.jpg", "12 March", "Fragment", 320, 20, 13259, "fadeIn")
+					+gFacebook("#", "img/news/news-14.jpg", "12 March", "New object of art", 320, 20, 13259, "fadeIn")
 				include includes/_pagination
 				script(type='text/javascript').
-					$(galleryImage($(".projects-gallery")))
+					//- $(galleryImage($(".projects-gallery")))
 	include includes/_modal

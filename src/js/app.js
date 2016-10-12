@@ -5,8 +5,5 @@
 //=include lib/jquery.infinitescroll.js
 //=include lib/lightgallery.min.js
 //=include lib/modernizr.js
-//=include lib/gl.js
-//=include lib/shaders.js
-//=include lib/glitch.js
 //=include lib/TimelineLite.min.js
 //=include common.js

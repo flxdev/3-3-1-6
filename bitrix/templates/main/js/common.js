@@ -137,7 +137,7 @@ function galleryImage(gallery){
 			{
 				breakpoint: 1366,
 				settings: {
-					slidesPerRow: 3
+					slidesPerRow: 4
 				}
 			}
 		]
@@ -151,6 +151,14 @@ function galleryImage(gallery){
 	});
 
 	carousel.on("beforeChange", function(e, slick, currentSlide, nextSlide){
+
+		if(carousel.hasClass("gallery-news")) {
+			if(nextSlide !== 0) {
+				$(".gallery-pagination").addClass("no-first")
+			} else {
+				$(".gallery-pagination").removeClass("no-first")
+			}
+		}
 
 		var $animatingElementsIn = $('div.slick-slide[data-slick-index="' + nextSlide + '"]').find('[data-animation-in]'),
 			$animatingElementsOut = $('div.slick-slide[data-slick-index="' + currentSlide + '"]').find('[data-animation-out]'),
@@ -181,8 +189,7 @@ function galleryImage(gallery){
 	});
 
 	carousel.on("breakpoint", function(event, slick, breakpoint){
-		slideCounter($(this))
-		// $(this).slick("setPosition")
+		slideCounter($(this));
 	});
 
 	next.on("click", function(event){
@@ -201,7 +208,6 @@ function galleryImage(gallery){
 
 		if($(".wrapper").hasClass("return")) return false;
 
-		flags = true;
 		carousel.slick("slickPrev");
 		current.parent().addClass("animate left");
 		$(".wrapper").addClass("return");
@@ -220,8 +226,6 @@ function galleryImage(gallery){
 		current.text(currents);
 
 		$(".count-next").remove();
-
-		flags = false;
 	};
 
 	var time;
@@ -252,7 +256,7 @@ function galleryImage(gallery){
 	};		
 
 	function doAnimations(elements, elementsIn, elementsOut) {
-	var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+	var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oAnimationEnd animationend';
 		elements.each(function() {
 			var $this = $(this);
 			var $animationDelay = $this.data('delay');
@@ -261,49 +265,75 @@ function galleryImage(gallery){
 			
 			var animIn = $(elementsIn).data("animation-in"),
 				animOut = $(elementsOut).data("animation-out");
-			var $animationTypeIn = "animated " + animIn,
-				$animationTypeOut = "animated " + animOut
+			var $animationTypeIn = animIn,
+				$animationTypeOut = animOut;
 
 			$this.css({
-				'animation-delay': $animationDelay,
-				'-webkit-animation-delay': $animationDelay
+				'transition-delay': $animationDelay,
+				'-webkit-transition-delay': $animationDelay
 			});
+
+			
+
 			$(elementsIn).parents(".slick-slide").addClass("opacity");
 			$(elementsOut).parents(".slick-slide").addClass("opacity");
 
-			$(elementsIn).addClass($animationTypeIn).one(animationEndEvents, function() {
+			// $(elementsIn).parents(".slick-slide").addClass($animationTypeIn);
+			// $(elementsOut).parents(".slick-slide").addClass($animationTypeOut);
+
+			// $(elementsIn).parents(".rotator").addClass("animated").one(animationEndEvents, function() {
+			// 	$(elementsOut).parents(".slick-slide").removeClass($animationTypeOut);
+			// 	$(elementsOut).parents(".slick-slide").removeClass("opacity");
+			// 	$(elementsIn).parents(".slick-slide").removeClass($animationTypeIn);
+			// 	$(elementsIn).parents(".slick-slide").removeClass("opacity");
+			// 	$(this).removeClass("animated");
+			// 	bindEventScroll();
+			// });
+
+			$(elementsIn).parents(".rotator").addClass("animated").one(animationEndEvents, function() {
+				$(elementsOut).removeClass($animationTypeOut);
+				$(elementsOut).parents(".slick-slide").removeClass("opacity");
+				$(elementsIn).removeClass($animationTypeIn);
+				$(elementsIn).parents(".slick-slide").removeClass("opacity");
+				$(this).removeClass("animated");
+				setTimeout(function() {
+					bindEventScroll();
+				}, 700);
+				
+			});
+
+			$(elementsIn).addClass($animationTypeIn).parents(".projects").one(animationEndEvents, function() {
 				$(this).removeClass($animationTypeIn);
 				$(this).parents(".slick-slide").removeClass("opacity");
 			});
-			$(elementsOut).addClass($animationTypeOut).one(animationEndEvents, function() {
+			$(elementsOut).addClass($animationTypeOut).parents(".projects").one(animationEndEvents, function() {
 				$(this).removeClass($animationTypeOut);
 				$(this).parents(".slick-slide").removeClass("opacity");
-				bindEventScroll();
 			});
 		});
 	};
 
-	// function getAnimDelay(rotator) {
-	// 	var _this = rotator,
-	// 		slide = _this.find(".slick-slide");
+	function getAnimDelay(rotator) {
+		var _this = rotator,
+			slide = _this.find(".slick-slide");
 
-	// 	slide.each(function(){
-	// 		var _ = $(this),
-	// 			animContainer = _.find(".anim-container"),
-	// 			animLength = animContainer.length,
-	// 			i = 0;
-	// 		if(animContainer.is('.anim-title')) {
-	// 			for(i; i <= animLength; i++) {
-	// 				animContainer.not(":eq(0)").eq(i).attr("data-delay", (i+2.6)/10 + "s")		
-	// 			};
-	// 		} else {
-	// 			for(i; i <= animLength; i++) {
-	// 				animContainer.eq(i).attr("data-delay", (i+1.7)/10 + "s")		
-	// 			};
-	// 		}
+		slide.each(function(){
+			var _ = $(this),
+				animContainer = _.find(".anim-container"),
+				animLength = animContainer.length,
+				i = 0;
+			if(animContainer.is('.anim-title')) {
+				for(i; i <= animLength; i++) {
+					animContainer.not(":eq(0)").eq(i).attr("data-delay", (i+2.6)/10 + "s")		
+				};
+			} else {
+				for(i; i <= animLength; i++) {
+					animContainer.eq(i).attr("data-delay", (i+1.7)/10 + "s")		
+				};
+			}
 				
-	// 	});
-	// }
+		});
+	}
 };
 
 function bindEventScroll() {
@@ -452,7 +482,10 @@ function scrollbar(){
 };
 
 function heightScrollContainer() {
+	var container = document.getElementById("scroll-container");
+
 	$("#scroll-container").height($(window).height() - 80);
+	Ps.update(container);
 };
 
 window.onresize = function(){
@@ -512,12 +545,15 @@ function sideLeaving(){
 
 		if($(e.target).parents('.side-left').length){
 
+				// l.addClass("active").removeClass("inactive")
+				// r.addClass("inactive")
 				TweenLite.to(l, 1, { width: "55%", ease: Power3.easeOut});
 				TweenLite.to(r, 1, { width: "45%", ease: Power3.easeOut});
 				TweenLite.to(rImg, 1, { opacity: "0.2", ease: Power3.easeOut});
 				TweenLite.to(lImg, 1, { opacity: "0.4", ease: Power3.easeOut});
 		} else {
-
+				// r.addClass("active").removeClass("inactive")
+				// l.addClass("inactive")
 				TweenLite.to(l, 1, { width: "45%", ease: Power3.easeOut});
 				TweenLite.to(r, 1, { width: "55%", ease: Power3.easeOut});
 				TweenLite.to(rImg, 1, { opacity: "0.4", ease: Power3.easeOut});
@@ -527,6 +563,7 @@ function sideLeaving(){
 
 	container.on("mouseleave", function(){
 
+			// r.add(l).removeClass("active inactive")
 			TweenLite.to(l, 1, { width: "50%", ease: Power3.easeOut});
 			TweenLite.to(r, 1, { width: "50%", ease: Power3.easeOut});
 			TweenLite.to(rImg, 1, { opacity: "0.4", ease: Power3.easeOut});
@@ -838,29 +875,6 @@ function gMaps(){
 	}
 };
 
-// function greyImage(image) {
-// 	// $(image).BlackAndWhite({
-// 	// 	hoverEffect : true,
-// 	// 	webworkerPath : false,
-// 	// 	intensity:1,
-// 	// 	crossOrigin: false,
-// 	// 	speed: {
-// 	// 		fadeIn: 500,
-// 	// 		fadeOut: 500
-// 	// 	},
-// 	// 	onImageReady: function(img) {
-
-// 	// 	}
-// 	// })
-// }
-
-// var glitch = new Glitch();
-// function updateGlitchImage() {
-// 	var glitchWrapper = $(".glitch-container"),
-// 		image = $(".glitch-container").data("image");
-// 	glitch.setImagePath(image);
-// 	glitchWrapper.find(".glitch-image").append(glitch.domElement);
-// };
 function noiseEffect() {
 	"use strict";
 
@@ -1011,6 +1025,8 @@ slides.prototype._init = function () {
 	this.paginItem = this.paginInner.find(".pagin__item");
 	this.paginItem.first().addClass("active");
 
+	this.anchor = $(this.el).find(".anchors__item");
+
 	if(this.slideCount < 10) {
 		$(this.countAll).text("0" + this.slideCount)
 	} else {
@@ -1042,6 +1058,12 @@ slides.prototype._Events = function() {
 		if($(this).hasClass("active")) return false;
 		self._paginNav($(this));
 	});
+
+	this.anchor.on("click", function(event) {
+		event.preventDefault();
+		if($(this).hasClass("active")) return false;
+		self._Anchor($(this));
+	})
 
 };
 slides.prototype._Next = function() {
@@ -1076,15 +1098,16 @@ slides.prototype._Next = function() {
 	$(this.active).parents(".content").find(".gallery-pagination").attr("data-color", this.activeAttr);
 
 	$(this.countCurrent).addClass("animate right");
-
+	
 	self.tl
 		.set($(this.active).find(".section__wrapper"), {
-			top: 0,
+			bottom: 0,
+			top: "auto",
 			height: "100%",
-			ease: Power0.easeNone
 		})
-		.to($(this.active).find(".section__wrapper"), 0.5, {
+		.to($(this.active).find(".section__wrapper"), 1.2, {
 			height: "0%",
+			ease: Power4.easeInOut,
 			clearProps: "all",
 			onComplete: function() {
 				$(self.el).find(".is-active").siblings().removeClass("is-animating top");
@@ -1131,13 +1154,12 @@ slides.prototype._Prev = function() {
 
 	self.tl
 		.set($(this.active).find(".section__wrapper"), {
-			bottom: 0,
-			top: "auto",
-			height: "100%",
-			ease: Power0.easeNone
+			top: 0,
+			height: "100%"
 		})
-		.to($(this.active).find(".section__wrapper"), 0.5, {
+		.to($(this.active).find(".section__wrapper"), 1.2, {
 			height: "0%",
+			ease: Power4.easeInOut,
 			clearProps: "all",
 			onComplete: function() {
 				$(self.el).find(".is-active").siblings().removeClass("is-animating bottom");
@@ -1148,7 +1170,56 @@ slides.prototype._Prev = function() {
 
 	this._update();
 };
+slides.prototype._Anchor = function(anchor) {
+	var self = this;
 
+	this.dataAnchor = anchor.data("anchor");
+
+	console.log(this.dataAnchor)
+
+	this.active = $(this.el).find(".is-active");
+	this.NextSlide = $(this.el).find(this.dataAnchor);
+	this.activeAttr = $(this.NextSlide).data("section");
+
+	if(this.isAnimating) {
+		return false;
+	}
+
+	this.isAnimating = true;
+
+	this.current = this.NextSlide.index() + 1
+
+	$(this.active).addClass("is-animating top");
+	$(this.NextSlide).addClass("is-active").siblings().removeClass("is-active");
+
+	$(this.active).parents(".content").find(".breadcrumbs").attr("data-color", " ");
+	$(this.active).parents(".content").find(".breadcrumbs").attr("data-color", this.activeAttr);
+
+	$(this.active).parents(".content").find(".gallery-pagination").attr("data-color", " ");
+	$(this.active).parents(".content").find(".gallery-pagination").attr("data-color", this.activeAttr);
+
+	$(this.countCurrent).addClass("animate right");
+	
+	self.tl
+		.set($(this.active).find(".section__wrapper"), {
+			bottom: 0,
+			top: "auto",
+			height: "100%"
+		})
+		.to($(this.active).find(".section__wrapper"), 1.2, {
+			height: "0%",
+			ease: Power4.easeInOut,
+			clearProps: "all",
+			onComplete: function() {
+				$(self.el).find(".is-active").siblings().removeClass("is-animating top");
+				self._end();
+				self._numberDestroy();
+			}
+		})
+
+	this._update();
+
+};
 slides.prototype._end = function() {
 	this.isAnimating = false;
 	$(".wrapper").removeClass("return");
@@ -1193,14 +1264,16 @@ slides.prototype._paginNav = function(pItem) {
 			autoAlpha: 0
 		})
 		.to(this.pInnerActive.find(".cover"), 0.7, {
-			width: "100%"
+			width: "100%",
+			ease: Power4.easeInOut
 		})
 		.to(this.pInnerActive.find(".container__text"), 0.7, {
-			autoAlpha: 1
+			autoAlpha: 1,
+			ease: Power4.easeInOut
 		},"-=0.7")
 };
 
-window.slides = slides
+// window.slides = slides
 
 
 function triggerImage() {
@@ -1391,7 +1464,9 @@ $(document).ready(function() {
 
 			showOverlay();
 			t
-				.to(mCont, 0.5, {delay: 0.5, x: "0%"})
+				.to(mCont, 0.5, {delay: 0.5, x: "0%", onComplete: function() {
+					$(".current").find("input").focus()
+				}})
 		
 		overlay.add(close).add(msgClose).on("click", function(){
 			hideOverlay();

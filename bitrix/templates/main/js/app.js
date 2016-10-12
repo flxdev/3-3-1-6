@@ -47,1212 +47,6 @@ return t=a?function(t){return t&&a(r(t))}:function(t){return t&&r(t)}}function e
  * Build: http://modernizr.com/download/#-csstransitions-shiv-cssclasses-prefixed-testprop-testallprops-domprefixes-load
  */
 ;window.Modernizr=function(a,b,c){function x(a){j.cssText=a}function y(a,b){return x(prefixes.join(a+";")+(b||""))}function z(a,b){return typeof a===b}function A(a,b){return!!~(""+a).indexOf(b)}function B(a,b){for(var d in a){var e=a[d];if(!A(e,"-")&&j[e]!==c)return b=="pfx"?e:!0}return!1}function C(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:z(f,"function")?f.bind(d||b):f}return!1}function D(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+n.join(d+" ")+d).split(" ");return z(b,"string")||z(b,"undefined")?B(e,b):(e=(a+" "+o.join(d+" ")+d).split(" "),C(e,b,c))}var d="2.7.1",e={},f=!0,g=b.documentElement,h="modernizr",i=b.createElement(h),j=i.style,k,l={}.toString,m="Webkit Moz O ms",n=m.split(" "),o=m.toLowerCase().split(" "),p={},q={},r={},s=[],t=s.slice,u,v={}.hasOwnProperty,w;!z(v,"undefined")&&!z(v.call,"undefined")?w=function(a,b){return v.call(a,b)}:w=function(a,b){return b in a&&z(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=t.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(t.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(t.call(arguments)))};return e}),p.csstransitions=function(){return D("transition")};for(var E in p)w(p,E)&&(u=E.toLowerCase(),e[u]=p[E](),s.push((e[u]?"":"no-")+u));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)w(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof f!="undefined"&&f&&(g.className+=" "+(b?"":"no-")+a),e[a]=b}return e},x(""),i=k=null,function(a,b){function l(a,b){var c=a.createElement("p"),d=a.getElementsByTagName("head")[0]||a.documentElement;return c.innerHTML="x<style>"+b+"</style>",d.insertBefore(c.lastChild,d.firstChild)}function m(){var a=s.elements;return typeof a=="string"?a.split(" "):a}function n(a){var b=j[a[h]];return b||(b={},i++,a[h]=i,j[i]=b),b}function o(a,c,d){c||(c=b);if(k)return c.createElement(a);d||(d=n(c));var g;return d.cache[a]?g=d.cache[a].cloneNode():f.test(a)?g=(d.cache[a]=d.createElem(a)).cloneNode():g=d.createElem(a),g.canHaveChildren&&!e.test(a)&&!g.tagUrn?d.frag.appendChild(g):g}function p(a,c){a||(a=b);if(k)return a.createDocumentFragment();c=c||n(a);var d=c.frag.cloneNode(),e=0,f=m(),g=f.length;for(;e<g;e++)d.createElement(f[e]);return d}function q(a,b){b.cache||(b.cache={},b.createElem=a.createElement,b.createFrag=a.createDocumentFragment,b.frag=b.createFrag()),a.createElement=function(c){return s.shivMethods?o(c,a,b):b.createElem(c)},a.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+m().join().replace(/[\w\-]+/g,function(a){return b.createElem(a),b.frag.createElement(a),'c("'+a+'")'})+");return n}")(s,b.frag)}function r(a){a||(a=b);var c=n(a);return s.shivCSS&&!g&&!c.hasCSS&&(c.hasCSS=!!l(a,"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}")),k||q(a,c),a}var c="3.7.0",d=a.html5||{},e=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,f=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,g,h="_html5shiv",i=0,j={},k;(function(){try{var a=b.createElement("a");a.innerHTML="<xyz></xyz>",g="hidden"in a,k=a.childNodes.length==1||function(){b.createElement("a");var a=b.createDocumentFragment();return typeof a.cloneNode=="undefined"||typeof a.createDocumentFragment=="undefined"||typeof a.createElement=="undefined"}()}catch(c){g=!0,k=!0}})();var s={elements:d.elements||"abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video",version:c,shivCSS:d.shivCSS!==!1,supportsUnknownElements:k,shivMethods:d.shivMethods!==!1,type:"default",shivDocument:r,createElement:o,createDocumentFragment:p};a.html5=s,r(b)}(this,b),e._version=d,e._domPrefixes=o,e._cssomPrefixes=n,e.testProp=function(a){return B([a])},e.testAllProps=D,e.prefixed=function(a,b,c){return b?D(a,b,c):D(a,"pfx")},g.className=g.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(f?" js "+s.join(" "):""),e}(this,this.document),function(a,b,c){function d(a){return"[object Function]"==o.call(a)}function e(a){return"string"==typeof a}function f(){}function g(a){return!a||"loaded"==a||"complete"==a||"uninitialized"==a}function h(){var a=p.shift();q=1,a?a.t?m(function(){("c"==a.t?B.injectCss:B.injectJs)(a.s,0,a.a,a.x,a.e,1)},0):(a(),h()):q=0}function i(a,c,d,e,f,i,j){function k(b){if(!o&&g(l.readyState)&&(u.r=o=1,!q&&h(),l.onload=l.onreadystatechange=null,b)){"img"!=a&&m(function(){t.removeChild(l)},50);for(var d in y[c])y[c].hasOwnProperty(d)&&y[c][d].onload()}}var j=j||B.errorTimeout,l=b.createElement(a),o=0,r=0,u={t:d,s:c,e:f,a:i,x:j};1===y[c]&&(r=1,y[c]=[]),"object"==a?l.data=c:(l.src=c,l.type=a),l.width=l.height="0",l.onerror=l.onload=l.onreadystatechange=function(){k.call(this,r)},p.splice(e,0,u),"img"!=a&&(r||2===y[c]?(t.insertBefore(l,s?null:n),m(k,j)):y[c].push(l))}function j(a,b,c,d,f){return q=0,b=b||"j",e(a)?i("c"==b?v:u,a,b,this.i++,c,d,f):(p.splice(this.i++,0,a),1==p.length&&h()),this}function k(){var a=B;return a.loader={load:j,i:0},a}var l=b.documentElement,m=a.setTimeout,n=b.getElementsByTagName("script")[0],o={}.toString,p=[],q=0,r="MozAppearance"in l.style,s=r&&!!b.createRange().compareNode,t=s?l:n.parentNode,l=a.opera&&"[object Opera]"==o.call(a.opera),l=!!b.attachEvent&&!l,u=r?"object":l?"script":"img",v=l?"script":u,w=Array.isArray||function(a){return"[object Array]"==o.call(a)},x=[],y={},z={timeout:function(a,b){return b.length&&(a.timeout=b[0]),a}},A,B;B=function(a){function b(a){var a=a.split("!"),b=x.length,c=a.pop(),d=a.length,c={url:c,origUrl:c,prefixes:a},e,f,g;for(f=0;f<d;f++)g=a[f].split("="),(e=z[g.shift()])&&(c=e(c,g));for(f=0;f<b;f++)c=x[f](c);return c}function g(a,e,f,g,h){var i=b(a),j=i.autoCallback;i.url.split(".").pop().split("?").shift(),i.bypass||(e&&(e=d(e)?e:e[a]||e[g]||e[a.split("/").pop().split("?")[0]]),i.instead?i.instead(a,e,f,g,h):(y[i.url]?i.noexec=!0:y[i.url]=1,f.load(i.url,i.forceCSS||!i.forceJS&&"css"==i.url.split(".").pop().split("?").shift()?"c":c,i.noexec,i.attrs,i.timeout),(d(e)||d(j))&&f.load(function(){k(),e&&e(i.origUrl,h,g),j&&j(i.origUrl,h,g),y[i.url]=2})))}function h(a,b){function c(a,c){if(a){if(e(a))c||(j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}),g(a,j,b,0,h);else if(Object(a)===a)for(n in m=function(){var b=0,c;for(c in a)a.hasOwnProperty(c)&&b++;return b}(),a)a.hasOwnProperty(n)&&(!c&&!--m&&(d(j)?j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}:j[n]=function(a){return function(){var b=[].slice.call(arguments);a&&a.apply(this,b),l()}}(k[n])),g(a[n],j,b,n,h))}else!c&&l()}var h=!!a.test,i=a.load||a.both,j=a.callback||f,k=j,l=a.complete||f,m,n;c(h?a.yep:a.nope,!!i),i&&c(i)}var i,j,l=this.yepnope.loader;if(e(a))g(a,0,l,0);else if(w(a))for(i=0;i<a.length;i++)j=a[i],e(j)?g(j,0,l,0):w(j)?B(j):Object(j)===j&&h(j,l);else Object(a)===a&&h(a,l)},B.addPrefix=function(a,b){z[a]=b},B.addFilter=function(a){x.push(a)},B.errorTimeout=1e4,null==b.readyState&&b.addEventListener&&(b.readyState="loading",b.addEventListener("DOMContentLoaded",A=function(){b.removeEventListener("DOMContentLoaded",A,0),b.readyState="complete"},0)),a.yepnope=k(),a.yepnope.executeStack=h,a.yepnope.injectJs=function(a,c,d,e,i,j){var k=b.createElement("script"),l,o,e=e||B.errorTimeout;k.src=a;for(o in d)k.setAttribute(o,d[o]);c=j?h:c||f,k.onreadystatechange=k.onload=function(){!l&&g(k.readyState)&&(l=1,c(),k.onload=k.onreadystatechange=null)},m(function(){l||(l=1,c(1))},e),i?k.onload():n.parentNode.insertBefore(k,n)},a.yepnope.injectCss=function(a,c,d,e,g,i){var e=b.createElement("link"),j,c=i?h:c||f;e.href=a,e.rel="stylesheet",e.type="text/css";for(j in d)e.setAttribute(j,d[j]);g||(n.parentNode.insertBefore(e,n),m(c,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))};
-
-// A very lightweight layer on top of the WebGL API to make coding WebGL faster and much more fun.
-//
-// This isn't a 3D engine, but could be used as the foundation for one.
-
-/*!
-  @copyright 2016 Justin Windle
-  @license http://opensource.org/licenses/MIT
-  @author Justin Windle <justin@soulwire.co.uk>
-  @see https://github.com/soulwire/gl.js
-  @see http://soulwire.co.uk
-*/
-
-var GL = (function() {
-
-  'use strict';
-
-  var GL = {
-
-    //
-    // Create
-    // --------------------------------------------------
-    //
-    // Creates a WebGL drawing context and augments it
-    // to add the functionality of the __gl.js__ library
-    //
-    // Parameters:
-    //  - `canvas` _(optional)_ The canvas element to use
-    //
-
-    create: function( canvas ) {
-
-      var gl;
-
-      if ( !canvas ) canvas = document.createElement( 'canvas' );
-
-      if ( !( gl = ( canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ) ) ) )
-
-        throw 'Error creating WebGL context';
-
-      var shader, bindings = {};
-
-      return extend( gl, {
-
-        bindings: bindings,
-
-        //
-        // Shader
-        // --------------------------------------------------
-        //
-        // Creates a shader object from a given type and source code
-        //
-        // Parameters:
-        //  - `source` Source string for the shader
-        //  - `type` The shader type (`VERTEX_SHADER` or `FRAGMENT_SHADER`)
-        //
-
-        shader: function( source, type ) {
-
-          source = PRECISION + '\n' + source;
-          
-          gl.shaderSource( shader = gl.createShader( type ), source );
-          gl.compileShader( shader );
-
-          if ( !gl.getShaderParameter( shader, COMPILE_STATUS ) )
-
-            logShaderError( gl.getShaderInfoLog( shader ), source );
-
-          return shader;
-        },
-
-        //
-        // Program
-        // --------------------------------------------------
-        //
-        // Creates a shader program from _vertex_ and _fragment_
-        // shader source code
-        //
-        // Parameters:
-        //  - `vs` Source string for the vertex shader
-        //  - `fs` Source string for the fragment shader
-        //
-
-        program: function( vs, fs ) {
-
-          var attribute, program, uniform, source, name, type, size, span,
-
-          program = gl.createProgram();
-          program.state = {};
-
-          gl.attachShader( program, gl.shader( vs, VERTEX_SHADER ) );
-          gl.attachShader( program, gl.shader( fs, FRAGMENT_SHADER ) );
-          gl.linkProgram( program );
-
-          if ( !gl.getProgramParameter( program, LINK_STATUS ) )
-
-            throw gl.getProgramInfoLog( program );
-
-          /*
-
-            Concatenates vertex and fragment shader source code
-            and strips out comments, ready to be parsed for 
-            attributes and uniforms
-
-          */
-
-          source = [ vs, fs ].join( '\n' ).replace( COMMENT, '' );
-
-          /*
-
-            Parse attributes in the shader code, create `attribute`
-            objects for each and store them in the program
-
-          */
-
-          while ( attribute = ATTRIBUTE.exec( source ) ) {
-
-            type = attribute[1];
-            name = attribute[2];
-
-            if ( !program[ name ] )
-
-              program[ name ] = gl.attribute( program, name, type );
-          }
-
-          /*
-
-            Parse uniforms in the shader code, create `uniform`
-            objects for each and store them in the program
-
-          */
-
-          while ( uniform = UNIFORM.exec( source ) ) {
-
-            type = uniform[1];
-            name = uniform[2];
-            span = uniform[5];
-
-            if ( !program[ name ] )
-
-              program[ name ] = gl.uniform( program, name, type, span );
-          }
-
-          /* Extends the core program functionalty */
-
-          return extend( program, {
-
-            // ##### on
-            // Tells WebGL to start using this program
-            
-            on: function() {
-
-              if ( gl.usedProgram !== program )
-
-                gl.useProgram( gl.usedProgram = program );
-            },
-
-            // ##### draw
-            // Draw a `mesh` object using this program
-            //
-            // Parameters
-            //  - `mesh` The `mesh` object to draw
-            //  - `mode` _(optional)_ The drawing mode to use (if not `mesh.mode`)
-            //  - `first` _(optional)_ The index to start drawing from
-            //  - `count` _(optional)_ How many items to draw
-
-            draw: function( mesh, mode, first, count ) {
-
-              program.on();
-
-              var key, val, obj, unit = 0;
-
-              /* Attributes */
-
-              for ( key in obj = mesh.attributes )
-
-                if ( program[ key ] )
-
-                  obj[ key ].on( program[ key ] );
-
-              /* Uniforms */
-
-              for ( key in obj = mesh.uniforms )
-
-                if ( program[ key ] )
-
-                  program[ key ].set( obj[ key ] );
-
-              /* Textures */
-
-              for ( key in obj = mesh.textures )
-
-                if ( program[ key ] )
-
-                  obj[ key ].on( unit ), program[ key ].set( unit++ );
-
-              /* Vertices */
-
-              for ( key in obj = mesh.vertices )
-
-                ( val = obj[ key ] ).on( program[ key ] );
-
-              /* Draw */
-
-              if ( mesh.indices ) {
-
-                mesh.indices.on();
-                gl.drawElements( TRIANGLES, mesh.indices.length, UNSIGNED_SHORT, 0 );
-
-              } else {
-
-                gl.drawArrays(
-                  mode  || mesh.mode,
-                  first || 0,
-                  count || ( val.length / program[ key ].size )
-                );
-              }
-            }
-          });
-        },
-
-        //
-        // Attribute
-        // --------------------------------------------------
-        //
-        // Creates an object that encapsulates a vertex shader
-        // attribute and provides methods for using it
-        //
-        // Parameters:
-        //  - `program` The `program` object the attribute belongs to
-        //  - `name` The name of the attribute (usually prefixed with _a_)
-        //  - `type` The type of object used for this attribute (e.g. _vec3_)
-        //
-
-        attribute: function( program, name, type ) {
-
-          var location = gl.getAttribLocation( program, name );
-          var dataType = getType( type );
-          var size = getSize( type );
-          var on = false;
-
-          return {
-            
-            name: name,
-            type: type,
-            size: size,
-            dataType: dataType,
-            location: location,
-
-            // ##### on
-            // Enable the attribute and setup pointers
-
-            on: function() {
-              
-              if ( !on ) gl.enableVertexAttribArray( location );
-              gl.vertexAttribPointer( location, size, dataType, false, 0, 0 );
-              on = true;
-            },
-
-            // ##### off
-            // Disable the attribute
-
-            off: function() {
-
-              gl.disableVertexAttribArray( location );
-            }
-          };
-        },
-
-        //
-        // Uniform
-        // --------------------------------------------------
-        //
-        // Creates an object that encapsulates a program
-        // uniform and provides methods for using it
-        //
-        // Parameters:
-        //  - `program` The `program` object the uniform belongs to
-        //  - `name` The name of the uniform (usually prefixed with _u_)
-        //  - `type` The type of object used for this uniform (e.g. _vec3_)
-        //  - `span` _(optional)_ The length of this uniform if it's an array
-        //
-
-        uniform: function( program, name, type, span ) {
-
-          var location = gl.getUniformLocation( program, name );
-          var setter = gl[ uniformMethod( type, span ) ];
-          var state = program.state;
-
-          return {
-            
-            name: name,
-            type: type,
-            span: span || 1,
-            location: location,
-            setter: setter,
-
-            // ##### get
-            // Returns the current value of the uniform
-
-            get: function() {
-
-              return gl.getUniform( program, location );
-            },
-
-            // ##### set
-            // Sets the current value of the uniform
-
-            set: function( value ) {
-
-              if ( state[ name ] !== value ) {
-
-                program.on();
-                setter.apply( gl, [ location ].concat( state[ name ] = value ) );
-              }
-            }
-          };
-        },
-
-        //
-        // Buffer
-        // --------------------------------------------------
-        //
-        // Creates a buffer object to use for attributes or indices
-        //
-        // Parameters:
-        //  - `type` The type of buffer (`ARRAY_BUFFER` or `ELEMENT_ARRAY_BUFFER`)
-        //  - `data` _(optional)_ The initial data to fill the buffer with
-        //
-
-        buffer: function( type, data ) {
-
-          var ArrayType = type === ARRAY_BUFFER ? Float32Array : Uint16Array;
-          var buffer = gl.createBuffer();
-
-          extend( buffer, {
-
-            // ##### length
-            // The current length of the buffer
-
-            length: 0,
-
-            // ##### on
-            // Binds the buffer to the appropriate bind point and
-            // enables the attribute for the buffer
-            //
-            // Parameters
-            //  - `attribute` The attribute that this buffer is for
-
-            on: function( attribute ) {
-
-              if ( bindings[ type ] !== buffer ) {
-
-                gl.bindBuffer( type, bindings[ type ] = buffer );
-                if ( attribute ) attribute.on();
-              }
-            },
-
-            // ##### fill
-            // Fills the buffer with data
-            //
-            // Parameters
-            //  - `data` The data to fill the buffer with
-            //  - `usage` _(optional)_ How the buffer will be used (defaults to `STATIC_DRAW`)
-
-            fill: function( data, usage ) {
-
-              if ( toType( data ) == 'array' ) data = new ArrayType( data );
-
-              gl.bindBuffer( type, buffer );
-              gl.bufferData( type, data, usage || STATIC_DRAW );
-
-              buffer.length = data.length;
-            },
-
-            // ##### push
-            // Pushes data into the buffer at a given offset
-            //
-            // Parameters
-            //  - `data` The data to push into the buffer
-            //  - `offset` The point at which to start pushing in data
-
-            push: function( data, offset ) {
-
-              if ( isArray( data ) ) data = new ArrayType( data );
-              
-              gl.bindBuffer( type, buffer );
-              gl.bufferSubData( type, offset, data );
-            }
-          });
-
-          if ( data ) buffer.fill( data );
-
-          return buffer;
-        },
-
-        //
-        // VBO
-        // --------------------------------------------------
-        //
-        // Creates a vertex buffer for sending attributes to a vertex shader
-        // (internally this calls `gl.buffer` with type `ARRAY_BUFFER`)
-        //
-        // Parameters:
-        //  - `data` _(optional)_ The initial data to fill the buffer with
-        //
-
-        vbo: function( data ) {
-
-          return gl.buffer( ARRAY_BUFFER, data );
-        },
-
-        //
-        // IBO
-        // --------------------------------------------------
-        //
-        // Creates a buffer for specifying vertex indices (internally 
-        // this calls `gl.buffer` with type `ELEMENT_ARRAY_BUFFER`)
-        //
-        // Parameters:
-        //  - `data` _(optional)_ The initial data to fill the buffer with
-        //
-
-        ibo: function( data ) {
-
-          return gl.buffer( ELEMENT_ARRAY_BUFFER, data );
-        },
-
-        //
-        // FBO
-        // --------------------------------------------------
-        //
-        // Creates a frame buffer object that can be used as an 
-        // alternative rendering target
-        //
-        // Parameters:
-        //  - `width` _(optional)_ The initial width of the frame buffer
-        //  - `height` _(optional)_ The initial height of the frame buffer
-        //  - `data` _(optional)_ The initial texture data
-        //
-        // TODO:
-        //  - Add support for `renderBuffers`
-        //
-
-        fbo: function( width, height, data, options ) {
-
-          var fbo = gl.createFramebuffer();
-          var tex = gl.texture();
-
-          extend( fbo, {
-
-            // ##### texture
-            // The texture object that the frame buffer renders to
-
-            texture: tex,
-
-            // ##### set
-            // Sets up the frame buffer with optional data and dimensions
-            //
-            // Parameters:
-            //  - `data` _(optional)_ Image data for the frame buffer
-            //  - `width` _(optional)_ The initial width of the frame buffer
-            //  - `height` _(optional)_ The initial height of the frame buffer
-
-            set: function( data, width, height, options ) {
-
-              fbo.on();
-              tex.set( data, fbo.width = width, fbo.height = height, options );
-              gl.framebufferTexture2D( FRAMEBUFFER, COLOR_ATTACHMENT0, TEXTURE_2D, tex, 0 );
-              fbo.off();
-            },
-
-            // ##### on
-            // Binds the frame buffer to use as an off screen rendering target
-
-            on: function() {
-
-              gl.bindFramebuffer( FRAMEBUFFER, fbo );
-            },
-
-            // ##### off
-            // Unbinds the frame buffer, re-enabling the default render target
-
-            off: function() {
-
-              gl.bindFramebuffer( FRAMEBUFFER, null );
-            }
-          });
-
-          fbo.set( data, width || 1, height || 1, options );
-
-          return fbo;
-        },
-
-        //
-        // Texture
-        // --------------------------------------------------
-        //
-        // Creates a texture object
-        //
-        // Parameters:
-        //  - `source` _(optional)_ The initial source data for the texture.
-        //  Possible values are:
-        //   - `string` (path to an image file)
-        //   - `ArrayBufferView` _(pixels)_
-        //   - `ImageData` _(pixels)_
-        //   - `HTMLImageElement` _(May throw DOMException)_
-        //   - `HTMLCanvasElement` _(May throw DOMException)_
-        //   - `HTMLVideoElement` _(May throw DOMException)_
-        //  - `width` _(optional)_ Width of the texture, if not one of the above types
-        //  - `height` _(optional)_ Height of the texture, if not one of the above types
-        //  - `options` _(optional)_ Options to use during `setup`
-        //
-        // TODO:
-        //  - Auto convert arrays to typed
-        //
-
-        texture: function( source, width, height, options ) {
-
-          var texture = gl.createTexture();
-          var content;
-          var pot;
-
-          if ( typeof width == 'object' )
-
-            options = width;
-
-          extend( texture, {
-
-            // ##### param
-            // Sets a parameter for this texture (for example `TEXTURE_MIN_FILTER`)
-            //
-            // Parameters:
-            //  - `name` The name of the parameter to set (e.g. `TEXTURE_MIN_FILTER`)
-            //  - `value` The value for the parameter (e.g. `LINEAR`)
-
-            param: function( name, value ) {
-
-              gl.texParameteri( TEXTURE_2D, name, value );
-            },
-
-            // ##### setup
-            // Sets up the texture by configuring several parameters and generates
-            // mipmaps if appropriate
-            //
-            // Parameters:
-            //  - `options` _(optional)_ An object containing parameter names and their values
-            //  Possible keys are:
-            //   - `min` How to resample when shrinking
-            //   - `mag` How to resample when stretching
-            //   - `s` Whether to clamp or repeat on the _s_ (_x_) axis
-            //   - `t` Whether to clamp or repeat on the _t_ (_y_) axis
-
-            setup: function( options ) {
-
-              options = extend( options || {}, {
-                min: LINEAR,
-                mag: LINEAR,
-                s: CLAMP_TO_EDGE,
-                t: CLAMP_TO_EDGE
-              });
-
-              texture.on();
-
-              texture.param( TEXTURE_MAG_FILTER, options.mag );
-              texture.param( TEXTURE_MIN_FILTER, options.min );
-              texture.param( TEXTURE_WRAP_S, options.s );
-              texture.param( TEXTURE_WRAP_T, options.t );
-
-              if ( options.mipmap ) gl.generateMipmap( TEXTURE_2D );
-
-              texture.off();
-            },
-
-            // ##### on
-            // Binds the texture and if `unit` is specified, tells WebGL to
-            // use this texture as the texture at the given unit, which will
-            // correspond to a shader uniform
-            //
-            // Parameters:
-            //  - `unit` _(optional)_ The unit to activate this texture for
-
-            on: function( unit ) {
-              
-              if ( exists( unit ) ) gl.activeTexture( TEXTURE0 + unit );
-              gl.bindTexture( TEXTURE_2D, texture );
-            },
-
-            // ##### off
-            // Unbinds this texture
-
-            off: function() {
-
-              gl.bindTexture( TEXTURE_2D, null );
-            },
-
-            // ##### set
-            // Populates this texture object with data of one of the supported
-            // types (see the constructor's `source` parameter above)
-            //
-            // Parameters:
-            //  - `data` _(optional)_ The data to populate the texture with
-            //  - `width` _(optional)_ The width of the texture
-            //  - `height` _(optional)_ The height of the texture
-
-            set: function( data, width, height, options ) {
-
-              options = extend( options || {}, {
-                mipmap: pot = width > 1 && height > 1 && isPowerOf2( width ) && isPowerOf2( height ),
-                format: RGBA,
-                min: pot ? LINEAR_MIPMAP_LINEAR : LINEAR,
-                flip: true
-              });
-
-              var path = typeof data === 'string';
-
-              if ( path || !data && !width && !height ) {
-                
-                texture.set( EMPTY_PIXEL, 1, 1 );
-
-                if ( path )
-
-                  loadImage( data, texture.set );
-
-                return;
-              }
-
-              var type = /^float/i.test( toType( data ) ) ? FLOAT : UNSIGNED_BYTE;
-              
-              texture.on();
-
-              gl.pixelStorei( UNPACK_FLIP_Y_WEBGL, options.flip );
-
-              if ( width && height )
-
-                gl.texImage2D( TEXTURE_2D, 0, options.format, width, height, 0, options.format, type, data );
-
-              else
-
-                gl.texImage2D( TEXTURE_2D, 0, options.format, options.format, UNSIGNED_BYTE, data );
-
-              if ( data !== content )
-
-                texture.setup( options );
-
-              content = data;
-
-              texture.off();
-            }
-          });
-
-          texture.set( source, width, height, options );
-
-          return texture;
-        },
-
-        //
-        // Size
-        // --------------------------------------------------
-        //
-        // Resizes the canvas and viewport
-        //
-        // Parameters:
-        //  - `width` The desired width
-        //  - `height` The desired height
-        //
-
-        size: function( width, height ) {
-
-          gl.viewport( 0, 0, width, height );
-          gl.height = canvas.height = height;
-          gl.width = canvas.width = width;
-        },
-
-        //
-        // Mesh
-        // --------------------------------------------------
-        //
-        // Creates a mesh object that encapsulates the properties
-        // needed to render a mesh and can be given to a `program`
-        // to draw
-        //
-        // Parameters:
-        //  - `options` The properties to initialise the mesh with
-        //   - `mode` The default drawing mode to use
-        //   - `attributes` Names attribute keys and buffer their values
-        //   - `uniforms` A hash of uniforms and their initial values
-        //   - `textures` Texture uniform keys and corresponding textures
-        //   - `textures` Texture uniform keys and corresponding textures
-        //   - `textures` Texture uniform keys and corresponding textures
-        //
-        // Example:
-        //
-        //     var quad = gl.mesh({
-        //         uniforms: {
-        //             uTime: 0
-        //         },
-        //         textures: {
-        //             uTexture: gl.texture( 'some-image.png' )
-        //         },
-        //         vertices: {
-        //             aPosition: gl.vbo([ -1, 1, 1, 1, -1, -1, 1, -1 ])
-        //         },
-        //         attributes: {
-        //             aTexCoord: gl.vbo([ 0, 1, 1, 1, 0, 0, 1, 0 ])
-        //         },
-        //         indices: gl.ibo([ 0, 1, 3, 3, 1, 2 ])
-        //     });
-        //
-        //     program.draw( quad );
-        //
-
-        mesh: function( options ) {
-
-          var mesh = extend( options || {}, {
-            
-            mode: TRIANGLE_STRIP,
-            attributes: {},
-            uniforms: {},
-            textures: {},
-            indices: null,
-            vertices: { /* programAttributeName: VBO */ }
-          });
-
-          return mesh;
-        }
-      });
-    }
-  };
-
-  //
-  // Internal
-  // --------------------------------------------------
-  //
-  // Constants and helper methods, not exposed via the API
-  //
-
-  var EMPTY_PIXEL = new Uint8Array([ 0, 0, 0, 0 ]);
-  var PRECISION = '#ifdef GL_ES\nprecision mediump float;\n#endif';
-  var ATTRIBUTE = /attribute\s+(\w+)\s+([\w_-]+)/gi;
-  var UNIFORM = /uniform\s+(\w+)\s+([\w_-]+)(\[(\s+)?([\w_-]+))?/gi;
-  var COMMENT = /(\/\/.+|\/\*[^(\*\/)]+\*\/)/i;
-
-  /*
-
-    Enumeration
-
-  */
-
-  var ELEMENT_ARRAY_BUFFER = 34963;
-  var LINEAR_MIPMAP_LINEAR = 9987;
-  var UNPACK_FLIP_Y_WEBGL = 37440;
-  var TEXTURE_MAG_FILTER = 10240;
-  var TEXTURE_MIN_FILTER = 10241;
-  var COLOR_ATTACHMENT0 = 36064;
-  var FRAGMENT_SHADER = 35632;
-  var COMPILE_STATUS = 35713;
-  var UNSIGNED_SHORT = 5123;
-  var TEXTURE_WRAP_S = 10242;
-  var TEXTURE_WRAP_T = 10243;
-  var TRIANGLE_STRIP = 5;
-  var CLAMP_TO_EDGE = 33071;
-  var UNSIGNED_BYTE = 5121;
-  var VERTEX_SHADER = 35633;
-  var ARRAY_BUFFER = 34962;
-  var FRAMEBUFFER = 36160;
-  var STATIC_DRAW = 35044;
-  var LINK_STATUS = 35714;
-  var TEXTURE_2D = 3553;
-  var TRIANGLES = 4;
-  var TEXTURE0 = 33984;
-  var NEAREST = 9728;
-  var LINEAR = 9729;
-  var FLOAT = 5126;
-  var RGBA = 6408;
-  var INT = 5124;
-
-  /*
-
-    Utils
-
-  */
-
-  var define = Object.defineProperty;
-
-  /*
-
-    Merge properties of `source` into `target`
-
-  */
-
-  function extend( target, source, overwrite ) {
-
-    for ( var key in source )
-
-      if ( overwrite || ( !( key in target ) || !exists( target[ key ] ) ) )
-
-        target[ key ] = source[ key ];
-
-    return target;
-  }
-
-  /*
-
-    Checks whether an object has been defined
-
-  */
-
-  function exists( object ) {
-
-    return object != null;
-  }
-
-  /*
-
-    Checks whether a number is power of two
-
-  */
-
-  function isPowerOf2( value ) {
-    
-    return ( value & ( value - 1 ) ) === 0;
-  }
-
-  /*
-
-    Load an image from a given path and fire a callback when ready
-
-  */
-
-  function loadImage( path, callback ) {
-
-    var image = new Image();
-    image.onload = function() { callback( image ); };
-    image.src = path;
-  }
-
-  /*
-
-    Returns the name of the uniform setter method for a uniform type,
-    for example a type of `vec2` would yield `uniform2f`
-
-  */
-
-  function uniformMethod( type, span ) {
-
-    return 'uniform{m}{d}{t}{a}'
-
-      .replace( '{m}', /mat/i.test( type ) ? 'Matrix' : '' )
-      .replace( '{d}', /\d$/.test( type ) ? type.match( /\d$/ )[0] : 1 )
-      .replace( '{t}', /^[bis]/i.test( type ) ? 'i' : 'f' )
-      .replace( '{a}', span > 0 ? 'v' : '' );
-  }
-
-  /*
-
-    Returns the size (number of dimensions) of an object type
-
-  */
-
-  function getSize( type ) {
-
-    return /\d/.test( type ) ? parseInt( type.match( /\d$/ )[0], 10 ) : 1;
-  }
-
-  /*
-
-    Returns the WebGL datatype of an object type (e.g vec3 -> gl.FLOAT)
-
-  */
-
-  function getType( type ) {
-
-    return /^[bi]/i.test( type ) ? INT : FLOAT;
-  }
-
-  /*
-
-    Returns a string representing the type of object provided
-    @see http://javascriptweblog.wordpress.com/2011/08/08/fixing-the-javascript-typeof-operator/
-
-  */
-
-  function toType( obj ) {
-
-    return ({}).toString.call( obj ).match( /\s([a-zA-Z0-9]+)/ )[1].toLowerCase();
-  }
-
-  /*
-
-    Highlights GLSL code and the location of an error therein
-
-  */    
-
-  function logShaderError( error, source ) {
-
-    var line = /\d+:(\d+)/g.exec( error );
-
-    if ( line ) {
-
-      line = parseInt( line[1], 10 ) - 1;
-      source = source.split( '\n' );
-
-      console.log(
-        
-        '%c' + source.splice( 0, line ).join( '\n' ) +
-        '%c' + '\n' + source[ 0 ] + '\n' +
-        '%c' + source.splice( 1 ).join( '\n' ),
-
-        'color: #ccc',
-        'color: red',
-        'color: #ccc'
-      );
-    }
-
-    throw error;
-  }
-
-  // ##### Finally, return the API
-
-  return GL;
-
-})();
-
-var Shaders = Shaders || {};
-
-Shaders.Glitch = {};
-
-Shaders.Glitch.VertexShader = [
-  'attribute vec2 aPosition;',
-  'attribute vec2 aTexCoord;',
-  'varying vec2 vTexCoord;',
-  'void main() {',
-      'gl_Position = vec4( aPosition, 0, 1 );',
-      'vTexCoord = aTexCoord;',
-  '}'
-].join('\n');
-
-Shaders.Glitch.FragmentShader = [
-  'uniform sampler2D uTexture;',
-  'uniform sampler2D uOffsets;',
-  'varying vec2 vTexCoord;',
-
-  'uniform int uSkip;',
-  'uniform float uAmount;',
-  'uniform float uAngle;',
-  'uniform float uSeed;',
-  'uniform float uSeedX;',
-  'uniform float uSeedY;',
-  'uniform float uDistortionX;',
-  'uniform float uDistortionY;',
-  'uniform float uColS;',
-
-  'float rand(vec2 co){',
-    'return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);',
-  '}',
-
-  'void main() {',
-    'vec4 texel = texture2D( uTexture, vTexCoord );',
-    'gl_FragColor = texel;',
-
-    'if (uSkip < 1) {',
-      'vec2 p = vTexCoord;',
-      'float xs = floor(gl_FragCoord.x / 0.5);',
-      'float ys = floor(gl_FragCoord.y / 0.5);',
-      '//based on staffantans glitch shader for unity https://github.com/staffantan/unityglitch',
-      'vec4 normal = texture2D(uOffsets, p * uSeed * uSeed);',
-      'if (p.y < uDistortionX + uColS && p.y > uDistortionX - uColS * uSeed) {',
-        'if(uSeedX > 0.0){',
-          'p.y = 1.0 - (p.y + uDistortionY);',
-        '}',
-        'else {',
-          'p.y = uDistortionY;',
-        '}',
-      '}',
-      'if (p.x < uDistortionY + uColS && p.x > uDistortionY - uColS * uSeed) {',
-        'if (uSeedY > 0.0){',
-          'p.x = uDistortionX;',
-        '}',
-        'else {',
-          'p.x = 1. - (p.x + uDistortionX);',
-        '}',
-      '}',
-      'p.x += normal.x * uSeedX * (uSeed /5.0);',
-      'p.y += normal.y * uSeedY * (uSeed /5.0);',
-      '//base from RGB shift shader',
-      'vec2 offset = uAmount * vec2( cos(uAngle), sin(uAngle) );',
-      'vec4 cr = texture2D(uTexture, p + offset);',
-      'vec4 cga = texture2D(uTexture, p);',
-      'vec4 cb = texture2D(uTexture, p - offset);',
-      'gl_FragColor = vec4(cr.r, cga.g, cb.b, cga.a);',
-    '}',
-    'else {',
-      'gl_FragColor = texture2D(uTexture, vTexCoord);',
-    '}',
-  '}',
-].join('\n');
-
-function Glitch() {
-  this.domElement = document.createElement('div');
-  this.domElement.className = 'glitch';
-  this.bindMethods();
-  this.setupContext();
-  this.render();
-  this.enabled = true;
-  this.glitchFrames = 0;
-  this.glitching = false;
-  // Glitch settings...
-  // Chance of switching glitch effect on when off.
-  this.onProbability = 0.005;
-  // Chance of switching glitch effect off when on.
-  this.offProbability = 0.2;
-  // Minimum frames to glitch for.
-  this.minGlitchedFrames = 5;
-  // Maximum frames to glitch for.
-  this.maxGlitchedFrames = 30;
-  // Chance of updating distortion values.
-  this.distortionProbability = 0.35;
-  // Maximum seed value (signed, e.g. between -n and n)
-  this.maxSeedValue = 0.2;
-  // Maximum distortion.
-  this.maxDistortion = 0.2;
-  // Smoothing applied to random values of `uAmount` uniform.
-  this.strengthDivisor = 60;
-}
-
-Glitch.prototype.enable = function() {
-  this.enabled = true;
-}
-
-Glitch.prototype.disable = function() {
-  if (this.enabled) {
-    this.enabled = false;
-    this.updateProgramUniforms();
-    this.program.draw(this.mesh);
-  }
-}
-
-Glitch.prototype.bindMethods = function() {
-  this.onImageLoaded = this.onImageLoaded.bind(this);
-  this.resize = this.resize.bind(this);
-  this.render = this.render.bind(this);
-}
-
-Glitch.prototype.setupContext = function() {
-  try {
-    // Attempt to create a GL context.
-    this.canvas = document.createElement('canvas');
-    this.context = GL.create(this.canvas);
-    this.domElement.appendChild(this.canvas);
-    this.hasWebGL = true;
-  } catch (error) {
-    this.hasWebGL = false;
-  }
-  if (this.hasWebGL) {
-    // We can't use background cover, so compute manually on resize.
-    window.addEventListener('resize', this.resize, false);
-    // If WebGL is supported, set up the context.
-    this.enableWebGLExtensions();
-    this.program = this.context.program(
-      Shaders.Glitch.VertexShader,
-      Shaders.Glitch.FragmentShader
-    );
-    this.texture = this.context.texture();
-    this.mesh = this.createQuadMesh();
-    this.setupProgramUniforms();
-    this.frame = 0;
-  }
-}
-
-Glitch.prototype.createQuadMesh = function() {
-  return this.context.mesh({
-    textures: {
-      uTexture: this.texture,
-      uOffsets: this.generateHeightMap(64)
-    },
-    vertices: { aPosition: this.createScreenSpaceQuad() },
-    attributes: { aTexCoord: this.createUVCoordinates() }
-  });
-}
-
-Glitch.prototype.createScreenSpaceQuad = function() {
-  return this.context.vbo([ -1, 1, 1, 1, -1, -1, 1, -1 ])
-}
-
-Glitch.prototype.createUVCoordinates = function() {
-  return this.context.vbo([ 0, 1, 1, 1, 0, 0, 1, 0 ]);
-}
-
-Glitch.prototype.enableWebGLExtensions = function() {
-  this.context.getExtension('OES_texture_float');
-  this.context.getExtension('OES_half_float_linear');
-  this.context.getExtension('OES_float_linear');
-}
-
-Glitch.prototype.setupProgramUniforms = function(arguments) {
-  this.program.uSkip.set(1);
-  this.program.uAmount.set(0.01);
-  this.program.uAngle.set(0.01);
-  this.program.uSeed.set(0.01);
-  this.program.uSeedX.set(0.01);
-  this.program.uSeedY.set(0.01);
-  this.program.uDistortionX.set(0.1);
-  this.program.uDistortionY.set(0.1);
-  this.program.uColS.set(0.1);
-  this.generateTrigger();
-}
-
-Glitch.prototype.updateProgramUniforms = function() {
-  if (!this.enabled) {
-    this.glitching = false;
-    this.program.uSkip.set(1);
-    return;
-  }
-  if (this.glitching) {
-    this.program.uSeed.set(Math.random());
-    this.program.uSkip.set(0);
-    this.program.uAmount.set(Math.random() / this.strengthDivisor);
-    this.program.uAngle.set(this.randomFloat(-Math.PI, Math.PI));
-    this.program.uSeedX.set(this.randomFloat(-this.maxSeedValue, this.maxSeedValue));
-    this.program.uSeedY.set(this.randomFloat(-this.maxSeedValue, this.maxSeedValue));
-    if (Math.random() < this.distortionProbability) {
-      this.program.uDistortionX.set(this.randomFloat(0, this.maxDistortion));
-      this.program.uDistortionY.set(this.randomFloat(0, this.maxDistortion));
-    }
-    if (this.glitchFrames > this.minGlitchedFrames) {
-      if (this.glitchFrames > this.maxGlitchedFrames || Math.random() < this.offProbability) {
-        this.program.uSkip.set(1);
-        this.glitching = false;
-      }
-    }
-    this.glitchFrames++;
-  } else {
-    this.glitching = Math.random() < this.onProbability;
-    this.glitchFrames = 0;
-  }
-  this.frame++;
-}
-
-Glitch.prototype.generateHeightMap = function(size) {
-  // Fill a Float buffer with 3 channels worth of data (RGB).
-  var data = new Float32Array( size * size * 3 );
-  var length = size * size;
-  for ( var value, index, i = 0; i < length; i++ ) {
-    index = i * 3;
-    value = Math.random();
-    data[ index     ] = value;
-    data[ index + 1 ] = value;
-    data[ index + 2 ] = value;
-  }
-  return this.context.texture(data, size, size, {
-    format: this.context.RGB,
-    mipmap: false,
-    min: this.context.NEAREST,
-    mag: this.context.NEAREST,
-    s: this.context.REPEAT,
-    t: this.context.REPEAT
-  });
-}
-
-Glitch.prototype.generateTrigger = function() {
-  this.randX = Math.floor(this.randomFloat(120, 240));
-}
-
-Glitch.prototype.randomFloat = function(min, max) {
-  if (typeof max == 'undefined') {
-    max = min;
-    min = 0;
-  }
-  return min + Math.random() * (max - min);
-}
-
-// TODO: This mimics contain and not cover.
-// TODO: Call during view project tween.
-Glitch.prototype.resize = function() {
-  // var bounds = this.domElement.getBoundingClientRect();
-  var ratio1 = this.domElement.offsetWidth / this.domElement.offsetHeight;
-  var ratio2 = this.image.width / this.image.height;
-  var landscape = ratio1 < ratio2;
-  this.canvas.style.height = landscape ? '100%' : 'auto';
-  this.canvas.style.width = landscape ? 'auto' : '100%';
-}
-
-Glitch.prototype.render = function() {
-  requestAnimationFrame(this.render);
-  if (this.enabled) {
-    this.updateProgramUniforms();
-    this.program.draw(this.mesh);
-  }
-}
-
-Glitch.prototype.setImagePath = function(path) {
-  // Always set the background image as a fallback.
-  this.domElement.style.backgroundImage = 'url(' + path + ')';
-  if (this.hasWebGL) {
-    this.image = new Image();
-    this.image.onload = this.onImageLoaded;
-    this.image.src = path;
-  }
-}
-
-Glitch.prototype.onImageLoaded = function() {
-  this.context.size(this.image.width, this.image.height);
-  this.texture.set(this.image);
-  this.resize();
-}
 /*!
  * VERSION: 1.19.0
  * DATE: 2016-07-14
@@ -1409,7 +203,7 @@ function galleryImage(gallery){
 			{
 				breakpoint: 1366,
 				settings: {
-					slidesPerRow: 3
+					slidesPerRow: 4
 				}
 			}
 		]
@@ -1423,6 +217,14 @@ function galleryImage(gallery){
 	});
 
 	carousel.on("beforeChange", function(e, slick, currentSlide, nextSlide){
+
+		if(carousel.hasClass("gallery-news")) {
+			if(nextSlide !== 0) {
+				$(".gallery-pagination").addClass("no-first")
+			} else {
+				$(".gallery-pagination").removeClass("no-first")
+			}
+		}
 
 		var $animatingElementsIn = $('div.slick-slide[data-slick-index="' + nextSlide + '"]').find('[data-animation-in]'),
 			$animatingElementsOut = $('div.slick-slide[data-slick-index="' + currentSlide + '"]').find('[data-animation-out]'),
@@ -1453,8 +255,7 @@ function galleryImage(gallery){
 	});
 
 	carousel.on("breakpoint", function(event, slick, breakpoint){
-		slideCounter($(this))
-		// $(this).slick("setPosition")
+		slideCounter($(this));
 	});
 
 	next.on("click", function(event){
@@ -1473,7 +274,6 @@ function galleryImage(gallery){
 
 		if($(".wrapper").hasClass("return")) return false;
 
-		flags = true;
 		carousel.slick("slickPrev");
 		current.parent().addClass("animate left");
 		$(".wrapper").addClass("return");
@@ -1492,8 +292,6 @@ function galleryImage(gallery){
 		current.text(currents);
 
 		$(".count-next").remove();
-
-		flags = false;
 	};
 
 	var time;
@@ -1524,7 +322,7 @@ function galleryImage(gallery){
 	};		
 
 	function doAnimations(elements, elementsIn, elementsOut) {
-	var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+	var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oAnimationEnd animationend';
 		elements.each(function() {
 			var $this = $(this);
 			var $animationDelay = $this.data('delay');
@@ -1533,49 +331,75 @@ function galleryImage(gallery){
 			
 			var animIn = $(elementsIn).data("animation-in"),
 				animOut = $(elementsOut).data("animation-out");
-			var $animationTypeIn = "animated " + animIn,
-				$animationTypeOut = "animated " + animOut
+			var $animationTypeIn = animIn,
+				$animationTypeOut = animOut;
 
 			$this.css({
-				'animation-delay': $animationDelay,
-				'-webkit-animation-delay': $animationDelay
+				'transition-delay': $animationDelay,
+				'-webkit-transition-delay': $animationDelay
 			});
+
+			
+
 			$(elementsIn).parents(".slick-slide").addClass("opacity");
 			$(elementsOut).parents(".slick-slide").addClass("opacity");
 
-			$(elementsIn).addClass($animationTypeIn).one(animationEndEvents, function() {
+			// $(elementsIn).parents(".slick-slide").addClass($animationTypeIn);
+			// $(elementsOut).parents(".slick-slide").addClass($animationTypeOut);
+
+			// $(elementsIn).parents(".rotator").addClass("animated").one(animationEndEvents, function() {
+			// 	$(elementsOut).parents(".slick-slide").removeClass($animationTypeOut);
+			// 	$(elementsOut).parents(".slick-slide").removeClass("opacity");
+			// 	$(elementsIn).parents(".slick-slide").removeClass($animationTypeIn);
+			// 	$(elementsIn).parents(".slick-slide").removeClass("opacity");
+			// 	$(this).removeClass("animated");
+			// 	bindEventScroll();
+			// });
+
+			$(elementsIn).parents(".rotator").addClass("animated").one(animationEndEvents, function() {
+				$(elementsOut).removeClass($animationTypeOut);
+				$(elementsOut).parents(".slick-slide").removeClass("opacity");
+				$(elementsIn).removeClass($animationTypeIn);
+				$(elementsIn).parents(".slick-slide").removeClass("opacity");
+				$(this).removeClass("animated");
+				setTimeout(function() {
+					bindEventScroll();
+				}, 700);
+				
+			});
+
+			$(elementsIn).addClass($animationTypeIn).parents(".projects").one(animationEndEvents, function() {
 				$(this).removeClass($animationTypeIn);
 				$(this).parents(".slick-slide").removeClass("opacity");
 			});
-			$(elementsOut).addClass($animationTypeOut).one(animationEndEvents, function() {
+			$(elementsOut).addClass($animationTypeOut).parents(".projects").one(animationEndEvents, function() {
 				$(this).removeClass($animationTypeOut);
 				$(this).parents(".slick-slide").removeClass("opacity");
-				bindEventScroll();
 			});
 		});
 	};
 
-	// function getAnimDelay(rotator) {
-	// 	var _this = rotator,
-	// 		slide = _this.find(".slick-slide");
+	function getAnimDelay(rotator) {
+		var _this = rotator,
+			slide = _this.find(".slick-slide");
 
-	// 	slide.each(function(){
-	// 		var _ = $(this),
-	// 			animContainer = _.find(".anim-container"),
-	// 			animLength = animContainer.length,
-	// 			i = 0;
-	// 		if(animContainer.is('.anim-title')) {
-	// 			for(i; i <= animLength; i++) {
-	// 				animContainer.not(":eq(0)").eq(i).attr("data-delay", (i+2.6)/10 + "s")		
-	// 			};
-	// 		} else {
-	// 			for(i; i <= animLength; i++) {
-	// 				animContainer.eq(i).attr("data-delay", (i+1.7)/10 + "s")		
-	// 			};
-	// 		}
+		slide.each(function(){
+			var _ = $(this),
+				animContainer = _.find(".anim-container"),
+				animLength = animContainer.length,
+				i = 0;
+			if(animContainer.is('.anim-title')) {
+				for(i; i <= animLength; i++) {
+					animContainer.not(":eq(0)").eq(i).attr("data-delay", (i+2.6)/10 + "s")		
+				};
+			} else {
+				for(i; i <= animLength; i++) {
+					animContainer.eq(i).attr("data-delay", (i+1.7)/10 + "s")		
+				};
+			}
 				
-	// 	});
-	// }
+		});
+	}
 };
 
 function bindEventScroll() {
@@ -1724,7 +548,10 @@ function scrollbar(){
 };
 
 function heightScrollContainer() {
+	var container = document.getElementById("scroll-container");
+
 	$("#scroll-container").height($(window).height() - 80);
+	Ps.update(container);
 };
 
 window.onresize = function(){
@@ -1784,12 +611,15 @@ function sideLeaving(){
 
 		if($(e.target).parents('.side-left').length){
 
+				// l.addClass("active").removeClass("inactive")
+				// r.addClass("inactive")
 				TweenLite.to(l, 1, { width: "55%", ease: Power3.easeOut});
 				TweenLite.to(r, 1, { width: "45%", ease: Power3.easeOut});
 				TweenLite.to(rImg, 1, { opacity: "0.2", ease: Power3.easeOut});
 				TweenLite.to(lImg, 1, { opacity: "0.4", ease: Power3.easeOut});
 		} else {
-
+				// r.addClass("active").removeClass("inactive")
+				// l.addClass("inactive")
 				TweenLite.to(l, 1, { width: "45%", ease: Power3.easeOut});
 				TweenLite.to(r, 1, { width: "55%", ease: Power3.easeOut});
 				TweenLite.to(rImg, 1, { opacity: "0.4", ease: Power3.easeOut});
@@ -1799,6 +629,7 @@ function sideLeaving(){
 
 	container.on("mouseleave", function(){
 
+			// r.add(l).removeClass("active inactive")
 			TweenLite.to(l, 1, { width: "50%", ease: Power3.easeOut});
 			TweenLite.to(r, 1, { width: "50%", ease: Power3.easeOut});
 			TweenLite.to(rImg, 1, { opacity: "0.4", ease: Power3.easeOut});
@@ -2110,29 +941,6 @@ function gMaps(){
 	}
 };
 
-// function greyImage(image) {
-// 	// $(image).BlackAndWhite({
-// 	// 	hoverEffect : true,
-// 	// 	webworkerPath : false,
-// 	// 	intensity:1,
-// 	// 	crossOrigin: false,
-// 	// 	speed: {
-// 	// 		fadeIn: 500,
-// 	// 		fadeOut: 500
-// 	// 	},
-// 	// 	onImageReady: function(img) {
-
-// 	// 	}
-// 	// })
-// }
-
-// var glitch = new Glitch();
-// function updateGlitchImage() {
-// 	var glitchWrapper = $(".glitch-container"),
-// 		image = $(".glitch-container").data("image");
-// 	glitch.setImagePath(image);
-// 	glitchWrapper.find(".glitch-image").append(glitch.domElement);
-// };
 function noiseEffect() {
 	"use strict";
 
@@ -2283,6 +1091,8 @@ slides.prototype._init = function () {
 	this.paginItem = this.paginInner.find(".pagin__item");
 	this.paginItem.first().addClass("active");
 
+	this.anchor = $(this.el).find(".anchors__item");
+
 	if(this.slideCount < 10) {
 		$(this.countAll).text("0" + this.slideCount)
 	} else {
@@ -2314,6 +1124,12 @@ slides.prototype._Events = function() {
 		if($(this).hasClass("active")) return false;
 		self._paginNav($(this));
 	});
+
+	this.anchor.on("click", function(event) {
+		event.preventDefault();
+		if($(this).hasClass("active")) return false;
+		self._Anchor($(this));
+	})
 
 };
 slides.prototype._Next = function() {
@@ -2348,15 +1164,16 @@ slides.prototype._Next = function() {
 	$(this.active).parents(".content").find(".gallery-pagination").attr("data-color", this.activeAttr);
 
 	$(this.countCurrent).addClass("animate right");
-
+	
 	self.tl
 		.set($(this.active).find(".section__wrapper"), {
-			top: 0,
+			bottom: 0,
+			top: "auto",
 			height: "100%",
-			ease: Power0.easeNone
 		})
-		.to($(this.active).find(".section__wrapper"), 0.5, {
+		.to($(this.active).find(".section__wrapper"), 1.2, {
 			height: "0%",
+			ease: Power4.easeInOut,
 			clearProps: "all",
 			onComplete: function() {
 				$(self.el).find(".is-active").siblings().removeClass("is-animating top");
@@ -2403,13 +1220,12 @@ slides.prototype._Prev = function() {
 
 	self.tl
 		.set($(this.active).find(".section__wrapper"), {
-			bottom: 0,
-			top: "auto",
-			height: "100%",
-			ease: Power0.easeNone
+			top: 0,
+			height: "100%"
 		})
-		.to($(this.active).find(".section__wrapper"), 0.5, {
+		.to($(this.active).find(".section__wrapper"), 1.2, {
 			height: "0%",
+			ease: Power4.easeInOut,
 			clearProps: "all",
 			onComplete: function() {
 				$(self.el).find(".is-active").siblings().removeClass("is-animating bottom");
@@ -2420,7 +1236,56 @@ slides.prototype._Prev = function() {
 
 	this._update();
 };
+slides.prototype._Anchor = function(anchor) {
+	var self = this;
 
+	this.dataAnchor = anchor.data("anchor");
+
+	console.log(this.dataAnchor)
+
+	this.active = $(this.el).find(".is-active");
+	this.NextSlide = $(this.el).find(this.dataAnchor);
+	this.activeAttr = $(this.NextSlide).data("section");
+
+	if(this.isAnimating) {
+		return false;
+	}
+
+	this.isAnimating = true;
+
+	this.current = this.NextSlide.index() + 1
+
+	$(this.active).addClass("is-animating top");
+	$(this.NextSlide).addClass("is-active").siblings().removeClass("is-active");
+
+	$(this.active).parents(".content").find(".breadcrumbs").attr("data-color", " ");
+	$(this.active).parents(".content").find(".breadcrumbs").attr("data-color", this.activeAttr);
+
+	$(this.active).parents(".content").find(".gallery-pagination").attr("data-color", " ");
+	$(this.active).parents(".content").find(".gallery-pagination").attr("data-color", this.activeAttr);
+
+	$(this.countCurrent).addClass("animate right");
+	
+	self.tl
+		.set($(this.active).find(".section__wrapper"), {
+			bottom: 0,
+			top: "auto",
+			height: "100%"
+		})
+		.to($(this.active).find(".section__wrapper"), 1.2, {
+			height: "0%",
+			ease: Power4.easeInOut,
+			clearProps: "all",
+			onComplete: function() {
+				$(self.el).find(".is-active").siblings().removeClass("is-animating top");
+				self._end();
+				self._numberDestroy();
+			}
+		})
+
+	this._update();
+
+};
 slides.prototype._end = function() {
 	this.isAnimating = false;
 	$(".wrapper").removeClass("return");
@@ -2465,14 +1330,16 @@ slides.prototype._paginNav = function(pItem) {
 			autoAlpha: 0
 		})
 		.to(this.pInnerActive.find(".cover"), 0.7, {
-			width: "100%"
+			width: "100%",
+			ease: Power4.easeInOut
 		})
 		.to(this.pInnerActive.find(".container__text"), 0.7, {
-			autoAlpha: 1
+			autoAlpha: 1,
+			ease: Power4.easeInOut
 		},"-=0.7")
 };
 
-window.slides = slides
+// window.slides = slides
 
 
 function triggerImage() {
@@ -2663,7 +1530,9 @@ $(document).ready(function() {
 
 			showOverlay();
 			t
-				.to(mCont, 0.5, {delay: 0.5, x: "0%"})
+				.to(mCont, 0.5, {delay: 0.5, x: "0%", onComplete: function() {
+					$(".current").find("input").focus()
+				}})
 		
 		overlay.add(close).add(msgClose).on("click", function(){
 			hideOverlay();

@@ -35,7 +35,7 @@ block content
 										| Architectural bureau is the&nbsp;elegance in every detail
 									.anchors__sections
 										mixin anchors(anchor, name)
-											a(class="anchors__item" href="#"+anchor)
+											a(class="anchors__item" data-anchor="#"+anchor)
 												span #{name}
 										+anchors("bureau", "Bureau")
 										+anchors("leadership", "Leadership")
