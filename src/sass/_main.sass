@@ -3284,3 +3284,61 @@ body
 	&.ajax
 		transform: translate(0, 10px)
 		opacity: 0
+
+.portfolio-load
+	position: relative
+	width: 100%
+	height: 100%
+	.portfolio-container
+		position: absolute
+		width: 100%
+		height: 100%
+		z-index: 1
+		&.old
+			.projects
+				.projects-item
+					opacity: 0
+					transition: opacity 1.5s $cub
+		&.new
+			z-index: 2
+			.projects 
+				.projects-item 
+					.project-info-contaner
+						height: 0
+						opacity: 1
+						transition: none
+			&.load
+				.projects 
+					.projects-item 
+						.project-info-contaner
+							height: 100%
+							transition: height 1.2s $cub
+			.content-side
+				&::before, &::after
+					display: none
+
+.pageSurfLoader
+	position: absolute
+	top: 0
+	bottom: 0
+	left: 0
+	+rem(right, 80px)
+	background-color: rgba(255,255,255,.4)
+	z-index: 10
+	opacity: 0
+	visibility: hidden
+	transition: opacity 0.5s $cub, visibility 0.5s $cub
+	&.openLoader
+		opacity: 1
+		visibility: visible
+		.loader
+			width: 100%
+			transition-delay: 0.3s
+	.loader
+		width: 0
+		+rem(height, 5px)
+		background-color: $black
+		position: absolute
+		top: 0
+		+rem(left, 80px)
+		transition: width 1s $cub 0.5s

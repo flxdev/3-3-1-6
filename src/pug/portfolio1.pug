@@ -7,7 +7,7 @@ block content
 	include includes/_header
 	include includes/_menu
 	.wrapper
-		.content.content-portfolio-four
+		.content.content-portfolio-four(data-page="portfolio-four")
 			ul.breadcrumbs
 				li
 					a.home.breadcrumbs-item.ajax-trigger(href="#")
@@ -24,70 +24,73 @@ block content
 				a(href="#" class="pagination-item pagination-item_right ajax-trigger")
 					div
 						<svg viewBox="0 0 34 22" xmlns="http://www.w3.org/2000/svg"><g id="double"><path d="m0.53333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10" fill="none"/><path d="m19.03333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10" fill="none"/></g><g id="main"><path class="hover" d="m0.53333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10"/><path class="hover" d="m19.03333,0.45915l14.5,0l0,21l-14.5,0l0,-21z" stroke-miterlimit="10"/></g></svg>
-			.content-left.content-side
-				.projects-gallery
-					.projects
-						a.projects-item.ajax-trigger(href="#")
-							.project-info-contaner(data-animation="fadeInRight", data-delay="0.5s")
-								.cover
-									.project-info__inner
-										.projects-image
-											img(src="img/image-1a.jpg")
-										.projects-info
-												.projects-name
-													span Café de Paris 1
-														i
-												.projects-hash
-													- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-													each hash in arrHash
-														span(class="hash-item") #{hash}
-						a.projects-item.ajax-trigger(href="#")
-							.project-info-contaner(data-animation="fadeInRight", data-delay="0.6s")
-								.cover
-									.project-info__inner
-										.projects-image
-											img(src="img/image-2.jpg")
-										.projects-info
-												.projects-name
-													span Café de Paris 2
-														i
-												.projects-hash
-													- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-													each hash in arrHash
-														span(class="hash-item") #{hash}
-			.content-right.content-side
-				.projects-gallery
-					.projects
-						a.projects-item.ajax-trigger(href="#")
-							.project-info-contaner(data-animation="fadeInRight", data-delay="0.5s")
-								.cover
-									.project-info__inner
-										.projects-image
-											img(src="img/image-3.jpg")
-										.projects-info
-												.projects-name
-													span Café de Paris 3
-														i
-												.projects-hash
-													- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-													each hash in arrHash
-														span(class="hash-item") #{hash}
-						a.projects-item.ajax-trigger(href="#")
-							.project-info-contaner(data-animation="fadeInRight", data-delay="0.6s")
-								.cover
-									.project-info__inner
-										.projects-image
-											img(src="img/image-4.jpg")
-										.projects-info
-												.projects-name
-													span Café de Paris 4
-														i
-												.projects-hash
-													- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
-													each hash in arrHash
-														span(class="hash-item") #{hash}
-					script(type='text/javascript').
-						$(greyImage($(".projects-image")))
+			.portfolio-load
+				.portfolio-container
+					.content-left.content-side
+						.projects-gallery
+							.projects
+								a.projects-item.ajax-trigger(href="#")
+									.project-info-contaner(data-animation="fadeInRight", data-delay="0.5s")
+										.cover
+											.project-info__inner
+												.projects-image
+													img(src="img/main/1_2.jpg")
+												.projects-info
+														.projects-name
+															span Café de Paris 1
+																i
+														.projects-hash
+															- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+															each hash in arrHash
+																span(class="hash-item") #{hash}
+								a.projects-item.ajax-trigger(href="#")
+									.project-info-contaner(data-animation="fadeInRight", data-delay="0.6s")
+										.cover
+											.project-info__inner
+												.projects-image
+													img(src="img/main/6_2.jpg")
+												.projects-info
+														.projects-name
+															span Café de Paris 2
+																i
+														.projects-hash
+															- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+															each hash in arrHash
+																span(class="hash-item") #{hash}
+					.content-right.content-side
+						.projects-gallery
+							.projects
+								a.projects-item.ajax-trigger(href="#")
+									.project-info-contaner(data-animation="fadeInRight", data-delay="0.5s")
+										.cover
+											.project-info__inner
+												.projects-image
+													img(src="img/main/10_2.jpg")
+												.projects-info
+														.projects-name
+															span Café de Paris 3
+																i
+														.projects-hash
+															- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+															each hash in arrHash
+																span(class="hash-item") #{hash}
+								a.projects-item.ajax-trigger(href="#")
+									.project-info-contaner(data-animation="fadeInRight", data-delay="0.6s")
+										.cover
+											.project-info__inner
+												.projects-image
+													img(src="img/main/15_2.jpg")
+												.projects-info
+														.projects-name
+															span Café de Paris 4
+																i
+														.projects-hash
+															- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
+															each hash in arrHash
+																span(class="hash-item") #{hash}
 			include includes/_pagination
+			script(type='text/javascript').
+				var el = $(".portfolio-load");
+				var list = new CatalogAjax(el);
 	include includes/_modal-hash
 	include includes/_modal
