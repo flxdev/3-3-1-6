@@ -71,108 +71,108 @@ window.onload = function(){
 	// },200)
 }
 
-// function loadedImg() {
-// 	var $loaderSite = $(".siteLoader"),
-// 	$lettersContainer = $(".letters-container"),
-// 	$point1 = $(".point_1"),
-// 	$point2 = $(".point_2"),
-// 	$point3 = $(".point_3"),
-// 	$point4 = $(".point_4"),
-// 	$point5 = $(".point_5"),
-// 	$text = $(".loader-text"),
-// 	$timeline = $(".timeline"),
-// 	$loaderContainer = $(".loader-container"),
-// 	TimeLine = new TimelineLite();
-// 	function frameAnim(){
-// 		var tl = new TimelineLite()
-// 		tl
-// 			.to($(".frame-top"), 0.5, {
-// 				y: "-100%"
-// 			},0)
-// 			.to($(".frame-bottom"), 0.5, {
-// 				y: "100%",
-// 				onComplete: function(){
-// 					$loaderSite.fadeOut(100);
-// 					setTimeout(function(){
-// 						$(".out").addClass("load-page dom");
-// 					},100);
-// 				}
-// 			},0)
-// 	}
-// 	TimeLine
-// 		.set($point1, {
-// 			z: "400px",
-// 			autoAlpha: 0
-// 		})
-// 		.set($point2, {
-// 			z: "400px",
-// 			autoAlpha: 0
-// 		})
-// 		.set($point3, {
-// 			z: "400px",
-// 			autoAlpha: 0
-// 		})
-// 		.set($point4, {
-// 			z: "400px",
-// 			autoAlpha: 0
-// 		})
-// 		.set($point5, {
-// 			z: "400px",
-// 			autoAlpha: 0
-// 		})
-// 		.set($text, {
-// 			autoAlpha: 0
-// 		})
+function loadedImg() {
+	var $loaderSite = $(".siteLoader"),
+	$lettersContainer = $(".letters-container"),
+	$point1 = $(".point_1"),
+	$point2 = $(".point_2"),
+	$point3 = $(".point_3"),
+	$point4 = $(".point_4"),
+	$point5 = $(".point_5"),
+	$text = $(".loader-text"),
+	$timeline = $(".timeline"),
+	$loaderContainer = $(".loader-container"),
+	TimeLine = new TimelineLite();
+	function frameAnim(){
+		var tl = new TimelineLite()
+		tl
+			.to($(".frame-top"), 0.5, {
+				y: "-100%"
+			},0)
+			.to($(".frame-bottom"), 0.5, {
+				y: "100%",
+				onComplete: function(){
+					$loaderSite.fadeOut(100);
+					setTimeout(function(){
+						$(".out").addClass("load-page dom");
+					},100);
+				}
+			},0)
+	}
+	TimeLine
+		.set($point1, {
+			z: "400px",
+			autoAlpha: 0
+		})
+		.set($point2, {
+			z: "400px",
+			autoAlpha: 0
+		})
+		.set($point3, {
+			z: "400px",
+			autoAlpha: 0
+		})
+		.set($point4, {
+			z: "400px",
+			autoAlpha: 0
+		})
+		.set($point5, {
+			z: "400px",
+			autoAlpha: 0
+		})
+		.set($text, {
+			autoAlpha: 0
+		})
 
-// 		.to($point1, 1.2, {
-// 			z: "-=400px",
-// 			autoAlpha: 1,
-// 			ease: Power2.easeOut
-// 		},0)
-// 		.to($point2, 1.2, {
-// 			z: "-=400px",
-// 			delay: 0.6,
+		.to($point1, 1.2, {
+			z: "-=400px",
+			autoAlpha: 1,
+			ease: Power2.easeOut
+		},0)
+		.to($point2, 1.2, {
+			z: "-=400px",
+			delay: 0.6,
 
-// 			autoAlpha: 1,
-// 			ease: Power2.easeOut
-// 		},0)
-// 		.to($point3, 1.2, {
-// 			z: "-=400px",
-// 			autoAlpha: 1,
-// 			delay: 1.2,
-// 			ease: Power2.easeOut
-// 		},0)
-// 		.to($point4, 1.2, {
-// 			z: "-=400px",
-// 			autoAlpha: 1,
-// 			delay: 0.9,
-// 			ease: Power2.easeOut
-// 		},0)
-// 		.to($point5, 1.2, {
-// 			z: "-=400px",
-// 			autoAlpha: 1,
-// 			delay: 0.3,
-// 			ease: Power2.easeOut
-// 		},0)
-// 		.to($text, 1.2, {
-// 			autoAlpha: 1,
-// 			delay: 1.8,
-// 			ease: Sine.easeIn 
-// 		},0)
-// 		.to($lettersContainer, 0.3, {
-// 			delay: 1,
-// 			scaleX: 1,
-// 			scaleY: 0
-// 		})
-// 		.to($timeline, 1.2, {
-// 			scaleX: 1,
-// 			scaleY: 1,
-// 			onComplete: function() {
-// 				frameAnim()
-// 				$timeline.fadeOut(100)
-// 			}
-// 		})
-// }
+			autoAlpha: 1,
+			ease: Power2.easeOut
+		},0)
+		.to($point3, 1.2, {
+			z: "-=400px",
+			autoAlpha: 1,
+			delay: 1.2,
+			ease: Power2.easeOut
+		},0)
+		.to($point4, 1.2, {
+			z: "-=400px",
+			autoAlpha: 1,
+			delay: 0.9,
+			ease: Power2.easeOut
+		},0)
+		.to($point5, 1.2, {
+			z: "-=400px",
+			autoAlpha: 1,
+			delay: 0.3,
+			ease: Power2.easeOut
+		},0)
+		.to($text, 1.2, {
+			autoAlpha: 1,
+			delay: 1.8,
+			ease: Sine.easeIn 
+		},0)
+		.to($lettersContainer, 0.3, {
+			delay: 1,
+			scaleX: 1,
+			scaleY: 0
+		})
+		.to($timeline, 1.2, {
+			scaleX: 1,
+			scaleY: 1,
+			onComplete: function() {
+				frameAnim()
+				$timeline.fadeOut(100)
+			}
+		})
+}
 
 //main gallery image
 function galleryImage(gallery){
@@ -1502,11 +1502,11 @@ CatalogAjax.prototype._numberDestroy = function() {
 // CatalogAjax.prototype.
 
 $(document).ready(function() {
-	// loadedImg()
+	loadedImg()
 	// menu
-	setTimeout(function(){
-		$(".out").addClass("load-page dom");
-	},200)
+	// setTimeout(function(){
+	// 	$(".out").addClass("load-page dom");
+	// },200)
 	function menuTrigger() {
 		var trigger = $(".navbar__wrap"),
 			menuContent = trigger.parent().find(".navbar__content"),
