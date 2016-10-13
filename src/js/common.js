@@ -1389,7 +1389,7 @@ CatalogAjax.prototype.ajaxLoad = function() {
 					}, 1800);
 					setTimeout(function(){
 						self.animateOut();
-					}, 2800)
+					}, 3200)
 				});
 		},
 		error: function(error) {
