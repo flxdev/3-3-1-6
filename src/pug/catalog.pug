@@ -80,9 +80,12 @@ block content
 								+gridItem("img/grid/grid-1.jpg", "layouts", "House#1", "205", "4 000")
 
 					script(type='text/javascript').
-						$(heightScrollContainer)
-						$(scrollbar)
-						$(iso)
+						window.onload = function() {
+							$(heightScrollContainer)
+							$(scrollbar)
+							$(iso)
+						}
+							
 		
 			include includes/_pagination
 		include includes/_footer

@@ -74,9 +74,11 @@ block content
 								+gridItem("img/grid/grid-16.jpg")
 
 					script(type='text/javascript').						
-						$(heightScrollContainer)
-						$(scrollbar)
-						$(iso)
-						$(lightG)
+						window.onload = function() {
+							$(heightScrollContainer)
+							$(scrollbar)
+							$(iso)
+							$(lightG)
+						}
 			include includes/_pagination
 	include includes/_modal

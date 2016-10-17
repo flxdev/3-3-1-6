@@ -192,22 +192,22 @@ function galleryImage(gallery){
 		speed: !0
 	};
 
-	var newsFacebook = {
-		arrows: false,
-		rows: 2,
-		slidesPerRow: 4,
-		fade: true,
-		speed: !0,
-		infinite: true,
-		responsive: [
-			{
-				breakpoint: 1366,
-				settings: {
-					slidesPerRow: 4
-				}
-			}
-		]
-	};
+	// var newsFacebook = {
+	// 	arrows: false,
+	// 	rows: 2,
+	// 	slidesPerRow: 4,
+	// 	fade: true,
+	// 	speed: !0,
+	// 	infinite: true,
+	// 	responsive: [
+	// 		{
+	// 			breakpoint: 1366,
+	// 			settings: {
+	// 				slidesPerRow: 4
+	// 			}
+	// 		}
+	// 	]
+	// };
 
 	carousel.on("init", function(slick){
 		slideCounter($(this));
@@ -1499,7 +1499,172 @@ CatalogAjax.prototype._numberDestroy = function() {
 	$(self.countCurrent).find(".count-next").remove();
 };
 
-// CatalogAjax.prototype.
+// function fv() {
+
+// 	var _this = this,
+// 	_data = {
+// 		appId: '1769497983310854',
+// 		app_secret: '5a35ff4cd940ade96313a26c621f2a28',
+// 		group: '3316Architects',
+// 		fields: {}
+// 	}
+
+// 	_this.getData = function(type, fields) {
+// 		_data.fields = fields.split(',');
+
+// 		var send_data = {
+// 			fields: fields,
+// 			access_token: _data.appId+'|'+_data.app_secret,
+// 			limit: 100
+// 		};
+
+// 		$.ajax({
+// 			url: 'https://graph.facebook.com/'+_data.group+'/'+type,
+// 			data: send_data,
+// 			success: function(res) {
+// 				_this.setData(res)
+// 			}
+// 		});
+// 	};
+
+// 	_this.setData = function(results) {
+// 		var obj_result = results,
+// 			obj_length = obj_result.data.length,
+// 			_htmlTemplate = $('#facebook_template');
+
+// 		$.each(obj_result.data, function(index, element){
+// 			var htmlTemplate = _htmlTemplate.html();
+// 			element.created_time = _this.Date(element.created_time);
+// 			$.each(_data.fields, function(index, code) {
+// 				htmlTemplate = htmlTemplate.replace('#'+code+'#', element[code]);				
+// 			}); 
+// 			console.log(htmlTemplate);
+// 		})
+// 	}
+
+// 	_this.Date = function(date) {
+// 		var pStr = date.split('T'),
+// 			pDate = pStr[0].split('-'),
+// 			MonthList = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'],
+// 			moth = pDate[1],
+// 			textMonth = MonthList[moth - 1],
+// 			day = pDate[2]
+
+// 		return day + ' ' + textMonth
+// 	}
+// }
+
+// var fb = new fv;
+// fb.getData('feed', 'created_time,link,full_picture,name,message,likes,comments');
+
+
+function FacabookFeeds(el) {
+	this._el = el;
+	this._init();
+};
+
+FacabookFeeds.prototype._init = function() {
+
+	this.current = 0;
+
+	_data = {
+		appId: '1769497983310854',
+		app_secret: '5a35ff4cd940ade96313a26c621f2a28',
+		group: '3316Architects',
+		fields: {},
+		onPage: 8,
+		page: 0,
+		startPage: 5
+	};
+
+	this.paginAll = $(this._el).parent().find('.pagination-all');
+	this.btnNext = $(this._el).parent().find('#next');
+	this.btnPrev = $(this._el).parent().find('#prev');
+	this.countCurrent = $(this._el).parent().find(".pagination-current");
+
+	this.loader = $(".pageSurfLoader");
+
+	this.initEvents();
+
+};
+
+FacabookFeeds.prototype.initEvents = function() {
+	var self = this;
+
+	this.btnNext.on("click", function() {
+		++self.current;
+		self.countCurrent.addClass("animate right");
+		self._update();
+		
+		event.preventDefault();
+	});
+
+	this.btnPrev.on("click", function() {
+		--self.current;
+		self.countCurrent.addClass("animate left");
+		self._update();		
+		event.preventDefault();
+	});
+};
+
+FacabookFeeds.prototype.getData = function(type, fields){
+	var self = this;
+	_data.fields = fields.split(',');
+
+	var send_data = {
+		fields: fields,
+		access_token: _data.appId+'|'+_data.app_secret,
+		limit: 100
+	};
+
+	$.ajax({
+		url: 'https://graph.facebook.com/'+_data.group+'/'+type,
+		data: send_data,
+		success: function(res) {
+			// _this.setData(res)
+			self.countPage(res);
+			var _keys = Object.keys(res.data);
+			//console.log(res.data[_keys[8]]);
+			for(var i = 7; i < 15; i++) {
+				console.log(i);
+				console.log(res.data[_keys[i]]);
+			}
+		}
+	});
+};
+
+FacabookFeeds.prototype.countPage = function(results) {
+	var fCount = 6;
+
+	var allPage = Math.round((results.data.length - fCount) / 8 + 1);
+	if(allPage < 10) {
+		this.paginAll.text("0" + allPage);
+	} else {
+		this.paginAll.text(allPage)
+	}	
+}
+
+FacabookFeeds.prototype._update = function() {
+
+	this.nextNum = document.createElement("span");
+	$(this.nextNum).addClass("count-next");
+	$(this.nextNum).text("0" + (this.current + 1));
+
+	$(this.countCurrent).append(this.nextNum);
+};
+
+FacabookFeeds.prototype._numberDestroy = function() {
+	var self = this;
+
+	$(self.countCurrent).removeClass("animate right left");
+
+	$(self.countCurrent).find(".current").text($(self.nextNum).text());
+
+	$(self.countCurrent).find(".count-next").remove();
+};
+
+
+
 
 $(document).ready(function() {
 	loadedImg()
@@ -1691,11 +1856,11 @@ $(document).ready(function() {
 	scroll3316();
 	
 	function actionAjaxLinks() {
-		var contData = $(".content").data("page");
-		if(contData !== 'portfolio-four') {
-			$("body").on("click", ".ajax-trigger", actionLoadPage);
-		}
 		$(".navbar").on("click", ".ajax-trigger", actionLoadPage);
+		var contData = $(".content").data("page");
+		if(contData === 'portfolio-four' || contData === 'news') return false;
+			$("body").on("click", ".ajax-trigger", actionLoadPage);
+		
 	} actionAjaxLinks();
 
 	function actionLoadPage() {
