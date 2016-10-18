@@ -1433,71 +1433,13 @@ CatalogAjax.prototype._numberDestroy = function() {
 	$(self.countCurrent).find(".count-next").remove();
 };
 
-// function fv() {
 
-// 	var _this = this,
-// 	_data = {
-// 		appId: '1769497983310854',
-// 		app_secret: '5a35ff4cd940ade96313a26c621f2a28',
-// 		group: '3316Architects',
-// 		fields: {}
-// 	}
-
-// 	_this.getData = function(type, fields) {
-// 		_data.fields = fields.split(',');
-
-// 		var send_data = {
-// 			fields: fields,
-// 			access_token: _data.appId+'|'+_data.app_secret,
-// 			limit: 100
-// 		};
-
-// 		$.ajax({
-// 			url: 'https://graph.facebook.com/'+_data.group+'/'+type,
-// 			data: send_data,
-// 			success: function(res) {
-// 				_this.setData(res)
-// 			}
-// 		});
-// 	};
-
-// 	_this.setData = function(results) {
-// 		var obj_result = results,
-// 			obj_length = obj_result.data.length,
-// 			_htmlTemplate = $('#facebook_template');
-
-// 		$.each(obj_result.data, function(index, element){
-// 			var htmlTemplate = _htmlTemplate.html();
-// 			element.created_time = _this.Date(element.created_time);
-// 			$.each(_data.fields, function(index, code) {
-// 				htmlTemplate = htmlTemplate.replace('#'+code+'#', element[code]);				
-// 			}); 
-// 			console.log(htmlTemplate);
-// 		})
-// 	}
-
-// 	_this.Date = function(date) {
-// 		var pStr = date.split('T'),
-// 			pDate = pStr[0].split('-'),
-// 			MonthList = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'],
-// 			moth = pDate[1],
-// 			textMonth = MonthList[moth - 1],
-// 			day = pDate[2]
-
-// 		return day + ' ' + textMonth
-// 	}
-// }
-
-// var fb = new fv;
-// fb.getData('feed', 'created_time,link,full_picture,name,message,likes,comments');
-
-
-function FacabookFeeds(el) {
+function FacebookFeeds(el) {
 	this._el = el;
 	this._init();
 };
 
-FacabookFeeds.prototype._init = function() {
+FacebookFeeds.prototype._init = function() {
 
 	this.current = 0;
 
@@ -1507,78 +1449,108 @@ FacabookFeeds.prototype._init = function() {
 		group: '3316Architects',
 		fields: {},
 		onPage: 8,
-		page: 0,
-		startPage: 5
+		startPage: 5,
+		contPage: 6
 	};
 
-	this.paginAll = $(this._el).parent().find('.pagination-all');
-	this.btnNext = $(this._el).parent().find('#next');
-	this.btnPrev = $(this._el).parent().find('#prev');
-	this.countCurrent = $(this._el).parent().find(".pagination-current");
+	this.paginAll = $(this._el).parents(".projects-gallery").find('.pagination-all');
+	this.btnNext = $(this._el).parents(".projects-gallery").find('#next');
+	this.btnPrev = $(this._el).parents(".projects-gallery").find('#prev');
+	this.countCurrent = $(this._el).parents(".projects-gallery").find(".pagination-current");
 
 	this.loader = $(".pageSurfLoader");
+
+	this.res;
+
+	this.allPages;
+	this.template;
+
+	this.objTemplates = [];
+
+	this.conteiner = $("#news-template");
 
 	this.initEvents();
 
 };
 
-FacabookFeeds.prototype.initEvents = function() {
+FacebookFeeds.prototype.initEvents = function() {
 	var self = this;
 
 	this.btnNext.on("click", function() {
+		if(self.current > self.allPages - 2) return false;
 		++self.current;
 		self.countCurrent.addClass("animate right");
 		self._update();
-		
+		self.filterObject(self.current);
+		self.loadElements();
 		event.preventDefault();
 	});
 
 	this.btnPrev.on("click", function() {
+		if(self.current == 0) return false;
 		--self.current;
 		self.countCurrent.addClass("animate left");
 		self._update();		
+		self.filterObject(self.current);
+		self.loadElements();
 		event.preventDefault();
 	});
 };
 
-FacabookFeeds.prototype.getData = function(type, fields){
+FacebookFeeds.prototype.getData = function(type, fields){
 	var self = this;
 	_data.fields = fields.split(',');
 
 	var send_data = {
 		fields: fields,
-		access_token: _data.appId+'|'+_data.app_secret,
+		access_token: _data.appId + '|' + _data.app_secret,
 		limit: 100
 	};
 
 	$.ajax({
-		url: 'https://graph.facebook.com/'+_data.group+'/'+type,
+		url: 'https://graph.facebook.com/' + _data.group + '/' + type,
 		data: send_data,
 		success: function(res) {
-			// _this.setData(res)
-			self.countPage(res);
-			var _keys = Object.keys(res.data);
-			//console.log(res.data[_keys[8]]);
-			for(var i = 7; i < 15; i++) {
-				console.log(i);
-				console.log(res.data[_keys[i]]);
-			}
+			self.allPages = self.countPage(res.data);
+			self.res = res;
+			self.filterObject();
 		}
 	});
 };
 
-FacabookFeeds.prototype.countPage = function(results) {
-	var fCount = 6;
+FacebookFeeds.prototype.filterObject = function(current) {
+	var curr = current || 0;
+	var _keys = Object.keys(this.res.data);
+	this.resDate = [];
 
-	var allPage = Math.round((results.data.length - fCount) / 8 + 1);
-	if(allPage < 10) {
-		this.paginAll.text("0" + allPage);
+	if(curr == 0) {
+		this.start = 0;
+		this.end = this.start + _data.contPage - 1;
+		this.template = '#facebook_template';
 	} else {
-		this.paginAll.text(allPage)
-	}	
+		this.start = (curr-1) * _data.onPage + _data.contPage;
+		this.end = this.start + _data.onPage - 1;
+		this.template = '#facebook_template';
+	}
+
+	for(var i = this.start; i <= this.end; i++) {
+		this.resDate.push(this.res.data[_keys[i]]);
+	}
+
+	this.setData(this.resDate, this.template);
 }
 
-FacabookFeeds.prototype._update = function() {
+FacebookFeeds.prototype.countPage = function(results) {
+	this.allPage = Math.round((results.length - _data.contPage) / 8 + 1);
+	if(this.allPage < 10) {
+		this.paginAll.text("0" + this.allPage);
+	} else {
+		this.paginAll.text(this.allPage)
+	}
+	return this.allPage
+}
+
+FacebookFeeds.prototype._update = function() {
 
 	this.nextNum = document.createElement("span");
 	$(this.nextNum).addClass("count-next");
@@ -1587,7 +1559,7 @@ FacabookFeeds.prototype._update = function() {
 	$(this.countCurrent).append(this.nextNum);
 };
 
-FacabookFeeds.prototype._numberDestroy = function() {
+FacebookFeeds.prototype._numberDestroy = function() {
 	var self = this;
 
 	$(self.countCurrent).removeClass("animate right left");
@@ -1597,15 +1569,100 @@ FacabookFeeds.prototype._numberDestroy = function() {
 	$(self.countCurrent).find(".count-next").remove();
 };
 
+FacebookFeeds.prototype.convertDate = function(date) {
+	var pStr = date.split('T'),
+		pDate = pStr[0].split('-'),
+		MonthList = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'],
+		moth = pDate[1],
+		textMonth = MonthList[moth - 1],
+		day = pDate[2]
 
+	return day + ' ' + textMonth
+};
 
+FacebookFeeds.prototype.setData = function(results, template) {
+	var self = this;
+
+	this.obj_result = results;
+	this._htmlTemplate = $(template);
+	this.main = '';
+
+	$.each(this.obj_result, function(index, element) {
+
+		self.templates = self._htmlTemplate.html();
+
+		if(typeof element.comments == 'object')
+			element.comment = element.comments.data.length;
+		if(typeof element.likes == 'object')
+			element.like = element.likes.data.length;
+
+		element.convert_time = self.convertDate(element.created_time);
+
+		$.each(element, function(code, value) {
+			self.templates = self.templates.replace(new RegExp('#'+code+'#', "g"), value);
+		});
+		self.main += self.templates
+	});
+	self.appendTemplate(this.main, this.current);
+}
+
+FacebookFeeds.prototype.appendTemplate = function(template, curr) {
+	var self = this;
+	this.templateCover = document.createElement("div");
+	this.templateCover.classList.add("gallery-news__cover");
+	this.conteiner.append(this.templateCover)
+	if(curr == 0) {
+		this.conteiner.addClass("fPage");
+		this.templateMain = $("#facebook_template-main").html();		
+		$(this.templateCover).append(this.templateMain + template);
+	} else {
+		this.conteiner.removeClass("fPage");
+		$(this.templateCover).append(template);
+	}
+}
+
+FacebookFeeds.prototype.loadElements = function(){
+	var self = this;
+
+	this.loader.addClass("openLoader");
+	
+	this.animationContent();
+	setTimeout(function() {
+		self._numberDestroy();
+	}, 1300);
+}
+FacebookFeeds.prototype.animationContent = function() {
+	var self = this;
+
+	this.Elements = $(".gallery-news__cover");
+
+	this.firstElements = $(".gallery-news__cover").first();
+	this.lastElements = $(".gallery-news__cover").last();
+
+	this.firstElements.addClass("fadeOut");
+	this.lastElements.addClass("fadeIn");
+	setTimeout(function() {
+		self.unloadElements()
+	}, 1400);
+}
+FacebookFeeds.prototype.unloadElements = function() {
+	var self = this;
+	this.loader.removeClass("openLoader");
+	this.Elements.addClass("animate");
+	this.removeElements();
+	// this.Elements.on("webkitTransitionEnd mozTransitionEnd MSTransitionEnd oTransitionEnd transitionend", self.removeElements)
+}
+
+FacebookFeeds.prototype.removeElements = function(){
+	var self = this;
+	this.Elements.on("webkitTransitionEnd mozTransitionEnd MSTransitionEnd oTransitionEnd transitionend", function(){
+		$(this).removeClass("fadeOut animate fadeIn");
+		self.firstElements.remove();
+	})	
+}
 
 $(document).ready(function() {
 	loadedImg()
-	// menu
-	// setTimeout(function(){
-	// 	$(".out").addClass("load-page dom");
-	// },200)
 	function menuTrigger() {
 		var trigger = $(".navbar__wrap"),
 			menuContent = trigger.parent().find(".navbar__content"),

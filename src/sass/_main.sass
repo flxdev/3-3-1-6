@@ -1512,10 +1512,10 @@ body
 				div 
 					path
 						stroke: $black
-						transition: 1.2s $cub
+						transition: 0.4s $cub
 					.hover
 						fill: $black
-						transition: 1.2s $cub
+						transition: 0.4s $cub
 				&:hover
 					div
 						.hover
@@ -1650,6 +1650,11 @@ body
 						color: $white
 						position: relative
 						+rem(padding, 0 7px)
+						white-space: nowrap
+						text-overflow: ellipsis
+						overflow: hidden
+						display: inline-block
+						width: 100%
 						&::after
 							content: ""
 							+rem(right, 0)
@@ -1770,6 +1775,38 @@ body
 						display: block
 						path
 							fill: $white
+.projects-gallery_container
+	position: relative
+	width: 100%
+	height: 100%
+	.gallery-news
+		width: 100%
+		height: 100%
+.gallery-news
+	.gallery-news__cover
+		z-index: 1
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		&.fadeOut
+			&.animate
+				.gallery-news__item
+					.gallery-info__container
+						opacity: 0
+						transition: opacity 1.5s $cub
+		&.fadeIn
+			z-index: 2
+			.gallery-news__item
+				.gallery-info__container
+					height: 0
+					
+			&.animate
+				.gallery-news__item
+					.gallery-info__container
+						height: 100%
+						transition: height 1.5s $cub
 .content-news
 	.projects-gallery
 		&::after
