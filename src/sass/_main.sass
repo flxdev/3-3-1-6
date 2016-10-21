@@ -521,6 +521,8 @@ body
 	overflow: hidden
 	z-index: 4
 	+rem(padding, 0 80px)
+	&.return
+		pointer-events: none
 .content
 	width: 100%
 	height: 100%
@@ -774,6 +776,15 @@ body
 				will-change: transform, filter
 				+r(1280)
 					max-width: 160%
+			.eye
+				+rem(width, 80px)
+				+rem(height, 50px)
+				position: absolute
+				top: 50%
+				left: 50%
+				+rem(margin, -25px 0 0 -40px)
+				background-image: url(../img/icons/eye.png)
+				background-size: cover
 		.projects-info
 			position: absolute
 			+rem(bottom, 40px)
@@ -815,6 +826,7 @@ body
 						i
 							opacity: 1
 							transform: translate(10px, 0)
+							transition-delay: 0.3s
 				.projects-hash
 					opacity: 1
 	&.gallery-carousel
@@ -1041,6 +1053,8 @@ body
 						height: 100vh
 				.projects-image
 					height: 100vh
+					transform: none
+					background-color: $black
 					img
 						filter: none
 						position: absolute
@@ -1050,6 +1064,7 @@ body
 						max-width: none
 						transform: none
 						left: auto
+						opacity: 0.9
 .projects-gallery
 	height: 100%
 	position: relative
@@ -1649,30 +1664,34 @@ body
 						+rem(font-size, 24px)
 						color: $white
 						position: relative
-						+rem(padding, 0 7px)
 						white-space: nowrap
 						text-overflow: ellipsis
 						overflow: hidden
 						display: inline-block
 						width: 100%
-						&::after
-							content: ""
-							+rem(right, 0)
-							+rem(left, 0)
-							top: 60%
-							height: 1px
-							background-color: $white
-							position: absolute
-							width: 0
+						i
+							font-style: normal
+							position: relative
+							+rem(padding, 0 7px)
+							&::after
+								content: ""
+								+rem(right, 0)
+								+rem(left, 0)
+								top: 60%
+								height: 1px
+								background-color: $white
+								position: absolute
+								width: 0
 		&:hover
 			.t-contaner
 				transform: translate(0, -3.75rem)
 				.image-cover
 				.gallery-news__name
 					span
-						&::after
-							transition: width 0.3s ease
-							width: 100%
+						i
+							&::after
+								transition: width 0.3s ease
+								width: 100%
 	div
 		&.gallery-news__item
 			width: 25%
@@ -1694,6 +1713,22 @@ body
 				height: 50vh
 				position: relative
 				z-index: 2
+				&::after
+					content: ''
+					background-color: $line
+					width: 1px
+					height: 100%
+					+rem(left, 80px)
+					position: absolute
+					top: 0
+				&::before
+					content: ''
+					background-color: $line
+					width: 1px
+					height: 100%
+					left: 60%
+					position: absolute
+					top: 0
 				.gallery-inner__content
 					position: absolute
 					+rem(left, 80px)
@@ -1792,21 +1827,144 @@ body
 		height: 100%
 		&.fadeOut
 			&.animate
-				.gallery-news__item
+				animation: fake 2.5s $cub both
+				.gallery-news__item 
 					.gallery-info__container
 						opacity: 0
 						transition: opacity 1.5s $cub
+						// animation: newsFadeOut 1.2s $cub both
+				.gallery-news__item
+					&:nth-child(1)
+						.gallery-info__container
+							transition-delay: 0s
+					&:nth-child(2)
+						.gallery-info__container
+							transition-delay: 01s
+					&:nth-child(3)
+						.gallery-info__container
+							transition-delay: 0.2s
+					&:nth-child(4)
+						.gallery-info__container
+							transition-delay: 0.3s
+					&:nth-child(5)
+						.gallery-info__container
+							transition-delay: 0.4s
+					&:nth-child(6)
+						.gallery-info__container
+							transition-delay: 0.5s
+					&:nth-child(7)
+						.gallery-info__container
+							transition-delay: 0.6s
+					&:nth-child(8)
+						.gallery-info__container
+							transition-delay: 0.7s
 		&.fadeIn
 			z-index: 2
 			.gallery-news__item
 				.gallery-info__container
-					height: 0
-					
+					height: 0					
 			&.animate
 				.gallery-news__item
 					.gallery-info__container
 						height: 100%
 						transition: height 1.5s $cub
+					&:nth-child(1)
+						.gallery-info__container
+							transition-delay: 0s
+					&:nth-child(2)
+						.gallery-info__container
+							transition-delay: 0.1s
+					&:nth-child(3)
+						.gallery-info__container
+							transition-delay: 0.2s
+					&:nth-child(4)
+						.gallery-info__container
+							transition-delay: 0.3s
+					&:nth-child(5)
+						.gallery-info__container
+							transition-delay: 0.4s
+					&:nth-child(6)
+						.gallery-info__container
+							transition-delay: 0.5s
+					&:nth-child(7)
+						.gallery-info__container
+							transition-delay: 0.6s
+					&:nth-child(8)
+						.gallery-info__container
+							transition-delay: 0.7s
+	&.fPage
+		.gallery-news__cover
+			&.fadeOut
+				&.animate
+					.gallery-news__item
+						&:nth-child(1)
+							.gallery-info__container
+								transition-delay: 0.2s
+						&:nth-child(2)
+							.gallery-info__container
+								transition-delay: 0.3s
+						&:nth-child(3)
+							.gallery-info__container
+								transition-delay: 0s
+						&:nth-child(4)
+							.gallery-info__container
+								transition-delay: 0.1s
+						&:nth-child(5)
+							.gallery-info__container
+								transition-delay: 0.4s
+						&:nth-child(6)
+							.gallery-info__container
+								transition-delay: 0.5s
+						&:nth-child(7)
+							.gallery-info__container
+								transition-delay: 0.6s
+						&:nth-child(8)
+							.gallery-info__container
+								transition-delay: 0.7s
+			&.fadeIn
+				&.animate
+					.gallery-news__item
+						&:nth-child(1)
+							.gallery-info__container
+								transition-delay: 0.2s
+						&:nth-child(2)
+							.gallery-info__container
+								transition-delay: 0.3s
+						&:nth-child(3)
+							.gallery-info__container
+								transition-delay: 0s
+						&:nth-child(4)
+							.gallery-info__container
+								transition-delay: 0.1s
+						&:nth-child(5)
+							.gallery-info__container
+								transition-delay: 0.4s
+						&:nth-child(6)
+							.gallery-info__container
+								transition-delay: 0.5s
+						&:nth-child(7)
+							.gallery-info__container
+								transition-delay: 0.6s
+						&:nth-child(8)
+							.gallery-info__container
+								transition-delay: 0.7s
+@keyframes newsFadeOut
+	0% 
+		opacity: 1
+	100%
+		opacity: 0
+
+@keyframes height
+	0%
+		height: 0
+	100% 
+		height: 100%
+@keyframes fake
+	0% 
+		z-index: 1
+	100%
+		z-index: 2
+
 .content-news
 	.projects-gallery
 		&::after
@@ -3114,6 +3272,38 @@ body
 					.gallery-info__container
 						.cover
 							height: 100%
+					&:nth-child(1)
+						.gallery-info__container
+							.cover
+								transition-delay: 0.2s
+					&:nth-child(2)
+						.gallery-info__container
+							.cover
+								transition-delay: 0.3s
+					&:nth-child(3)
+						.gallery-info__container
+							.cover
+								transition-delay: 0s
+					&:nth-child(4)
+						.gallery-info__container
+							.cover
+								transition-delay: 0.1s
+					&:nth-child(5)
+						.gallery-info__container
+							.cover
+								transition-delay: 0.4s
+					&:nth-child(6)
+						.gallery-info__container
+							.cover
+								transition-delay: 0.5s
+					&:nth-child(7)
+						.gallery-info__container
+							.cover
+								transition-delay: 0.6s
+					&:nth-child(8)
+						.gallery-info__container
+							.cover
+								transition-delay: 0.7s
 						// &::after
 						// 	height: 100%
 						// &::before
@@ -3455,3 +3645,43 @@ body
 		top: 0
 		+rem(left, 80px)
 		transition: width 1s $cub 0.5s
+
+.cap
+	position: absolute
+	z-index: 999
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	background-color: $black
+	display: none
+	+r(992)
+		display: block;
+	.cap-inner
+		+rem(width, 500px)
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		text-align: center
+		.image
+			background-image: url(../img/icons/mobile.png)
+			+rem(width, 94px)
+			+rem(height, 184px)
+			display: inline-block
+			background-size: cover
+			+rem(margin-bottom, 30px)
+		p
+			// font-family: $GaramondProItalic
+			color: $white
+			+rem(font-size, 26px)
+			+rem(margin-bottom, 50px)
+			+rem(letter-spacing, 0.9px)
+		a
+			+rem(font-size, 16px)
+			text-transform: uppercase
+			+rem(letter-spacing, 2.5px)
+			color: $black
+			position: relative
+			background-color: $white
+			+rem(padding, 18px 30px)

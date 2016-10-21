@@ -88,6 +88,7 @@ block content
 															- var arrHash = ["#Architecture", "#Interior", "#Decoration"]
 															each hash in arrHash
 																span(class="hash-item") #{hash}
+			- var ajax = false;
 			include includes/_pagination
 			script(type='text/javascript').
 				var el = $(".portfolio-load");
