@@ -5,6 +5,69 @@ window.onload = function(){
 	// },200)
 }
 
+var md = new MobileDetect(window.navigator.userAgent);
+function dTablet() {	
+	if(md.tablet() && $("html").hasClass("portrait")) {
+		deleteCookie("tablet")
+		setCookie("tablet", "P", {
+			expires: 0,
+			path: "/",
+			// domain: ".flex.by"
+		})
+		$("html").addClass("tablet");
+	} else {
+		deleteCookie("tablet")
+		setCookie("tablet", "L", {
+			expires: 0,
+			path: "/",
+			// domain: ".flex.by"
+		})
+		$("html").removeClass("tablet");
+	}
+} dTablet();
+
+$(window).on("resize", function(){
+	setTimeout(function(){
+		dTablet()
+	},100)
+	
+});
+
+function setCookie(name, value, options) {
+  options = options || {};
+
+  var expires = options.expires;
+
+  if (typeof expires == "number" && expires) {
+    var d = new Date();
+    d.setTime(d.getTime() + expires * 1000);
+    expires = options.expires = d;
+  }
+  if (expires && expires.toUTCString) {
+    options.expires = expires.toUTCString();
+  }
+
+  value = encodeURIComponent(value);
+
+  var updatedCookie = name + "=" + value;
+
+  for (var propName in options) {
+    updatedCookie += "; " + propName;
+    var propValue = options[propName];
+    if (propValue !== true) {
+      updatedCookie += "=" + propValue;
+    }
+  }
+
+  document.cookie = updatedCookie;
+};
+
+function deleteCookie(name) {
+  setCookie(name, "", {
+    expires: -1
+  })
+}
+
 function loadedImg() {
 	var $loaderSite = $(".siteLoader"),
 	$lettersContainer = $(".letters-container"),
