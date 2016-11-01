@@ -789,6 +789,7 @@ body
 			position: absolute
 			+rem(bottom, 40px)
 			+rem(left, 40px)
+			+rem(right, 40px)
 			transition: transform 0.2s ease-in-out
 			z-index: 2
 			.projects-name
@@ -3688,3 +3689,26 @@ body
 	+r(992)
 		.cap
 			display: none
+
+.updateCover
+	position: absolute
+	top: 0
+	width: 100%
+	height: 100%
+	left: 0
+	background-image: url(../img/ieCover.jpg)
+	.updateCover-container
+		position: absolute
+		+rem(max-width, 800px)
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		text-align: center
+		& > span
+			font-family: "Light"
+			+rem(font-size, 24px)
+			color: $white
+			+rem(letter-spacing, 0.9px)
+			+rem(margin-bottom, 20px)
+			display: inline-block

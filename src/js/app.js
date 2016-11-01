@@ -7,4 +7,5 @@
 //=include lib/modernizr.js
 //=include lib/TimelineLite.min.js
 //=include lib/mobile-detect.min.js
+//=include lib/detect.min.js
 //=include common.js

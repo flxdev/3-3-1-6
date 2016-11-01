@@ -68,6 +68,7 @@ function deleteCookie(name) {
   })
 }
 
+
 function loadedImg() {
 	var $loaderSite = $(".siteLoader"),
 	$lettersContainer = $(".letters-container"),
@@ -1749,8 +1750,36 @@ FacebookFeeds.prototype.removeElements = function(){
 	})	
 }
 
+
 $(document).ready(function() {
-	loadedImg()
+	// detected < ie 11
+	function detected(){
+		var ua = detect.parse(navigator.userAgent),
+			uaName = ua.browser.family,
+			uaVersion = ua.browser.major;
+
+		if((uaName === "IE" && uaVersion < '11')){
+			openUpdate();
+		} else {
+			loadedImg()
+		}
+	};
+
+	if($(window).width() > 981) {
+		detected();
+	}
+
+	function openUpdate(){
+		$.ajax({
+			url:'../updateVersion.html',
+			cashe: false,
+			success: function(html) {
+				$('body').html(html);
+				console.log(html)
+			}
+		})
+	}
+	
 	function menuTrigger() {
 		var trigger = $(".navbar__wrap"),
 			menuContent = trigger.parent().find(".navbar__content"),
