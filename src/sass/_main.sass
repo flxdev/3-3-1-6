@@ -1078,6 +1078,7 @@ body
 	transform: translate(-50%, -50%)
 	+rem(max-width, 560px)
 	width: 100%
+	font-size: 0
 	+r(1460)
 		+rem(max-width, 450px)
 	+r(1170)
@@ -1099,7 +1100,7 @@ body
 		&:nth-child(6)
 			transition-delay: 1.4s
 		&:nth-child(7)
-			transition-delay: 1.2s
+			transition-delay: 1.5s
 		&:nth-child(8)
 			transition-delay: 1.6s
 		span
@@ -1122,6 +1123,55 @@ body
 				color: $black
 				&::before
 					width: 100%
+.portfolio-load
+	.portfolio-container
+		&.old
+			.projects-triggers
+				&__item
+					opacity: 0
+					&:nth-child(1)
+						transition-delay: 0.1s
+					&:nth-child(2)
+						transition-delay: 0.2s
+					&:nth-child(3)
+						transition-delay: 0.3s
+					&:nth-child(4)
+						transition-delay: 0.4s
+					&:nth-child(5)
+						transition-delay: 0.5s
+					&:nth-child(6)
+						transition-delay: 0.6s
+					&:nth-child(7)
+						transition-delay: 0.7s
+					&:nth-child(8)
+						transition-delay: 0.8s
+		&.new
+			.projects-triggers
+				&__item
+					opacity: 0
+					transition-delay: 0s
+					transition-duration: 0s
+			&.load
+				.projects-triggers
+					&__item
+						opacity: 1
+						transition-duration: 1.2s
+						&:nth-child(1)
+							transition-delay: 0.1s
+						&:nth-child(2)
+							transition-delay: 0.2s
+						&:nth-child(3)
+							transition-delay: 0.3s
+						&:nth-child(4)
+							transition-delay: 0.4s
+						&:nth-child(5)
+							transition-delay: 0.5s
+						&:nth-child(6)
+							transition-delay: 0.6s
+						&:nth-child(7)
+							transition-delay: 0.7s
+						&:nth-child(8)
+							transition-delay: 0.8s
 .projects-fader
 	.projects-item
 		position: absolute
@@ -2840,6 +2890,9 @@ body
 				.container__text
 					&::after, &::before
 						display: none
+					.text-container
+						+r(1600)
+							+rem(max-width, 430px)
 			&.bureau
 				.section__wrapper
 					.container__text
@@ -2976,6 +3029,7 @@ body
 							display: none
 						.title
 							width: 80%
+
 // .breadcrumbs
 // 	&[data-color="bureau"]
 // 		.breadcrumbs-item
@@ -3016,7 +3070,30 @@ body
 						stroke: $black
 					.hover
 						fill: $black
+.content-about
+	.breadcrumbs
+		.breadcrumbs-item
+			transition: color 0.3s $cub 0.3s
+			div
+				path
+					transition: fill 0.3s $cub 0.3s
+		li
+			&:not(:last-of-type)
+				&::after
+				 	transition: color 0.3s $cub 0.3s
 
+
+.breadcrumbs
+	&[data-color="clients"]
+		.breadcrumbs-item
+			color: $black
+			div
+				path
+					fill: $black
+		li
+			&:not(:last-of-type)
+				&::after
+				 	color: $black
 
 
 
@@ -3086,6 +3163,8 @@ body
 		width: 100%
 		height: 100%
 		+rem(margin-left, -80px)
+		+r(1380)
+			margin-left: 0
 		.clients-list
 			position: absolute
 			top: 55%
@@ -3420,22 +3499,29 @@ body
 			perspective: 600px
 			span
 				opacity: 0
-				font-family: "Heavy"
+				font-family: "Demi"
 				color: $white
-				+rem(font-size, 180px)
+				+rem(font-size, 204px)
 				position: relative
 				display: inline-block
 				user-select: none
 				pointer-events: none
+				+rem(letter-spacing, -2.9px)
 				&:nth-child(3)
-					+rem(top, -8px)
+					+rem(top, -32px)
 					font-family: "Light"
+					+rem(font-size, 141px)
+					+rem(padding-left, 16px)
+				&:nth-child(4)
+					+rem(left, -6px)
+				&:nth-child(5)
+					+rem(left, -30px)
 		.loader-text
 			font-family: "Light"
 			color: $white
-			+rem(font-size, 65px)
+			+rem(font-size, 51px)
 			text-transform: uppercase
-			+rem(letter-spacing, 20px)
+			+rem(letter-spacing, 24.7px)
 			user-select: none
 			pointer-events: none
 			opacity: 0

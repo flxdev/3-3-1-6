@@ -529,21 +529,25 @@ function btnEvents() {
 function scrollbar(){
 	var container = document.getElementById("scroll-container");
 
-	setTimeout(function(){
-		Ps.initialize(container, {
-			wheelSpeed: 1,
-			wheelPropagation: true,
-			animateScroll: true
-		});
-		Ps.update(container);
-	},100);
+	if(container != "null"){
+		setTimeout(function(){
+			Ps.initialize(container, {
+				wheelSpeed: 1,
+				wheelPropagation: true,
+				animateScroll: true
+			});
+			Ps.update(container);
+		},100);
+	}
 };
 
 function heightScrollContainer() {
 	var container = document.getElementById("scroll-container");
 
-	$("#scroll-container").height($(window).height() - 80);
-	Ps.update(container);
+	if($("#scroll-container").length){
+		$("#scroll-container").height($(window).height() - 80);
+		Ps.update(container);
+	}
 };
 
 window.onresize = function(){
@@ -696,6 +700,8 @@ stepForm.prototype._initEvents = function(){
 
 	firstEL = $(this.quest[this.current]).find("input");
 
+
+
 	focusStartFn = function(){
 		// firstEL.unbind("focus", focusStartFn);
 		$(self.btnNext).addClass("show");
@@ -715,12 +721,14 @@ stepForm.prototype._initEvents = function(){
 		}, 300);
 	});
 
-	firstEL.on("keydown", function(ev){
+	document.addEventListener("keydown", function(ev){
 		var codeKey = ev.keyCode;
 
 		if(codeKey === 13) {
 			ev.preventDefault();
 			self._nextStep();
+			// self.btnNext.trigger("click")
+			console.log(firstEL)
 		}
 	});
 
@@ -738,6 +746,8 @@ stepForm.prototype._nextStep = function(){
 	if(!this._validate()) {
 		return false;
 	}
+
+	console.log(this.current)
 
 	if(this.current === this.questCount - 1) {
 		this.isFilled = true;
@@ -1969,6 +1979,7 @@ $(document).ready(function() {
 	} actionAjaxLinks();
 
 	function actionLoadPage() {
+		var l = $(this).attr("href");
 		$(".wrapper").addClass("return");
 		$(".header, .wrapper").addClass("ajax");
 		showPageLoader()
@@ -1979,6 +1990,8 @@ $(document).ready(function() {
 			bindEventScroll()
 		},3000);
 	}
+
+
 
 	// function loadProject(link) {
 	// 	var l = $(link).attr('href');
