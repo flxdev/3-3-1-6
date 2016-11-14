@@ -651,9 +651,12 @@ window.onresize = function(){
 function iso() {
 	var container = document.getElementById("scroll-container"),
 		grid = $(".grid");
-	grid.isotope({
-		itemSelector: 'li'
-	});
+	setTimeout(function(){
+		grid.isotope({
+			itemSelector: 'li'
+		});
+	}, 300);
+	
 
 	$('.sort').on('click', function(){
 		var filterValue = $(this).attr('data-filter');
@@ -953,25 +956,25 @@ function initMap() {
 };
 
 function ZoomControl(controlDiv, map) {
-	controlDiv.style.padding = "20px 20px";
+	controlDiv.style.padding = "30px";
 
 	var controlWrapper = document.createElement('div');
 		controlWrapper.style.cursor = 'pointer';
 		controlWrapper.style.textAlign = 'center';
-		controlWrapper.style.width = '25px'; 
-		controlWrapper.style.height = '50px';
+		controlWrapper.style.width = '30px'; 
+		controlWrapper.style.height = '60px';
 		controlDiv.appendChild(controlWrapper);
 
 	var zoomInButton = document.createElement('div');
 		zoomInButton.classList.add("zoomIn");
-		zoomInButton.style.width = '25px'; 
-		zoomInButton.style.height = '25px';
+		zoomInButton.style.width = '30px'; 
+		zoomInButton.style.height = '30px';
 		controlWrapper.appendChild(zoomInButton);
 
 	var zoomOutButton = document.createElement('div');
 		zoomOutButton.classList.add("zoomOut");
-		zoomOutButton.style.width = '25px'; 
-		zoomOutButton.style.height = '25px';
+		zoomOutButton.style.width = '30px'; 
+		zoomOutButton.style.height = '30px';
 		controlWrapper.appendChild(zoomOutButton);
 
 	google.maps.event.addDomListener(zoomInButton, 'click', function() {
@@ -1179,7 +1182,7 @@ slides.prototype._init = function () {
 	this.countAll = $(this.el).parents(".wrapper").find(".pagination-all");
 	this.countCurrent = $(this.el).parents(".wrapper").find(".pagination-current");
 
-	this.pInner = $(this.el).find(".container-people");
+	this.pInner = $(this.el).find(".people-wrapper");
 	this.pInnerItem = this.pInner.find(".people-item");
 	this.pInnerItem.first().addClass("active");
 
@@ -1208,16 +1211,26 @@ slides.prototype._Events = function() {
 	this.btnNext.on("click", function(event){
 		event.preventDefault();
 		if(self.innerSlider) {
-			console.log("inner")
+			self._paginNavNext();
+			setTimeout(function(){
+				$(".wrapper").removeClass("return");
+			});			
 		} else {
 			self._Next();
-		}		
+		}
 		return false;
 	});
 
 	this.btnPrev.on("click", function(event){
 		event.preventDefault();
-		self._Prev();
+		if(self.innerSlider) {
+			self._paginNavPrev();
+			setTimeout(function(){
+				$(".wrapper").removeClass("return");
+			});			
+		} else {
+			self._Prev();
+		}
 		return false;
 	});	
 
@@ -1391,7 +1404,8 @@ slides.prototype._Anchor = function(anchor) {
 slides.prototype._end = function() {
 	var self = this;
 	this.isAnimating = false;
-	$(".wrapper").removeClass("return");		
+	$(".wrapper").removeClass("return");
+	this._fadeSlides();
 };
 
 slides.prototype._update = function() {
@@ -1426,22 +1440,98 @@ slides.prototype._paginNav = function(pItem) {
 
 
 	self.tl
-		.set(this.pInnerActive.find(".cover"), {
+		.set(self.pInnerActive.find(".cover"), {
 			width: "0"
 		})
-		.set(this.pInnerActive.find(".container__text"), {
+		.set(self.pInnerActive.find(".container__text"), {
 			autoAlpha: 0
 		})
-		.to(this.pInnerActive.find(".cover"), 0.7, {
+		.to(self.pInnerActive.find(".cover"), 0.7, {
 			width: "100%",
 			ease: Power4.easeInOut
 		})
-		.to(this.pInnerActive.find(".container__text"), 0.7, {
+		.to(self.pInnerActive.find(".container__text"), 0.7, {
 			autoAlpha: 1,
 			ease: Power4.easeInOut
 		},"-=0.7")
 };
+slides.prototype._paginNavNext = function() {
 
+	var self = this;
+
+	if(!this.paginItem.last().hasClass("active")) {
+		this.paginItem.next().addClass("active").siblings().removeClass("active");
+		this.pInnerItem.next().addClass("active").siblings().removeClass("active");
+
+		this.pInnerActive = this.pInner.find(".active");
+
+		self.tl
+			.set(this.pInnerActive.find(".cover"), {
+				width: "0"
+			})
+			.set(this.pInnerActive.find(".container__text"), {
+				autoAlpha: 0
+			})
+			.to(this.pInnerActive.find(".cover"), 0.7, {
+				width: "100%",
+				ease: Power4.easeInOut
+			})
+			.to(this.pInnerActive.find(".container__text"), 0.7, {
+				autoAlpha: 1,
+				ease: Power4.easeInOut,
+				onComplete: function(){
+					self.innerSlider = false;
+				}
+			},"-=0.7")
+	} else {
+		this.innerSlider = false;
+		this.btnNext.trigger("click");
+	}
+};
+
+slides.prototype._paginNavPrev = function() {
+
+	var self = this;
+
+	if(!this.paginItem.first().hasClass("active")) {
+		this.paginItem.prev().addClass("active").siblings().removeClass("active");
+		this.pInnerItem.prev().addClass("active").siblings().removeClass("active");
+
+		this.pInnerActive = this.pInner.find(".active");
+
+		self.tl
+			.set(this.pInnerActive.find(".cover"), {
+				width: "0"
+			})
+			.set(this.pInnerActive.find(".container__text"), {
+				autoAlpha: 0
+			})
+			.to(this.pInnerActive.find(".cover"), 0.7, {
+				width: "100%",
+				ease: Power4.easeInOut
+			})
+			.to(this.pInnerActive.find(".container__text"), 0.7, {
+				autoAlpha: 1,
+				ease: Power4.easeInOut,
+				onComplete: function(){
+					self.innerSlider = false;
+				}
+			},"-=0.7")
+	} else {
+		this.innerSlider = false;
+		this.btnPrev.trigger("click");
+	}
+};
+
+
+slides.prototype._fadeSlides = function(){
+	var self = this;
+	this.activeSlides = $(this.el).find(".is-active");
+
+	if(this.activeSlides.find(".container-people").length){
+		this.innerSlider = true;
+	}
+}
 
 // window.slides = slides
 
@@ -1693,6 +1783,7 @@ FacebookFeeds.prototype.getData = function(type, fields){
 		success: function(res) {
 			self.allPages = self.countPage(res.data);
 			self.res = res;
+
 			self.filterObject();
 		}
 	});
@@ -1785,8 +1876,8 @@ FacebookFeeds.prototype.setData = function(results, template) {
 			element.like = 0;
 		}
 
-		if(typeof element.name == 'undefined')
-			element.name = '';
+		if(typeof element.message == 'undefined')
+			element.message = '';
 
 		element.convert_time = self.convertDate(element.created_time);
 
