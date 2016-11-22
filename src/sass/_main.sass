@@ -742,8 +742,10 @@ body
 				right: auto
 .projects
 	position: relative
-	height: 100%
+	height: 100vh
 	z-index: 2
+	.slick-slide
+		height: 100vh
 	.projects-item
 		height: 50vh
 		overflow: hidden
@@ -2617,14 +2619,17 @@ body
 				right: auto
 				left: 0
 				top: 0
-.maps-container, .maps
-	width: 100%
-	height: 100%
-	position: relative
+// .maps-container
+// 	width: 100%
+// 	height: 100%
+// 	position: relative
 .maps
 	width: 55vw
+	height: 100%
+	float: right
 .maps-container
 	position: absolute
+	overflow: hidden
 	top: 0
 	height: 100%
 	right: 0
@@ -2769,7 +2774,7 @@ body
 				div 
 					rect
 						stroke: $white
-						transition: 0.8s $cub stroke
+						transition: 0.8s $cub all
 					.hover
 						fill: $white
 				&:hover
@@ -2780,7 +2785,7 @@ body
 				div 
 					path
 						stroke: $white
-						transition: 0.8s $cub stroke
+						transition: 0.8s $cub all
 					.hover
 						fill: $white
 				&:hover
@@ -3724,7 +3729,7 @@ body
 	// +r(980)
 	// 	display: block;
 	+r(992)
-		display: none;
+		display: block
 	.cap-inner
 		+rem(width, 500px)
 		position: absolute
@@ -3752,11 +3757,10 @@ body
 			position: relative
 			background-color: $white
 			+rem(padding, 18px 30px)
-.tablet
+.no-portrait
 	.cap
-		+r(992)
+		+r(980)
 			display: block;
-
 
 .updateCover
 	position: absolute
