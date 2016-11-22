@@ -1384,10 +1384,7 @@ slides.prototype._paginNavNext = function() {
 			})
 			.to(this.pInnerActive.find(".container__text"), 0.7, {
 				autoAlpha: 1,
-				ease: Power4.easeInOut,
-				onComplete: function(){
-					self.innerSlider = false;
-				}
+				ease: Power4.easeInOut
 			},"-=0.7")
 	} else {
 		this.innerSlider = false;
@@ -1418,10 +1415,7 @@ slides.prototype._paginNavPrev = function() {
 			})
 			.to(this.pInnerActive.find(".container__text"), 0.7, {
 				autoAlpha: 1,
-				ease: Power4.easeInOut,
-				onComplete: function(){
-					self.innerSlider = false;
-				}
+				ease: Power4.easeInOut
 			},"-=0.7")
 	} else {
 		this.innerSlider = false;
@@ -1866,7 +1860,7 @@ $(document).ready(function() {
 		}
 	};
 
-	if($(window).width() > 981) {
+	if($(window).width() > 979) {
 		detected();
 	}
 
@@ -2110,4 +2104,4 @@ $(document).ready(function() {
 	// };
 });
 
-
+	

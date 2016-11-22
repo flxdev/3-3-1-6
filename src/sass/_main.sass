@@ -1,4 +1,6 @@
 // Normally mainpage styles
+*
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 a 
 	text-decoration: none
 	outline: none
@@ -774,8 +776,12 @@ body
 				filter: grayscale(100%) brightness(0.5) contrast(112%)
 				transition: filter 0.3s ease
 				will-change: transform, filter
+				overflow: hidden
+				width: 100%
+				height: 100%
+				object-fit: cover
 				+r(1280)
-					max-width: 160%
+					max-width: 170%
 			.eye
 				+rem(width, 80px)
 				+rem(height, 50px)
@@ -891,7 +897,7 @@ body
 			+rem(margin-right, 20px)
 .animated
 	animation-fill-mode: both;
-	animation-duration: 1.7s;
+	animation-duration: 0.9s;
 	-webkit-animation-name: fadeOut;
 	-webkit-animation-timing-function: ease
 	animation-name: fadeOut
@@ -991,37 +997,7 @@ body
 				span 
 					color: $white
 
-.cap
-	position: fixed
-	top: 0
-	right: 0
-	left: 0
-	bottom: 0
-	background-color: $black
-	z-index: 150
-	display: none
-	+r(992)
-		display: block
-	.cap-content
-		position: absolute
-		top: 50%
-		left: 50%
-		transform: translate(-50%,-50%)
-		a
-			color: $white
-			padding-top: 100px
-			position: relative
-			letter-spacing: 0.9px
-			&::before
-				content: ""
-				width: 106px
-				height: 83px
-				background-size: cover
-				background-image: url(../img/svg/imac.svg)
-				position: absolute
-				top: 0
-				left: 50%
-				margin-left: -70px
+
 .content-portfolio-four
 	.breadcrumbs
 		+rem(left, 120px)
@@ -3734,6 +3710,8 @@ body
 		+rem(left, 80px)
 		transition: width 1s $cub 0.5s
 
+
+
 .cap
 	position: absolute
 	z-index: 999
@@ -3743,8 +3721,10 @@ body
 	bottom: 0
 	background-color: $black
 	display: none
+	// +r(980)
+	// 	display: block;
 	+r(992)
-		display: block;
+		display: none;
 	.cap-inner
 		+rem(width, 500px)
 		position: absolute
@@ -3773,9 +3753,10 @@ body
 			background-color: $white
 			+rem(padding, 18px 30px)
 .tablet
-	+r(992)
-		.cap
-			display: none
+	.cap
+		+r(992)
+			display: block;
+
 
 .updateCover
 	position: absolute
