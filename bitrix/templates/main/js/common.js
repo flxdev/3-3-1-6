@@ -561,6 +561,10 @@ function iso() {
 		grid.isotope({
 			itemSelector: 'li'
 		});
+		grid.imagesLoaded().progress( function() {
+			grid.isotope('layout');
+			Ps.update(container);
+		}); 
 	}, 300);
 	
 

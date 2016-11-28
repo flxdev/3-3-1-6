@@ -8,4 +8,5 @@
 //=include lib/TimelineLite.min.js
 //=include lib/mobile-detect.min.js
 //=include lib/detect.min.js
+//=include lib/imagesloaded.js
 //=include common.js
