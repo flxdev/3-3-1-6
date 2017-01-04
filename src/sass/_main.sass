@@ -784,13 +784,16 @@ body
 				top: 50%
 				left: 50%
 				transform: translate(-50%,-50%)
-				filter: grayscale(100%) brightness(0.5) contrast(112%)
-				transition: filter 0.3s ease
-				will-change: transform, filter
+				// filter: grayscale(100%) brightness(0.5) contrast(112%)
+				// transition: filter 0.3s ease
+				will-change: transform
 				overflow: hidden
 				width: 100%
 				height: 100%
 				object-fit: cover
+				&.grey
+					z-index: 2
+					transition: opacity 0.35s ease
 				+r(1280)
 					max-width: 170%
 			.eye
@@ -802,6 +805,7 @@ body
 				+rem(margin, -25px 0 0 -40px)
 				background-image: url(../img/icons/eye.png)
 				background-size: cover
+				z-index: 2
 		.projects-info
 			position: absolute
 			+rem(bottom, 40px)
@@ -836,7 +840,8 @@ body
 			.projects-image
 				transform: scale(1.1)
 				img
-					filter: grayscale(0)
+					&.grey
+						opacity: 0
 			.projects-info
 				.projects-name
 					bottom: 100%
@@ -1053,6 +1058,10 @@ body
 						transform: none
 						left: auto
 						opacity: 0.9
+				&:hover
+					.projects-image 
+						.grey
+							opacity: 0
 .projects-gallery
 	height: 100%
 	position: relative
