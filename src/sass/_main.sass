@@ -606,8 +606,15 @@ body
 	transition: height 1.2s $cub 0.3s, opacity 1.2s $cub 0.3s
 	opacity: 0
 	.intro-text
-		font-family: 'Heavy'
-		+rem(font-size, 72px)
+		span
+			display: block
+			a
+				font-family: 'Heavy'
+				+rem(font-size, 72px)
+				color: $black
+				transition: opacity 0.3s ease
+				&:hover
+					opacity: 0.8
 		padding-right: 15%
 		position: absolute
 		bottom: 0

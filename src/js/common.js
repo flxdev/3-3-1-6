@@ -94,6 +94,9 @@ function loadedImg() {
 					setTimeout(function(){
 						$(".out").addClass("load-page dom");
 					},100);
+					if($(".content-mainpage").find(".rotator").length){
+						$(".content-mainpage").find(".rotator").slick("slickPlay");
+					}
 				}
 			},0)
 	}
@@ -187,7 +190,9 @@ function galleryImage(gallery){
 		slidesPerRow: 1,
 		arrows: false,
 		fade: true,
-		speed: !0
+		speed: !0,
+		autoplay: true,
+		autoplaySpeed: 5000
 	};
 
 	// var newsFacebook = {
@@ -232,6 +237,7 @@ function galleryImage(gallery){
 
 	if(carousel_container.find(".gallery-carousel").length){
 		carousel.slick(mainGallery);
+		carousel.slick("slickPause");
 	};
 
 	if(carousel_container.find(".gallery-news").length){
