@@ -613,17 +613,20 @@ body
 				+rem(font-size, 72px)
 				color: $black
 				transition: opacity 0.3s ease
+				+r(1599)
+					+rem(font-size, 60px)
+				+r(1366) 
+					+rem(font-size, 50px)
+				+r(1280) 
+					+rem(font-size, 55px)
+				+r(1024) 
+					+rem(font-size, 44px)
 				&:hover
 					opacity: 0.8
 		padding-right: 15%
 		position: absolute
 		bottom: 0
-		+r(1599)
-			+rem(font-size, 60px)
-		+r(1366) 
-			+rem(font-size, 50px)
-		+r(1280) 
-			+rem(font-size, 55px)
+		
 .pagination
 	position: fixed
 	left: 0
@@ -3782,10 +3785,10 @@ body
 			position: relative
 			background-color: $white
 			+rem(padding, 18px 30px)
-.no-portrait
+.landscape
 	.cap
 		+r(980)
-			display: block;
+			display: none;
 
 .updateCover
 	position: absolute
