@@ -2216,13 +2216,14 @@ $(document).ready(function() {
 
 	function videoSize(){
 		scaleVideoContainer();
-		// initBannerVideoSize(".video-container .filter");
+		initBannerVideoSize(".video-container .poster img");
 		initBannerVideoSize(".video-container video");
 
 		$(window).on("resize", function(){
 			scaleVideoContainer();
-			// initBannerVideoSize(".video-container .filter");
+			initBannerVideoSize(".video-container .poster img");
 			initBannerVideoSize(".video-container video");
+			
 		})
 
 	} videoSize();
