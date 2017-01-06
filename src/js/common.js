@@ -1738,6 +1738,11 @@ FacebookFeeds.prototype._update = function() {
 	$(this.nextNum).text("0" + (this.current + 1));
 
 	$(this.countCurrent).append(this.nextNum);
+	if(this.current > 0) {
+		$(".gallery-pagination").addClass("no-first");
+	} else {
+		$(".gallery-pagination").removeClass("no-first");
+	}
 };
 
 FacebookFeeds.prototype._numberDestroy = function() {
@@ -2122,7 +2127,7 @@ $(document).ready(function() {
 			scaleVideoContainer();
 			initBannerVideoSize(".video-container .poster img");
 			initBannerVideoSize(".video-container video");
-			
+
 		})
 
 	} videoSize();
@@ -2148,8 +2153,6 @@ function scaleBannerVideoSize(element) {
 		videoWidth,
 		videoHeight,
 		containerWidth;
-
-	console.log(windowHeight);
 
 	$(element).each(function(){
 		var aspectRatio = $(window).height()/$(window).width();

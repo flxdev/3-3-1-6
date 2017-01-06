@@ -1,6 +1,8 @@
 // Normally mainpage styles
 *
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	&::selection
+		background-color: #eee
 a 
 	text-decoration: none
 	outline: none
@@ -864,6 +866,7 @@ body
 				background-image: url(../img/icons/eye.png)
 				background-size: cover
 				z-index: 2
+				display: none
 		.projects-info
 			position: absolute
 			+rem(bottom, 40px)
@@ -1104,7 +1107,7 @@ body
 						height: 100vh
 				.projects-image
 					height: 100vh
-					transform: none
+					// transform: none
 					background-color: $black
 					img
 						filter: none
