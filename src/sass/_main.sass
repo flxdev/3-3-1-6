@@ -391,8 +391,8 @@ body
 					position: absolute
 	.navbar__content-slice
 		width: 100%
-		// background-color: $black
-		// background-image: url(../img/menu-bg.jpg)
+		background-color: $black
+		background-image: url(../img/menu-bg.jpg)
 		background-size: cover
 		background-position: 100% 100%
 		position: absolute
@@ -1380,8 +1380,9 @@ body
 			width: 40%
 		&.content-right
 			width: 60%
-			background-color: transparent
-			transition: background-color 1.2s $cub 0.9s
+			.projects-gallery
+				background-color: transparent
+				transition: background-color 1.2s $cub 0.9s
 			&::after, &::before
 				z-index: -1
 	.projects-hash
@@ -3377,7 +3378,8 @@ body
 	.content-project, .content-project-inner, .content-portfolio-inner
 		.content-side
 			&.content-right
-				background-color: $pGrey
+				.projects-gallery
+					background-color: $pGrey
 	.content-project-inner, .content-contacts, .content-portfolio-inner
 		.projects-descr
 			opacity: 1
@@ -3863,3 +3865,18 @@ body
 			+rem(letter-spacing, 0.9px)
 			+rem(margin-bottom, 20px)
 			display: inline-block
+.out
+	.content-portfolio-inner, .content-project-inner
+		.content-side
+			.projects, &.content-right
+				transition: opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s
+				will-change: transform
+	&.load-page_inner
+		.projects, .content-right
+			opacity: 0
+			transition-delay: 0s
+		.content-left
+			.projects
+				transform: translate(-20%, 0)
+		.content-right
+			transform: translate(20%, 0)
