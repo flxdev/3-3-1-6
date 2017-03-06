@@ -1065,7 +1065,7 @@ var hidePageLoader = function() {
 		loader.find(".line").css({
 			transform: ''
 		});
-		$(".header, .wrapper").removeClass("ajax")
+		$(".header, .wrapper").removeClass("ajax");
 		loader.removeClass("is-loader");
 		$(".out").addClass("load-page");
 	});
@@ -2130,8 +2130,31 @@ $(document).ready(function() {
 
 		})
 
-	} videoSize();
+	} 
+	if($("html").hasClass("no-mobile")){
+		appendVideo()
+		videoSize();
+	}
 });
+function appendVideo(){
+	var vi = document.createElement("video");
+	var use = vi.canPlayType('video/webm; codecs="vp8, vorbis"');
+	$("video").each(function(){
+		var source = document.createElement("source"),
+				src = $(this).data("src");
+		$(this).append(source);
+		src = src.split(".");
+
+		if(use == "probably") {
+			source.src = src[0] + ".webm",
+			source.type = "video/webm"
+		} else {
+			source.src = src[0] + ".mp4",
+			source.type = "video/mp4",
+			source.setAttribute("codecs", "avc1.4D401E, mp4a.40.2")
+		}	
+	})
+}
 function scaleVideoContainer(){
 	var height = $(window).height() + 5,
 		untilHeight = parseInt(height) + "px";
@@ -2174,3 +2197,4 @@ function scaleBannerVideoSize(element) {
 		});
 	})
 }
+
