@@ -101,67 +101,79 @@ function loadedImg() {
 			},0)
 	}
 	TimeLine
-		.set($point1, {
-			z: "400px",
-			autoAlpha: 0
-		})
-		.set($point2, {
-			z: "400px",
-			autoAlpha: 0
-		})
-		.set($point3, {
-			z: "400px",
-			autoAlpha: 0
-		})
-		.set($point4, {
-			z: "400px",
-			autoAlpha: 0
-		})
-		.set($point5, {
-			z: "400px",
-			autoAlpha: 0
-		})
-		.set($text, {
-			autoAlpha: 0
-		})
+		// .set($point1, {
+		// 	z: "400px",
+		// 	autoAlpha: 0
+		// })
+		// .set($point2, {
+		// 	z: "400px",
+		// 	autoAlpha: 0
+		// })
+		// .set($point3, {
+		// 	z: "400px",
+		// 	autoAlpha: 0
+		// })
+		// .set($point4, {
+		// 	z: "400px",
+		// 	autoAlpha: 0
+		// })
+		// .set($point5, {
+		// 	z: "400px",
+		// 	autoAlpha: 0
+		// })
+		// .set($text, {
+		// 	autoAlpha: 0
+		// })
 
-		.to($point1, 1.2, {
-			z: "-=400px",
-			autoAlpha: 1,
-			ease: Power2.easeOut
-		},0)
-		.to($point2, 1.2, {
-			z: "-=400px",
-			delay: 0.6,
+		// .to($point1, 1.2, {
+		// 	z: "-=400px",
+		// 	autoAlpha: 1,
+		// 	ease: Power2.easeOut
+		// },0)
+		// .to($point2, 1.2, {
+		// 	z: "-=400px",
+		// 	delay: 0.6,
 
-			autoAlpha: 1,
-			ease: Power2.easeOut
-		},0)
-		.to($point3, 1.2, {
-			z: "-=400px",
-			autoAlpha: 1,
-			delay: 1.2,
-			ease: Power2.easeOut
-		},0)
-		.to($point4, 1.2, {
-			z: "-=400px",
-			autoAlpha: 1,
-			delay: 0.9,
-			ease: Power2.easeOut
-		},0)
-		.to($point5, 1.2, {
-			z: "-=400px",
-			autoAlpha: 1,
-			delay: 0.3,
-			ease: Power2.easeOut
-		},0)
-		.to($text, 1.2, {
-			autoAlpha: 1,
-			delay: 1.8,
-			ease: Sine.easeIn 
-		},0)
+		// 	autoAlpha: 1,
+		// 	ease: Power2.easeOut
+		// },0)
+		// .to($point3, 1.2, {
+		// 	z: "-=400px",
+		// 	autoAlpha: 1,
+		// 	delay: 1.2,
+		// 	ease: Power2.easeOut
+		// },0)
+		// .to($point4, 1.2, {
+		// 	z: "-=400px",
+		// 	autoAlpha: 1,
+		// 	delay: 0.9,
+		// 	ease: Power2.easeOut
+		// },0)
+		// .to($point5, 1.2, {
+		// 	z: "-=400px",
+		// 	autoAlpha: 1,
+		// 	delay: 0.3,
+		// 	ease: Power2.easeOut
+		// },0)
+		// .to($text, 1.2, {
+		// 	autoAlpha: 1,
+		// 	delay: 1.8,
+		// 	ease: Sine.easeIn 
+		// },0)
+		.to($lettersContainer, 1.2, {
+			z: "-=200px"
+		})
+		.to($lettersContainer, 1.2, {
+			z: "+=200px"
+		})
+		.to($lettersContainer, 1.2, {
+			z: "-=200px"
+		})
+		.to($lettersContainer, 1.2, {
+			z: "+=200px"
+		})
 		.to($lettersContainer, 0.3, {
-			delay: 1,
+			delay: 0,
 			scaleX: 1,
 			scaleY: 0
 		})
