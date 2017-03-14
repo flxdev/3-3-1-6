@@ -439,6 +439,29 @@ function projectTrigger() {
 	});
 };
 
+function tabsTrigger() {
+	var cont = $(".tabs-navigation"),
+		contTrigger = cont.find(".tabs-navigation_item");
+
+	contTrigger.first().addClass("current");
+
+	contTrigger.on("click", function(event){
+		event.preventDefault();
+		
+		if(flag || $(this).hasClass("active")) return false;
+
+		flag = true;
+
+		clearTimeout(timeout);
+
+		var $this = $(this),
+			dataTrigger = $this.data("trigger");
+
+		$this.addClass("current").siblings().removeClass("current");
+		projectsFader(dataTrigger);
+	});
+}
+
 function projectsFader(item) {
 	var conteiner = $(".content"),
 		cTriggers = conteiner.find(".projects-fader");

@@ -3444,6 +3444,11 @@ body
 		.projects-item
 			.cover
 				height: 50vh
+	.main-frame
+		.projects
+			.projects-item
+				.cover
+					height: 100vh
 	.project-sorting
 		.sort
 			opacity: 1
@@ -4049,3 +4054,89 @@ body
 				.icon
 					opacity: 1
 					transform: rotate(-90deg) translate(0, 10px)
+// new index page
+.main-frame
+	position: relative
+	width: 100%
+	height: 100%
+	overflow: hidden
+	.projects 
+		.projects-item 
+			&:hover 
+				.projects-info 
+					.projects-name 
+						span 
+							i
+								opacity: 0
+								transform: none
+			.project-info-contaner 
+				.project-info__inner
+					height: 100vh
+				.cover
+					pointer-events: auto
+			.projects-image
+				height: 100vh
+			.projects-info
+				+rem(left, 105px)
+				+rem(bottom, 63px)
+				.projects-name
+					position: relative
+					letter-spacing: 1.1px
+					&:hover
+						span 
+							i
+								transform: translate(10px)
+								transition-delay: 0.3s
+								opacity: 1
+					& + .projects-name
+						+rem(margin-left, 50px)
+		a.projects-item
+			&:hover 
+				.projects-info 
+					.projects-name 
+						span 
+							i
+								transform: translate(10px)
+								transition-delay: 0.3s
+								opacity: 1
+.content
+	.main-frame
+		.content-left
+			width: 38.5%
+		.content-right
+			width: 61.5%
+.main-tabs-navigation
+	position: absolute
+	+rem(bottom, 117px)
+	+rem(right, 60px)
+	height: 0
+	left: 0
+	overflow: hidden
+	transition: height 1.2s $cub .3s,opacity 1.2s $cub .3s
+	.tabs-navigation
+		position: absolute
+		bottom: 0
+		.tabs-navigation_item
+			display: block
+			+rem(margin-bottom, 12px)
+			span
+				font-family: "Heavy"
+				+rem(font-size, 64px)
+				+rem(line-height, 64px)
+				color: $title
+				transition: color 0.9s $cub2
+			&.current
+				span
+					color: $black
+.content-mainpage
+	.gallery-pagination 
+			.pagination-item
+				&.pagination-item_left 
+					div 
+						rect
+							stroke: $white
+						.hover
+							fill: $white
+.load-page
+	.main-tabs-navigation
+		+rem(height, 220px)
