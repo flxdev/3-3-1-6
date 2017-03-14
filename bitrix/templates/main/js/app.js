@@ -589,6 +589,8 @@ function scroll3316() {
 
 		if($(e.target).parents('.scroller-container').length) return false;
 		if($(e.target).parents('.scroll-container').length) return;
+		if($(e.target).parents('.portfolio-container__scroll').length) return;
+		if($(e.target).hasClass("wrapper")) return;
 
 		var curTime = e.timeStamp,
 			curDirection = e.originalEvent.deltaY;
@@ -688,10 +690,16 @@ function heightScrollContainer() {
 	var container = document.getElementById("scroll-container");
 
 	if($("#scroll-container").length){
-		$("#scroll-container").height($(window).height() - 80);
+		if($("#scroll-container").hasClass("portfolio-container__scroll")) {
+			$("#scroll-container").height($(window).height());
+		} else {
+			$("#scroll-container").height($(window).height() - 80);
+		}
+		
 		Ps.update(container);
 	}
 };
+
 
 window.onresize = function(){
 	heightScrollContainer()
