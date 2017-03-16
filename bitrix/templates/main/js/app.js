@@ -194,6 +194,9 @@ function loadedImg() {
 					$loaderSite.fadeOut(100);
 					setTimeout(function(){
 						$(".out").addClass("load-page dom");
+						if($(".content-mainpage").find(".main-frame").length){
+							autotabsTrigger();
+						}
 					},100);
 					if($(".content-mainpage").find(".rotator").length){
 						$(".content-mainpage").find(".rotator").slick("slickPlay");
@@ -549,7 +552,7 @@ function tabsTrigger() {
 	contTrigger.on("click", function(event){
 		event.preventDefault();
 		
-		if(flag || $(this).hasClass("active")) return false;
+		if(flag || $(this).hasClass("current")) return false;
 
 		flag = true;
 
@@ -561,7 +564,32 @@ function tabsTrigger() {
 		$this.addClass("current").siblings().removeClass("current");
 		projectsFader(dataTrigger);
 	});
-}
+};
+
+function autotabsTrigger(){
+	var cont = $(".tabs-navigation"),
+		contTrigger = cont.find(".tabs-navigation_item"),
+		timer;
+
+		startInterval(1);
+
+		contTrigger.on("click", function(event){
+			var item = $(this).data("trigger");
+			clearInterval(timer);
+			startInterval(item);
+		});
+
+		function startInterval(counter){
+			timer = setInterval(function(){
+
+				if(counter === 3) {
+					counter = 0;
+				}
+				
+				contTrigger.eq(counter).trigger("click");
+			}, 15000);
+		}
+};
 
 function projectsFader(item) {
 	var conteiner = $(".content"),

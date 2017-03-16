@@ -1118,12 +1118,18 @@ body
 	.hash
 		.hash-trigger
 			span
-				color: $white
+				color: $black
+				+rem(padding, 35px 35px 33px)
 	.projects 
 		.projects-item 
 			.cover
 				transition-delay: 0.9s
 .content-portfolio-two
+	.hash
+		.hash-trigger
+			span
+				color: $black
+				+rem(padding, 35px 35px 33px)
 	.projects-gallery
 		.projects
 			height: auto
@@ -1319,15 +1325,18 @@ body
 				will-change: transform
 .hash
 	position: absolute
-	left: 25%
-	+rem(top, 30px)
+	+rem(left, -53px)
+	+rem(bottom, 0)
 	z-index: 5
 	transition: transform 1.2s $cub 0.3s
-	transform: translate(0,-60px)
+	transform: translate(-60px, 0) rotate(-90deg)
+	will-change: transform
+	width: 5px
+	height: 5px
+	white-space: nowrap
 	+r(1170)
 		left: 28%
 	.hash-trigger
-		font-family: "Light"
 		+rem(font-size, 10px)
 		text-transform: uppercase
 		+rem(letter-spacing, 2px)
@@ -3410,7 +3419,7 @@ body
 	.breadcrumbs
 		transform: none
 	.hash
-		transform: none
+		transform: translate(0,0) rotate(-90deg)
 	.lang
 		transform: none
 	.gallery-pagination
@@ -4079,10 +4088,37 @@ body
 					pointer-events: auto
 			.projects-image
 				height: 100vh
+				transform: none
+				&:hover
+					transform: none
+				img
+					transform: translate(-50%,-50%) scale(1.2)
+					transition: transform 0s linear
 			.projects-info
-				+rem(left, 105px)
+				// +rem(left, 105px)
+				left: 14%
 				+rem(bottom, 63px)
 				transform: none
+				+r(1850)
+					left: 13.3%
+				+r(1690)
+					left: 13%
+				+r(1600)
+					left: 12.5%
+				+r(1550)
+					left: 12%
+				+r(1366)
+					left: 12.5%
+				+r(1280)
+					left: 11.8%
+				+r(1170)
+					left: 12.3%
+				+r(1100)
+					left: 11.8%
+				+r(1050)
+					left: 11.4%
+				+r(1023)
+					left: 11.1%
 				.projects-name
 					position: relative
 					letter-spacing: 1.1px
@@ -4094,6 +4130,11 @@ body
 								opacity: 1
 					& + .projects-name
 						+rem(margin-left, 50px)
+			// &.active, &.fadeOut
+			// 	.projects-image
+			// 	img
+			// 		transition-duration: 20s
+			// 		transform: translate(-50%,-50%) scale(1)
 		a.projects-item
 			&:hover 
 				.projects-info 
@@ -4103,6 +4144,15 @@ body
 								transform: translate(10px)
 								transition-delay: 0.3s
 								opacity: 1
+.load-page
+	.main-frame
+		.projects 
+			.projects-item
+				&.active, &.fadeOut
+					.projects-image
+					img
+						transition-duration: 15s
+						transform: translate(-50%,-50%) scale(1)
 .content
 	.main-frame
 		.content-left
