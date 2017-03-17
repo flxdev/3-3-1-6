@@ -2305,8 +2305,8 @@ $(document).ready(function() {
 
 	} 
 	if($("html").hasClass("no-mobile")){
-		appendVideo()
-		videoSize();
+		appendVideo();
+		// videoSize();
 	}
 });
 function appendVideo(){
@@ -2327,6 +2327,14 @@ function appendVideo(){
 			source.setAttribute("codecs", "avc1.4D401E, mp4a.40.2")
 		}	
 	})
+	var navi = navigator.userAgent;
+	navi = navi.toLocaleLowerCase();
+
+	if(navi.indexOf("edge")> 1) {
+		$("html").addClass("ie-edge");
+	}
+
+	
 }
 function scaleVideoContainer(){
 	var height = $(window).height() + 5,
@@ -2353,7 +2361,7 @@ function scaleBannerVideoSize(element) {
 	$(element).each(function(){
 		var aspectRatio = $(window).height()/$(window).width();
 
-		if(aspectRatio < 0.5) {		
+		if(aspectRatio > 0.5) {		
 
 			$(this).width(windowWidth);
 			$(this).height("auto");

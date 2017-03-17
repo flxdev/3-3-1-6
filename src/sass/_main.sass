@@ -379,10 +379,10 @@ body
 			video
 				position: absolute
 				z-index: 0
-				// bottom: 0
-				// width: 100%
-				// height: 100%
-				// object-fit: cover
+				bottom: 0
+				width: 100%
+				height: 100%
+				object-fit: cover
 			.poster
 				display: none
 				img
@@ -392,7 +392,7 @@ body
 	.navbar__content-slice
 		width: 100%
 		background-color: $black
-		background-image: url(../img/menu-bg.jpg)
+		background-image: url(../video/Underground-Traffic-VC02.jpg)
 		background-size: cover
 		background-position: 100% 100%
 		position: absolute
@@ -496,9 +496,11 @@ body
 							fill: $white
 			.btn
 				vertical-align: middle
-.ie11
+.ie11, .ie-edge
 	.navbar__content
 		.navbar__content-video
+			.fillWidth
+				opacity: 0
 			video
 				height: 100%
 				width: auto
