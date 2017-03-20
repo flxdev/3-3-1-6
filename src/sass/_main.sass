@@ -3624,14 +3624,15 @@ body
 			height: 51%
 	.loader-container
 		position: absolute
-		top: 50%
+		top: 43%
 		left: 50%
-		transform: translate(-50%, -50%) scale(0.35)
+		transform: translate(-50%, -50%)
 		text-align: center
 		z-index: 5			
 		perspective: 600px
 		.letters-container
 			position: relative
+			transform-origin: bottom
 			&::before
 				content: ""
 				width: 100%
