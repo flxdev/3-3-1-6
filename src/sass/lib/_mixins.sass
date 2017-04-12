@@ -14,7 +14,10 @@
 =rh($height)
 	@media only screen and (max-height: $height + "px")
 		@content
-
+// height, less than X
+=rM($width1, $width2)
+	@media only screen and (min-device-width: $width1 + "px") and (max-device-width: $width2 + "px")
+		@content
 =clr
 	&:after
 		content: " "

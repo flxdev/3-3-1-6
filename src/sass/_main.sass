@@ -1,6 +1,7 @@
 // Normally mainpage styles
 *
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+	-webkit-overflow-scrolling: touch
 	&::selection
 		background-color: #eee
 a 
@@ -712,9 +713,9 @@ body
 		transition: height 1.2s $cub
 	.pagination-inner
 		.pagination-item
-			position: relative
+			position: absolute
 			width: 100%
-			height: 50vh
+			height: 50%
 			z-index: 5
 			a
 				width: 100%
@@ -730,6 +731,7 @@ body
 					left: 50%
 					transform: translate(-50%)
 			&.pagination-item__left
+				top: 0
 				a
 					span
 						+rem(bottom, 115px)
@@ -743,6 +745,7 @@ body
 							svg
 								transform: translate(0, -15px)
 			&.pagination-item__right
+				bottom: 0
 				a
 					span
 						+rem(top, 115px)
@@ -1239,8 +1242,10 @@ body
 			+rem(padding, 0 5px)
 			font-family: 'Heavy'
 			+rem(font-size, 54px)
+			font-size: 2.81vw
+			white-space: nowrap
 			+r(1170)
-				+rem(font-size, 45px)
+				// +rem(font-size, 45px)
 			&::before
 				content: ""
 				height: 1px
@@ -1326,8 +1331,9 @@ body
 				transition: transform 1.2s $cub, opacity 1.2s $cub
 				will-change: transform
 .hash
-	position: absolute
-	+rem(left, -53px)
+	position: fixed
+	+rem(left, 26px)
+	right: auto
 	+rem(bottom, 0)
 	z-index: 5
 	transition: transform 1.2s $cub 0.3s
@@ -1336,8 +1342,8 @@ body
 	width: 5px
 	height: 5px
 	white-space: nowrap
-	+r(1170)
-		left: 28%
+	// +r(1170)
+	// 	left: 28%
 	.hash-trigger
 		+rem(font-size, 10px)
 		text-transform: uppercase
@@ -4090,9 +4096,18 @@ body
 								opacity: 0
 								transform: none
 			.project-info-contaner 
+				.cover
+					+ipad()
+						height: 92.2vh
+					+ipad-retina()
+						height: 92.2vh
 				.project-info__inner
 					height: 100vh
 					transform: translateZ(0)
+					+ipad()
+						height: 92.2vh
+					+ipad-retina()
+						height: 92.2vh
 				.cover
 					pointer-events: auto
 			.projects-image
@@ -4153,6 +4168,23 @@ body
 								transform: translate(10px)
 								transition-delay: 0.3s
 								opacity: 1
+.mobile.ios
+	.main-frame
+		.projects 
+			.projects-item
+				.project-info-contaner 
+					.cover
+						+ipad()
+							height: 92.2vh
+						+ipad-retina()
+							height: 92.2vh
+					.project-info__inner
+						height: 100vh
+						transform: translateZ(0)
+						+ipad()
+							height: 92.2vh
+						+ipad-retina()
+							height: 92.2vh
 .load-page
 	.main-frame
 		.projects 
@@ -4188,6 +4220,9 @@ body
 				+rem(line-height, 64px)
 				color: $title
 				transition: color 0.9s $cub2
+				+r(1100)
+					+rem(font-size, 58px)
+					+rem(line-height, 58px)
 			&.current
 				span
 					color: $black
@@ -4212,9 +4247,17 @@ body
 			position: relative
 		.projects
 			font-size: 0
+			height: auto
+			+clr
 			.projects-item
 				width: 50%
-				display: inline-block
+				float: left
+				+ipad()
+					height: 46.1vh
+					.cover
+						height: 46.1vh
+					.project-info-contaner .project-info__inner
+						height: 46.1vh
 .load-page
 	.main-tabs-navigation
 		+rem(height, 220px)
