@@ -11,18 +11,35 @@
     <script src="js/app.js"></script>
   </head>
   <body>
-    <div class="siteLoader">
-      <div class="frame frame-top"></div>
-      <div class="loader-container">
-        <div class="letters-container">
-          <div id="animation_container" style="background-color:rgba(0, 0, 0, 1.00); width:600px; height:121px">
-            <canvas id="canvas" width="600" height="121" style="position: absolute; display: block; background-color:rgba(0, 0, 0, 1.00)"></canvas>
-            <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:600px; height:121px; position: absolute; left: 0px; top: 0px; display: block"></div>
+    <div class="page__preloader">
+      <div class="page__preloader-container">
+        <div class="page__preloader-frame frame__black">
+          <div class="page__frame-inn">
+            <div class="frame__bg"></div>
+            <div class="frame__text frame__scale">
+              <div class="frame__text-inner">
+                <div class="text" data-text="The experience to listen">The experience to listen</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page__preloader-frame frame__white">
+          <div class="page__frame-inn">
+            <div class="frame__bg"></div>
+            <div class="frame__text frame__scale">
+              <div class="frame__text-inner">
+                <div class="text" data-text="The passion to create">The passion to create</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page__preloader-frame frame__black">
+          <div class="page__frame-inn">
+            <div class="frame__bg"></div>
+            <div class="frame__image frame__scale"><img src="img/anim.jpg" alt=""></div>
           </div>
         </div>
       </div>
-      <div class="frame frame-bottom"></div>
-      <div class="timeline"></div>
     </div>
     <div class="pageLoader">
       <div class="lines-container"></div>

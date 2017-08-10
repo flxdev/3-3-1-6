@@ -1,19 +1,38 @@
-.siteLoader
-	.frame.frame-top
-	.loader-container
-		.letters-container
-			//- .loader-numbers
-			//- 	span.point_1 3
-			//- 	span.point_2 3
-			//- 	span.point_3 |
-			//- 	span.point_4 1
-			//- 	span.point_5 6
-			//- .loader-text ARCHITECTS
-			#animation_container(style="background-color:rgba(0, 0, 0, 1.00); width:600px; height:121px")
-				canvas(id="canvas" width="600" height="121" style="position: absolute; display: block; background-color:rgba(0, 0, 0, 1.00);")
-				#dom_overlay_container(style="pointer-events:none; overflow:hidden; width:600px; height:121px; position: absolute; left: 0px; top: 0px; display: block;")
-	.frame.frame-bottom
-	.timeline
+//- .siteLoader
+//- 	.frame.frame-top
+//- 	.loader-container
+//- 		.letters-container
+//- 			//- .loader-numbers
+//- 			//- 	span.point_1 3
+//- 			//- 	span.point_2 3
+//- 			//- 	span.point_3 |
+//- 			//- 	span.point_4 1
+//- 			//- 	span.point_5 6
+//- 			//- .loader-text ARCHITECTS
+//- 			#animation_container(style="background-color:rgba(0, 0, 0, 1.00); width:600px; height:121px")
+//- 				canvas(id="canvas" width="600" height="121" style="position: absolute; display: block; background-color:rgba(0, 0, 0, 1.00);")
+//- 				#dom_overlay_container(style="pointer-events:none; overflow:hidden; width:600px; height:121px; position: absolute; left: 0px; top: 0px; display: block;")
+//- 	.frame.frame-bottom
+//- 	.timeline
+.page__preloader
+	.page__preloader-container
+		.page__preloader-frame.frame__black
+			.page__frame-inn
+				.frame__bg
+				.frame__text.frame__scale
+					.frame__text-inner
+						.text(data-text="The experience to listen") The experience to listen
+		.page__preloader-frame.frame__white
+			.page__frame-inn
+				.frame__bg
+				.frame__text.frame__scale
+					.frame__text-inner
+						.text(data-text="The passion to create") The passion to create
+		.page__preloader-frame.frame__black
+			.page__frame-inn
+				.frame__bg
+				.frame__image.frame__scale
+					img(src="img/anim.jpg", alt="")
 .pageLoader
 	.lines-container
 .pageSurfLoader

@@ -69,125 +69,187 @@ function deleteCookie(name) {
 }
 
 
-function loadedImg() {
-	var $loaderSite = $(".siteLoader"),
-	$lettersContainer = $(".letters-container"),
-	$point1 = $(".point_1"),
-	$point2 = $(".point_2"),
-	$point3 = $(".point_3"),
-	$point4 = $(".point_4"),
-	$point5 = $(".point_5"),
-	$text = $(".loader-text"),
-	$timeline = $(".timeline"),
-	$loaderContainer = $(".loader-container"),
-	TimeLine = new TimelineLite();
-	function frameAnim(){
-		var tl = new TimelineLite()
-		tl
-			.to($(".frame-top"), 0.5, {
-				y: "-100%"
-			},0)
-			.to($(".frame-bottom"), 0.5, {
-				y: "100%",
-				onComplete: function(){
-					$loaderSite.fadeOut(100);
-					setTimeout(function(){
-						$(".out").addClass("load-page dom");
-						if($(".content-mainpage").find(".main-frame").length){
-							autotabsTrigger();
-						}
-					},100);
-					if($(".content-mainpage").find(".rotator").length){
-						$(".content-mainpage").find(".rotator").slick("slickPlay");
-					}
-				}
-			},0)
-	}
-	canvasRender();
-	TimeLine
-		// .set($point1, {
-		// 	z: "400px",
-		// 	autoAlpha: 0
-		// })
-		// .set($point2, {
-		// 	z: "400px",
-		// 	autoAlpha: 0
-		// })
-		// .set($point3, {
-		// 	z: "400px",
-		// 	autoAlpha: 0
-		// })
-		// .set($point4, {
-		// 	z: "400px",
-		// 	autoAlpha: 0
-		// })
-		// .set($point5, {
-		// 	z: "400px",
-		// 	autoAlpha: 0
-		// })
-		// .set($text, {
-		// 	autoAlpha: 0
-		// })
+// function loadedImg() {
+// 	var $loaderSite = $(".siteLoader"),
+// 	$lettersContainer = $(".letters-container"),
+// 	$point1 = $(".point_1"),
+// 	$point2 = $(".point_2"),
+// 	$point3 = $(".point_3"),
+// 	$point4 = $(".point_4"),
+// 	$point5 = $(".point_5"),
+// 	$text = $(".loader-text"),
+// 	$timeline = $(".timeline"),
+// 	$loaderContainer = $(".loader-container"),
+// 	TimeLine = new TimelineLite();
+// 	function frameAnim(){
+// 		var tl = new TimelineLite()
+// 		tl
+// 			.to($(".frame-top"), 0.5, {
+// 				y: "-100%"
+// 			},0)
+// 			.to($(".frame-bottom"), 0.5, {
+// 				y: "100%",
+// 				onComplete: function(){
+// 					$loaderSite.fadeOut(100);
+// 					setTimeout(function(){
+// 						$(".out").addClass("load-page dom");
+// 						if($(".content-mainpage").find(".main-frame").length){
+// 							autotabsTrigger();
+// 						}
+// 					},100);
+// 					if($(".content-mainpage").find(".rotator").length){
+// 						$(".content-mainpage").find(".rotator").slick("slickPlay");
+// 					}
+// 				}
+// 			},0)
+// 	}
+// 	canvasRender();
+// 	TimeLine
+// 		// .set($point1, {
+// 		// 	z: "400px",
+// 		// 	autoAlpha: 0
+// 		// })
+// 		// .set($point2, {
+// 		// 	z: "400px",
+// 		// 	autoAlpha: 0
+// 		// })
+// 		// .set($point3, {
+// 		// 	z: "400px",
+// 		// 	autoAlpha: 0
+// 		// })
+// 		// .set($point4, {
+// 		// 	z: "400px",
+// 		// 	autoAlpha: 0
+// 		// })
+// 		// .set($point5, {
+// 		// 	z: "400px",
+// 		// 	autoAlpha: 0
+// 		// })
+// 		// .set($text, {
+// 		// 	autoAlpha: 0
+// 		// })
 
-		// .to($point1, 1.2, {
-		// 	z: "-=400px",
-		// 	autoAlpha: 1,
-		// 	ease: Power2.easeOut
-		// },0)
-		// .to($point2, 1.2, {
-		// 	z: "-=400px",
-		// 	delay: 0.6,
+// 		// .to($point1, 1.2, {
+// 		// 	z: "-=400px",
+// 		// 	autoAlpha: 1,
+// 		// 	ease: Power2.easeOut
+// 		// },0)
+// 		// .to($point2, 1.2, {
+// 		// 	z: "-=400px",
+// 		// 	delay: 0.6,
 
-		// 	autoAlpha: 1,
-		// 	ease: Power2.easeOut
-		// },0)
-		// .to($point3, 1.2, {
-		// 	z: "-=400px",
-		// 	autoAlpha: 1,
-		// 	delay: 1.2,
-		// 	ease: Power2.easeOut
-		// },0)
-		// .to($point4, 1.2, {
-		// 	z: "-=400px",
-		// 	autoAlpha: 1,
-		// 	delay: 0.9,
-		// 	ease: Power2.easeOut
-		// },0)
-		// .to($point5, 1.2, {
-		// 	z: "-=400px",
-		// 	autoAlpha: 1,
-		// 	delay: 0.3,
-		// 	ease: Power2.easeOut
-		// },0)
-		// .to($text, 1.2, {
-		// 	autoAlpha: 1,
-		// 	delay: 1.8,
-		// 	ease: Sine.easeIn 
-		// },0)
-		// .to($lettersContainer, 1.2, {
-		// 	z: "-=200px"
-		// })
-		// .to($lettersContainer, 1.2, {
-		// 	z: "+=200px"
-		// })
-		// .to($lettersContainer, 1.2, {
-		// 	z: "-=200px"
-		// })
-		// .to($lettersContainer, 1.2, {
-		// 	z: "+=200px"
-		// })
-		.to($lettersContainer, 0.3, {
-			delay: 3,
-			scaleX: 1,
-			scaleY: 0,
-			// rotationX: 90
+// 		// 	autoAlpha: 1,
+// 		// 	ease: Power2.easeOut
+// 		// },0)
+// 		// .to($point3, 1.2, {
+// 		// 	z: "-=400px",
+// 		// 	autoAlpha: 1,
+// 		// 	delay: 1.2,
+// 		// 	ease: Power2.easeOut
+// 		// },0)
+// 		// .to($point4, 1.2, {
+// 		// 	z: "-=400px",
+// 		// 	autoAlpha: 1,
+// 		// 	delay: 0.9,
+// 		// 	ease: Power2.easeOut
+// 		// },0)
+// 		// .to($point5, 1.2, {
+// 		// 	z: "-=400px",
+// 		// 	autoAlpha: 1,
+// 		// 	delay: 0.3,
+// 		// 	ease: Power2.easeOut
+// 		// },0)
+// 		// .to($text, 1.2, {
+// 		// 	autoAlpha: 1,
+// 		// 	delay: 1.8,
+// 		// 	ease: Sine.easeIn 
+// 		// },0)
+// 		// .to($lettersContainer, 1.2, {
+// 		// 	z: "-=200px"
+// 		// })
+// 		// .to($lettersContainer, 1.2, {
+// 		// 	z: "+=200px"
+// 		// })
+// 		// .to($lettersContainer, 1.2, {
+// 		// 	z: "-=200px"
+// 		// })
+// 		// .to($lettersContainer, 1.2, {
+// 		// 	z: "+=200px"
+// 		// })
+// 		.to($lettersContainer, 0.3, {
+// 			delay: 3,
+// 			scaleX: 1,
+// 			scaleY: 0,
+// 			// rotationX: 90
+// 		})
+// 		.to($timeline, 1.2, {
+// 			scaleX: 1,
+// 			scaleY: 1,
+// 			onComplete: function() {
+// 				frameAnim()
+// 				$timeline.fadeOut(100)
+// 			}
+// 		})
+// }
+
+function mainPreloader(){
+	var $loader = $(".page__preloader");
+	var $case = $(".page__preloader-frame");
+	var $scale = $(".frame__scale");
+	var timer = null;
+	var curr = 0;
+
+	var TimeLine1 = new TimelineLite();
+	var TimeLine2 = new TimelineLite();
+
+	function frameAnim() {
+		$loader.fadeOut(100);
+		setTimeout(function(){
+			$(".out").addClass("load-page dom");
+			if($(".content-mainpage").find(".main-frame").length){
+				autotabsTrigger();
+			}
+		},100);
+		if($(".content-mainpage").find(".rotator").length){
+			$(".content-mainpage").find(".rotator").slick("slickPlay");
+		};
+	};
+	TimeLine1
+		.set($scale, ({z: -900}))
+		.to($scale, 20, {
+			delay: 1.5,
+			z: 0
 		})
-		.to($timeline, 1.2, {
-			scaleX: 1,
-			scaleY: 1,
-			onComplete: function() {
-				frameAnim()
-				$timeline.fadeOut(100)
+
+	TimeLine2
+		.set($loader, ({className:"+=now"}))
+		
+		.to($case.eq(0), 0.3, {
+			delay: 1.5,
+			"height": "+=100%"
+		})
+		.to($case.eq(0), 0.3, {
+			delay: 2,
+			className:"+=prev",
+			"height": "-=100%"
+		})
+		.to($case.eq(1), 0.3, {
+			"height": "+=100%"
+		}, "-=0.3")
+		.to($case.eq(1), 0.3, {
+			delay: 2,
+			className:"+=prev",
+			"height": "-=100%"
+		})
+		.to($case.eq(2), 0.3, {
+			"height": "+=100%"
+		},  "-=0.3")
+		.to($case.eq(2), 0.3, {
+			delay: 2,
+			className:"+=prev",
+			"height": "-=100%",
+			onComplete: function(){
+				frameAnim();
 			}
 		})
 }
@@ -1999,7 +2061,8 @@ $(document).ready(function() {
 		if((uaName === "IE" && uaVersion < '11')){
 			openUpdate();
 		} else {
-			loadedImg()
+			// loadedImg()
+			mainPreloader()
 		}
 	};
 
